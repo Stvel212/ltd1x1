@@ -1,7 +1,6 @@
 package Wyvern
 
 import ObjEditingNatives
-import WyvernData
 
 @compiletime function createWyvern()
 	createObjectDefinition("w3u", 'h04X', 'hfoo')
@@ -55,7 +54,7 @@ import WyvernData
 	..setInt("ulev", 9)
 	..setInt("usid", 400)
 	..setInt("usin", 400)
-	..setInt("upri", WYVERN_PRIORITET)
+	..setInt("upri", 6)
 	..setString("uhot", "X")
 	..setInt("umis", 100)
 	..setInt("ubpx", 1)

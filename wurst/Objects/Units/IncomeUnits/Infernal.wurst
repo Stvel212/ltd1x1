@@ -1,7 +1,6 @@
 package Infernal
 
 import ObjEditingNatives
-import InfernalData
 
 @compiletime function createImmolate()
 	createObjectDefinition("w3a", 'A00T', 'ANpi')
@@ -13,5 +12,5 @@ import InfernalData
 	..setLvlDataString("ansf", 0, 0, "(summon)")
 	..setLvlDataString("abuf", 1, 0, "B04F,B04G")
 	..setLvlDataUnreal("aare", 1, 0, 220.0)
-	..setLvlDataUnreal("Eim1", 1, 1, IMMOLATE_DAMAGE)
+	..setLvlDataUnreal("Eim1", 1, 1, 10.0)
 	

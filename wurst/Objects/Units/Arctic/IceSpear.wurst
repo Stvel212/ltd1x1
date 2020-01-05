@@ -1,7 +1,10 @@
 package IceSpear
 
 import ObjEditingNatives
-import IceSpearData
+
+public let ICESPEAR_ATTACK_SLOW = 0.
+public let ICESPEAR_MOVEMENT_SLOW = 0.6
+public let ICESPEAR_DESCRIPTION = "Adds 12 cold damage to each attack, slowing a target enemy unit's movement by 60%"
 
 @compiletime function createIceSpear()
 	createObjectDefinition("w3a", 'A08V', 'AHca')

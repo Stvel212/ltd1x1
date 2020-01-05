@@ -1,8 +1,8 @@
 package EliteArcher
 
-import EliteArcherData
 import ObjEditingNatives
 
+public let ELITEARCHER_COST = 155
 
 @compiletime function create_w3u_h09G()
 	createObjectDefinition("w3u", 'h09G', 'hrif')
@@ -40,7 +40,7 @@ import ObjEditingNatives
 	..setInt("umvs", 300)
 	..setInt("ubld", 5)
 	..setInt("ugol", ELITEARCHER_COST)
-	..setInt("upoi", ELITEARCHER_POINT_VALUE)
+	..setInt("upoi", 205)
 	..setReal("usca", 1.2)
 	..setInt("ua1b", 12)
 	..setInt("ua1d", 1)
@@ -87,6 +87,6 @@ import ObjEditingNatives
 	..setString("udty", "small")
 	..setReal("ussc", 1.5)
 	..setString("uarm", "Flesh")
-	..setInt("upoi", ELITEARCHER_POINT_VALUE)
+	..setInt("upoi", 205)
 	..setUnreal("ucol", 15.0)
 	..setInt("ua1s", 1)

@@ -1,3 +1,0 @@
-package Environment
-
-public boolean rotation4x4 = false

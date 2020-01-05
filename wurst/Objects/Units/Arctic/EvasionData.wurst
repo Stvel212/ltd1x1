@@ -1,8 +1,0 @@
-package EvasionData
-
-import Environment 
-
-public let WANDIGOO_EVASION = rotation4x4 ? 0.12 : 0.10
-public let WANDIGOO_EVASION_DESCRIPTION = "Gives a {0}% chance to avoid an attack.".format(((WANDIGOO_EVASION*100).toInt()).toString())
-public let ANCIENT_WANDIGO_EVASION = rotation4x4 ? 0.25 : 0.20
-public let ANCIENT_WANDIGO_EVASION_DESCRIPTION = "Gives a {0}% chance to avoid an attack.".format(((ANCIENT_WANDIGO_EVASION*100).toInt()).toString())
