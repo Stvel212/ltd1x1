@@ -12,6 +12,6 @@ function incAbilitiesLevel()
     upAbilities()
 
 init
-  end_wave_trigger
+  onWaveEnd
     ..addCondition(Condition(function setKingAbilitiesWithDelay))
 //    ..addCondition(Condition( function incAbilitiesLevel ))

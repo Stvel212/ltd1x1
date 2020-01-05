@@ -469,12 +469,11 @@ string gg_snd_Credits
 sound gg_snd_NewTournament=null
 string gg_snd_OrcVictory
 trigger gg_trg_Update_Info=null
-trigger end_wave_trigger = CreateTrigger()
+trigger onWaveEnd = CreateTrigger()
 trigger afterModeResolved = CreateTrigger()
 trigger onGameFinished = CreateTrigger()
-trigger arenaAntistuck = CreateTrigger()
-trigger enableArenaAntistuck = CreateTrigger()
-timer enableAtenaAntistuckTimer = CreateTimer()
+trigger onArenaStarted = CreateTrigger()
+trigger onArenaFinished = CreateTrigger()
 trigger gg_trg_End_Game=null
 trigger gg_trg_Initilization=null
 trigger gg_trg_Remove_Preloads=null
@@ -4547,7 +4546,7 @@ endif
 return true
 endfunction
 function Trig_End_Round_Actions takes nothing returns nothing
-call TriggerEvaluate(end_wave_trigger)
+call TriggerEvaluate(onWaveEnd)
 call DisableTrigger(GetTriggeringTrigger())
 set udg_InRound=false
 set udg_WarpReady=false
@@ -5449,12 +5448,12 @@ call StopSoundBJ(gg_snd_NewTournament,true)
 call PolledWait(1.00)
 call DisplayTimedTextToForce(GetPlayersAll(),1.00,"|cff00FF00FIGHT START !|r")
 set udg_FightStart=true
-call TimerStart(enableAtenaAntistuckTimer, 5, false, null)
 call ForGroupBJ(udg_Fighter_East,function Trig_Arena_Battle_Count_Down_Func020A)
 call ForGroupBJ(udg_Fighter_West,function Trig_Arena_Battle_Count_Down_Func021A)
 call PolledWait(1.00)
 call PlayMusicBJ(gg_snd_OrcVictory)
 call StopMusicBJ(true)
+call TriggerEvaluate(onArenaStarted)
 call EnableTrigger(gg_trg_Arena_Fight_Start)
 endfunction
 function InitTrig_Arena_Battle_Count_Down takes nothing returns nothing
@@ -5588,6 +5587,7 @@ call LeaderboardSetPlayerItemLabelBJ(Player(8),udg_Board,"West")
 call LeaderboardSetPlayerItemLabelBJ(Player(9),udg_Board,"East")
 call PlayMusicBJ(gg_snd_Credits)
 call StopMusicBJ(true)
+call TriggerEvaluate(onArenaFinished)
 if(Trig_End_Arena_Battle_Handler_Func005C())then
 call DisplayTimedTextToForce(GetPlayersAll(),20.00,"|cffFF0000 The winner is ..... WEST!!!|r")
 call DisplayTimedTextToForce(GetPlayersAllies(Player(8)),20.00,("You received |cffFFcc00"+(I2S((udg_Level_Integer*10))+"|r gold from Arena Battle")))
@@ -5609,7 +5609,6 @@ endif
 endif
 endif
 set udg_FightStart=false
-call DisableTrigger(arenaAntistuck)
 call DisableTrigger(gg_trg_Arena_Fight_Start)
 call EnableTrigger(gg_trg_Winner_Walk__in_Arena)
 call TriggerExecute(gg_trg_Shutdown_if_x3_is_modified)
@@ -17467,7 +17466,6 @@ call InitBlizzard()
 call InitGlobals()
 call InitCustomTriggers()
 call RunInitializationTriggers()
-call DisableTrigger(arenaAntistuck)
 endfunction
 function config takes nothing returns nothing
 call SetMapName("Legion TD |cffFF1111Mega|r 3.41")
