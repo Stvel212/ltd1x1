@@ -1,0 +1,19 @@
+package CyborgData
+
+public let CYBORG_UNIT_ID = 'h02I'
+public let CYBORG_TOWER_ID = 'h00Q'
+public let CYBORG_MOVE_SPEED = 270
+public let CYBORG_MAX_HP = 1035
+public let CYBORG_COST = 200
+public let CYBORG_BASE_DAMAGE = 119
+public let CYBORG_ATTACK_SPEED = 1.3
+public let CYBORG_RANGE = 180
+public let CYBORG_SHORT_DESCRIPTION = "Deploy Cyborg  [|cffFFcc00A|r]"
+public let CYBORG_FULL_DESCRIPTION = "|cffccccccDamage: |r|cffff8000121-135|r" + 
+                                     "|cffcccccc|nSpeed: |r" + "|cffff8000{0}|r".format(CYBORG_ATTACK_SPEED.toString()) +
+                                     "|cffcccccc|nRange: |r" + "|cffff8000{0}|r".format(CYBORG_RANGE.toString()) +
+                                     "|cffcccccc|nHit Points: |r" + "|cffff8000{0}|r".format(CYBORG_MAX_HP.toString()) +
+                                     "|cffcccccc|nAttack Type: |r" + "|cffff8000Normal|r" +
+                                     "|cffcccccc|nDefense Type: |r" + "|cffff8000Heavy|r" +
+                                     "|cffcccccc|nAbility: |r|cff808080 None|r"
+                                     

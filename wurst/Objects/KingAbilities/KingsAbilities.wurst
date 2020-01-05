@@ -1,0 +1,61 @@
+package KingsAbilities
+
+import AbilityObjEditing
+
+function waveDamagePreset(int lvl) returns real
+  return (90 + (lvl-1) * 100 + (lvl-2) * (lvl-1) * 25).toReal()
+
+function stunDamagePreset(int lvl) returns real
+  return 45 + (lvl * 2) * (lvl-1) * 12.5
+
+function immoDamagePreset(int lvl) returns real
+  return (12 + (lvl * 2) * (lvl-1) * 3).toReal()
+
+@compiletime function createWave()
+  new AbilityDefinitionShockwaveCreep('A021')
+  ..setEditorSuffix("King")
+  ..setLevels(3)
+  ..setRace(Race.Orc)
+  ..setName("King's Shockwave")
+  ..presetTooltipNormal(lvl -> "King's Shock|cffffcc00w|rave")
+  ..presetTooltipNormalExtended(lvl -> "A wave of force that ripples outward, causing {0} damage to enemy units in a line.".format(waveDamagePreset(lvl).toString()))
+  ..presetDamage(lvl -> waveDamagePreset(lvl))
+  ..presetTargetsAllowed(lvl -> "air,ground,enemy")
+  ..presetCooldown(lvl -> 22)
+  ..presetAreaofEffect(lvl -> 250)
+  ..presetMaximumDamage(lvl -> 99999)
+  ..presetFinalArea(lvl -> 250)
+  ..presetManaCost(lvl -> 200)
+  ..presetCastRange(lvl -> 900)
+  ..presetDistance(lvl -> 1000)
+
+@compiletime function createStun()
+  new AbilityDefinitionWarStompcreep('A022')
+  ..setEditorSuffix("King")
+  ..setLevels(3)
+  ..setRace(Race.Orc)
+  ..setName("King's War Stomp")
+  ..presetTooltipNormal(lvl -> "King's War S|cffffcc00t|romp")
+  ..presetTooltipNormalExtended(lvl -> "Slams the ground, dealing {0} damage to nearby enemy units and stunning them for 1.25 seconds.".format(stunDamagePreset(lvl).toString()))
+  ..presetDurationNormal(lvl -> 1.25)
+  ..presetDurationHero(lvl -> 1.25)
+  ..presetTargetsAllowed(lvl -> "air,ground,enemy")
+  ..presetManaCost(lvl -> 250)
+  ..presetCooldown(lvl -> 9)
+  ..presetAreaofEffect(lvl -> 350)
+  ..presetBuffs(lvl -> "B044")
+  ..presetDamage(lvl -> stunDamagePreset(lvl))
+        
+  
+@compiletime function createImmolate()
+  new AbilityDefinitionPermanentImmolation('A01T')
+  ..setEditorSuffix("King")
+  ..setLevels(3)
+  ..setRace(Race.Orc)
+  ..setName("King's Permanent Immolation")
+  ..presetTooltipNormal(lvl -> "King's Permanent Immolation")
+  ..presetTooltipNormalExtended(lvl -> "Burns nearby enemy land units for {0} points of damage per second.".format(immoDamagePreset(lvl).toString()))
+  ..presetTargetsAllowed(lvl -> "enemies,ground")
+  ..presetAreaofEffect(lvl -> 350)
+  ..presetDamageperInterval(lvl -> immoDamagePreset(lvl))
+  

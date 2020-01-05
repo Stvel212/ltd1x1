@@ -1,0 +1,9 @@
+package Barracks
+
+import BarracksStore
+
+public class Barracks
+    static unit array FIRST_BARRACKS
+
+    static function createBaseForPlayer(player p)
+        FIRST_BARRACKS[p.getId()] = createUnit(p, BarracksStore.ID_B1, BarracksStore.b1positions[p.getId()], angle(0))

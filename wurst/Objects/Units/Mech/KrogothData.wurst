@@ -1,0 +1,18 @@
+package KrogothData
+
+public let KROGOTH_UNIT_ID = 'h02J'
+public let KROGOTH_TOWER_ID = 'h00W'
+public let KROGOTH_MOVE_SPEED = 270
+public let KROGOTH_MAX_HP = 2200
+public let KROGOTH_COST = 250
+public let KROGOTH_BASE_DAMAGE = 154
+public let KROGOTH_ATTACK_SPEED = 0.9
+public let KROGOTH_RANGE = 180
+public let KROGOTH_SHORT_DESCRIPTION = "Deploy Krogoth  [|cffFFcc00P|r]"
+public let KROGOTH_FULL_DESCRIPTION = "|cffccccccDamage: |r|cffff8000156-164|r" + 
+                                     "|cffcccccc|nSpeed: |r" + "|cffff8000{0}|r".format(KROGOTH_ATTACK_SPEED.toString()) +
+                                     "|cffcccccc|nRange: |r" + "|cffff8000{0}|r".format(KROGOTH_RANGE.toString()) +
+                                     "|cffcccccc|nHit Points: |r" + "|cffff8000{0}|r".format(KROGOTH_MAX_HP.toString()) +
+                                     "|cffcccccc|nAttack Type: |r" + "|cffff8000Normal|r" +
+                                     "|cffcccccc|nDefense Type: |r" + "|cffff8000Heavy|r" +
+                                     "|cffcccccc|nAbility: |r|cff808080 Vital Slice|r"

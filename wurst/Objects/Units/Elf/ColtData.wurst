@@ -1,0 +1,19 @@
+package ColtData
+
+public let COLT_UNIT_ID = 'h08E'
+public let COLT_TOWER_ID = 'h08F'
+public let COLT_MOVE_SPEED = 250
+public let COLT_MAX_HP = 90
+public let COLT_COST = 15
+public let COLT_BASE_DAMAGE = 9
+public let COLT_ATTACK_SPEED = 1.0
+public let COLT_RANGE = 100
+public let COLT_SHORT_DESCRIPTION = "Deploy Colt  [|cffFFcc00Q|r]"
+public let COLT_FULL_DESCRIPTION = "|cffccccccDamage: |r|cffff800012-13|r" + 
+                                     "|cffcccccc|nSpeed: |r" + "|cffff8000{0}|r".format(COLT_ATTACK_SPEED.toString()) +
+                                     "|cffcccccc|nRange: |r" + "|cffff8000{0}|r".format(COLT_RANGE.toString()) +
+                                     "|cffcccccc|nHit Points: |r" + "|cffff8000{0}|r".format(COLT_MAX_HP.toString()) +
+                                     "|cffcccccc|nAttack Type: |r" + "|cffff8000Pierce|r" +
+                                     "|cffcccccc|nDefense Type: |r" + "|cffff8000Unarmored|r" +
+                                     "|cffcccccc|nAbility: |r|cff808080 None|r"
+                                     

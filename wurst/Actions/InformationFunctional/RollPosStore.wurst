@@ -1,0 +1,14 @@
+package RollPosStore
+
+public class RollPosStore
+  static let ID_B1 = 'h05C'
+  static let r1b1pos = vec2(-4288.0 - 90, 4024.0)
+  static let r2b1pos = vec2(-4288.0 - 90, 440.0)
+  static let r3b1pos = vec2(-2240.0 - 90, 4024.0)
+  static let r4b1pos = vec2(-2240.0 - 90, 440.0)
+  static let r5b1pos = vec2(2752.0 - 90, 4024.0)
+  static let r6b1pos = vec2(2752.0 - 90, 440.0)
+  static let r7b1pos = vec2(4800.0 - 90, 4024.0)
+  static let r8b1pos = vec2(4800.0 - 90, 440.0)
+ 
+  static let r1positions = [r1b1pos, r2b1pos, r3b1pos, r4b1pos, r5b1pos, r6b1pos, r7b1pos, r8b1pos]

@@ -1,0 +1,25 @@
+package Display
+
+public class Display
+  private static let max = bj_MAX_PLAYER_SLOTS - 1
+
+  static function toObs(string str, real time)
+    for i = 0 to max
+      if IsPlayerObserver(players[i])
+        printTimedToPlayer(str, time, players[i])
+  
+  static function toTeam(string str, real time, int team)
+    for i = 0 to max
+      if players[i].getTeam() == team
+        printTimedToPlayer(str, time, players[i])
+
+  static function toPlayer(string str, real time, player p)
+    printTimedToPlayer(str, time, p)
+
+  static function toAll(string str, real time)
+    for i = 0 to max
+      printTimedToPlayer(str, time, players[i])
+
+  static function toTeamAndObs(string str, real time, int team)
+    toTeam(str, time, team)
+    toObs(str, time)

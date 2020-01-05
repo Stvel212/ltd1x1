@@ -1,0 +1,13 @@
+package FastFinish_event
+
+import FastFinish
+
+function voteFF()
+    FastFinish.countPlayers()
+    FastFinish.vote(GetTriggerPlayer())
+
+init
+    let t = CreateTrigger()
+    for i = 0 to 8
+        t..registerPlayerChatEvent(Player(i), "-ff", true)         
+    t.addCondition(Condition(function voteFF))

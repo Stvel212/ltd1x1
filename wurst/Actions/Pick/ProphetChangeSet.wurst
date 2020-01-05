@@ -1,0 +1,20 @@
+package ProphetChangeSet
+
+import RegisterEvents
+import PickHelpers
+import Display
+import Colorizer
+import RollInfo
+
+let CHANGETOWER_PROPHET_ID = 'R00G'
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_RESEARCH_FINISH) ->
+        if (GetResearched() == CHANGETOWER_PROPHET_ID)
+            let p = GetTriggerPlayer()
+            p.setProphetUnitsWithImages()
+            udg_TotalChangedBuilder[p.getId()+1] += 1
+            let text = Colorizer.colorizeByPlayerId(p.getName(), p.getId()) + " use ReRoll"
+            Display.toTeamAndObs(text, 10.0, p.getTeam())
+            createRollTextTag(p, udg_TotalChangedBuilder[p.getId()+1])
+            

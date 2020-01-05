@@ -1,0 +1,46 @@
+package Apparation
+
+import ApparationData
+import LegionUnit
+import Units
+import Abilities
+import Icons
+
+@compiletime function createApparation()
+	let apparation = new LegionUnit(LegionUnitId(APPARATION_UNIT_ID, 'hdhw'), APPARATION_TOWER_ID)
+		..setTierFive()
+		..setName("Apparation")
+		..setSounds("Hippogryph")
+		..setIcon(Icons.bTNSpiritWyvern)
+		..setModel(Units.spiritWyvern)
+		..setMovespeed(APPARATION_MOVE_SPEED)
+		..setHP(APPARATION_MAX_HP)
+		..setCost(APPARATION_COST)
+		..setPriority(3)
+		..setFoodCost(2)
+		..setSize(30)
+		..setSelectionSize(1.5)
+		..setRange(APPARATION_RANGE)
+		..setBaseDamage(APPARATION_BASE_DAMAGE)
+		..setAttackSpeed(APPARATION_ATTACK_SPEED)
+		..setBackswingDur(0.300)
+		..setDamageDur(0.300)
+		..setArmorType(ArmorType.Unarmored)
+		..setTooltipShort(APPARATION_SHORT_DESCRIPTION)
+		..setTooltipLong(APPARATION_FULL_DESCRIPTION)
+		..setAttackType(AttackType.Pierce)
+		..setWeaponType(WeaponType.Missile)
+		..setProjectileSpeed(1300)
+		..setProjectileArt(Abilities.blackArrowMissile)
+		..setProjectileArc(0.1)
+		..setDamageInterval(7)
+		..setDamageOffset(2)
+		..setModelSize(0.8)
+	
+	apparation.getTowerInstance()
+		..setUpgradesTo("h05Y")
+		..setNormalAbilities("A0AR,A008")
+		..setPointValue(200)
+	apparation.getUnitInstance()
+		..setArmorSoundType(ArmorSoundType.Ethereal)
+		..setNormalAbilities("A0AS")

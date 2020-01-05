@@ -1,0 +1,51 @@
+package SetHCL
+
+import HCLResolver
+import StatusImages
+import LinkedList
+
+public function setHCL(string hcl)
+  let chars = "abcdefghijklmnopqrstuvwxyz0123456789 -=,."
+  int array encodingMap
+
+  var j = 0
+  for i = 0 to 255
+    if j == 0 or j == 50 or j == 60 or j == 70 or j == 80 or j == 90 or j == 100
+      j++
+    encodingMap[i] = j
+    j++
+
+  var y = 0
+  for x in hcl
+    while not (players[y].getSlotState() == PLAYER_SLOT_STATE_PLAYING) and y <= 12
+      y++
+    if y > 12
+      break
+    let hi = ( (GetPlayerHandicap(players[y]) * 100 ) - 50) / 10
+    let index = chars.indexOf(x)
+    let hc = encodingMap[(hi + index * 6).toInt()].toReal()
+    SetPlayerHandicap(players[y], hc / 100)
+    y++
+
+
+function getHandicaps() returns LinkedList<int>
+  let handicaps = new LinkedList<int>()
+  for i = 0 to 11
+    let h = R2I(100 * GetPlayerHandicap(players[i]) + .5)
+    if players[i].getSlotState() == PLAYER_SLOT_STATE_PLAYING or (i == 10 or i == 11 and h < 100)
+      handicaps.add(h)
+    else
+      handicaps.add(0)
+  return handicaps
+
+function restoreHandicaps()
+  for i = 0 to 11
+    SetPlayerHandicap(players[i], 1.)
+
+init
+  // SetPlayerHandicap(players[11], 0.7)
+  // SetPlayerHandicap(players[0], 0.92)
+  let handicaps = getHandicaps()
+  udg_command = HCLResolver.getModeFromHandicaps(handicaps)
+  restoreHandicaps()
+  StatusImages.createForPlayersByPlayerData(HCLResolver.getPlayerDataList(16))

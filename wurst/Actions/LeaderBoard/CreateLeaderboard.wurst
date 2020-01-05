@@ -1,0 +1,15 @@
+package CreateLeaderboard
+
+import ClosureTimers
+
+init
+    doAfter(5) ->
+        udg_Board = CreateLeaderboard()
+        LeaderboardSetLabel(udg_Board, "King HP")
+        bj_FORCE_ALL_PLAYERS.forEach() ->
+            PlayerSetLeaderboard(GetEnumPlayer(), udg_Board)
+        LeaderboardAddItem(udg_Board, Player(8).getName(), gg_unit_h00K_0006.getMaxHP().toInt(), Player(8))
+        LeaderboardAddItem(udg_Board, Player(9).getName(), gg_unit_h00K_0009.getMaxHP().toInt(), Player(9))
+        LeaderboardSetSizeByItemCount(udg_Board, LeaderboardGetItemCount(udg_Board))
+        LeaderboardDisplay(udg_Board, true)
+        

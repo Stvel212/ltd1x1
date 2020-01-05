@@ -1,0 +1,50 @@
+package Results
+
+public class Results
+    static private int data = 0
+    static private gamecache cache = null
+    static private player senderOne = null
+    static private player senderTwo = null
+
+    static function setCache(gamecache gc)
+        cache = gc
+
+    static function set(int pid)
+        int rez = 1
+        for i = pid downto 1
+            rez *= 2
+        data += rez
+
+    static function send()
+        cache.saveInt("EOG", "Win1", data)
+        cache.saveInt("EOG", "Win2", data)
+        if senderOne == null or senderTwo == null or not senderOne.isIngame() or not senderTwo.isIngame()
+            findSenders()
+        if senderOne == GetLocalPlayer()
+            cache.syncInt("EOG", "Win1")
+        if senderTwo == GetLocalPlayer()
+            cache.syncInt("EOG", "Win1")
+
+    static private function findSenders()
+        player p
+        int totalPlayers = 0
+        player array potentialSenders
+        for i = 0 to 7
+            p = Player(i)
+            if p.isIngame()
+                potentialSenders[totalPlayers] = p
+                totalPlayers++
+        if totalPlayers == 0
+            senderOne = null
+            senderTwo = null
+        else if totalPlayers == 1
+            senderOne = potentialSenders[0]
+            senderTwo = null
+        else
+            totalPlayers--
+            int pidx = GetRandomInt(0, totalPlayers)
+            senderOne = potentialSenders[pidx]
+            potentialSenders[pidx] = potentialSenders[totalPlayers]
+            totalPlayers--
+            pidx = GetRandomInt(0, totalPlayers)
+            senderTwo = potentialSenders[pidx]

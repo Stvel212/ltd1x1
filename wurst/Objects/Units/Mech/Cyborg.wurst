@@ -1,0 +1,43 @@
+package Cyborg
+
+import CyborgData
+import LegionUnit
+import Units
+import Icons
+
+@compiletime function createCyborg()
+	let cyborg = new LegionUnit(LegionUnitId(CYBORG_UNIT_ID, 'hrif'), CYBORG_TOWER_ID)
+		..setTierFive()
+		..setName("Cyborg")
+		..setSounds("RockGolem")
+		..setIcon(Icons.bTNArmorGolem)
+		..setModel(Units.golemStatue1)
+		..setMovespeed(CYBORG_MOVE_SPEED)
+		..setHP(CYBORG_MAX_HP)
+		..setCost(CYBORG_COST)
+		..setPriority(3)
+		..setFoodCost(2)
+		..setSize(30)
+		..setSelectionSize(1.5)
+		..setRange(CYBORG_RANGE)
+		..setBaseDamage(CYBORG_BASE_DAMAGE)
+		..setAttackSpeed(CYBORG_ATTACK_SPEED)
+		..setBackswingDur(0.300)
+		..setDamageDur(0.300)
+		..setArmorType(ArmorType.Large)
+		..setTooltipShort(CYBORG_SHORT_DESCRIPTION)
+		..setTooltipLong(CYBORG_FULL_DESCRIPTION)
+		..setWeaponType(WeaponType.Normal)
+		..setAttackType(AttackType.Normal)
+		..setDamageInterval(8)
+		..setDamageOffset(2)
+		..setModelSize(0.8)
+	
+	cyborg.getTowerInstance()
+		..setUpgradesTo("h00W")
+		..setPointValue(200)
+
+	cyborg.getUnitInstance()
+		..setAttack1WeaponSound(WeaponSound.MetalHeavyBash)
+		..setArmorSoundType(ArmorSoundType.Metal)
+	

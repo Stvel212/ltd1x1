@@ -1,0 +1,21 @@
+package FinishingBlow
+
+import ObjEditingNatives
+
+
+@compiletime function create_w3a_A0A7()
+    createObjectDefinition("w3a", 'A0A7', 'ACct')
+        ..setLvlDataString("ansf", 0, 0, "(Orc) - 5% for 60")
+        ..setLvlDataString("aub1", 1, 0, "gives you 5% chance to finish off enemy with a single blow !")
+        ..setLvlDataString("arac", 0, 0, "human")
+        ..setLvlDataInt("abpy", 0, 0, 0)
+        ..setLvlDataInt("abpx", 0, 0, 0)
+        ..setLvlDataUnreal("Ocr1", 1, 1, 5.0)
+        ..setLvlDataUnreal("Ocr2", 1, 2, 60.0)
+        ..setLvlDataString("anam", 0, 0, "Finishing Blow!")
+        ..setLvlDataString("atp1", 1, 0, "Finishing Blow!")
+        ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNClawsOfAttack.blp")
+        ..setLvlDataString("atar", 1, 0, "air,enemies,ground")
+        ..setLvlDataInt("Ocr5", 1, 5, 1)
+    
+ 

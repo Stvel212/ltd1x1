@@ -1,0 +1,14 @@
+package Heal
+
+import Abilities
+
+public class Heal
+    static function heal(unit u, real amount)
+        u.addHP(getCorrectAmount(amount, u.getMaxHP()))
+        showHealEffect(u)
+
+    static function getCorrectAmount(real amount, real maxHP) returns real
+        return amount < maxHP ? amount : maxHP
+
+    static function showHealEffect(unit u)
+        u.addEffect(Abilities.holyBoltSpecialArt, "origin").destr()

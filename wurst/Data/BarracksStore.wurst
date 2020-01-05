@@ -1,0 +1,14 @@
+package BarracksStore
+
+public class BarracksStore
+  static let ID_B1 = 'h05C'
+  static let p1b1pos = vec2(-4288.0, 4024.0)
+  static let p2b1pos = vec2(-4288.0, 440.0)
+  static let p3b1pos = vec2(-2240.0, 4024.0)
+  static let p4b1pos = vec2(-2240.0, 440.0)
+  static let p5b1pos = vec2(2752.0, 4024.0)
+  static let p6b1pos = vec2(2752.0, 440.0)
+  static let p7b1pos = vec2(4800.0, 4024.0)
+  static let p8b1pos = vec2(4800.0, 440.0)
+ 
+  static let b1positions = [p1b1pos, p2b1pos, p3b1pos, p4b1pos, p5b1pos, p6b1pos, p7b1pos, p8b1pos]

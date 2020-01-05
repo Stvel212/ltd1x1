@@ -1,0 +1,20 @@
+package ArcherData
+
+import Environment
+
+public let ARCHER_UNIT_ID = 'h09Y'
+public let ARCHER_TOWER_ID = 'h09W'
+public let ARCHER_MOVE_SPEED = 300
+public let ARCHER_MAX_HP = 180
+public let ARCHER_COST = rotation4x4 ? 55 : 50
+public let ARCHER_BASE_DAMAGE = 11
+public let ARCHER_ATTACK_SPEED = 0.50
+public let ARCHER_RANGE = 600
+public let ARHCER_SHORT_DESCRIPTION = "Deploy Archer  [|cffFFcc00W|r]"
+public let ARHCER_FULL_DESCRIPTION = "|cffccccccDamage: |r|cffff800012-13|r" + 
+                                     "|cffcccccc|nSpeed: |r" + "|cffff8000{0}|r".format(ARCHER_ATTACK_SPEED.toString()) +
+                                     "|cffcccccc|nRange: |r" + "|cffff8000{0}|r".format(ARCHER_RANGE.toString()) +
+                                     "|cffcccccc|nHit Points: |r" + "|cffff8000{0}|r".format(ARCHER_MAX_HP.toString()) +
+                                     "|cffcccccc|nAttack Type: |r" + "|cffff8000Pierce|r" +
+                                     "|cffcccccc|nDefense Type: |r" + "|cffff8000Light|r" +
+                                     "|cffcccccc|nAbility: |r|cff808080 None|r"

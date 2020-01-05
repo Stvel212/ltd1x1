@@ -1,0 +1,24 @@
+package StatusImagesStore
+
+public class StatusImagesStore
+  static let admin = "admin"
+  static let vip = "vip"
+  static let top = "top"
+  static let antitop = "antitop"
+  static let leaver = "leaver"
+  static let memlol = "memlol"
+  static let memjeki = "memjeki"
+  static let mempff = "mempff"
+  static let memtrollface = "memtrollface"
+  static let streamer = "streamer"
+  static let tourwin = "tourwin"
+  static let dog = "dog"
+  static let gladiator = "gladiator"
+  static let alpha = "alpha"
+  static let dentor = "dentor"
+
+  static let orderedMap = ["", admin, vip, top, antitop, leaver, memlol, memjeki, mempff,
+                           memtrollface, streamer, tourwin, dog, gladiator, alpha, dentor]
+
+  static let playerCanvasPosition = [vec2(-4544, 5152), vec2(-4544, 1568), vec2(-2496, 5152), vec2(-2496, 1568),
+                                     vec2(2496, 5152), vec2(2496, 1568), vec2(4544, 5152), vec2(4544, 1568)]

@@ -1,0 +1,20 @@
+package KingInfo
+
+import AutoHeal
+import Display
+
+function kingInfo()
+    let p = GetTriggerPlayer()
+    Display.toTeam("King HP: |cffFFcc00{0}|r".format(I2S(GetPlayerTechCountSimple(0x52303030,p))), 7, p.getTeam())
+    Display.toTeam("King Damage: |cffFFcc00{0}|r".format(I2S(GetPlayerTechCountSimple(0x52303031,p))), 7, p.getTeam())
+    Display.toTeam("King Regen: |cffFFcc00{0}|r".format(I2S(GetPlayerTechCountSimple(0x52303032,p))), 7, p.getTeam())
+    if autoHeal
+        Display.toTeam("King Heals: |cffFFcc00{0}|r".format(I2S(AutoHeal.getHealCountForTeam(p.getTeam()))), 7, p.getTeam())
+
+
+init
+    let t = CreateTrigger()
+    for i = 0 to 7
+        t..registerPlayerChatEvent(Player(i), "-king", true)         
+    t.addCondition(Condition(function kingInfo))
+    

@@ -1,0 +1,18 @@
+package ApparationData
+
+public let APPARATION_UNIT_ID = 'h06D'
+public let APPARATION_TOWER_ID = 'h05X'
+public let APPARATION_MOVE_SPEED = 350
+public let APPARATION_MAX_HP = 665
+public let APPARATION_COST =  200
+public let APPARATION_BASE_DAMAGE = 116
+public let APPARATION_ATTACK_SPEED = 1.0
+public let APPARATION_RANGE = 500
+public let APPARATION_SHORT_DESCRIPTION = "Deploy Apparation  [|cffFFcc00A|r]"
+public let APPARATION_FULL_DESCRIPTION = "|cffccccccDamage: |r|cffff8000118-130|r" + 
+                                     "|cffcccccc|nSpeed: |r" + "|cffff8000{0}|r".format(APPARATION_ATTACK_SPEED.toString()) +
+                                     "|cffcccccc|nRange: |r" + "|cffff8000{0}|r".format(APPARATION_RANGE.toString()) +
+                                     "|cffcccccc|nHit Points: |r" + "|cffff8000{0}|r".format(APPARATION_MAX_HP.toString()) +
+                                     "|cffcccccc|nAttack Type: |r" + "|cffff8000Pierce|r" +
+                                     "|cffcccccc|nDefense Type: |r" + "|cffff8000Unarmored|r" +
+                                     "|cffcccccc|nAbility: |r|cff808080 Sickness aura|r"

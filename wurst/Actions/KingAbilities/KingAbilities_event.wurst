@@ -1,0 +1,17 @@
+package KingAbilities_event
+
+import ClosureTimers
+import SetKingAbilities
+
+function setKingAbilitiesWithDelay()
+  doAfter(4) () ->
+    setAbilities()
+
+function incAbilitiesLevel()
+  if udg_Level_Integer == 13 or udg_Level_Integer == 19
+    upAbilities()
+
+init
+  end_wave_trigger
+    ..addCondition(Condition(function setKingAbilitiesWithDelay))
+//    ..addCondition(Condition( function incAbilitiesLevel ))

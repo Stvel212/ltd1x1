@@ -1,0 +1,18 @@
+package GravekeeperData
+
+public let GRAVEKEEPER_UNIT_ID = 'h06E'
+public let GRAVEKEEPER_TOWER_ID = 'h05Y'
+public let GRAVEKEEPER_MOVE_SPEED = 350
+public let GRAVEKEEPER_MAX_HP = 1025
+public let GRAVEKEEPER_COST = 250
+public let GRAVEKEEPER_BASE_DAMAGE = 208
+public let GRAVEKEEPER_ATTACK_SPEED = 1.1
+public let GRAVEKEEPER_RANGE = 500
+public let GRAVEKEEPER_SHORT_DESCRIPTION = "Deploy Gravekeeper  [|cffFFcc00P|r]"
+public let GRAVEKEEPER_FULL_DESCRIPTION = "|cffccccccDamage: |r|cffff8000209-219|r" + 
+                                     "|cffcccccc|nSpeed: |r" + "|cffff8000{0}|r".format(GRAVEKEEPER_ATTACK_SPEED.toString()) +
+                                     "|cffcccccc|nRange: |r" + "|cffff8000{0}|r".format(GRAVEKEEPER_RANGE.toString()) +
+                                     "|cffcccccc|nHit Points: |r" + "|cffff8000{0}|r".format(GRAVEKEEPER_MAX_HP.toString()) +
+                                     "|cffcccccc|nAttack Type: |r" + "|cffff8000Pierce|r" +
+                                     "|cffcccccc|nDefense Type: |r" + "|cffff8000Unarmored|r" +
+                                     "|cffcccccc|nAbility: |r|cff808080 Despair aura|r"

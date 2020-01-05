@@ -1,0 +1,5 @@
+package RaiseDeadData
+import FireArcherData
+
+public let RAISEDEAD_FULL_DESCRIPTION_NECROMANCER = "Raises 1 Fire archer to fight. Lasts 60 seconds.  (40 seconds cooldown)(10-1{0} Damage, 0.33 Speed, {1}HP, Piercing/Light)".format((FIREARCHER_DAMAGE_INTERVAL - 1).toString(), FIREARCHER_MAX_HP.toString())
+public let RAISEDEAD_FULL_DESCRIPTION_NECROLYTE = "Raises 3 Fire archer to fight. Lasts 60 seconds.  (40 seconds cooldown)(10-1{0} Damage, 0.33 Speed, {1}HP, Piercing/Light)".format((FIREARCHER_DAMAGE_INTERVAL - 1).toString(), FIREARCHER_MAX_HP.toString())

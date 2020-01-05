@@ -1,0 +1,17 @@
+package Infernal
+
+import ObjEditingNatives
+import InfernalData
+
+@compiletime function createImmolate()
+	createObjectDefinition("w3a", 'A00T', 'ANpi')
+	..setLvlDataString("atar", 1, 0, "air,enemies,ground")
+	..setLvlDataInt("amcs", 1, 0, 0)
+	..setLvlDataUnreal("Eim3", 1, 3, 0.0)
+	..setLvlDataUnreal("Eim2", 1, 2, 0.0)
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataString("ansf", 0, 0, "(summon)")
+	..setLvlDataString("abuf", 1, 0, "B04F,B04G")
+	..setLvlDataUnreal("aare", 1, 0, 220.0)
+	..setLvlDataUnreal("Eim1", 1, 1, IMMOLATE_DAMAGE)
+	

@@ -1,0 +1,24 @@
+package UpdateValue
+
+function setValueForUnit(unit u)
+    let pl = GetOwningPlayer(u)
+    let id = GetPlayerId(pl) + 1
+    udg_FightersValue[id] +=  GetUnitPointValue(u)
+
+function setValueForHire(unit u)
+    let ud = GetUnitUserData(u)
+    udg_FightersValueSummon[ud] += GetUnitPointValue(u)
+
+function updateValue()
+    udg_IngamePlayers_PlayerGroup.forEach() ->
+        let p = GetEnumPlayer()
+        let pID = p.getId() + 1
+        udg_FightersValue[pID] = 0
+        udg_FightersValueSummon[pID] = 0
+    for u in udg_Tower_Group
+        setValueForUnit(u)
+    for h in udg_Hire_Group
+        setValueForHire(h)
+    gg_trg_Update_Fighter_Value.evaluate()
+    
+public let updateValue_trig = CreateTrigger()..addCondition(Filter(function updateValue))

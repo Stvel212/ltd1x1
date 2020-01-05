@@ -1,0 +1,17 @@
+package ManaUnitFix
+
+import RegisterEvents
+
+function sendToPoint()
+  if (GetTriggerUnit().getOwner() == Player(8) or GetTriggerUnit().getOwner() == Player(9)) and isStackInRegion(vec2(GetTriggerUnit().getX(),GetTriggerUnit().getY()))
+    IssuePointOrderByIdLoc(GetTriggerUnit(), 851983, udg_SpawnArr[GetUnitUserData(GetTriggerUnit())])
+
+
+function isStackInRegion(vec2 point) returns boolean
+  return gg_rct_P1.contains(point) or gg_rct_P2.contains(point) or gg_rct_P3.contains(point) or gg_rct_P4.contains(point)
+          or gg_rct_P5.contains(point) or gg_rct_P6.contains(point) or gg_rct_P7.contains(point) or gg_rct_P8.contains(point)
+
+        
+init
+  registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_FINISH, function sendToPoint)
+  registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SUMMON, function sendToPoint)

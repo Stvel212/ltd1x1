@@ -1,0 +1,27 @@
+package ARmode
+
+import PickHelpers
+import ClosureTimers    
+
+function allRandom()
+    if (udg_ModePrimary)
+        return
+    udg_ModePrimary = true
+    udg_ModeAR = true
+    if(allProphets)
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cffFFcc00All Prophets|r: you will be given a prophet builder in a moment.")
+    else
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10.00, "TRIGSTR_4315")
+    ForForce(udg_IngamePlayers_PlayerGroup) ->
+        SetPlayerTechMaxAllowedSwap(0x75303050,0,GetEnumPlayer())
+        for i = 0 to udg_numRaces
+            SetPlayerTechMaxAllowedSwap(udg_BuilderType[i], 0, GetEnumPlayer())
+    doAfter(1) ->
+        for i = 0 to 12
+            if Player(i).isIngame() and not IsPlayerObserver(Player(i))
+                Player(i).pickBuilder(udg_BuilderType[allProphets? 13: GetRandomInt(1,udg_numRaces)])
+        TriggerExecute(gg_trg_Update_Race_Icon)
+        DisableTrigger(GetTriggeringTrigger())
+
+init
+    gg_trg_Mode_AR.addCondition(Condition(function allRandom))

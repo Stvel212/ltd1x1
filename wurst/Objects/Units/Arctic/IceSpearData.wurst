@@ -1,0 +1,7 @@
+package IceSpearData
+
+import Environment
+
+public let ICESPEAR_ATTACK_SLOW = rotation4x4 ? 0.3 : 0
+public let ICESPEAR_MOVEMENT_SLOW = rotation4x4 ? 0.1 : 0.6
+public let ICESPEAR_DESCRIPTION = rotation4x4 ? "Adds 12 cold damage to each attack, slowing a target enemy unit's movement by 10% and attack speed by 30%" : "Adds 12 cold damage to each attack, slowing a target enemy unit's movement by 60%"

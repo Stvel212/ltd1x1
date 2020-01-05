@@ -1,0 +1,16 @@
+package HybridFixes
+
+import RegisterEvents
+import Colorizer
+
+let HYBRID_ID = 'u00I'
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
+        let u = GetTriggerUnit()
+        let p = GetTriggerPlayer()
+        if (u.getTypeId() == HYBRID_ID)
+            let phrase = "{0} towers always sell for 50%, even if newly built."
+                        .format(Colorizer.colorize("Hybrid", Colors.maroon))
+            u.setFlyHeight(u.getDefaultFlyHeight(), 0.00)
+            printTimedToPlayer(phrase, 11.00, p)

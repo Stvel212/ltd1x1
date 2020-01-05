@@ -1,0 +1,15 @@
+package ArenaAntistuck
+
+
+function arenaAntistuck()
+    IssuePointOrderById(GetEnumUnit(),$D000F,.0,2700.)
+
+function arenaGroupsForAntistuck()
+    ForGroup(udg_Fighter_West, function arenaAntistuck)
+    ForGroup(udg_Fighter_East, function arenaAntistuck)
+    
+
+init
+    arenaAntistuck
+        ..registerTimerEvent(5, true)
+        ..addCondition(Condition(function arenaGroupsForAntistuck))

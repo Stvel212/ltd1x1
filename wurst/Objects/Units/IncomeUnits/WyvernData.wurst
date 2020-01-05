@@ -1,0 +1,5 @@
+package WyvernData
+
+import Environment
+
+public let WYVERN_PRIORITET = rotation4x4 ? 3 : 6

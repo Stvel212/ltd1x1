@@ -1,0 +1,123 @@
+package UnitsStore
+
+import LinkedList
+
+public class UnitsStore
+  static let TUSKARR_ID = 'h0BC'
+  static let FROSTWOLF_ID = 'h0BE'
+  static let ICETROLL_ID = 'h0BH'
+  static let POLARBEAR_ID = 'h0BJ'
+  static let WANDIGOO_ID = 'h0BM'
+  static let YOUNGFROSTDRAGON_ID = 'h0BO'
+  static let GNOLLWARRIOR_ID = 'h010'
+  static let OGREBASHER_ID = 'h012'
+  static let HARPY_ID = 'h014'
+  static let TROLLFIGHTER_ID = 'h016'
+  static let GRIZZLY_ID = 'h018'
+  static let SPAWNOFDRAGON_ID = 'h01A'
+  static let GOBLINSCIENTIST_ID = 'h06J'
+  static let SERVANT_ID = 'h06K'
+  static let TRIBESMAN_ID = 'h06M'
+  static let MEDICINEMAN_ID = 'h06O'
+  static let HARLOT_ID = 'h06Q'
+  static let MINOTAUR_ID = 'h06S'
+  static let PROTON_ID = 'h040'
+  static let AQUASPIRIT_ID = 'h042'
+  static let WATCHER_ID = 'h044'
+  static let MUDMAN_ID = 'h046'
+  static let DISCIPLE_ID = 'h048'
+  static let SEEROFDARKNESS_ID = 'h04A'
+  static let COLT_ID = 'h08F'
+  static let NOVICE_ID = 'h08H'
+  static let SENTRY_ID = 'h08N'
+  static let PRISONER_ID = 'h08Q'
+  static let DRUID_ID = 'h08V'
+  static let MOONGUARD_ID = 'h090'
+  static let SPECTER_ID = 'h05N'
+  static let WANDERER_ID = 'h05S'
+  static let PHANTOM_ID = 'h05R'
+  static let OUTCAST_ID = 'h05V'
+  static let APPARATION_ID = 'h05X'
+  static let DARKPRIEST_ID = 'h05Z'
+  static let SMALLLANDMINE_ID = 'h0A8'
+  static let GEOMANCER_ID = 'h0AE'
+  static let MACHINETURRET_ID = 'h0AB'
+  static let FLYINGMACHINE_ID = 'h0AH'
+  static let GOBLINALCHEMIST_ID = 'h0AL'
+  static let STEAMROLLER_ID = 'h0AR'
+  static let HATCHLING_ID = 'h07J'
+  static let EGGSACK_ID = 'h07O'
+  static let BOTTOMFEEDER_ID = 'h07Q'
+  static let MERMAID_ID = 'h07S'
+  static let KOMODO_ID = 'h07U'
+  static let SEAGIANT_ID = 'h07W'
+  static let PEEWEE_ID = 'h00M'
+  static let INFANTRY_ID = 'h00O'
+  static let CAPTAIN_ID = 'h00P'
+  static let TEMPEST_ID = 'h00N'
+  static let CYBORG_ID = 'h00Q'
+  static let NEOTANK_ID = 'h00S'
+  static let ENT_ID = 'h01C'
+  static let RANGER_ID = 'h01E'
+  static let SPRITE_ID = 'h01H'
+  static let TREEOFTRAVEL_ID = 'h01I'
+  static let HALFBREED_ID = 'h01K'
+  static let YGGDRASIL_ID = 'h01M'
+  static let ORCWARRIOR_ID = 'h0BF'
+  static let ORCWARLOCK_ID = 'h0BV'
+  static let RAIDER_ID = 'h0BX'
+  static let YOUNGWITCHDOCTOR_ID = 'h0C4'
+  static let WYVERN_ID = 'h0C5'
+  static let ORCWARCHIEF_ID = 'h0C9'
+  static let PEASANT_ID = 'h09L'
+  static let ARCHER_ID = 'h09W'
+  static let FOOTMAN_ID = 'h09N'
+  static let PRIEST_ID = 'h09R'
+  static let KNIGHT_ID = 'h09T'
+  static let DRAGONHAWK_ID = 'h0A3'
+  static let BONEWARRIOR_ID = 'h01P'
+  static let CARRIONSPITTER_ID = 'h01T'
+  static let GATEGUARD_ID = 'h01V'
+  static let OVERSEER_ID = 'h01X'
+  static let NIGHTMARE_ID = 'h01Z'
+  static let LORDOFDEATH_ID = 'h021'
+  static let ACOLYTE_ID = 'h0CF'
+  static let GHOUL_ID = 'h0CI'
+  static let MEATWAGON_ID = 'h0CO'
+  static let NECROMANCER_ID = 'h0CQ'
+  static let ZOMBIE_ID = 'h0CW'
+  static let GUARDIANOFDEATH_ID = 'h0D0'
+
+  static let arcticUnits = new LinkedList<int>()..add(TUSKARR_ID, FROSTWOLF_ID, ICETROLL_ID, POLARBEAR_ID, WANDIGOO_ID, YOUNGFROSTDRAGON_ID)
+  static let beastUnits = new LinkedList<int>()..add(GNOLLWARRIOR_ID, OGREBASHER_ID, HARPY_ID, TROLLFIGHTER_ID, GRIZZLY_ID, SPAWNOFDRAGON_ID)
+  static let demihumanUnits = new LinkedList<int>()..add(GOBLINSCIENTIST_ID, SERVANT_ID, TRIBESMAN_ID, MEDICINEMAN_ID, HARLOT_ID, MINOTAUR_ID)
+  static let elementUnits = new LinkedList<int>()..add(PROTON_ID, AQUASPIRIT_ID, WATCHER_ID, MUDMAN_ID, DISCIPLE_ID, SEEROFDARKNESS_ID)
+  static let elfUnits = new LinkedList<int>()..add(COLT_ID, NOVICE_ID, SENTRY_ID, PRISONER_ID, DRUID_ID, MOONGUARD_ID)
+  static let ghostUnits = new LinkedList<int>()..add(SPECTER_ID, WANDERER_ID, PHANTOM_ID, OUTCAST_ID, APPARATION_ID, DARKPRIEST_ID)
+  static let goblinUnits = new LinkedList<int>()..add(SMALLLANDMINE_ID, GEOMANCER_ID, MACHINETURRET_ID, FLYINGMACHINE_ID, GOBLINALCHEMIST_ID, STEAMROLLER_ID)
+  static let marineUnits = new LinkedList<int>()..add(HATCHLING_ID, EGGSACK_ID, BOTTOMFEEDER_ID, MERMAID_ID, KOMODO_ID, SEAGIANT_ID)
+  static let mechUnits = new LinkedList<int>()..add(PEEWEE_ID, INFANTRY_ID, CAPTAIN_ID, TEMPEST_ID, CYBORG_ID, NEOTANK_ID)
+  static let natureUnits = new LinkedList<int>()..add(ENT_ID, RANGER_ID, SPRITE_ID, TREEOFTRAVEL_ID, HALFBREED_ID, YGGDRASIL_ID)
+  static let orcUnits = new LinkedList<int>()..add(ORCWARRIOR_ID, ORCWARLOCK_ID, RAIDER_ID, YOUNGWITCHDOCTOR_ID, WYVERN_ID, ORCWARCHIEF_ID)
+  static let paladinUnits = new LinkedList<int>()..add(PEASANT_ID, ARCHER_ID, FOOTMAN_ID, PRIEST_ID, KNIGHT_ID, DRAGONHAWK_ID)
+  static let shadowUnits = new LinkedList<int>()..add(BONEWARRIOR_ID, CARRIONSPITTER_ID, GATEGUARD_ID, OVERSEER_ID, NIGHTMARE_ID, LORDOFDEATH_ID)
+  static let undeadUnits = new LinkedList<int>()..add(ACOLYTE_ID, GHOUL_ID, MEATWAGON_ID, NECROMANCER_ID, ZOMBIE_ID, GUARDIANOFDEATH_ID)
+  static let prophetUnits = new LinkedList<LinkedList<int>>()
+            ..add(new LinkedList<int>()..add(TUSKARR_ID, GOBLINSCIENTIST_ID, PROTON_ID, COLT_ID, GNOLLWARRIOR_ID, SPECTER_ID,
+                                              HATCHLING_ID, PEEWEE_ID, ENT_ID, ORCWARRIOR_ID, PEASANT_ID,
+                                              BONEWARRIOR_ID, ACOLYTE_ID))
+            ..add(new LinkedList<int>()..add(FROSTWOLF_ID, SERVANT_ID, AQUASPIRIT_ID, NOVICE_ID, OGREBASHER_ID, WANDERER_ID,
+                                              GEOMANCER_ID, EGGSACK_ID, INFANTRY_ID, RANGER_ID, ORCWARLOCK_ID, ARCHER_ID,
+                                              CARRIONSPITTER_ID, GHOUL_ID))
+            ..add(new LinkedList<int>()..add(ICETROLL_ID, HARPY_ID, TRIBESMAN_ID, WATCHER_ID, SENTRY_ID, PHANTOM_ID,
+                                              MACHINETURRET_ID, BOTTOMFEEDER_ID, CAPTAIN_ID, SPRITE_ID, RAIDER_ID, FOOTMAN_ID,
+                                              GATEGUARD_ID, MEATWAGON_ID))
+            ..add(new LinkedList<int>()..add(POLARBEAR_ID, TROLLFIGHTER_ID, MEDICINEMAN_ID, MUDMAN_ID, PRISONER_ID,
+                                              OUTCAST_ID, FLYINGMACHINE_ID, MERMAID_ID, TEMPEST_ID, TREEOFTRAVEL_ID,
+                                              YOUNGWITCHDOCTOR_ID, PRIEST_ID, OVERSEER_ID, NECROMANCER_ID))
+            ..add(new LinkedList<int>()..add(WANDIGOO_ID, GRIZZLY_ID, HARLOT_ID, DISCIPLE_ID, DRUID_ID, APPARATION_ID,
+                                              GOBLINALCHEMIST_ID, KOMODO_ID, CYBORG_ID, HALFBREED_ID, WYVERN_ID, KNIGHT_ID,
+                                              NIGHTMARE_ID, ZOMBIE_ID))
+            ..add(new LinkedList<int>()..add(YOUNGFROSTDRAGON_ID, SPAWNOFDRAGON_ID, MINOTAUR_ID, SEEROFDARKNESS_ID, MOONGUARD_ID,
+                                              DARKPRIEST_ID, STEAMROLLER_ID, SEAGIANT_ID, NEOTANK_ID, YGGDRASIL_ID, ORCWARCHIEF_ID,
+                                              DRAGONHAWK_ID, LORDOFDEATH_ID, GUARDIANOFDEATH_ID))

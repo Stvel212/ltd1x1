@@ -1,0 +1,23 @@
+package AntiCross_event
+
+import AntiCrossStore
+import AntiCross
+
+function resolveAntiCross()
+  if noCross
+    AntiCross.enableAll()
+
+function deleteAntiCross()
+  if udg_Level_Integer == 9 and noCross
+    AntiCross.disableSecondary()
+  if udg_Level_Integer == 10 and noCross
+    AntiCross.disableBase()
+
+init
+  for sqi = 0 to AntiCrossStore.antiCrossSquares_size
+    AntiCross.addBaseAreas(AntiCrossStore.baseSquares[sqi])
+    AntiCross.addSecondaryAreas(AntiCrossStore.additionalSquares[sqi])
+
+  afterModeResolved..addCondition(Condition(function resolveAntiCross))
+  end_wave_trigger..addCondition(Condition(function deleteAntiCross))
+    

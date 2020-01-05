@@ -1,0 +1,15 @@
+package Buildability
+
+
+public tuple square(int minW, int maxW, int minH, int maxH)
+
+public class Buildability
+  static function setPathabilityForRect(rect r, bool flag)
+    let sq = square(R2I(r.getMinX()), R2I(r.getMaxX()), R2I(r.getMinY()), R2I(r.getMaxY()))
+    setPathabilityForSquare(sq, flag)
+
+  static function setPathabilityForSquare(square sq, bool flag)
+    for x = sq.minW to sq.maxW step 32 
+      for y = sq.minH to sq.maxH step 32
+        SetTerrainPathable(I2R(x), I2R(y), PATHING_TYPE_BUILDABILITY, flag)
+        

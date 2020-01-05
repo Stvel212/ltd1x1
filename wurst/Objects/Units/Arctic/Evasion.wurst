@@ -1,0 +1,24 @@
+package Evasion
+
+import ObjEditingNatives
+import EvasionData
+
+@compiletime function createEvasionForWandigo()
+	createObjectDefinition("w3a", 'A08Z', 'ACes')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataUnreal("Eev1", 1, 1, WANDIGOO_EVASION)
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNIceShard.blp")
+	..setLvlDataString("aub1", 1, 0, WANDIGOO_EVASION_DESCRIPTION)
+	..setLvlDataString("atp1", 1, 0, "|cffff8000Evasion|r")
+
+@compiletime function createEvasionForAncientWandigo()
+	createObjectDefinition("w3a", 'A08X', 'ACes')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataUnreal("Eev1", 1, 1, ANCIENT_WANDIGO_EVASION)
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNIceShard.blp")
+	..setLvlDataString("aub1", 1, 0, ANCIENT_WANDIGO_EVASION_DESCRIPTION)
+	..setLvlDataString("atp1", 1, 0, "|cffff8000Evasion|r")

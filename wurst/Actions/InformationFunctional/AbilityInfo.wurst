@@ -1,0 +1,31 @@
+package AbilityInfo
+
+import ObsForce
+import RegisterEvents
+import ClosureTimers
+
+let k = [gg_unit_h00K_0009, gg_unit_h00K_0006]
+public texttag array abilityTextTag
+
+public function createAbilityTextTag(int i, string message)
+	abilityTextTag[i].destr()
+	let pos = vec3(k[i].getX() + 80, k[i].getY() - 525, 0)
+	abilityTextTag[i] = createTTEx(pos, message, 10)
+	abilityTextTag[i].setPermanent(true)
+	ShowTextTagForceBJ(false, abilityTextTag[i], bj_FORCE_ALL_PLAYERS)
+	ShowTextTagForceBJ(true, abilityTextTag[i], OBS_FORCE)
+
+init
+	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_CAST) ->
+		let A = GetSpellAbilityId()
+		if A == 'A021' or A == 'A022'
+			let i = GetTriggerUnit() == k[0] ? 0 : 1
+			let i2 = A == 'A021' ? 22.0 : 9.0
+			let message = "CD: |cffff0000Not ready|r"
+			createAbilityTextTag(i, message)
+			doAfter(i2) ->
+				let message2 = "CD: |cff00ff15Ready|r"
+				createAbilityTextTag(i, message2)
+				
+
+			

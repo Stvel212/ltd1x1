@@ -1,0 +1,12 @@
+package UpdateValue_event
+
+import RegisterEvents
+import UpdateValue
+    
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
+        let u = GetTriggerUnit()
+        if u.isType(UNIT_TYPE_ANCIENT)
+            udg_UpgradingTowers.removeUnit(u)
+            updateValue_trig.evaluate()

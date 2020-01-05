@@ -1,0 +1,51 @@
+package HCLDecoder
+
+import LinkedList
+
+public class HCLDecoder
+  private static let chars = "abcdefghijklmnopqrstuvwxyz0123456789 -=,."
+  private static int array encodingMap
+  private static bool array blocked
+  private static var initialized = false
+
+  static function initialize()
+    if not initialized
+      presetBlocking()
+      resolveEncodingMap()
+      initialized = true
+
+  static function getStringFromHandicaps(LinkedList<int> handicaps) returns string
+    string res = "" 
+    for handicap in handicaps
+      res += getCharFromHandicap(handicap)
+    return res
+
+  private static function getCharFromHandicap(int handicap) returns string
+    var h = handicap
+    int v
+    string res = ""
+    if not blocked[h]
+      h = encodingMap[h]
+      v = (h / 6).toInt()
+      res += SubString(chars, v, v + 1)
+    return res
+
+  private static function presetBlocking()
+    blocked[0] = true
+    for i = 50 to 100 step 10
+      blocked[i] = true
+
+  private static function resolveEncodingMap()
+    var i = 0
+    for j = 0 to 256
+      if blocked[j]
+        j++
+      encodingMap[j] = i
+      i++
+
+@Test function testHCLDecoder()
+  HCLDecoder.initialize()
+  let handicaps = new LinkedList<int>()..add(102, 0, 0, 0, 0, 48, 0, 0)
+  HCLDecoder.getStringFromHandicaps(handicaps).assertEquals("ph")
+  let handicaps2 = new LinkedList<int>()..add(100, 0, 0, 0, 0, 100, 0, 0)
+  HCLDecoder.getStringFromHandicaps(handicaps2).assertEquals("")

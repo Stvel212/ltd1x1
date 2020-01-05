@@ -1,0 +1,45 @@
+package Gravekeeper
+
+import GravekeeperData
+import LegionUnit
+import Units
+import Abilities
+
+@compiletime function createGravekeeper()
+	let gravekeeper = new LegionUnit(LegionUnitId(GRAVEKEEPER_UNIT_ID, 'hdhw'), GRAVEKEEPER_TOWER_ID)
+		..setUpgrade()
+		..setName("Gravekeeper")
+		..setSounds("Hippogryph")
+		..setIcon("ReplaceableTextures\\CommandButtons\\BTNGravekeeper.blp")
+		..setModel(Units.spiritWyvern)
+		..setMovespeed(GRAVEKEEPER_MOVE_SPEED)
+		..setHP(GRAVEKEEPER_MAX_HP)
+		..setCost(GRAVEKEEPER_COST)
+		..setPriority(3)
+		..setFoodCost(3)
+		..setSize(22)
+		..setSelectionSize(1.5)
+		..setRange(GRAVEKEEPER_RANGE)
+		..setBaseDamage(GRAVEKEEPER_BASE_DAMAGE)
+		..setAttackSpeed(GRAVEKEEPER_ATTACK_SPEED)
+		..setBackswingDur(0.300)
+		..setDamageDur(0.300)
+		..setArmorType(ArmorType.Unarmored)
+		..setTooltipShort(GRAVEKEEPER_SHORT_DESCRIPTION)
+		..setTooltipLong(GRAVEKEEPER_FULL_DESCRIPTION)
+		..setAttackType(AttackType.Pierce)
+		..setWeaponType(WeaponType.Missile)
+		..setProjectileSpeed(1300)
+		..setProjectileArt(Abilities.devourMagicBirthMissile)
+		..setProjectileArc(0.1)
+		..setDamageInterval(11)
+		..setDamageOffset(1)
+		..setModelSize(0.95)
+		..setUnitColor(55, 125, 255)
+	
+	gravekeeper.getTowerInstance()
+		..setNormalAbilities("A04W,A008")
+		..setPointValue(450)
+	gravekeeper.getUnitInstance()
+		..setArmorSoundType(ArmorSoundType.Ethereal)
+		..setNormalAbilities("A04D")

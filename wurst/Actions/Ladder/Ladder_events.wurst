@@ -1,0 +1,22 @@
+package Ladder_events
+
+import Results
+
+public function sendResults()
+  for i = 0 to 12
+    let p = Player(i)
+    if p.isIngame()
+      let pid = p.getId()
+      let totalTime = udg_NumberOfHours * 3600 + udg_NumberOfMinutes * 60 + udg_NumberOfSeconds
+      if udg_IngamePlayers_PlayerGroup.containsPlayer(p)
+        if p.isAllyOf(udg_WinningAlliance)
+          Results.set(pid)
+      else
+        if totalTime - udg_PlayerTime[pid+1] < 180
+          Results.set(pid)
+  Results.send()    
+
+init
+  InitGameCache("dr.x").flush()
+  Results.setCache(InitGameCache("dr.x"))
+  onGameFinished.addCondition(Condition(function sendResults))

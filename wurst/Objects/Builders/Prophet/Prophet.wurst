@@ -1,0 +1,18 @@
+package Prophet
+
+import ProphetCreator
+
+public let PROPHET_ID = 'u00T'
+public let PROPHET_GRIM_REAPER_ID = 'u014'
+public let PROPHET_MATRON_ID = 'u015'
+public let PROPHET_SYLREN_ID = 'u016'
+public let PROPHET_TERMINATOR_ID = 'u017'
+public let PROPHET_TROLLFACE_ID = 'u018'
+
+@compiletime function createProphets()
+	ProphetCreator.createProphet(PROPHET_ID)..setModelFile("units\\creeps\\Medivh\\Medivh.mdl")
+	ProphetCreator.createProphet(PROPHET_GRIM_REAPER_ID)..setModelFile("models\\GrimReaper.mdx")..setName("Grim Reaper")..setScalingValue(0.95)
+	ProphetCreator.createProphet(PROPHET_MATRON_ID)..setModelFile("war3mapImported\\Matron.mdl")..setName("Matron")..setScalingValue(2.2)
+	ProphetCreator.createProphet(PROPHET_SYLREN_ID)..setModelFile("models\\Sylren.mdx")..setName("Sylren")..setScalingValue(1.6)
+	ProphetCreator.createProphet(PROPHET_TERMINATOR_ID)..setModelFile("models\\Terminator.mdx")..setName("Terminator")..setScalingValue(1.7)
+	ProphetCreator.createProphet(PROPHET_TROLLFACE_ID)..setModelFile("war3mapImported\\AvatarOfTrollface.mdl")..setName("Trollface")..setScalingValue(2.2)

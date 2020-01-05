@@ -1,0 +1,64 @@
+package AutoHeal
+
+import Heal
+import Display
+import Colorizer
+
+public class AutoHeal  
+  private static int array healsCount = [0, 0]
+  private static trigger array triggers
+
+  static function getHealCountForTeam(int team) returns int
+    return healsCount[team]
+  
+  static function initializeFor(vararg unit units)
+    for u in units
+      registerFor(u)
+    countHeals()
+
+  private static function registerFor(unit u)
+    triggers[getUnitTeam(u)] = newTrigger(u)
+    triggers[getUnitTeam(u)].addCondition(Condition(function healCondition))
+
+  private static function healCondition()
+    if GetEventDamage() + 1 > GetTriggerUnit().getHP()
+      tryToHeal(GetTriggerUnit(), 10000)
+
+  private static function newTrigger(unit u) returns trigger
+    return CreateTrigger()..registerUnitEvent(u, EVENT_UNIT_DAMAGED)
+
+  private static function tryToHeal(unit u, real amount)
+    if healsCount[getUnitTeam(u)] == 0
+      return
+    Heal.heal(u, amount)
+    decreaseHealsForTeam(getUnitTeam(u))
+    displayNotify(getUnitTeam(u))
+
+  private static function decreaseHealsForTeam(int team)
+    healsCount[team]--
+    if healsCount[team] == 0
+      triggers[team]..disable().destr()
+  
+  private static function displayNotify(int team)
+    let teamName = getTeamNameColored(team)
+    let healsCount = getHealCountForTeam(team)
+    Display.toAll(generateNotifyMassage(teamName, healsCount), 7)
+  
+  private static function generateNotifyMassage(string teamName, int healsCount) returns string
+    string message = "{0} King Healed! Heals remaining: {1}".format(teamName, healsCount.toString())
+    return healsCount != 0 ? message : Colorizer.colorize("WARNING!!! ", Colors.red) + message
+  
+  private static function getTeamNameById(int team) returns string
+    return team == 0 ? "West" : "East"
+  private static function getTeamNameColored(int team) returns string
+    let teamName = getTeamNameById(team)
+    let color = team == 0 ? Colors.grey : Colors.azur
+    return Colorizer.colorize(teamName, color) 
+
+  private static function countHeals()
+    for i = 0 to bj_MAX_PLAYER_SLOTS - 1
+      if players[i].isIngame() and not IsPlayerObserver(players[i])
+        healsCount[players[i].getTeam()]++
+
+  private static function getUnitTeam(unit u) returns int
+    return u.getOwner().getTeam()

@@ -1,0 +1,41 @@
+package Archer
+
+import ArcherData
+import LegionUnit
+import Units
+import Abilities
+import Icons
+
+@compiletime function createArcher()
+	let archer = new LegionUnit(LegionUnitId(ARCHER_UNIT_ID, UnitIds.rifleman), ARCHER_TOWER_ID)
+		..setTierTwo()
+		..setName("Archer")
+		..setSounds("Archer")
+		..setIcon(Icons.bTNHighElvenArcher)
+		..setModel(Units.highElfArcher1)
+		..setMovespeed(ARCHER_MOVE_SPEED)
+		..setHP(ARCHER_MAX_HP)
+		..setCost(ARCHER_COST)
+		..setPriority(3)
+		..setFoodCost(1)
+		..setSize(10)
+		..setSelectionSize(2)
+		..setRange(ARCHER_RANGE)
+		..setBaseDamage(ARCHER_BASE_DAMAGE)
+		..setAttackSpeed(ARCHER_ATTACK_SPEED)
+		..setBackswingDur(0.300)
+		..setDamageDur(0.300)
+		..setArmorType(ArmorType.Small)
+		..setTooltipShort(ARHCER_SHORT_DESCRIPTION)
+		..setTooltipLong(ARHCER_FULL_DESCRIPTION)
+		..setWeaponType(WeaponType.Missile)
+		..setProjectileSpeed(2000)
+		..setProjectileArt(Abilities.arrowMissile1)
+		..setProjectileArc(0.20)
+		..setDamageInterval(2)
+		..setDamageOffset(1)
+	
+	archer.getTowerInstance()
+		..setArmorSoundType(ArmorSoundType.Ethereal)
+		..setUpgradesTo("h09M")
+  

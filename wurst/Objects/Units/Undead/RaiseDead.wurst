@@ -1,0 +1,29 @@
+package RaiseDead
+
+import RaiseDeadData
+import ObjEditingNatives
+
+@compiletime function createRaiseDeadForNecromancer()
+	createObjectDefinition("w3a", 'A0BA', 'Aimp')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("achd", 0, 0, 0)
+	..setLvlDataString("areq", 0, 0, "")
+	..setLvlDataString("anam", 0, 0, "Raise Dead")
+	..setLvlDataString("atp1", 1, 0, "Raise Dead")
+	..setLvlDataString("aub1", 1, 0, RAISEDEAD_FULL_DESCRIPTION_NECROMANCER)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNRaiseDeadOn.blp")
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("ansf", 0, 0, "(Icon - 1x Archer)")
+
+
+@compiletime function createRaiseDeadForNecrolyte()
+	createObjectDefinition("w3a", 'A0BD', 'Aimp')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("achd", 0, 0, 0)
+	..setLvlDataString("areq", 0, 0, "")
+	..setLvlDataString("anam", 0, 0, "Raise Dead")
+	..setLvlDataString("atp1", 1, 0, "Raise Dead")
+	..setLvlDataString("aub1", 1, 0, RAISEDEAD_FULL_DESCRIPTION_NECROLYTE)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNRaiseDeadOn.blp")
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("ansf", 0, 0, "(Icon - 3x Archer)")

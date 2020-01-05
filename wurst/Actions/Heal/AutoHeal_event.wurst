@@ -1,0 +1,15 @@
+package AutoHeal_event
+
+import AutoHeal
+
+function checkAutoHeal()
+  if autoHeal
+    for i = 0 to bj_MAX_PLAYER_SLOTS
+      udg_BuilderHeal[i] = true
+      if udg_Builder_Unit[i] != null
+        udg_Builder_Unit[i].removeAbility('A084')
+    AutoHeal.initializeFor(gg_unit_h00K_0006, gg_unit_h00K_0009)
+
+init
+  afterModeResolved
+    ..addCondition(Condition(function checkAutoHeal))

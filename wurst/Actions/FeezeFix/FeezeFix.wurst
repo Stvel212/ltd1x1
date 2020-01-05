@@ -1,0 +1,45 @@
+package FeezeFix
+
+import ClosureForGroups
+import RegisterEvents
+
+trigger feezeFix
+unit enemy
+
+function isEnemyUnit() returns boolean
+	let u = GetTriggerUnit()
+	let p = u.getOwner()
+	return GetFilterUnit().isEnemyOf(p)
+
+function fx() returns boolean
+	if udg_Level_Integer >= 30
+		let u = GetTriggerUnit()
+		let p = u.getOwner()
+		if p == Player(8) or p == Player(9)
+			forNearestUnit(u.getPos(), 700, Filter(function isEnemyUnit)) (unit x) ->
+			 	enemy = x
+			if enemy == null
+				if p == Player(8)
+					//todo
+					bj_wantDestroyGroup = true
+					ForGroupBJ(GetUnitsOfPlayerMatching(Player(8),Condition(function Trig_Level_31_End_Round_Func013001002)),function Trig_Level_31_End_Round_Func013A)
+				else
+					bj_wantDestroyGroup = true
+					ForGroupBJ(GetUnitsOfPlayerMatching(Player(9),Condition(function Trig_Level_31_End_Round_Func014001002)),function Trig_Level_31_End_Round_Func014A)
+				return true
+	return false
+
+init
+	let feezeFix = CreateTrigger()
+	TriggerRegisterEnterRectSimple(feezeFix, LFirstRubej)
+	TriggerRegisterEnterRectSimple(feezeFix, LSecondRubej)
+	TriggerRegisterEnterRectSimple(feezeFix, LThirdRubej)
+	TriggerRegisterEnterRectSimple(feezeFix, RFirstRubej)
+	TriggerRegisterEnterRectSimple(feezeFix, RSecondRubej)
+	TriggerRegisterEnterRectSimple(feezeFix, RThirdRubej)
+	TriggerAddCondition(feezeFix, Condition(function fx))
+
+	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_DEATH) ->
+		if udg_Level_Integer >= 30
+			if GetTriggerUnit() == enemy
+				enemy = null 

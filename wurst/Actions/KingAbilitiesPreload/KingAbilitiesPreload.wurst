@@ -1,0 +1,10 @@
+package KingAbilitiesPreload
+
+function preloadAbilities()
+	let u = createUnit(Player(8), 'u006', vec2(0, 0), angle(bj_UNIT_FACING))
+	u.addAbility('A05O')
+	u.addAbility('A05P')
+	u.remove()
+
+init
+	preloadAbilities()

@@ -1,0 +1,80 @@
+package PickHelpers
+
+import Colorizer
+import PickStore
+import Store
+import PickInitializer
+import HCLResolver
+
+let HOLYLIGHT_ID = 'A084'
+
+public function player.pickBuilder(unit pickedUnit)
+    let uId = pickedUnit.isRandom() ?
+    BuildersStore.builderIds.get(GetRandomInt(0, BuildersStore.builderIds.size()))
+    : pickedUnit.getTypeId()
+    this.pickBuilder(uId)
+
+public function player.pickBuilder(int uid)
+    unit u = this.replaceAndSelectUnit(this.getCurrentBuilder(), uid)
+    this.setCurrentBuilder(u)
+    if u.isProphet()
+        let ind = HCLResolver.getPlayerProphetModelIndex(this.getId())
+        u = this.replaceAndSelectUnit(this.getCurrentBuilder(), ModelsStore.models[ind])
+        this.setProphetUnitsWithImages()
+        if autoHeal == false
+            u.addAbility('A084')
+    else
+        playerUnits[this.getId()].setAllUnitsAvailable()
+    this.postPickActions(u)
+    gg_trg_Update_Race_Icon.evaluate()
+
+public function unit.replaceUnit(int newUnitId) returns unit
+    return ReplaceUnitBJ(this, newUnitId, bj_UNIT_STATE_METHOD_MAXIMUM)
+
+public function player.replaceAndSelectUnit(unit oldUnit, int newUnitId) returns unit
+    let u = oldUnit.replaceUnit(newUnitId)
+    this.selectSingle(u)
+    return u
+
+public function player.setCurrentBuilder(unit u)
+    udg_Builder_Unit[this.getId() + 1] = u
+
+public function player.getCurrentBuilder() returns unit
+    return udg_Builder_Unit[this.getId() + 1]
+
+public function player.postPickActions(unit u)
+    let pid = this.getId()
+    if udg_BuilderHeal[pid+1]
+        udg_Builder_Unit[pid+1].removeAbility(HOLYLIGHT_ID)
+    else
+        udg_Builder_Unit[pid+1].addAbility(HOLYLIGHT_ID)
+    DisplayTimedTextToForce(
+        GetPlayersAllies(this),
+        10.00,
+        Colorizer.colorizeByPlayerId(this.getName(), pid) + " picked " + u.getName()
+    )
+
+public function player.setProphetUnitsWithImages()
+    let imgs = playerUnits[this.getId()].setRandomUnits()
+    playerRenderer[this.getId()].clear()
+    for img in imgs
+        playerRenderer[this.getId()].add(img)
+
+public function player.isHost() returns boolean
+    return this == Player(0)
+
+public function player.isNotHost() returns boolean
+    return not this.isHost()
+
+public function unit.isBuilder() returns boolean
+    let id = this.getTypeId()
+    return BuildersStore.builderIds.has(id)
+
+public function unit.isRandom() returns boolean
+    return this.getTypeId() == 'A00T'
+
+public function unit.isProphet() returns boolean
+    return this.getTypeId() == BuildersStore.prophetId
+
+public function unit.isBuilderOrRandom() returns boolean
+    return this.isBuilder() or this.isRandom()

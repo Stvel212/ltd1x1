@@ -1,0 +1,24 @@
+package RollInfo
+
+import ObsForce
+import RollPosStore
+
+public texttag array rollTextTag
+
+public function createRollTextTag(player p, int rollsCount)
+  let i = p.getId()
+  let pos = RollPosStore.r1positions[i].toVec3()
+  rollTextTag[i].destr()
+  let message = rollsCount == 5 ? "Next roll: |cffff0000No rolls left|r" : "Next roll: |cffffe600{0}|r/|cff1a8d33{0}|r".format((50 * rollsCount).toString())
+  rollTextTag[i] = createTTEx(pos, message, 10)
+  rollTextTag[i].setPermanent(true)
+  ShowTextTagForceBJ(false, rollTextTag[i], bj_FORCE_ALL_PLAYERS)
+  ShowTextTagForceBJ(true, rollTextTag[i], OBS_FORCE)
+
+function initTextTag()
+  for i = 0 to 11
+    if players[i].isIngame() and not IsPlayerObserver(players[i]) and allProphets
+      createRollTextTag(players[i], udg_TotalChangedBuilder[players[i].getId()+1])
+
+init
+  gg_trg_Start_game_at_10_sec..addAction(function initTextTag)

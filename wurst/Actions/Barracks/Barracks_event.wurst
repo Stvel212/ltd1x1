@@ -1,0 +1,30 @@
+package Barracks_event
+
+import Barracks
+import ClosureTimers
+
+function createBarracks()
+  if udg_Level_Integer == 1 and not incomeFirstWave
+    doAfter(5) ->
+      for i = 0 to 11
+        if players[i].isIngame() and not IsPlayerObserver(players[i])
+          Barracks.createBaseForPlayer(players[i])
+  if udg_Level_Integer == 30
+    udg_IngamePlayers_PlayerGroup.forEach() ->
+      let p = GetEnumPlayer()  
+      ReplaceUnitBJ(Barracks.FIRST_BARRACKS[p.getId()], 'h026', bj_UNIT_STATE_METHOD_MAXIMUM)
+           
+
+function checkIncomeFirstWave()
+  if incomeFirstWave
+    for i = 0 to 11
+      if players[i].isIngame() and not IsPlayerObserver(players[i])
+        Barracks.createBaseForPlayer(players[i])
+
+init
+  afterModeResolved
+    ..addCondition(Condition(function checkIncomeFirstWave))
+
+  CreateTrigger()
+    ..registerTimerExpireEvent(udg_Spawn_Timer)
+    ..addCondition(Condition(function createBarracks))

@@ -1,0 +1,10 @@
+package EnableAntistuck
+
+
+function enableAntistuck()
+    EnableTrigger(arenaAntistuck)
+
+init
+    enableArenaAntistuck
+        ..registerTimerExpireEvent(enableAtenaAntistuckTimer)
+        ..addCondition(Condition(function enableAntistuck))

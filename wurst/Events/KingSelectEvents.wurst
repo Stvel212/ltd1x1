@@ -1,0 +1,15 @@
+package KingSelectEvents
+
+import RegisterEvents
+import HCLResolver    
+
+function giveKingControlIfPrem()
+  let u = GetTriggerUnit()
+  let p = GetTriggerPlayer()
+  if (u == gg_unit_h00K_0009 or u == gg_unit_h00K_0006) and HCLResolver.isPlayerHasKingPriority(p.getId())
+    if p.isAllyOf(u.getOwner()) and not HCLResolver.isPlayerHasKingPriority(u.getOwner().getId())
+      u.setOwner(p, true)
+
+init
+  registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SELECTED) ->
+    giveKingControlIfPrem()

@@ -1,0 +1,66 @@
+package Function
+
+// public function player.pickBuilder(unit pickedUnit)
+//     let uId = pickedUnit.isRandom() ?
+//     PickStore.builderIds.getRandom()
+//     : pickedUnit.getTypeId()
+//     this.pickBuilder(uId)
+
+// public function player.pickBuilder(int uid)
+//     let u = this.replaceAndSelectUnit(this.getCurrentBuilder(), uid)
+//     this.setCurrentBuilder(u)
+//     if u.isProphet()
+//         playerUnits[this.getId()].setRandomUnits()
+//     else
+//         playerUnits[this.getId()].setAllUnitsAvailable()
+//     this.postPickActions(u)
+//     gg_trg_Update_Race_Icon.evaluate()
+
+public function unit.replace(int newUnitId) returns unit
+  return ReplaceUnitBJ(this, newUnitId, bj_UNIT_STATE_METHOD_MAXIMUM)
+
+public function player.replaceAndSelectUnit(unit u, int newUnitId) returns unit
+  let newUnit = u.replace(newUnitId)
+  this.selectSingle(u)
+  return newUnit
+
+public function player.isHost() returns boolean
+  return this == players[0]
+
+// public function player.setCurrentBuilder(unit u)
+  // udg_Builder_Unit[this.getId() + 1] = u
+
+// public function player.getCurrentBuilder() returns unit
+  // return udg_Builder_Unit[this.getId() + 1]
+
+// public function player.postPickActions(unit u)
+//     let pid = this.getId()
+//     if udg_BuilderHeal[pid+1]
+//         udg_Builder_Unit[pid+1].removeAbility(HOLYLIGHT_ID)
+//     else
+//         udg_Builder_Unit[pid+1].addAbility(HOLYLIGHT_ID)
+//     DisplayTimedTextToForce(
+//         GetPlayersAllies(this),
+//         10.00,
+//         getColored(this.getName(), pid) + " picked " + u.getName()
+//     )
+
+// public function player.setProphetUnitsWithImages()
+//     playerUnits[this.getId()].setRandomUnits()
+
+
+
+// public function unit.isBuilder() returns boolean
+//     let id = this.getTypeId()
+//     if PickStore.builderIds.has(id)
+//         return true
+//     return false
+
+// public function unit.isRandom() returns boolean
+//     return this.getTypeId() == 'A00T'
+
+// public function unit.isProphet() returns boolean
+//     return this.getTypeId() == PickStore.prophetId
+
+// public function unit.isBuilderOrRandom() returns boolean
+//     return this.isBuilder() or this.isRandom()

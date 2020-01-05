@@ -1,0 +1,86 @@
+package HCLResolver
+
+import LinkedList
+import HCLDecoder
+
+public class HCLResolver
+  private static var newhcl = false
+  private static int array playerData
+  private static bool array kingPriority
+  private static int array prophetModelIndex
+
+  static function getModeFromHandicaps(LinkedList<int> handicaps) returns string
+    var res = findObserverPresets(handicaps.get(10), handicaps.get(11))
+    if res.length() > 0
+      newhcl = true
+      setPlayersData(handicaps)
+      setKingPriority()
+      setProphetModelIndexes()
+      return res
+    else
+      return getModeStringFromHandicaps(handicaps)
+  
+  static function isNewHclEnabled() returns bool
+    return newhcl
+
+  static function getPlayerData(int index) returns int
+    return playerData[index]
+
+  static function isPlayerHasKingPriority(int pid) returns bool
+    return kingPriority[pid]
+
+  static function getPlayerProphetModelIndex(int pid) returns int
+    return prophetModelIndex[pid]
+
+  static function getPlayerDataList(int delimeter) returns LinkedList<int>
+    let list = new LinkedList<int>()
+    for i = 0 to 11
+      list.add(getPlayerData(i) mod delimeter)
+    return list
+
+  private static function setProphetModelIndexes()
+    for i = 0 to 7
+      prophetModelIndex[i] = (playerData[i] / 16).toInt() mod 8
+
+  private static function setKingPriority()
+    for i = 0 to 7
+      if (playerData[i] / 128).toInt() mod 2 > 0
+        kingPriority[i] = true
+
+  private static function setPlayersData(LinkedList<int> handicaps)
+    for i = 0 to 10
+      if handicaps.get(i) > 0
+        let h = handicaps.get(i) - 100
+        playerData[i] = h < 0 ? h + 256 : h
+    
+  private static function getModeStringFromHandicaps(LinkedList<int> handicaps) returns string
+    HCLDecoder.initialize()
+    return HCLDecoder.getStringFromHandicaps(handicaps)
+
+  private static function findObserverPresets(vararg int observerHandicaps) returns string
+    for h in observerHandicaps
+      if h > 0 and h < 100
+        if h == 90
+          return "phgmcbmdra"
+        else if h == 80
+          return "phgmcbmd"
+        else if h == 70
+          return "phgmcbahncmdra"
+    return ""
+
+
+@Test function testHCLResolver()
+  var handicaps = new LinkedList<int>()..add(102, 0, 0, 0, 0, 48, 0, 0)
+  HCLResolver.getModeFromHandicaps(handicaps).assertEquals("ph")
+  HCLResolver.getPlayerData(0).assertEquals(0)
+  handicaps = new LinkedList<int>()..add(102, 0, 0, 0, 0, 48, 0, 0, 0, 0, 80, 0)
+  HCLResolver.getModeFromHandicaps(handicaps).assertEquals("phgmcbahncmdra")
+  HCLResolver.getPlayerData(0).assertEquals(2)
+  handicaps = new LinkedList<int>()..add(92, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 90)
+  HCLResolver.getModeFromHandicaps(handicaps).assertEquals("phgmcbahefmdra")
+  HCLResolver.getPlayerData(5).assertEquals(204)
+  HCLResolver.getPlayerDataList(1).size().assertEquals(12)
+  HCLResolver.getPlayerDataList(16).get(1).assertEquals(0)
+  HCLResolver.getPlayerDataList(16).get(0).assertEquals(8)
+  HCLResolver.isPlayerHasKingPriority(0).assertTrue()
+  HCLResolver.getPlayerProphetModelIndex(0).assertEquals(7)

@@ -1,0 +1,56 @@
+package KingAbilities
+
+import LinkedList
+
+public class KingAbilities
+    private unit king
+    private image activeAbilityImage
+    private vec2 imgPosition
+    private LinkedList<int> currentAbilities = new LinkedList<int>
+
+    construct(vec2 ip, unit k)
+        imgPosition = ip
+        king = k
+
+    function hasAbility(int aid) returns bool
+        return currentAbilities.has(aid)
+
+    function upCurrentAbilityLevel()
+        for a in currentAbilities
+            IncUnitAbilityLevel(king, a)
+
+    function setAbility(int aid)
+        king.addAbility(aid)
+        currentAbilities.add(aid)
+
+    function getOwner() returns player
+        return king.getOwner()
+                
+    function setAbilityWithImage(int aid, string imgPath)
+        let img = createImage(
+            imgPath,
+            imgPosition,
+            128,
+            128
+        )
+        clearImage()
+        img.show()
+        let p = GetLocalPlayer()
+        if (p.isAllyOf(king.getOwner()) == true) or (IsPlayerObserver(p) == true ) or (p == Player(10) or (p == Player(11)))
+            ShowImage(img, true)                    
+        else
+            ShowImage(img, false)
+        activeAbilityImage = img
+        setAbility(aid)
+
+    function removeAbility(int aid)
+        if currentAbilities.has(aid)
+            currentAbilities.remove(aid)
+        if king.hasAbility(aid)
+            king.removeAbility(aid)
+
+    function clearImage()
+        if activeAbilityImage != null
+            ShowImage(activeAbilityImage, false)
+            activeAbilityImage.remove()
+            

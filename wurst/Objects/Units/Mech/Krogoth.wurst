@@ -1,0 +1,43 @@
+package Krogoth
+
+import KrogothData
+import LegionUnit
+import Units
+import Icons
+
+@compiletime function createKrogoth()
+	let krogoth = new LegionUnit(LegionUnitId(KROGOTH_UNIT_ID, 'hrif'), KROGOTH_TOWER_ID)
+		..setUpgrade()
+		..setName("Krogoth")
+		..setSounds("IronGolem")
+		..setIcon(Icons.bTNJunkGolem)
+		..setModel(Units.ironGolem1)
+		..setMovespeed(KROGOTH_MOVE_SPEED)
+		..setHP(KROGOTH_MAX_HP)
+		..setCost(KROGOTH_COST)
+		..setPriority(3)
+		..setFoodCost(3)
+		..setSize(30)
+		..setSelectionSize(1.5)
+		..setRange(KROGOTH_RANGE)
+		..setBaseDamage(KROGOTH_BASE_DAMAGE)
+		..setAttackSpeed(KROGOTH_ATTACK_SPEED)
+		..setBackswingDur(0.300)
+		..setDamageDur(0.300)
+		..setArmorType(ArmorType.Large)
+		..setTooltipShort(KROGOTH_SHORT_DESCRIPTION)
+		..setTooltipLong(KROGOTH_FULL_DESCRIPTION)
+		..setWeaponType(WeaponType.Normal)
+		..setAttackType(AttackType.Normal)
+		..setDamageInterval(5)
+		..setDamageOffset(2)
+		..setModelSize(1.25)
+	
+	krogoth.getTowerInstance()
+		..setAttack1WeaponSound(WeaponSound.MetalHeavyBash)
+		..setArmorSoundType(ArmorSoundType.Metal)
+		..setPointValue(450)
+		..setNormalAbilities("A00C")
+	krogoth.getUnitInstance()
+		..setNormalAbilities("A00C")
+		

@@ -1,0 +1,44 @@
+package Colt
+
+import ColtData
+import LegionUnit
+import Units
+import Icons
+
+@compiletime function createColt()
+	let colt = new LegionUnit(LegionUnitId(COLT_UNIT_ID, 'hdhw'), COLT_TOWER_ID)
+		..setTierOne()
+		..setName("Colt")
+		..setSounds("Hippogryph")
+		..setIcon(Icons.bTNHippogriff)
+		..setModel(Units.hippoGryph)
+		..setMovespeed(COLT_MOVE_SPEED)
+		..setHP(COLT_MAX_HP)
+		..setCost(COLT_COST)
+		..setPriority(3)
+		..setFoodCost(1)
+		..setSize(15)
+		..setSelectionSize(1.5)
+		..setRange(COLT_RANGE)
+		..setBaseDamage(COLT_BASE_DAMAGE)
+		..setAttackSpeed(COLT_ATTACK_SPEED)
+		..setBackswingDur(0.300)
+		..setDamageDur(0.300)
+		..setArmorType(ArmorType.Unarmored)
+		..setTooltipShort(COLT_SHORT_DESCRIPTION)
+		..setTooltipLong(COLT_FULL_DESCRIPTION)
+		..setWeaponType(WeaponType.Missile)
+		..setProjectileSpeed(1100)
+		..setProjectileArt(Units.hippoGryph)
+		..setProjectileArc(0.15)
+		..setDamageInterval(2)
+		..setDamageOffset(1)
+		..setModelSize(0.6)
+	
+	colt.getTowerInstance()
+		..setArmorSoundType(ArmorSoundType.Flesh)
+		..setUpgradesTo("h08I")
+		..setPointValue(15)
+
+	colt.getUnitInstance()
+		..setAcquisitionRange(500)

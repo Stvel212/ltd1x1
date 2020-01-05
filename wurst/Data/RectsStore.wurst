@@ -1,0 +1,7 @@
+package RectsStore
+
+public class RectsStore
+  static let leftTeam = Rect(-6752.0,-4672.0,-640.0,7040.0)
+  static let rightTeam = Rect(640.0,-4672.0,6752.0,7040.0)
+
+  static let teamRects = [leftTeam, rightTeam]

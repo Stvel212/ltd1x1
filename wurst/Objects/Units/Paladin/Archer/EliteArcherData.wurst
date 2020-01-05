@@ -1,0 +1,5 @@
+package EliteArcherData
+import Environment
+
+public let ELITEARCHER_COST = 155
+public let ELITEARCHER_POINT_VALUE = rotation4x4 ? 210 : 205

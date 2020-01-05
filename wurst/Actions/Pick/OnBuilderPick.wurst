@@ -1,0 +1,17 @@
+package OnBuilderPick
+
+import RegisterEvents
+import PickHelpers
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
+        let u = GetTriggerUnit()
+        if (u.isBuilderOrRandom())
+            if (udg_ModeHP and u.getOwner().isHost())
+                udg_IngamePlayers_PlayerGroup.forEach() ->
+                    GetEnumPlayer().pickBuilder(GetTriggerUnit())
+                udg_ModeHP = false
+            else
+                GetTriggerPlayer().pickBuilder(GetTriggerUnit())
+                gg_trg_Update_Race_Icon.evaluate()
+                

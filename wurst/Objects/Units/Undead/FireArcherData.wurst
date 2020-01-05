@@ -1,0 +1,6 @@
+package FireArcherData
+
+import Environment
+
+public let FIREARCHER_MAX_HP = rotation4x4 ? 180 : 100
+public let FIREARCHER_DAMAGE_INTERVAL = rotation4x4 ? 3 : 1

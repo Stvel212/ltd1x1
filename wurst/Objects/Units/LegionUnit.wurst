@@ -1,0 +1,223 @@
+package LegionUnit
+
+import public UnitObjEditing
+import public UnitIds
+
+public tuple LegionUnitId(int id, int baseId)
+
+public class LegionUnit
+  private UnitDefinition unitInstance
+  private BuildingDefinition towerInstance
+
+  construct(LegionUnitId unitIds, int towerId)
+    unitInstance = new UnitDefinition(unitIds.id, unitIds.baseId)
+    towerInstance = new BuildingDefinition(towerId, UnitIds.guardtower)
+    setBase()
+
+  function getUnitInstance() returns UnitDefinition
+    return unitInstance
+
+  function getTowerInstance() returns BuildingDefinition
+    return towerInstance
+
+  function setName(string name)
+    unitInstance.setName(name)
+    towerInstance.setName(name)
+  
+  function setUnitColor(int r, int g, int b)
+    unitInstance.setTintingColorRed(r)
+    unitInstance.setTintingColorGreen(g)
+    unitInstance.setTintingColorBlue(b)
+    towerInstance.setTintingColorRed(r)
+    towerInstance.setTintingColorGreen(g)
+    towerInstance.setTintingColorBlue(b)
+  
+  function setMovespeed(int speed)
+    unitInstance.setSpeedBase(speed)
+
+  function setHP(int hp)
+    unitInstance.setHitPointsMaximumBase(hp)
+    towerInstance.setHitPointsMaximumBase(hp)
+
+  function setCost(int cost)
+    unitInstance.setGoldCost(cost)
+    towerInstance.setGoldCost(cost)
+    unitInstance.setPointValue(cost)
+    towerInstance.setPointValue(cost)
+
+  function setPriority(int priority)
+    unitInstance.setPriority(priority)
+    towerInstance.setPriority(priority)
+
+  function setFoodCost(int cost)
+    unitInstance.setFoodCost(cost)
+    towerInstance.setFoodCost(cost)
+
+  function setSize(real size)
+    unitInstance.setCollisionSize(size)
+    towerInstance.setCollisionSize(size)
+
+  function setSounds(string soundSet)
+    unitInstance.setUnitSoundSet(soundSet)
+    towerInstance.setUnitSoundSet(soundSet)
+  
+  function setModelSize(real modelSize)
+    unitInstance.setScalingValue(modelSize)
+    towerInstance.setScalingValue(modelSize)  
+
+  function setIcon(string icon)
+    unitInstance.setIconGameInterface(icon)
+    towerInstance.setIconGameInterface(icon)
+
+  function setModel(string model)
+    unitInstance.setModelFile(model)
+    towerInstance.setModelFile(model)
+
+  function setSelectionSize(real size)
+    unitInstance.setSelectionScale(size)
+    towerInstance.setSelectionScale(size)
+
+  function setBaseDamage(int dmg)
+    unitInstance.setAttack1DamageBase(dmg)
+    towerInstance.setAttack1DamageBase(dmg)
+
+  function setAttackSpeed(real as)
+    unitInstance.setAttack1CooldownTime(as)
+    towerInstance.setAttack1CooldownTime(as)
+
+  function setRange(int range)
+    unitInstance.setAttack1Range(range)
+    towerInstance.setAttack1Range(range)
+
+  function setArmorType(ArmorType armorType)
+    unitInstance.setArmorType(armorType)
+    towerInstance.setArmorType(armorType)
+
+  function setBackswingDur(real dur)
+    unitInstance.setAttack1AnimationBackswingPoint(dur)
+    towerInstance.setAttack1AnimationBackswingPoint(dur)
+
+  function setDamageDur(real dur)
+    unitInstance.setAttack1AnimationDamagePoint(dur)
+    towerInstance.setAttack1AnimationDamagePoint(dur)
+  
+  function setMovementType(MovementType tip)
+    unitInstance.setMovementType(tip)
+    towerInstance.setMovementType(tip)
+
+  function setHotkey(string key)
+    unitInstance.setHotkey(key)
+    towerInstance.setHotkey(key)
+
+  function setTooltipShort(string tooltip)
+    unitInstance.setTooltipBasic("")
+    towerInstance.setTooltipBasic(tooltip)
+
+  function setTooltipLong(string tooltip)
+    unitInstance.setTooltipExtended("")
+    towerInstance.setTooltipExtended(tooltip)
+
+  function setWeaponType(WeaponType wt)
+    unitInstance.setAttack1WeaponType(wt)
+    towerInstance.setAttack1WeaponType(wt)
+
+  function setAttackType(AttackType wt)
+    unitInstance.setAttack1AttackType(wt)
+    towerInstance.setAttack1AttackType(wt)
+
+  function setProjectileSpeed(int speed)
+    unitInstance.setAttack1ProjectileSpeed(speed)
+    towerInstance.setAttack1ProjectileSpeed(speed)
+
+  function setProjectileArt(string model)
+    unitInstance.setAttack1ProjectileArt(model)
+    towerInstance.setAttack1ProjectileArt(model)
+
+  function setProjectileArc(real arc)
+    unitInstance.setAttack1ProjectileArc(arc)
+    towerInstance.setAttack1ProjectileArc(arc)
+
+  function setDamageInterval(int range)
+    unitInstance.setAttack1DamageSidesperDie(range)
+    towerInstance.setAttack1DamageSidesperDie(range)
+
+  function setDamageOffset(int offset)
+    unitInstance.setAttack1DamageNumberofDice(offset)
+    towerInstance.setAttack1DamageNumberofDice(offset)
+
+  function setTierOne()
+    setHotkey("Q")
+    towerInstance.setButtonPositionX(0)
+    towerInstance.setButtonPositionY(0)
+  
+  function setTierTwo()
+    setHotkey("W")
+    towerInstance.setButtonPositionX(1)
+    towerInstance.setButtonPositionY(0)
+
+  function setTierThree()
+    setHotkey("E")
+    towerInstance.setButtonPositionX(2)
+    towerInstance.setButtonPositionY(0)
+
+  function setTierFour()
+    setHotkey("R")
+    towerInstance.setButtonPositionX(3)
+    towerInstance.setButtonPositionY(0)
+
+  function setTierFive()
+    setHotkey("A")
+    towerInstance.setButtonPositionX(0)
+    towerInstance.setButtonPositionY(1)
+
+  function setTierSix()
+    setHotkey("S")
+    towerInstance.setButtonPositionX(1)
+    towerInstance.setButtonPositionY(1)
+  
+  function setUpgrade()
+    setHotkey("P")
+    towerInstance.setButtonPositionX(0)
+    towerInstance.setButtonPositionY(2)
+
+  private function setBase()
+    setBaseParams(unitInstance)
+    setBaseParams(towerInstance)
+    setBaseParamsForUnit(unitInstance)
+    setBaseParamsForTower(towerInstance)
+
+  private function setBaseParams(UnitOrBuildingOrHeroDefinition instance)
+    instance..setUpgradesUsed("R009,R00A")
+            ..setLumberCost(0)
+            ..setAttack1TargetsAllowed(TargetsAllowed.enemies)
+            ..setDefenseBase(3)
+            ..setDefaultActiveAbility("")
+            ..setManaMaximum(0)
+            ..setManaInitialAmount(0)
+
+  private function setBaseParamsForTower(BuildingDefinition tower)
+    tower..setNormalAbilities("A008")
+         ..setRequirements("u004")
+         ..setRepairTime(1)
+         ..setBuildTime(5)
+         ..setUnitClassification("ancient")
+         ..setHitPointsRegenerationType("none")
+         ..setRepairLumberCost(0)
+         ..setRepairGoldCost(0)
+         ..setRequiredAnimationNames("")
+         ..setGroundTexture("")
+         ..setShadowTextureBuilding("")
+         ..setDefenseUpgradeBonus(0)
+         ..setAttack1ShowUI(false)
+
+  private function setBaseParamsForUnit(UnitDefinition instance)
+    instance..setUnitClassification("giant")
+            ..setRequirements("")
+            ..setHitPointsRegenerationRate(0)
+            ..setHotkey("")
+            ..setTooltipBasic("")
+            ..setTooltipExtended("")
+            ..setNormalAbilities("")
+            ..setAttack1ShowUI(true)
+
+

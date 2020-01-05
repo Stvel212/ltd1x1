@@ -1,0 +1,13 @@
+package ObsForce
+
+public force OBS_FORCE = CreateForce()
+
+function isObs() returns boolean
+	let f = GetFilterPlayer()
+	return (IsPlayerObserver(f) or f == Player(10) or f == Player(11))
+
+function createObsForce()
+	ForceEnumPlayers(OBS_FORCE, Condition(function isObs))
+
+init
+	createObsForce()

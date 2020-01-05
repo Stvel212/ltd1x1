@@ -1,0 +1,20 @@
+package StatusImages
+
+import Store
+import LinkedList
+
+public class StatusImages
+  static function createForPlayersByPlayerData(LinkedList<int> playersData)
+    for i = 0 to playersData.size()
+      if isNotNull(i, playersData.get(i))
+        createForPlayer(i, playersData.get(i))
+
+  static function createForPlayer(int pid, int imageIndex)
+    let img = createImage("images\\img-" + StatusImagesStore.orderedMap[imageIndex] + ".blp",
+                          StatusImagesStore.playerCanvasPosition[pid], 512, 512, ImageLayer.L4)
+    img.show()
+    ShowImage(img, true)
+
+  static function isNotNull(int pid, int index) returns bool
+    return StatusImagesStore.orderedMap[index].length() > 0 and StatusImagesStore.playerCanvasPosition[pid] != vec2(0.0, 0.0)
+  

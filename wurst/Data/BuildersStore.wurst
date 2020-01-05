@@ -1,0 +1,23 @@
+package BuildersStore
+
+import LinkedList
+
+public class BuildersStore
+  static let arcticId = 'u00K'
+  static let beastId = 'u001'
+  static let demihumanId = 'u00H'
+  static let elementId = 'u00C'
+  static let elfId = 'u00L'
+  static let ghostId = 'u00G'
+  static let goblinId = 'u00M'
+  static let marineId = 'u00J'
+  static let mechId = 'u000'
+  static let natureId = 'u003'
+  static let orcId = 'u00U'
+  static let paladinId = 'u00O'
+  static let shadowId = 'u002'
+  static let undeadId = 'u00Z'
+  static let prophetId = 'u00T'
+
+  static let builderIds = new LinkedList<int>()..add(arcticId, beastId, demihumanId, elementId, elfId, ghostId, goblinId,
+                                                      marineId, mechId, natureId, orcId, paladinId, shadowId, undeadId, prophetId)

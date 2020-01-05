@@ -1,0 +1,18 @@
+package BallistaCrit
+
+import ObjEditingNatives
+
+@compiletime function create_w3a_A037()
+	createObjectDefinition("w3a", 'A037', 'AOcr')
+	..setLvlDataString("ansf", 0, 0, "(Orc) - 5% for 60")
+	..setLvlDataString("aub1", 1, 0, "gives you 5% chance to finish off enemy with a single blow !")
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataUnreal("Ocr1", 1, 1, 100.0)
+	..setLvlDataUnreal("Ocr2", 1, 2, 1.5)
+	..setLvlDataString("anam", 0, 0, "Finishing Blow!")
+	..setLvlDataString("atp1", 1, 0, "Finishing Blow!")
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNClawsOfAttack.blp")
+	..setLvlDataString("atar", 1, 0, "mechanical")
+	..setLvlDataInt("Ocr5", 1, 5, 1)

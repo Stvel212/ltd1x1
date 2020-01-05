@@ -1,0 +1,66 @@
+package Colorizer
+
+public enum Colors
+  red
+  blue
+  cyan
+  purple
+  yellow
+  orange
+  green
+  pink
+  grey
+  azur
+  mint
+  brown
+  maroon
+
+
+public class Colorizer
+  private static let playerColors = [
+      Colors.red, Colors.blue, Colors.cyan, Colors.purple, Colors.yellow, Colors.orange,
+      Colors.green, Colors.pink, Colors.grey, Colors.azur, Colors.mint, Colors.brown
+    ]
+
+  static function colorizeByPlayerId(string str, int pid) returns string
+    return colorize(str, playerColors[pid]) 
+
+  static function colorize(string str, Colors color) returns string
+    switch color
+      case Colors.red
+        return "|c00ff0202" + str + "|r"
+      case Colors.blue
+        return "|c000041ff" + str + "|r"
+      case Colors.cyan
+        return "|c001be6b8" + str + "|r"
+      case Colors.purple
+        return "|c00530080" + str + "|r"
+      case Colors.yellow
+        return "|c00fffc00" + str + "|r"
+      case Colors.orange
+        return "|c00fe890d" + str + "|r"
+      case Colors.green
+        return "|c001fbf00" + str + "|r"
+      case Colors.pink
+        return "|c00e55aaf" + str + "|r"
+      case Colors.grey
+        return "|c00949596" + str + "|r"
+      case Colors.azur
+        return "|c007dbef1" + str + "|r"
+      case Colors.mint
+        return "|c000f6145" + str + "|r"
+      case Colors.brown
+        return "|c004d2903" + str + "|r"
+      case Colors.maroon
+        return "|cffBB3333" + str + "|r"
+      default
+        return str
+
+
+@Test function colorizerTest()
+  Colorizer.colorizeByPlayerId("string", 0).assertEquals("|c00ff0202string|r")
+  Colorizer.colorizeByPlayerId("string", 1).assertEquals("|c000041ffstring|r")
+  Colorizer.colorizeByPlayerId("string", 2).assertEquals("|c001be6b8string|r")
+  Colorizer.colorize("string", Colors.green).assertEquals("|c001fbf00string|r")
+  Colorizer.colorize("string", Colors.azur).assertEquals("|c007dbef1string|r")
+  Colorizer.colorize("string", Colors.maroon).assertEquals("|cffBB3333string|r")

@@ -1,0 +1,69 @@
+package SetKingAbilities
+
+import KingAbilities
+import Display
+import Colorizer
+import AbilityInfo
+
+let IMMOLATE_ID = 'A01T'
+let WAVE_ID = 'A021'
+let STUN_ID = 'A022'
+
+KingAbilities array kingAbilities
+
+public function upAbilities()
+    for i = 0 to 1
+        kingAbilities[i].upCurrentAbilityLevel()
+
+public function setAbilities()
+    if udg_Level_Integer == 4
+        for i = 0 to 1
+            let abil = [IMMOLATE_ID, WAVE_ID, STUN_ID]
+            let aid = abil[GetRandomInt(0, randomAbilities? 2 : 1)]
+            kingAbilities[i].setAbilityWithImage(aid, abilImgPath(aid))
+            let msg = "Your king has received {0} ability".format(abilColor(aid))
+            Display.toTeamAndObs(msg, 7, kingAbilities[i].getOwner().getTeam())
+            if aid != IMMOLATE_ID
+                let message = "CD: |cff00ff15Ready|r"
+                createAbilityTextTag(i, message)
+    if not randomAbilities and udg_Level_Integer == 19
+        for i = 0 to 1
+            if kingAbilities[i].hasAbility(IMMOLATE_ID)
+                kingAbilities[i].removeAbility(IMMOLATE_ID)
+            if kingAbilities[i].hasAbility(WAVE_ID)
+                kingAbilities[i].removeAbility(WAVE_ID)
+            kingAbilities[i].setAbilityWithImage(STUN_ID, abilImgPath(STUN_ID))
+
+
+function abilColor(int aid) returns string
+    let name = GetAbilityName(aid)
+    switch aid
+        case IMMOLATE_ID
+            return Colorizer.colorize(name, Colors.red)
+        case WAVE_ID
+            return Colorizer.colorize(name, Colors.yellow)
+        case STUN_ID
+            return Colorizer.colorize(name, Colors.brown)
+        default
+            return ""
+
+
+
+function abilName(int aid) returns string
+    switch aid
+        case IMMOLATE_ID
+            return "immo"
+        case WAVE_ID
+            return "wave"
+        case STUN_ID
+            return "stun"
+        default
+            return ""
+
+function abilImgPath(int aid) returns string
+    return "icons\\{0}.blp".format(abilName(aid))
+            
+
+init
+    kingAbilities[0] = new KingAbilities(vec2(-3521, -3774), gg_unit_h00K_0009)
+    kingAbilities[1] = new KingAbilities(vec2(3521, -3774), gg_unit_h00K_0006)

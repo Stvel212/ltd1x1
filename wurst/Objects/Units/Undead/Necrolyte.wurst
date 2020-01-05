@@ -1,0 +1,53 @@
+package Necrolyte
+
+import NecrolyteData
+import LegionUnit
+import Units
+import Abilities
+import Icons
+
+@compiletime function createNecrolyte()
+	let necrolyte = new LegionUnit(LegionUnitId(NECROLYTE_UNIT_ID, 'hrif'), NECROLYTE_TOWER_ID)
+		..setUpgrade()
+		..setName("Necrolyte")
+		..setSounds("Necromancer")
+		..setIcon(Icons.bTNKelThuzad)
+		..setModel(Units.kelthuzad)
+		..setMovespeed(NECROLYTE_MOVE_SPEED)
+		..setHP(NECROLYTE_MAX_HP)
+		..setCost(NECROLYTE_COST)
+		..setPriority(3)
+		..setFoodCost(2)
+		..setSize(15)
+		..setSelectionSize(1.5)
+		..setRange(NECROLYTE_RANGE)
+		..setBaseDamage(NECROLYTE_BASE_DAMAGE)
+		..setAttackSpeed(NECROLYTE_ATTACK_SPEED)
+		..setBackswingDur(0.300)
+		..setDamageDur(0.300)
+		..setArmorType(ArmorType.Small)
+		..setTooltipShort(NECROLYTE_SHORT_DESCRIPTION)
+		..setTooltipLong(NECROLYTE_FULL_DESCRIPTION)
+		..setAttackType(AttackType.Pierce)
+		..setWeaponType(WeaponType.Missile)
+		..setProjectileSpeed(900)
+		..setProjectileArt(Abilities.necromancerMissile)
+		..setProjectileArc(0.2)
+		..setDamageInterval(12)
+		..setDamageOffset(1)
+		..setModelSize(1.2)
+		..setMovementType(MovementType.Foot)
+	
+	necrolyte.getTowerInstance()
+		..setNormalAbilities("A0BD,A008")
+		..setManaMaximum(60)
+		..setManaInitialAmount(60)
+		..setPointValue(310)
+	necrolyte.getUnitInstance()
+		..setArmorSoundType(ArmorSoundType.Flesh)
+		..setNormalAbilities("A0BC")
+		..setManaMaximum(60)
+		..setManaInitialAmount(60)
+		..setManaRegeneration(1)
+	
+		

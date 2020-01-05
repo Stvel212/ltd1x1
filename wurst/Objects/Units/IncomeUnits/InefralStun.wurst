@@ -1,0 +1,17 @@
+package InefralStun
+
+import ObjEditingNatives
+
+@compiletime function create_w3a_A04G()
+	createObjectDefinition("w3a", 'A04G', 'ACbh')
+	..setLvlDataString("ansf", 0, 0, "(summon abil) - 25% - 0 - 1")
+	..setLvlDataString("arac", 0, 0, "orc")
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataString("atar", 1, 0, "air,enemies,ground")
+	..setLvlDataString("aub1", 1, 0, "Each attack has a 25% chance to stun for 1 second.")
+	..setLvlDataUnreal("Hbh1", 1, 1, 25.0)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataUnreal("ahdu", 1, 0, 1.0)
+	..setLvlDataUnreal("adur", 1, 0, 1.0)
+	..setLvlDataUnreal("Hbh3", 1, 3, 0.0)
+	..setLvlDataString("abuf", 1, 0, "B044")

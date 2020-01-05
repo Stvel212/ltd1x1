@@ -1,0 +1,48 @@
+package FastFinish
+
+import Colorizer
+import ClosureTimers
+
+public class FastFinish
+    static bool array voted = [false, false, false, false, false, false, false, false]
+    static int array playersCount = [0, 0]
+    static int array votes = [0, 0]
+    static bool array voteActive = [false, false]
+
+    static function countPlayers()
+        playersCount[0] = 0
+        playersCount[1] = 0
+        for i = 0 to 7
+            if Player(i).isIngame()
+                playersCount[R2I(i/4)]++
+
+    static function vote(player p)
+        let pid = p.getId()
+        let team = R2I(pid / 4)
+        string teamName = team == 0 ? "left" : "right"
+        if not voted[pid]
+            voted[pid] = true               
+            votes[team]++
+            if votes[team] == 1 and voteActive[team] == false
+                printTimed("{0} starts ff voting for {1} team".format(Colorizer.colorizeByPlayerId(p.getName(), pid), teamName), 7)
+                voteActive[team] = true
+                doAfter(180) ->
+                    reset(team)
+                    printTimed("Some players in {0} team wanna continue to play. Voting has closed".format(teamName), 7)
+            printTimed("{0} vote for ff. ".format(Colorizer.colorizeByPlayerId(p.getName(), pid)), 7)
+        if votes[0] == playersCount[0]
+            printTimed("All {0} team palyers voted for ff. Game will end in 3 seconds".format(teamName), 7)
+            doAfter(3) ->
+                gg_unit_h00K_0009.kill()
+        else if votes[1] == playersCount[1]
+            printTimed("All {0} team palyers voted for ff. Game will end in 3 seconds".format(teamName), 7)
+            doAfter(3) ->
+                gg_unit_h00K_0006.kill()
+
+    static function reset(int team)
+        votes[team] = 0
+        voteActive[team] = false
+        let teamVariable = team == 0 ? 0 : 4
+        for i = 0 to 3
+            voted[i + teamVariable] = false
+
