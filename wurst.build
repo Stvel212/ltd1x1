@@ -1,8 +1,24 @@
 ---
 projectName: ___
 dependencies:
-- https://github.com/netVoix/WurstLib
+    - https://github.com/netVoix/WurstLib
 buildMapData:
-  name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2
-  fileName: Legion TD MegaOZGame v 1.2
-  author: oz
+    name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2
+    fileName: Legion TD MegaOZGame v 1.2
+    author: oz
+    players:
+        - id: 0
+          name: Player 1
+          race: HUMAN
+          controller: USER
+        - id: 4
+          name: Player 5
+          race: HUMAN
+          controller: USER
+    forces:
+        - name: Western Force
+          playerIds:
+              - 0
+        - name: Eastern Force
+          playerIds:
+              - 4
