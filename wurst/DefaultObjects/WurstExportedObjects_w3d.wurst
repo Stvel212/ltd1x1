@@ -1,0 +1,249 @@
+package WurstExportedObjects_w3d
+import ObjEditingNatives
+
+// Modified Table (contains all custom objects)
+
+@compiletime function create_w3d_D002()
+	createObjectDefinition("w3d", 'D002', 'YScd')
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.5)
+	..setLvlDataString("dnam", 0, 0, "Column Double (dark)")
+
+
+@compiletime function create_w3d_D003()
+	createObjectDefinition("w3d", 'D003', 'YOfn')
+	..setLvlDataString("dnam", 0, 0, "Fountain (dark)")
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.5)
+	..setLvlDataInt("dsmm", 0, 0, 0)
+
+
+@compiletime function create_w3d_D000()
+	createObjectDefinition("w3d", 'D000', 'YSw0')
+	..setLvlDataString("dnam", 0, 0, "Wall Low (Horizontal) no coll")
+	..setLvlDataString("dptx", 0, 0, "none")
+
+
+@compiletime function create_w3d_D004()
+	createObjectDefinition("w3d", 'D004', 'OOal')
+	..setLvlDataString("dtil", 0, 0, "*")
+	..setLvlDataString("dptx", 0, 0, "")
+	..setLvlDataString("dnam", 0, 0, "Stairs")
+	..setLvlDataString("dfil", 0, 0, "war3mapImported\\StairsSmal.mdl")
+	..setLvlDataString("dcat", 0, 0, "S")
+	..setLvlDataUnreal("dmis", 0, 0, 0.1)
+	..setLvlDataUnreal("dmas", 0, 0, 10.0)
+
+
+@compiletime function create_w3d_D00D()
+	createObjectDefinition("w3d", 'D00D', 'OOal')
+	..setLvlDataString("dtil", 0, 0, "*")
+	..setLvlDataString("dptx", 0, 0, "")
+	..setLvlDataString("dnam", 0, 0, "Gift")
+	..setLvlDataString("dfil", 0, 0, "Objects\\InventoryItems\\BundleofGifts\\BundleofGifts.mdl")
+	..setLvlDataString("dcat", 0, 0, "S")
+	..setLvlDataUnreal("dmis", 0, 0, 0.5)
+	..setLvlDataUnreal("dmas", 0, 0, 6.0)
+
+
+@compiletime function create_w3d_D00E()
+	createObjectDefinition("w3d", 'D00E', 'YObs')
+	..setLvlDataUnreal("ddes", 0, 0, 1.2)
+	..setLvlDataString("dnam", 0, 0, "Bench Stone(south)")
+
+
+// Original Table (contains all modified default objects)
+// Wurst does not support modifying default objects
+// but you can copy these functions and replace 'xxxx' with a new, custom id.
+
+@compiletime function create_w3d_LOic()
+	createObjectDefinition("w3d", 'LOic', 'LOic')
+	..setLvlDataString("dptx", 0, 0, "PathTextures\\4x4Default.tga")
+
+
+@compiletime function create_w3d_JOgr()
+	createObjectDefinition("w3d", 'JOgr', 'JOgr')
+	..setLvlDataString("dfil", 0, 0, "Abilities\\Spells\\Human\\Brilliance\\Brilliance.mdl")
+	..setLvlDataInt("dvar", 0, 0, 1)
+	..setLvlDataString("dptx", 0, 0, "none")
+	..setLvlDataInt("dwlk", 0, 0, 1)
+	..setLvlDataString("dsnd", 0, 0, "")
+	..setLvlDataString("dnam", 0, 0, "SpawnPoint")
+
+
+@compiletime function create_w3d_YOgr()
+	createObjectDefinition("w3d", 'YOgr', 'YOgr')
+	..setLvlDataString("dfil", 0, 0, "Abilities\\Spells\\Orc\\CommandAura\\CommandAura.mdl")
+	..setLvlDataInt("dshd", 0, 0, 0)
+	..setLvlDataInt("dvar", 0, 0, 1)
+	..setLvlDataInt("dvr1", 1, 0, 25)
+	..setLvlDataInt("dvg1", 1, 0, 80)
+	..setLvlDataInt("dvb1", 1, 0, 60)
+	..setLvlDataString("dptx", 0, 0, "none")
+	..setLvlDataInt("dwlk", 0, 0, 1)
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataString("dnam", 0, 0, "CenterSpot")
+
+
+@compiletime function create_w3d_AOks()
+	createObjectDefinition("w3d", 'AOks', 'AOks')
+	..setLvlDataUnreal("dmis", 0, 0, 0.4)
+
+
+@compiletime function create_w3d_YSaw()
+	createObjectDefinition("w3d", 'YSaw', 'YSaw')
+	..setLvlDataString("dnam", 0, 0, "Archway (light)")
+	..setLvlDataUnreal("dmis", 0, 0, 0.3)
+
+
+@compiletime function create_w3d_YScd()
+	createObjectDefinition("w3d", 'YScd', 'YScd')
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.7)
+	..setLvlDataString("dnam", 0, 0, "Column Double (light)")
+
+
+@compiletime function create_w3d_YSc4()
+	createObjectDefinition("w3d", 'YSc4', 'YSc4')
+	..setLvlDataUnreal("dfxr", 0, 0, -1.0)
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.7)
+	..setLvlDataString("dnam", 0, 0, "Column Semi Circle (light)")
+
+
+@compiletime function create_w3d_YSc3()
+	createObjectDefinition("w3d", 'YSc3', 'YSc3')
+	..setLvlDataUnreal("dfxr", 0, 0, -1.0)
+	..setLvlDataString("dptx", 0, 0, "none")
+	..setLvlDataInt("dwlk", 0, 0, 1)
+	..setLvlDataString("dnam", 0, 0, "Column Semi Circle (dark walkable)")
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.7)
+
+
+@compiletime function create_w3d_IOob()
+	createObjectDefinition("w3d", 'IOob', 'IOob')
+	..setLvlDataString("dfil", 0, 0, "Doodads\\Cityscape\\Props\\City_Oblisk\\City_Oblisk.mdl")
+	..setLvlDataString("dnam", 0, 0, "Obelisk (dark)")
+	..setLvlDataInt("dvar", 0, 0, 1)
+	..setLvlDataUnreal("dmas", 0, 0, 1.0)
+	..setLvlDataUnreal("dmis", 0, 0, 0.4)
+	..setLvlDataUnreal("dsel", 0, 0, 128.0)
+	..setLvlDataString("dtil", 0, 0, "Y,X,J")
+
+
+@compiletime function create_w3d_YOob()
+	createObjectDefinition("w3d", 'YOob', 'YOob')
+	..setLvlDataString("dnam", 0, 0, "Obelisk (light)")
+	..setLvlDataUnreal("ddes", 0, 0, 1.0)
+	..setLvlDataInt("dsmm", 0, 0, 0)
+
+
+@compiletime function create_w3d_CSra()
+	createObjectDefinition("w3d", 'CSra', 'CSra')
+	..setLvlDataString("dnam", 0, 0, "Archway (dark)")
+	..setLvlDataString("dfil", 0, 0, "Doodads\\Cityscape\\Structures\\Archway1\\Archway1.mdl")
+	..setLvlDataString("dtil", 0, 0, "Y,X,J")
+	..setLvlDataInt("dcpr", 0, 0, 0)
+
+
+@compiletime function create_w3d_YSc2()
+	createObjectDefinition("w3d", 'YSc2', 'YSc2')
+	..setLvlDataString("dnam", 0, 0, "Column Semi Circle (dark)")
+	..setLvlDataUnreal("dfxr", 0, 0, -1.0)
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.7)
+
+
+@compiletime function create_w3d_YScs()
+	createObjectDefinition("w3d", 'YScs', 'YScs')
+	..setLvlDataString("dptx", 0, 0, "none")
+	..setLvlDataInt("dwlk", 0, 0, 1)
+	..setLvlDataString("dnam", 0, 0, "Column Semi Circle (light walkable)")
+	..setLvlDataUnreal("dfxr", 0, 0, -1.0)
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.7)
+
+
+@compiletime function create_w3d_YOfn()
+	createObjectDefinition("w3d", 'YOfn', 'YOfn')
+	..setLvlDataString("dnam", 0, 0, "Fountain (light)")
+	..setLvlDataUnreal("dmas", 0, 0, 1.5)
+	..setLvlDataUnreal("dmis", 0, 0, 0.25)
+	..setLvlDataInt("dsmm", 0, 0, 0)
+
+
+@compiletime function create_w3d_YOws()
+	createObjectDefinition("w3d", 'YOws', 'YOws')
+	..setLvlDataUnreal("dmis", 0, 0, 0.7)
+	..setLvlDataInt("dsmm", 0, 0, 0)
+
+
+@compiletime function create_w3d_CPlp()
+	createObjectDefinition("w3d", 'CPlp', 'CPlp')
+	..setLvlDataUnreal("dmis", 0, 0, 0.4)
+
+
+@compiletime function create_w3d_YSll()
+	createObjectDefinition("w3d", 'YSll', 'YSll')
+	..setLvlDataUnreal("dmis", 0, 0, 0.5)
+	..setLvlDataInt("dsmm", 0, 0, 0)
+
+
+@compiletime function create_w3d_LOss()
+	createObjectDefinition("w3d", 'LOss', 'LOss')
+	..setLvlDataString("dptx", 0, 0, "PathTextures\\4x4Default.tga")
+
+
+@compiletime function create_w3d_LWw0()
+	createObjectDefinition("w3d", 'LWw0', 'LWw0')
+	..setLvlDataUnreal("dmis", 0, 0, 0.1)
+	..setLvlDataUnreal("dmas", 0, 0, 4.0)
+
+
+@compiletime function create_w3d_YOks()
+	createObjectDefinition("w3d", 'YOks', 'YOks')
+	..setLvlDataInt("dsmm", 0, 0, 0)
+
+
+@compiletime function create_w3d_YObs()
+	createObjectDefinition("w3d", 'YObs', 'YObs')
+	..setLvlDataUnreal("ddes", 0, 0, 1.2)
+
+
+@compiletime function create_w3d_LOsk()
+	createObjectDefinition("w3d", 'LOsk', 'LOsk')
+	..setLvlDataString("dptx", 0, 0, "")
+
+
+@compiletime function create_w3d_BOth()
+	createObjectDefinition("w3d", 'BOth', 'BOth')
+	..setLvlDataString("dptx", 0, 0, "")
+
+
+@compiletime function create_w3d_YOth()
+	createObjectDefinition("w3d", 'YOth', 'YOth')
+	..setLvlDataString("dptx", 0, 0, "")
+
+
+@compiletime function create_w3d_BOtt()
+	createObjectDefinition("w3d", 'BOtt', 'BOtt')
+	..setLvlDataString("dptx", 0, 0, "")
+
+
+@compiletime function create_w3d_BOct()
+	createObjectDefinition("w3d", 'BOct', 'BOct')
+	..setLvlDataString("dptx", 0, 0, "")
+
+
+@compiletime function create_w3d_YOst()
+	createObjectDefinition("w3d", 'YOst', 'YOst')
+	..setLvlDataString("dfil", 0, 0, "Abilities\\Spells\\Human\\Blizzard\\BlizzardTarget.mdl")
+	..setLvlDataString("dtil", 0, 0, "Y,X,J")
+	..setLvlDataInt("dwlk", 0, 0, 1)
+	..setLvlDataUnreal("dvis", 0, 0, 0.0)
+	..setLvlDataUnreal("dmas", 0, 0, 0.1)
+	..setLvlDataUnreal("dmis", 0, 0, 0.1)
+	..setLvlDataString("dptx", 0, 0, "")
+
+

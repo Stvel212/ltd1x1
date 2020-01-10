@@ -1,0 +1,41 @@
+package WurstExportedObjects_w3t
+import ObjEditingNatives
+
+// Modified Table (contains all custom objects)
+
+@compiletime function create_w3t_I000()
+	createObjectDefinition("w3t", 'I000', 'ratc')
+	..setString("unam", "Sword of Pwnage")
+	..setString("ides", "+150 attack, +30% attack speed, +10000hp, +6 armor.")
+	..setString("utip", "|cffFFcc00Sword of Pwnage|r")
+	..setString("utub", "An incredibly powerful sword given to a King to compensate for an empty team. Provides +150 damage, +30% attack speed, +10000 hit points, and +6 armor.")
+	..setString("iico", "ReplaceableTextures\\CommandButtons\\BTNINV_Sword_25.blp")
+	..setString("iabi", "A01Q,A01P,A04I,A01R")
+
+
+@compiletime function create_w3t_I002()
+	createObjectDefinition("w3t", 'I002', 'tdex')
+	..setString("unam", "Tome of 400 hp")
+	..setString("iabi", "A041")
+
+
+@compiletime function create_w3t_I003()
+	createObjectDefinition("w3t", 'I003', 'tdex')
+	..setString("unam", "Tome of 4 Damage")
+	..setString("iabi", "A042")
+
+
+@compiletime function create_w3t_I001()
+	createObjectDefinition("w3t", 'I001', 'ratc')
+	..setString("unam", "Unkillable")
+	..setString("ides", "Unkillable")
+	..setString("utip", "|cffFFcc00Unkillable|r")
+	..setString("utub", "This King is unkillable.\r\n\r\n+1000 hp regen\r\n+100% attack speed\r\n+1000 damage\r\n+100 armor")
+	..setString("iico", "ReplaceableTextures\\CommandButtons\\BTNInvulnerable.blp")
+	..setString("iabi", "A07A,A078,A077,A079")
+
+
+// Original Table (contains all modified default objects)
+// Wurst does not support modifying default objects
+// but you can copy these functions and replace 'xxxx' with a new, custom id.
+

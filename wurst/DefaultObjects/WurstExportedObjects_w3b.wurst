@@ -1,0 +1,47 @@
+package WurstExportedObjects_w3b
+import ObjEditingNatives
+
+// Modified Table (contains all custom objects)
+
+@compiletime function create_w3b_B000()
+	createObjectDefinition("w3b", 'B000', 'YTfc')
+	..setString("bptx", "war3mapImported\\nothere4x40.tga")
+	..setUnreal("bfxr", -1.0)
+	..setString("bnam", "Pathing Blocker (Both) (Huge)")
+
+
+// Original Table (contains all modified default objects)
+// Wurst does not support modifying default objects
+// but you can copy these functions and replace 'xxxx' with a new, custom id.
+
+@compiletime function create_w3b_YTcx()
+	createObjectDefinition("w3b", 'YTcx', 'YTcx')
+	..setString("bnam", "City Entrance Horizontal")
+
+
+@compiletime function create_w3b_YTce()
+	createObjectDefinition("w3b", 'YTce', 'YTce')
+	..setString("bnam", "City Entrance Vertical")
+
+
+@compiletime function create_w3b_BTsc()
+	createObjectDefinition("w3b", 'BTsc', 'BTsc')
+	..setString("bshd", "")
+	..setUnreal("bmas", 2.0)
+
+
+@compiletime function create_w3b_LTlt()
+	createObjectDefinition("w3b", 'LTlt', 'LTlt')
+	..setUnreal("bhps", 99999.0)
+
+
+@compiletime function create_w3b_ATtr()
+	createObjectDefinition("w3b", 'ATtr', 'ATtr')
+	..setUnreal("bhps", 99999.0)
+
+
+@compiletime function create_w3b_ATtc()
+	createObjectDefinition("w3b", 'ATtc', 'ATtc')
+	..setUnreal("bhps", 99999.0)
+
+

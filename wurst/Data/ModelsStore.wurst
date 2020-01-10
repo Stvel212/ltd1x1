@@ -1,14 +1,19 @@
 package ModelsStore
 
 import Prophet
+import GrimReaper
+import Matron
+import Sylren
+import Terminator
+import Trollface
 
 public class ModelsStore
-  static let prophet = 'u00T'
-  static let model1 = PROPHET_GRIM_REAPER_ID
-  static let model2 = PROPHET_MATRON_ID
-  static let model3 = PROPHET_SYLREN_ID
-  static let model4 = PROPHET_TERMINATOR_ID
-  static let model5 = PROPHET_TROLLFACE_ID
+  static let prophet = PROPHET_ID
+  static let model1 = GRIM_REAPER_ID
+  static let model2 = MATRON_ID
+  static let model3 = SYLREN_ID
+  static let model4 = TERMINATOR_ID
+  static let model5 = TROLLFACE_ID
 
   static let models = [prophet, model5, model1, model3, model4, model2, prophet, prophet]
   
