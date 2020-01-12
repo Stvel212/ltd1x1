@@ -1,0 +1,26 @@
+package Wave
+import AbilityObjEditing
+
+public let WAVE_ID = 'A021'
+
+function waveDamagePreset(int lvl) returns real
+    return (90 + (lvl-1) * 100 + (lvl-2) * (lvl-1) * 25).toReal()
+
+@compiletime function createWave()
+    new AbilityDefinitionShockwaveCreep(WAVE_ID)
+    ..setEditorSuffix("King")
+    ..setLevels(3)
+    ..setRace(Race.Orc)
+    ..setName("King's Shockwave")
+    ..presetTooltipNormal(lvl -> "King's Shock|cffffcc00w|rave")
+    ..presetTooltipNormalExtended(lvl -> "A wave of force that ripples outward, causing {0} damage to enemy units in a line.".format(waveDamagePreset(lvl).toString()))
+    ..presetDamage(lvl -> waveDamagePreset(lvl))
+    ..presetTargetsAllowed(lvl -> "air,ground,enemy")
+    ..presetCooldown(lvl -> 22)
+    ..presetAreaofEffect(lvl -> 250)
+    ..presetMaximumDamage(lvl -> 99999)
+    ..presetFinalArea(lvl -> 250)
+    ..presetManaCost(lvl -> 200)
+    ..presetCastRange(lvl -> 900)
+    ..presetDistance(lvl -> 1000)
+  

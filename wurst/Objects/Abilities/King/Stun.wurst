@@ -1,0 +1,25 @@
+package Stun
+import AbilityObjEditing
+
+public let STUN_ID = 'A022'
+
+function stunDamagePreset(int lvl) returns real
+  return 45 + (lvl * 2) * (lvl-1) * 12.5
+
+@compiletime function createStun()
+  new AbilityDefinitionWarStompcreep('A022')
+  ..setEditorSuffix("King")
+  ..setLevels(3)
+  ..setRace(Race.Orc)
+  ..setName("King's War Stomp")
+  ..presetTooltipNormal(lvl -> "King's War S|cffffcc00t|romp")
+  ..presetTooltipNormalExtended(lvl -> "Slams the ground, dealing {0} damage to nearby enemy units and stunning them for 1.25 seconds.".format(stunDamagePreset(lvl).toString()))
+  ..presetDurationNormal(lvl -> 1.25)
+  ..presetDurationHero(lvl -> 1.25)
+  ..presetTargetsAllowed(lvl -> "air,ground,enemy")
+  ..presetManaCost(lvl -> 250)
+  ..presetCooldown(lvl -> 9)
+  ..presetAreaofEffect(lvl -> 350)
+  ..presetBuffs(lvl -> "B044")
+  ..presetDamage(lvl -> stunDamagePreset(lvl))
+  

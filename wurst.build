@@ -3,8 +3,8 @@ projectName: ___
 dependencies:
     - https://github.com/netVoix/WurstLib
 buildMapData:
-    name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2a
-    fileName: Legion TD MegaOZGame v 1.2a
+    name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2b
+    fileName: Legion TD MegaOZGame v 1.2b
     author: oz
     players:
         - id: 0
