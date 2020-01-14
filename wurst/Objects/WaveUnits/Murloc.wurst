@@ -1,10 +1,10 @@
-package KvashRider
+package Murloc
 import ObjEditingNatives
 
-public let KVASH_RIDER_ID = 'h000'
+public let MURLOC_ID = 'h000'
 
 @compiletime function create_w3u_h000()
-    createObjectDefinition("w3u", KVASH_RIDER_ID, 'hfoo')
+    createObjectDefinition("w3u", MURLOC_ID, 'hfoo')
     ..setString("uabi", "")
     ..setString("udty", "none")
     ..setInt("umvs", 275)
@@ -18,14 +18,13 @@ public let KVASH_RIDER_ID = 'h000'
     ..setInt("ubdi", 0)
     ..setInt("ubsi", 0)
     ..setString("upgr", "R004,R005,R009,R00A")
-    ..setString("unam", "Kvash Rider")
-    ..setString("umdl", "models\\KvashRider.mdx")
+    ..setString("unam", "Murloc")
+    ..setString("umdl", "units\\creeps\\MurlocFlesheater\\MurlocFlesheater_V1.mdl")
     ..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNMurlocFlesheater.blp")
     ..setString("unsf", "L2")
     ..setString("usnd", "Murloc")
     ..setInt("udef", 3)
     ..setReal("ussc", 1.5)
-    ..setReal("usca", 0.7)
     ..setInt("ucam", 1)
     ..setString("urac", "orc")
     ..setString("ua1g", "enemies,vulnerable")
