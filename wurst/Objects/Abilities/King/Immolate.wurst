@@ -13,8 +13,8 @@ function immoDamagePreset(int lvl) returns real
   ..setRace(Race.Orc)
   ..setName("King's Permanent Immolation")
   ..presetTooltipNormal(lvl -> "King's Permanent Immolation")
-  ..presetTooltipNormalExtended(lvl -> "Burns nearby enemy land units for {0} points of damage per second.".format(immoDamagePreset(lvl).toString()))
+  ..presetTooltipNormalExtended(lvl -> "Burns nearby enemy land units for 11 points of damage per second.")
   ..presetTargetsAllowed(lvl -> "enemies,ground")
   ..presetAreaofEffect(lvl -> 350)
-  ..presetDamageperInterval(lvl -> immoDamagePreset(lvl))
+  ..presetDamageperInterval(lvl -> 11)
   

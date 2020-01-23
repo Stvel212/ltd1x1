@@ -1,0 +1,15 @@
+package PandarenColdArmor
+import ObjectIdGenerator
+import AbilityObjEditing
+
+public let PANDAREN_COLD_ARMOR_ID = compiletime(ABIL_ID_GEN.next())
+
+@compiletime function createPandarenColdArmor()
+    new AbilityDefinitionLichFrostArmor(PANDAREN_COLD_ARMOR_ID)
+    ..presetArmorBonus(lvl -> 2)
+    ..presetArmorDuration(lvl -> 10)
+    ..presetCooldown(lvl -> 1)
+    ..presetManaCost(lvl -> 13)
+    ..presetTargetsAllowed(lvl -> "air,friend,ground,self")
+    ..presetDurationNormal(lvl -> 10)
+    ..presetDurationHero(lvl -> 10)
