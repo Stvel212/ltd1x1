@@ -4484,24 +4484,6 @@ import ObjEditingNatives
 	..setLvlDataUnreal("flk2", 1, 2, 150.0)
 
 
-@compiletime function create_w3a_A08F()
-	createObjectDefinition("w3a", 'A08F', 'ANcs')
-	..setLvlDataInt("alev", 0, 0, 1)
-	..setLvlDataInt("amcs", 1, 0, 20)
-	..setLvlDataString("atar", 1, 0, "air,enemies,ground")
-	..setLvlDataString("aub1", 1, 0, "Bombards an area with rockets, dealing up to 10 damage to nearby enemy units and stunning them for 1 second.")
-	..setLvlDataInt("aher", 0, 0, 0)
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataString("anam", 0, 0, "Cluster Rockets(goblin)")
-	..setLvlDataUnreal("acdn", 1, 0, 20.0)
-	..setLvlDataUnreal("aare", 1, 0, 100.0)
-	..setLvlDataUnreal("aran", 1, 0, 300.0)
-	..setLvlDataUnreal("Ncs1", 1, 1, 2.5)
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataInt("abpx", 0, 0, 0)
-	..setLvlDataString("abuf", 1, 0, "B04A")
-
-
 @compiletime function create_w3a_A08G()
 	createObjectDefinition("w3a", 'A08G', 'Aimp')
 	..setLvlDataString("arac", 0, 0, "human")

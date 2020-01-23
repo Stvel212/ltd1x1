@@ -1,0 +1,34 @@
+package GeomancerUnit
+import ObjEditingNatives
+
+public let GEOMANCER_UNIT_ID = 'h0AD'
+
+@compiletime function create_w3u_h0AD()
+	createObjectDefinition("w3u", GEOMANCER_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 200)
+	..setString("uabi", "")
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Geomancer")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 0.8)
+	..setInt("ua1b", 14)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("unsf", "Fighter")
+	..setString("utyp", "giant")
+	..setString("udty", "medium")
+	..setUnreal("ucol", 15.0)
+	..setInt("ua1s", 3)
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNKoboldGeomancer.blp")
+	..setString("umdl", "units\\creeps\\KoboldGeomancer\\KoboldGeomancer.mdl")
+	..setInt("ugol", 40)
+	..setInt("upoi", 40)
+	..setReal("usca", 1.3)
+	..setInt("upri", 5)
+	..setString("usnd", "Kobold")
+

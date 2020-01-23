@@ -1,0 +1,38 @@
+package ClockwerkUnit
+import ObjEditingNatives
+import ClusterRockets
+import ObjectIds
+
+public let CLOCKWERCK_UNIT_ID = 'h0AG'
+
+@compiletime function create_w3u_h0AG()
+	createObjectDefinition("w3u", CLOCKWERCK_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 770)
+	..setString("uabi", CLUSTER_ROCKETS_ID.toRawCode())
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Clockwerck")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 1.0)
+	..setInt("ua1b", 75)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("unsf", "Fighter")
+	..setString("utyp", "giant")
+	..setString("udty", "normal")
+	..setUnreal("ucol", 20.0)
+	..setInt("ua1s", 9)
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNClockWerkGoblin.blp")
+	..setString("umdl", "Units\\Creeps\\HeroTinkerRobot\\HeroTinkerRobot.mdl")
+	..setInt("ugol", 130)
+	..setInt("upoi", 170)
+	..setReal("usca", 1.3)
+	..setInt("ua1r", 100)
+	..setInt("umpm", 20)
+	..setInt("umpi", 20)
+	..setUnreal("umpr", 1.0)
+	..setString("usnd", "ClockwerkGoblin")
