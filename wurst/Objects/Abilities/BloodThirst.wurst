@@ -1,0 +1,20 @@
+package BloodThirst
+import ObjEditingNatives
+
+public let BLOOD_THIRST_ID = 'A010'
+
+@compiletime function create_w3a_A010()
+    createObjectDefinition("w3a", BLOOD_THIRST_ID, 'ACvp')
+    ..setLvlDataString("ansf", 0, 0, "(Fighter)")
+    ..setLvlDataString("arac", 0, 0, "human")
+    ..setLvlDataString("anam", 0, 0, "Blood Thirst")
+    ..setLvlDataString("atp1", 1, 0, "Blood Thirst")
+    ..setLvlDataString("aub1", 1, 0, "Nearby friendly melee units gain 8% life steal.")
+    ..setLvlDataUnreal("aare", 1, 0, 900.0)
+    ..setLvlDataUnreal("Uav1", 1, 1, 0.08)
+    ..setLvlDataInt("abpx", 0, 0, 0)
+    ..setLvlDataInt("abpy", 0, 0, 0)
+    ..setLvlDataString("atar", 1, 0, "air,friend,ground,self,structure")
+    ..setLvlDataString("abuf", 1, 0, "B00G")
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNUndeadShrine.blp")
+    

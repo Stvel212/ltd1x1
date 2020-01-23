@@ -1,0 +1,19 @@
+package SoundOfMadness
+import ObjEditingNatives
+
+public let SOUND_OF_MADNESS_ID = 'A011'
+
+@compiletime function create_w3a_A011()
+	createObjectDefinition("w3a", SOUND_OF_MADNESS_ID, 'ACvp')
+	..setLvlDataString("ansf", 0, 0, "(Fighter)")
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataString("atp1", 1, 0, "Sound of Madness")
+	..setLvlDataString("aub1", 1, 0, "Nearby friendly melee units gain 16% life steal.")
+	..setLvlDataUnreal("aare", 1, 0, 900.0)
+	..setLvlDataUnreal("Uav1", 1, 1, 0.16)
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("atar", 1, 0, "air,friend,ground,invulnerable,structure,vulnerable")
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNHornOfDoom.blp")
+	..setLvlDataString("abuf", 1, 0, "B00H")
+	..setLvlDataString("anam", 0, 0, "Sound of Madness")

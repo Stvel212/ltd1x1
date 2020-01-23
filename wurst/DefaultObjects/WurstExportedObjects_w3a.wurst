@@ -505,38 +505,6 @@ import ObjEditingNatives
 	..setLvlDataString("ansf", 0, 0, "(Harbinger) - 100mana")
 
 
-@compiletime function create_w3a_A010()
-	createObjectDefinition("w3a", 'A010', 'ACvp')
-	..setLvlDataString("ansf", 0, 0, "(Fighter)")
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataString("anam", 0, 0, "Blood Thirst")
-	..setLvlDataString("atp1", 1, 0, "Blood Thirst")
-	..setLvlDataString("aub1", 1, 0, "Nearby friendly melee units gain 8% life steal.")
-	..setLvlDataUnreal("aare", 1, 0, 600.0)
-	..setLvlDataUnreal("Uav1", 1, 1, 0.08)
-	..setLvlDataInt("abpx", 0, 0, 0)
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataString("atar", 1, 0, "air,friend,ground,self,structure")
-	..setLvlDataString("abuf", 1, 0, "B00G")
-	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNUndeadShrine.blp")
-
-
-@compiletime function create_w3a_A011()
-	createObjectDefinition("w3a", 'A011', 'ACvp')
-	..setLvlDataString("ansf", 0, 0, "(Fighter)")
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataString("atp1", 1, 0, "Sound of Madness")
-	..setLvlDataString("aub1", 1, 0, "Nearby friendly melee units gain 16% life steal.")
-	..setLvlDataUnreal("aare", 1, 0, 600.0)
-	..setLvlDataUnreal("Uav1", 1, 1, 0.16)
-	..setLvlDataInt("abpx", 0, 0, 0)
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataString("atar", 1, 0, "air,friend,ground,invulnerable,structure,vulnerable")
-	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNHornOfDoom.blp")
-	..setLvlDataString("abuf", 1, 0, "B00H")
-	..setLvlDataString("anam", 0, 0, "Sound of Madness")
-
-
 @compiletime function create_w3a_A012()
 	createObjectDefinition("w3a", 'A012', 'ANdb')
 	..setLvlDataString("arac", 0, 0, "human")

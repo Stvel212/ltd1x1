@@ -1,5 +1,7 @@
 package KeeperOfSoulsUnit
 import ObjEditingNatives
+import SoundOfMadness
+import ObjectIds
 
 public let KEEPER_OF_SOULS_UNIT_ID = 'h03J'
 
@@ -13,7 +15,7 @@ public let KEEPER_OF_SOULS_UNIT_ID = 'h03J'
 	..setString("ureq", "")
 	..setString("unam", "Keeper of Souls")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNDestroyer.blp")
-	..setString("uabi", "A011")
+	..setString("uabi", SOUND_OF_MADNESS_ID.toRawCode())
 	..setString("ua1g", "enemies")
 	..setInt("ulum", 0)
 	..setInt("uhpm", 1080)
