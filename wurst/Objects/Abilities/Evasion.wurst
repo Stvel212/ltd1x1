@@ -2,27 +2,25 @@ package Evasion
 
 import ObjEditingNatives
 
-public let WANDIGOO_EVASION = 0.10
-public let WANDIGOO_EVASION_DESCRIPTION = "Gives a {0}% chance to avoid an attack.".format(((WANDIGOO_EVASION*100).toInt()).toString())
-public let ANCIENT_WANDIGO_EVASION = 0.20
-public let ANCIENT_WANDIGO_EVASION_DESCRIPTION = "Gives a {0}% chance to avoid an attack.".format(((ANCIENT_WANDIGO_EVASION*100).toInt()).toString())
+public let EVASION_10_ID = 'A08Z'
+public let EVASION_20_ID = 'A08X'
 
-@compiletime function createEvasionForWandigo()
-	createObjectDefinition("w3a", 'A08Z', 'ACes')
+@compiletime function createEvasion10()
+	createObjectDefinition("w3a", EVASION_10_ID, 'ACes')
 	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataUnreal("Eev1", 1, 1, WANDIGOO_EVASION)
+	..setLvlDataUnreal("Eev1", 1, 1, 0.10)
 	..setLvlDataInt("abpx", 0, 0, 0)
 	..setLvlDataInt("abpy", 0, 0, 0)
 	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNIceShard.blp")
-	..setLvlDataString("aub1", 1, 0, WANDIGOO_EVASION_DESCRIPTION)
+	..setLvlDataString("aub1", 1, 0, "Gives a 10% chance to avoid an attack.")
 	..setLvlDataString("atp1", 1, 0, "|cffff8000Evasion|r")
 
-@compiletime function createEvasionForAncientWandigo()
-	createObjectDefinition("w3a", 'A08X', 'ACes')
+@compiletime function createEvasion20()
+	createObjectDefinition("w3a", EVASION_20_ID, 'ACes')
 	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataUnreal("Eev1", 1, 1, ANCIENT_WANDIGO_EVASION)
+	..setLvlDataUnreal("Eev1", 1, 1, 0.20)
 	..setLvlDataInt("abpx", 0, 0, 0)
 	..setLvlDataInt("abpy", 0, 0, 0)
 	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNIceShard.blp")
-	..setLvlDataString("aub1", 1, 0, ANCIENT_WANDIGO_EVASION_DESCRIPTION)
+	..setLvlDataString("aub1", 1, 0, "Gives a 20% chance to avoid an attack.")
 	..setLvlDataString("atp1", 1, 0, "|cffff8000Evasion|r")
