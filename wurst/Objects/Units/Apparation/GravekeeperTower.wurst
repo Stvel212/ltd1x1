@@ -34,7 +34,7 @@ public let GRAVEKEEPER_TOWER_ID = 'h05Y'
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNGravekeeper.blp")
 	..setString("umdl", "Units\\Orc\\SpiritWyvern\\SpiritWyvern.mdx")
 	..setInt("uhpm", 1025)
-	..setInt("ugol", 250)
+	..setInt("ugol", 240)
 	..setInt("upoi", 450)
 	..setInt("upri", 3)
 	..setInt("ufoo", 3)
