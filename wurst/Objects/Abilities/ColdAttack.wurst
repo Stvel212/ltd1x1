@@ -1,0 +1,15 @@
+package ColdAttack
+import AbilityObjEditing
+
+public let COLD_ATTACK_5_ID = 'A01M'
+
+@compiletime function create_w3a_A01M()
+    new AbilityDefinitionColdArrowscreep(COLD_ATTACK_5_ID)
+    ..presetDurationNormal(lvl -> 3)
+    ..presetDurationHero(lvl -> 3)
+    ..presetExtraDamage(lvl -> 0)
+    ..presetManaCost(lvl -> 0)
+    ..presetCooldown(lvl -> 0)
+    ..presetMovementSpeedFactor(lvl -> 5)
+    ..presetAttackSpeedFactor(lvl -> 5)
+    ..presetTargetsAllowed(lvl -> "enemies")

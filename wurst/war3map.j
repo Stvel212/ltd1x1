@@ -26,6 +26,7 @@ boolean udg_GameEnded_Boolean=false
 timer udg_Spawn_Timer=null
 boolean mercenaryDisabled = false
 boolean randomAbilities = false
+boolean kingLimit = false
 boolean noCross = false
 boolean incomeFirstWave = false
 boolean autoHeal = false
@@ -13687,6 +13688,9 @@ endif
 if((udg_GameMode_String=="ra"))then
 return true
 endif
+if((udg_GameMode_String=="kl"))then
+return true
+endif
 if((udg_GameMode_String=="nc"))then
 return true
 endif
@@ -13859,6 +13863,9 @@ if(udg_GameMode_String=="md")then
 endif
 if(udg_GameMode_String=="ra") then
     set randomAbilities = true
+endif
+if(udg_GameMode_String=="kl") then
+    set kingLimit = true
 endif
 if(udg_GameMode_String=="nc") then
     set noCross = true
@@ -14239,6 +14246,9 @@ set udg_ModeString=(udg_ModeString+"md")
 endif
 if(randomAbilities) then
 set udg_ModeString=(udg_ModeString+"ra")
+endif
+if(kingLimit) then
+set udg_ModeString=(udg_ModeString+"kl")
 endif
 if(noCross) then
 set udg_ModeString=(udg_ModeString+"nc")

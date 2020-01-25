@@ -832,19 +832,6 @@ import ObjEditingNatives
 	..setLvlDataInt("abpx", 0, 0, 0)
 
 
-@compiletime function create_w3a_A01M()
-	createObjectDefinition("w3a", 'A01M', 'Afra')
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataString("aub1", 1, 0, "Adds a cold effect to this unit's attacks that slows enemy units' movement speed for 4 seconds.")
-	..setLvlDataUnreal("adur", 1, 0, 2.0)
-	..setLvlDataUnreal("ahdu", 1, 0, 1.0)
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataString("anam", 0, 0, "Cold Attack")
-	..setLvlDataString("atp1", 1, 0, "Cold Attack")
-	..setLvlDataString("abuf", 1, 0, "B01B")
-	..setLvlDataString("ansf", 0, 0, "(summon)")
-
-
 @compiletime function create_w3a_A01N()
 	createObjectDefinition("w3a", 'A01N', 'AIva')
 	..setLvlDataString("arac", 0, 0, "human")
@@ -6444,17 +6431,17 @@ import ObjEditingNatives
 	..setLvlDataString("ansf", 0, 0, "(custom)")
 
 
-@compiletime function create_w3a_xrot()
-	createObjectDefinition("w3a", 'xrot', 'Aro1')
-	..setLvlDataInt("wurs", 0, 0, 42)
-
-
 @compiletime function create_w3a_xdaa()
 	createObjectDefinition("w3a", 'xdaa', 'Apiv')
 	..setLvlDataInt("wurs", 0, 0, 42)
 	..setLvlDataInt("Gho1", 1, 1, 0)
 	..setLvlDataUnreal("adur", 1, 0, -1.0)
 	..setLvlDataUnreal("ahdu", 1, 0, -1.0)
+
+	
+@compiletime function create_w3a_xrot()
+	createObjectDefinition("w3a", 'xrot', 'Aro1')
+	..setLvlDataInt("wurs", 0, 0, 42)
 
 
 @compiletime function create_w3a_AM01()

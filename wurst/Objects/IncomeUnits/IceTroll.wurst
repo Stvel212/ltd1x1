@@ -1,5 +1,7 @@
 package IceTroll
 import ObjEditingNatives
+import ColdAttack
+import ObjectIds
 
 public let ICE_TROLL_ID = 'h051'
 
@@ -22,7 +24,7 @@ public let ICE_TROLL_ID = 'h051'
 	..setInt("ubdi", 0)
 	..setInt("ubba", 1)
 	..setString("usnd", "IceTroll")
-	..setString("uabi", "A03H,A01M")
+	..setString("uabi", "A03H," + COLD_ATTACK_5_ID.toRawCode())
 	..setReal("ussc", 2.0)
 	..setUnreal("ucol", 18.0)
 	..setString("urac", "orc")

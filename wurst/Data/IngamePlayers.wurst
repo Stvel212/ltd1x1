@@ -1,0 +1,9 @@
+package IngamePlayers
+import LinkedList
+
+public let INGAME_PLAYERS = new LinkedList<int>()
+
+init
+    for i = 0 to bj_MAX_PLAYER_SLOTS - 1
+        if players[i].isIngame()
+            INGAME_PLAYERS.add(i)

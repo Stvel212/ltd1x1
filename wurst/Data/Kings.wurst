@@ -1,0 +1,4 @@
+package Kings
+import LinkedList
+
+public let KINGS = asList(gg_unit_h00K_0006, gg_unit_h00K_0009)

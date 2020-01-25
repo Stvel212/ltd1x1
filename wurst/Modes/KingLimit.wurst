@@ -1,0 +1,20 @@
+package KingLimit
+
+function setKingUpgrades(int hp, int attack, int regen)
+    for i = 8 to 9
+        SetPlayerTechMaxAllowed(players[i], 'R000', hp)
+        SetPlayerTechMaxAllowed(players[i], 'R001', attack)
+        SetPlayerTechMaxAllowed(players[i], 'R002', regen)
+        
+
+function setKingLimit()
+    if (kingLimit)
+        setKingUpgrades(2, 2, 2)
+
+function resetKingLimit()
+    if udg_Level_Integer == 20
+        setKingUpgrades(20, 30, 20)
+
+init
+    afterModeResolved.addCondition(Condition(function setKingLimit))
+    onWaveEnd.addCondition(Condition(function resetKingLimit))

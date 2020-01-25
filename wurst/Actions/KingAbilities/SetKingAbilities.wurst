@@ -3,7 +3,6 @@ package SetKingAbilities
 import KingAbilities
 import Display
 import Colorizer
-import AbilityInfo
 
 let IMMOLATE_ID = 'A01T'
 let WAVE_ID = 'A021'
@@ -23,9 +22,6 @@ public function setAbilities()
             kingAbilities[i].setAbilityWithImage(aid, abilImgPath(aid))
             let msg = "Your king has received {0} ability".format(abilColor(aid))
             Display.toTeamAndObs(msg, 7, kingAbilities[i].getOwner().getTeam())
-            if aid != IMMOLATE_ID
-                let message = "CD: |cff00ff15Ready|r"
-                createAbilityTextTag(i, message)
     if not randomAbilities and udg_Level_Integer == 19
         for i = 0 to 1
             if kingAbilities[i].hasAbility(IMMOLATE_ID)

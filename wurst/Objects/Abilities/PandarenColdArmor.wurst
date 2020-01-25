@@ -1,8 +1,8 @@
 package PandarenColdArmor
-import ObjectIdGenerator
 import AbilityObjEditing
 
-public let PANDAREN_COLD_ARMOR_ID = compiletime(ABIL_ID_GEN.next())
+// public let PANDAREN_COLD_ARMOR_ID = compiletime(ABIL_ID_GEN.next())
+public let PANDAREN_COLD_ARMOR_ID = 'A0BW'
 
 @compiletime function createPandarenColdArmor()
     new AbilityDefinitionLichFrostArmor(PANDAREN_COLD_ARMOR_ID)
