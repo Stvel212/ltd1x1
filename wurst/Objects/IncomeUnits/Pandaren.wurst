@@ -2,7 +2,6 @@ package Pandaren
 import ObjEditingNatives
 import Evasion
 import ObjectIds
-import PandarenColdArmor
 
 public let PANDAREN_ID = 'h053'
 
@@ -22,7 +21,7 @@ public let PANDAREN_ID = 'h053'
     ..setInt("ubsi", 0)
     ..setInt("ubba", 1)
     ..setString("usnd", "Furbolg")
-    ..setString("uabi", "A03O," + commaList(EVASION_10_ID, PANDAREN_COLD_ARMOR_ID))
+    ..setString("uabi", "A03O," + commaList(EVASION_10_ID))
     ..setString("upgr", "R009,R00A")
     ..setInt("udef", 0)
     ..setReal("ussc", 1.5)
@@ -45,7 +44,7 @@ public let PANDAREN_ID = 'h053'
     ..setUnreal("umpr", 1.0)
     ..setInt("usrg", 16)
     ..setString("utip", "Summon Pandaren (|cffFFcc00R|r)")
-    ..setString("utub", "Clawed, white-furred savage.\r\n\r\n|cffFFcc00+15 income|r\r\n|cffCCCCCCNormal damage, Heavy armor.|r\r\n|cff33BB33Hotblood|r: bonus regeneration")
+    ..setString("utub", "Clawed, white-furred savage.\r\n\r\n|cffFFcc00+15 income|r\r\n|cffCCCCCCNormal damage, Heavy armor.|r\r\n|cff33BB33Hotblood|r: bonus regeneration|r\r\n|cff33BB33Evasion|r: 10% chanche to evade attack|r\r\n|cff33BB33Frost Armor|r: +2 armor to self")
     ..setInt("ulev", 15)
     ..setInt("usid", 400)
     ..setInt("usin", 400)

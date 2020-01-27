@@ -6431,43 +6431,6 @@ import ObjEditingNatives
 	..setLvlDataString("ansf", 0, 0, "(custom)")
 
 
-@compiletime function create_w3a_xdaa()
-	createObjectDefinition("w3a", 'xdaa', 'Apiv')
-	..setLvlDataInt("wurs", 0, 0, 42)
-	..setLvlDataInt("Gho1", 1, 1, 0)
-	..setLvlDataUnreal("adur", 1, 0, -1.0)
-	..setLvlDataUnreal("ahdu", 1, 0, -1.0)
-
-	
-@compiletime function create_w3a_xrot()
-	createObjectDefinition("w3a", 'xrot', 'Aro1')
-	..setLvlDataInt("wurs", 0, 0, 42)
-
-
-@compiletime function create_w3a_AM01()
-	createObjectDefinition("w3a", 'AM01', 'ANcl')
-	..setLvlDataInt("wurs", 0, 0, 42)
-	..setLvlDataInt("alev", 0, 0, 1)
-	..setLvlDataString("Ncl6", 1, 6, "absorb")
-	..setLvlDataInt("Ncl5", 1, 5, 0)
-	..setLvlDataUnreal("Ncl1", 1, 1, 0.0)
-	..setLvlDataUnreal("Ncl4", 1, 4, 0.0)
-	..setLvlDataInt("Ncl3", 1, 3, 1)
-	..setLvlDataString("acat", 0, 0, "")
-	..setLvlDataString("aeat", 0, 0, "")
-	..setLvlDataString("asat", 0, 0, "")
-	..setLvlDataString("atat", 0, 0, "")
-	..setLvlDataInt("aher", 0, 0, 0)
-	..setLvlDataInt("amcs", 1, 0, 0)
-	..setLvlDataUnreal("acdn", 1, 0, 0.0)
-	..setLvlDataUnreal("aran", 1, 0, 99999.0)
-	..setLvlDataInt("achd", 0, 0, 0)
-	..setLvlDataInt("Ncl2", 1, 2, 1)
-	..setLvlDataString("atar", 1, 0, "air,ground,friend,vuln,invu,structure")
-	..setLvlDataString("atp1", 1, 0, "|cffFF0000Запретить|r/|cff00ff00Разрешить|r стак (|cffffe600С|r)")
-	..setLvlDataString("aub1", 1, 0, "|cffFF0000Запрещает|r или |cff00ff00разрешает|r выбранному игроку стакать ваши войска.")
-
-
 // Original Table (contains all modified default objects)
 // Wurst does not support modifying default objects
 // but you can copy these functions and replace 'xxxx' with a new, custom id.

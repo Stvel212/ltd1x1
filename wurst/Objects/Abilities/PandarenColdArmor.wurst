@@ -1,5 +1,8 @@
 package PandarenColdArmor
 import AbilityObjEditing
+import Pandaren
+import InstantDummyCaster
+import Orders
 
 // public let PANDAREN_COLD_ARMOR_ID = compiletime(ABIL_ID_GEN.next())
 public let PANDAREN_COLD_ARMOR_ID = 'A0BW'
@@ -7,9 +10,27 @@ public let PANDAREN_COLD_ARMOR_ID = 'A0BW'
 @compiletime function createPandarenColdArmor()
     new AbilityDefinitionLichFrostArmor(PANDAREN_COLD_ARMOR_ID)
     ..presetArmorBonus(lvl -> 2)
-    ..presetArmorDuration(lvl -> 10)
-    ..presetCooldown(lvl -> 1)
-    ..presetManaCost(lvl -> 13)
+    ..setDummyAbility()
+    ..presetArmorDuration(lvl -> 9999)
     ..presetTargetsAllowed(lvl -> "air,friend,ground,self")
-    ..presetDurationNormal(lvl -> 10)
-    ..presetDurationHero(lvl -> 10)
+    ..presetDurationNormal(lvl -> 9999)
+    ..presetDurationHero(lvl -> 9999)
+
+
+function filterEnteredUnits() returns bool
+    return GetFilterUnit().getTypeId() == PANDAREN_ID
+
+function addFrostArmor()
+    let u = GetTriggerUnit()
+    InstantDummyCaster.castTarget(u.getOwner(), PANDAREN_COLD_ARMOR_ID, 1, OrderIds.frostarmor, u, u.getPos())
+
+
+init
+    let mapRegion = CreateRegion()
+                    ..addRect(gg_rct_Warp_1)..addRect(gg_rct_Warp_2)
+                    ..addRect(gg_rct_Warp_3)..addRect(gg_rct_Warp_4)
+                    ..addRect(gg_rct_Warp_5)..addRect(gg_rct_Warp_6)
+                    ..addRect(gg_rct_Warp_7)..addRect(gg_rct_Warp_8)
+    let t = CreateTrigger()..registerEnterRegion(mapRegion, Condition(function filterEnteredUnits))
+    t.addCondition(Condition(function addFrostArmor))
+

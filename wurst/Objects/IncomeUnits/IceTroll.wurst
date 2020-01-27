@@ -25,6 +25,7 @@ public let ICE_TROLL_ID = 'h051'
 	..setInt("ubba", 1)
 	..setString("usnd", "IceTroll")
 	..setString("uabi", "A03H," + COLD_ATTACK_5_ID.toRawCode())
+	..setString("udaa", COLD_ATTACK_5_ID.toRawCode())
 	..setReal("ussc", 2.0)
 	..setUnreal("ucol", 18.0)
 	..setString("urac", "orc")

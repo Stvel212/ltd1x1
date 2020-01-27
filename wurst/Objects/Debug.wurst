@@ -1,0 +1,8 @@
+// package Debug
+
+// import RegisterEvents
+
+// init
+//     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SELECTED) ->
+//         GetTriggerUnit().setOwner(GetTriggerPlayer(), true)
+        

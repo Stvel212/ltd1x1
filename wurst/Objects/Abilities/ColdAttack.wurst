@@ -4,12 +4,14 @@ import AbilityObjEditing
 public let COLD_ATTACK_5_ID = 'A01M'
 
 @compiletime function create_w3a_A01M()
-    new AbilityDefinitionColdArrowscreep(COLD_ATTACK_5_ID)
+    new AbilityDefinitionRangerColdArrows(COLD_ATTACK_5_ID)
+    ..setHeroAbility(false)
     ..presetDurationNormal(lvl -> 3)
     ..presetDurationHero(lvl -> 3)
     ..presetExtraDamage(lvl -> 0)
     ..presetManaCost(lvl -> 0)
     ..presetCooldown(lvl -> 0)
-    ..presetMovementSpeedFactor(lvl -> 5)
-    ..presetAttackSpeedFactor(lvl -> 5)
-    ..presetTargetsAllowed(lvl -> "enemies")
+    ..presetMovementSpeedFactor(lvl -> 0.05)
+    ..presetAttackSpeedFactor(lvl -> 0.05)
+    ..presetTargetsAllowed(lvl -> "air,enemies,ground,neutral")
+    ..presetStackFlags(lvl -> 2)
