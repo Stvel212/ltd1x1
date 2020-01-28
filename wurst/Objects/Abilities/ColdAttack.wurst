@@ -13,5 +13,5 @@ public let COLD_ATTACK_5_ID = 'A01M'
     ..presetCooldown(lvl -> 0)
     ..presetMovementSpeedFactor(lvl -> 0.05)
     ..presetAttackSpeedFactor(lvl -> 0.05)
-    ..presetTargetsAllowed(lvl -> "air,enemies,ground,neutral")
+    ..presetTargetsAllowed(lvl -> "air,enemies,ground,neutral,structure")
     ..presetStackFlags(lvl -> 2)

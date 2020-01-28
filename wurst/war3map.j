@@ -14094,9 +14094,9 @@ set udg_HCL_Mode=true
 else
 set udg_HCL_Mode=true
 if (udg_command == "1") then
-    set udg_Temp_String = "-phgmcbmd"
-elseif (udg_command == "2") then
     set udg_Temp_String = "-phgmcbmdra"
+elseif (udg_command == "2") then
+    set udg_Temp_String = "-phgmcbmdrakl"
 elseif (udg_command == "3") then
     set udg_Temp_String = "-phgmcbmdranc"
 elseif (udg_command == "4") then

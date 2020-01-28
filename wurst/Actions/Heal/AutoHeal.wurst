@@ -5,8 +5,8 @@ import Display
 import Colorizer
 
 public class AutoHeal  
-  private static int array healsCount = [0, 0]
-  private static trigger array triggers
+  static int array healsCount = [0, 0]
+  static trigger array triggers
 
   static function getHealCountForTeam(int team) returns int
     return healsCount[team]

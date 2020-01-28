@@ -1,6 +1,7 @@
 package ShowKingInfoForObs
 import RegisterEvents
 import TexttagHelpers
+import AutoHeal
 
 let HP_DUMMY = 'u008'
 let ATTACK_DUMMY = 'u009'
@@ -13,6 +14,8 @@ let ATTACK_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -300).toVec3
                         ..showToAllyAndObs(Player(8))
 let REGEN_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -350).toVec3(), "Regen :   0", 10, colorA(0, 0, 255, 255))
                         ..showToAllyAndObs(Player(8))
+let HEAL_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -400).toVec3(), "Heal :  yes", 10, colorA(255, 255, 0, 255))
+                    ..showToAllyAndObs(Player(8))
 
 let HP_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -250).toVec3(), "Hp :   0", 10, colorA(0, 255, 0, 255))
                     ..showToAllyAndObs(Player(9))
@@ -20,7 +23,8 @@ let ATTACK_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -300).toVec3
                         ..showToAllyAndObs(Player(9))
 let REGEN_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -350).toVec3(), "Regen :   0", 10, colorA(0, 0, 255, 255))
                         ..showToAllyAndObs(Player(9))
-
+let HEAL_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -400).toVec3(), "Heal :   yes", 10, colorA(255, 255, 0, 255))
+                        ..showToAllyAndObs(Player(8))
 
 init
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SELL) ->
@@ -36,3 +40,8 @@ init
         if (u == REGEN_DUMMY)
             let tag = owner == Player(8) ? REGEN_TEXT_WEST : REGEN_TEXT_EAST
             tag.setText("Regen :   {0}".format(GetPlayerTechCount(owner, 'R002', true).toString()), 10)
+
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+        if (GetSpellAbilityId() == 'A084')
+            let tag = GetSpellTargetUnit() == gg_unit_h00K_0009 ? HEAL_WEST : HEAL_EAST
+            tag.setText("Heal :   no", 10)

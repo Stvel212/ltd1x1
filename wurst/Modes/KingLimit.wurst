@@ -9,7 +9,7 @@ function setKingUpgrades(int hp, int attack, int regen)
 
 function setKingLimit()
     if (kingLimit)
-        setKingUpgrades(2, 2, 2)
+        setKingUpgrades(15, 20, 8)
 
 function resetKingLimit()
     if udg_Level_Integer == 20
