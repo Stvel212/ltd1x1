@@ -1,7 +1,7 @@
 package ShowKingInfoForObs
 import RegisterEvents
 import TexttagHelpers
-import AutoHeal
+import PickHelpers
 
 let HP_DUMMY = 'u008'
 let ATTACK_DUMMY = 'u009'
@@ -42,6 +42,8 @@ init
             tag.setText("Regen :   {0}".format(GetPlayerTechCount(owner, 'R002', true).toString()), 10)
 
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
-        if (GetSpellAbilityId() == 'A084')
-            let tag = GetSpellTargetUnit() == gg_unit_h00K_0009 ? HEAL_WEST : HEAL_EAST
+        if (GetSpellAbilityId() == HOLYLIGHT_ID)
+            let k = GetSpellTargetUnit()
+            GetTriggerUnit().removeAbility(HOLYLIGHT_ID)
+            let tag = k == gg_unit_h00K_0009 ? HEAL_WEST : HEAL_EAST
             tag.setText("Heal :   no", 10)

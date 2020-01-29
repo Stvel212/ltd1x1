@@ -14597,7 +14597,6 @@ return true
 endfunction
 function Trig_Remove_Heal_Actions takes nothing returns nothing
 set udg_Temp_Player=GetTriggerPlayer()
-call UnitRemoveAbilityBJ(0x41303834,GetTriggerUnit())
 set udg_BuilderHeal[GetConvertedPlayerId(udg_Temp_Player)]=true
 call DisplayTimedTextToForce(GetPlayersAll(),10.00,((udg_PlayerColor_String[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]+GetPlayerName(GetOwningPlayer(GetTriggerUnit())))+"|r used Holy Light on King !"))
 call TriggerSleepAction(1.00)

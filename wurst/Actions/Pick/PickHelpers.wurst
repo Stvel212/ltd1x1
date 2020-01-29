@@ -6,7 +6,7 @@ import Store
 import PickInitializer
 import HCLResolver
 
-let HOLYLIGHT_ID = 'A084'
+public let HOLYLIGHT_ID = 'A084'
 
 public function player.pickBuilder(unit pickedUnit)
     let uId = pickedUnit.isRandom() ?
