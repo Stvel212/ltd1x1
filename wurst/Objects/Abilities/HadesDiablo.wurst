@@ -1,0 +1,23 @@
+package HadesDiablo
+
+import ObjEditingNatives
+
+public let HADES_DIABLO_ID = 'A015'
+
+@compiletime function create_w3a_A015()
+	createObjectDefinition("w3a", HADES_DIABLO_ID, 'AHwe')
+	..setLvlDataInt("alev", 0, 0, 1)
+	..setLvlDataInt("aher", 0, 0, 0)
+	..setLvlDataString("ahky", 0, 0, "")
+	..setLvlDataString("anam", 0, 0, "Diablo")
+	..setLvlDataString("atp1", 1, 0, "Diablo")
+	..setLvlDataString("aub1", 1, 0, "Invokes a diabolic creature that reawakens the dead. Lasts 60 seconds.(60 seconds cooldown)")
+	..setLvlDataString("abuf", 1, 0, "B00J")
+	..setLvlDataInt("amcs", 1, 0, 60)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNKelThuzad.blp")
+	..setLvlDataString("Hwe1", 1, 0, "u005")
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataUnreal("aare", 1, 0, 1.0)
+	..setLvlDataString("ansf", 0, 0, "(Hades summon) - 100 mana")
+	..setLvlDataUnreal("acdn", 1, 0, 60.0)
