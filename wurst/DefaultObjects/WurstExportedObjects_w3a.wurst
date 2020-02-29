@@ -2786,21 +2786,6 @@ import ObjEditingNatives
 	..setLvlDataInt("amsp", 0, 0, 4000)
 
 
-@compiletime function create_w3a_A05H()
-	createObjectDefinition("w3a", 'A05H', 'ACsh')
-	..setLvlDataString("ansf", 0, 0, "")
-	..setLvlDataString("arac", 0, 0, "other")
-	..setLvlDataString("anam", 0, 0, "Magnataur's Shockwave")
-	..setLvlDataString("atp1", 1, 0, "Magnataur's Shockwave")
-	..setLvlDataString("aub1", 1, 0, "A wave of force that ripples outward, causing 100 damage to land units in a line.")
-	..setLvlDataUnreal("Osh1", 1, 1, 100.0)
-	..setLvlDataString("atar", 1, 0, "air,ground,enemy")
-	..setLvlDataUnreal("acdn", 1, 0, 20.0)
-	..setLvlDataUnreal("aare", 1, 0, 250.0)
-	..setLvlDataUnreal("Osh4", 1, 4, 250.0)
-	..setLvlDataInt("amcs", 1, 0, 150)
-
-
 @compiletime function create_w3a_A05J()
 	createObjectDefinition("w3a", 'A05J', 'ACav')
 	..setLvlDataString("arac", 0, 0, "human")
