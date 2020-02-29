@@ -1,0 +1,31 @@
+package VeteranUnit
+
+import ObjEditingNatives
+
+public let VETERAN_UNIT_ID = 'h028'
+
+@compiletime function create_w3u_h028()
+	createObjectDefinition("w3u", VETERAN_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 740)
+	..setString("uabi", "")
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Veteran")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 1.3)
+	..setInt("ua1b", 82)
+	..setInt("ua1s", 12)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNTheCaptain.blp")
+	..setString("umdl", "units\\human\\TheCaptain\\TheCaptain.mdl")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("unsf", "fighter")
+	..setString("utyp", "giant")
+	..setString("udty", "medium")
+	..setString("usnd", "Captain")
+	..setUnreal("ucol", 15.0)
+	..setReal("usca", 1.1)

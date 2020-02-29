@@ -20,7 +20,7 @@ public let WATCHER_TOWER_ID = 'h044'
 	..setInt("ulur", 0)
 	..setInt("urtm", 1)
 	..setInt("ugor", 0)
-	..setInt("uhpm", 335)
+	..setInt("uhpm", 365)
 	..setInt("ugol", 80)
 	..setString("unam", "Watcher")
 	..setString("unsf", "Building T3")
