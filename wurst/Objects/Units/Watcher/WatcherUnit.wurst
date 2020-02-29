@@ -17,7 +17,7 @@ public let WATCHER_UNIT_ID = 'h04G'
 	..setString("uabi", "")
 	..setString("ua1g", "enemies")
 	..setInt("ulum", 0)
-	..setInt("uhpm", 335)
+	..setInt("uhpm", 365)
 	..setString("uhrt", "none")
 	..setUnreal("uhpr", 0.0)
 	..setInt("udef", 3)

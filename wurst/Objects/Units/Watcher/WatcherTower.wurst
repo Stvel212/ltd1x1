@@ -25,7 +25,7 @@ public let WATCHER_TOWER_ID = 'h044'
 	..setString("unam", "Watcher")
 	..setString("unsf", "Building T3")
 	..setString("uhot", "E")
-	..setString("utub", "|cffccccccDamage: |r|cffff800036-42|r|cffcccccc|nSpeed: |r|cffff80000.9|r|cffcccccc|nRange: |r|cffff8000400|r|cffcccccc|nHit Points: |r|cffff8000335|r|cffcccccc|nAttack Type: |r|cffff8000Magic|r|cffcccccc|nDefense Type: |r|cffff8000Medium|r|cffcccccc|nAbility: |r|cff808080 None|r")
+	..setString("utub", "|cffccccccDamage: |r|cffff800036-42|r|cffcccccc|nSpeed: |r|cffff80000.9|r|cffcccccc|nRange: |r|cffff8000400|r|cffcccccc|nHit Points: |r|cffff8000365|r|cffcccccc|nAttack Type: |r|cffff8000Magic|r|cffcccccc|nDefense Type: |r|cffff8000Medium|r|cffcccccc|nAbility: |r|cff808080 None|r")
 	..setInt("uwu1", 0)
 	..setString("ua1g", "enemies")
 	..setString("ua1m", "Abilities\\Weapons\\Rifle\\RifleImpact.mdl")
