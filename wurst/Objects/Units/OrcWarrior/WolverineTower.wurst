@@ -1,6 +1,8 @@
 package WolverineTower
 
 import ObjEditingNatives
+import ObjectIds
+import WolverineFinishingBlow
 
 public let WOLVERINE_TOWER_ID = 'h0BU'
 
@@ -13,7 +15,7 @@ public let WOLVERINE_TOWER_ID = 'h0BU'
 	..setInt("ubld", 5)
 	..setInt("ugol", 150)
 	..setInt("ulum", 0)
-	..setString("uabi", "A0A7,A0A8,A008")
+	..setString("uabi", "A0A8,A008," + commaList(WOLVERINE_FINISHING_BLOW))
 	..setString("uubs", "")
 	..setString("umdl", "Units\\Demon\\ChaosOrcRange\\ChaosOrcRange.mdl")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNChaosGrunt.blp")

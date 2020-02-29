@@ -1,6 +1,8 @@
 package WolverineUnit
 
 import ObjEditingNatives
+import WolverineFinishingBlow
+import ObjectIds
 
 public let WOLVERINE_UNIT_ID = 'h0CD'
 
@@ -9,7 +11,7 @@ public let WOLVERINE_UNIT_ID = 'h0CD'
 	..setInt("ufoo", 0)
 	..setString("upgr", "R00B,R00C,R009,R00A")
 	..setInt("uhpm", 1050)
-	..setString("uabi", "A0A7")
+	..setString("uabi", commaList(WOLVERINE_FINISHING_BLOW))
 	..setString("ua1g", "enemies")
 	..setString("utip", "")
 	..setString("unam", "Wolverine")
