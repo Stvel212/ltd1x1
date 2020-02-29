@@ -1,0 +1,48 @@
+package VioletBlueWind
+
+import ObjEditingNatives
+
+public let VIOLET_BLUE_WIND_ID = 'A01F'
+public let VIOLET_BLUE_WIND_ICON_ID = 'A01J'
+public let VIOLET_BLUE_WIND_BUFF_ICON_ID = 'A05I'
+
+@compiletime function create_w3a_A01F()
+    createObjectDefinition("w3a", VIOLET_BLUE_WIND_ID, 'Apxf')
+    ..setLvlDataInt("abpy", 0, 0, 0)
+    ..setLvlDataString("anam", 0, 0, "Blue Wind")
+    ..setLvlDataString("atp1", 1, 0, "Blue Wind")
+    ..setLvlDataString("amat", 0, 0, "Abilities\\Spells\\Undead\\AbsorbMana\\AbsorbManaBirthMissile.mdl")
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNTornado.blp")
+    ..setLvlDataString("atar", 1, 0, "enemies")
+    ..setLvlDataUnreal("pxf2", 1, 2, 0.01)
+    ..setLvlDataUnreal("ahdu", 1, 0, 0.01)
+    ..setLvlDataUnreal("adur", 1, 0, 0.01)
+    ..setLvlDataUnreal("aare", 1, 0, 450.0)
+    ..setLvlDataString("aub1", 1, 0, "")
+    ..setLvlDataUnreal("pxf1", 1, 1, 13.0)
+    ..setLvlDataString("ansf", 0, 0, "(phoenix fire)")
+    ..setLvlDataString("abuf", 1, 0, "B02D")
+    ..setLvlDataUnreal("acdn", 1, 0, 0.3)
+    
+@compiletime function create_w3a_A05I()
+    createObjectDefinition("w3a", VIOLET_BLUE_WIND_BUFF_ICON_ID, 'Aasl')
+    ..setLvlDataString("arac", 0, 0, "human")
+    ..setLvlDataString("anam", 0, 0, "Blue Wind")
+    ..setLvlDataString("ansf", 0, 0, "(buff icon only)")
+    ..setLvlDataUnreal("aare", 1, 0, 1.0)
+    ..setLvlDataString("atar", 1, 0, "self")
+    ..setLvlDataUnreal("Slo1", 1, 1, 0.0)
+    ..setLvlDataString("abuf", 1, 0, "B02E")
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNTornado.blp")
+
+@compiletime function create_w3a_A01J()
+    createObjectDefinition("w3a", VIOLET_BLUE_WIND_ICON_ID, 'Aimp')
+    ..setLvlDataString("arac", 0, 0, "human")
+    ..setLvlDataInt("achd", 0, 0, 0)
+    ..setLvlDataString("areq", 0, 0, "")
+    ..setLvlDataString("anam", 0, 0, "Blue Wind")
+    ..setLvlDataString("atp1", 1, 0, "Blue Wind")
+    ..setLvlDataString("aub1", 1, 0, "Sends currents of wind at nearby enemies, dealing 13 damage each gust (3 gusts per second).")
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNTornado.blp")
+    ..setLvlDataInt("abpy", 0, 0, 0)
+    ..setLvlDataString("ansf", 0, 0, "(icon only)")

@@ -1,6 +1,8 @@
 package VioletTower
 
 import ObjEditingNatives
+import ObjectIds
+import VioletBlueWind
 
 public let VIOLET_TOWER_ID = 'h045'
 
@@ -13,7 +15,7 @@ public let VIOLET_TOWER_ID = 'h045'
 	..setInt("ubld", 5)
 	..setInt("ugol", 150)
 	..setInt("ulum", 0)
-	..setString("uabi", "A01J,A05I,A008")
+	..setString("uabi", "A008," + commaList(VIOLET_BLUE_WIND_ICON_ID, VIOLET_BLUE_WIND_BUFF_ICON_ID))
 	..setString("uubs", "")
 	..setString("umdl", "units\\nightelf\\DruidoftheTalon\\DruidoftheTalon.mdl")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNRavenForm.blp")

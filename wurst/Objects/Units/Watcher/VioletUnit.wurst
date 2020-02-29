@@ -1,6 +1,8 @@
 package VioletUnit
 
 import ObjEditingNatives
+import VioletBlueWind
+import ObjectIds
 
 public let VIOLET_UNIT_ID = 'h04H'
 
@@ -14,7 +16,7 @@ public let VIOLET_UNIT_ID = 'h04H'
     ..setString("ureq", "")
     ..setString("unam", "Violet")
     ..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNRavenForm.blp")
-    ..setString("uabi", "A05I,A01J,A01F")
+    ..setString("uabi", commaList(VIOLET_BLUE_WIND_ID, VIOLET_BLUE_WIND_ICON_ID, VIOLET_BLUE_WIND_BUFF_ICON_ID))
     ..setString("ua1g", "enemies")
     ..setInt("ulum", 0)
     ..setInt("uhpm", 850)
