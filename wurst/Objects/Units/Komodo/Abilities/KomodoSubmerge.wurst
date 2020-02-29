@@ -1,0 +1,39 @@
+package KomodoSubmerge
+
+import ObjEditingNatives
+
+public let KOMODO_SUBMERGE_ID = 'A06X'
+public let KOMODO_SUBMERGE_ICON_ID = 'A06Y'
+
+@compiletime function create_w3a_A06X()
+	createObjectDefinition("w3a", KOMODO_SUBMERGE_ID, 'Apsh')
+	..setLvlDataInt("amcs", 1, 0, 0)
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataInt("auby", 0, 0, 0)
+	..setLvlDataString("auu1", 1, 0, "")
+	..setLvlDataString("aut1", 1, 0, "")
+	..setLvlDataString("atp1", 1, 0, "Submerge")
+	..setLvlDataString("anam", 0, 0, "Submerge")
+	..setLvlDataString("auhk", 0, 0, "")
+	..setLvlDataString("ahky", 0, 0, "")
+	..setLvlDataString("aub1", 1, 0, "Stuff")
+	..setLvlDataUnreal("acdn", 1, 0, 7.0)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNNagaBurrow.blp")
+	..setLvlDataString("auar", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNNagaBurrow.blp")
+	..setLvlDataString("aefs", 0, 0, "SubmergeSound")
+	..setLvlDataString("asat", 0, 0, "Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
+	..setLvlDataString("abuf", 1, 0, "B02Y")
+	..setLvlDataString("ansf", 0, 0, "(custom)")
+
+@compiletime function create_w3a_A06Y()
+	createObjectDefinition("w3a", KOMODO_SUBMERGE_ICON_ID, 'Aimp')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("achd", 0, 0, 0)
+	..setLvlDataString("areq", 0, 0, "")
+	..setLvlDataString("anam", 0, 0, "Submerge")
+	..setLvlDataString("atp1", 1, 0, "Submerge")
+	..setLvlDataString("aub1", 1, 0, "Submerges itself into water, temporarily avoiding damage for 1.5 seconds. After resurfacing, gains 25% attack for 5 seconds.")
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNNagaBurrow.blp")
+	..setLvlDataString("ansf", 0, 0, "(icon only)")
+	..setLvlDataInt("abpy", 0, 0, 0)

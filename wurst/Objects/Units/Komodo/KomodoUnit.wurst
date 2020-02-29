@@ -1,0 +1,42 @@
+package KomodoUnit
+
+import ObjEditingNatives
+import ObjectIds
+import KomodoSubmerge
+
+public let KOMODO_UNIT_ID = 'h08B'
+
+@compiletime function create_w3u_h08B()
+	createObjectDefinition("w3u", KOMODO_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 880)
+	..setString("uabi", commaList(KOMODO_SUBMERGE_ID))
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Komodo")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 0.8)
+	..setInt("ua1b", 62)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("unsf", "fighter")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNSnapDragon.blp")
+	..setString("umdl", "units\\naga\\SnapDragon\\SnapDragon.mdl")
+	..setInt("uclg", 140)
+	..setInt("uclb", 140)
+	..setInt("ua1s", 12)
+	..setString("utyp", "giant")
+	..setString("udty", "medium")
+	..setString("ucs1", "MetalLightChop")
+	..setString("usnd", "SnapDragon")
+	..setString("uarm", "Flesh")
+	..setUnreal("ucol", 20.0)
+	..setInt("umvs", 310)
+	..setUnreal("udp1", 0.4)
+	..setUnreal("ubs1", 0.3)
+	..setReal("usca", 0.9)
+	..setUnreal("udtm", 8.0)
+	..setString("udaa", "A06X")
