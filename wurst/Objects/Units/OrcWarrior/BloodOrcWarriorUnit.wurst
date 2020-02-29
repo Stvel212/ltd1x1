@@ -1,0 +1,40 @@
+package BloodOrcWarriorUnit
+
+import ObjEditingNatives
+import BloodOrcWarriorFrenzy
+import ObjectIds
+
+public let BLOOD_ORC_WARRIOR_UNIT_ID = 'h0BT'
+
+@compiletime function create_w3u_h0BT()
+	createObjectDefinition("w3u", BLOOD_ORC_WARRIOR_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 500)
+	..setString("uabi", commaList(BLOOD_ORC_WARRIOR_FRENZY_ID))
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Blood Orc Warrior")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 1.0)
+	..setInt("ua1b", 49)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 1.0)
+	..setString("unsf", "fighter")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNChaosPeon.blp")
+	..setString("umdl", "units\\demon\\ChaosGrunt\\ChaosGrunt.mdl")
+	..setInt("ua1s", 1)
+	..setString("utyp", "giant")
+	..setString("ucs1", "WoodHeavyBash")
+	..setReal("usca", 0.9)
+	..setString("usnd", "ChaosGrunt")
+	..setString("uarm", "Wood")
+	..setUnreal("ucol", 15.0)
+	..setInt("umvs", 240)
+	..setUnreal("ubs1", 0.6)
+	..setUnreal("udp1", 0.4)
+	..setInt("ua1r", 100)
+	..setString("udty", "none")
+	..setInt("umpi", 10)
+	..setInt("umpm", 10)

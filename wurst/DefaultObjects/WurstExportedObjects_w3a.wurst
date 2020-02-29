@@ -5259,28 +5259,6 @@ import ObjEditingNatives
 	..setLvlDataString("ansf", 0, 0, "(orc)")
 
 
-@compiletime function create_w3a_A0A6()
-	createObjectDefinition("w3a", 'A0A6', 'Auhf')
-	..setLvlDataString("anam", 0, 0, "Frenzy")
-	..setLvlDataString("ansf", 0, 0, "(Orc)")
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataString("areq", 0, 0, "")
-	..setLvlDataInt("achd", 0, 0, 0)
-	..setLvlDataString("atar", 1, 0, "self")
-	..setLvlDataInt("amcs", 1, 0, 10)
-	..setLvlDataUnreal("adur", 1, 0, 30.0)
-	..setLvlDataUnreal("ahdu", 1, 0, 30.0)
-	..setLvlDataUnreal("Uhf1", 1, 1, 0.3)
-	..setLvlDataUnreal("Uhf2", 1, 2, 5.0)
-	..setLvlDataUnreal("aran", 1, 0, 200.0)
-	..setLvlDataString("atp1", 1, 0, "Frenzy")
-	..setLvlDataString("aub1", 1, 0, "Increases the attack rate of a target unit by 30%, but drains 5 hit points per second. (self buff)")
-	..setLvlDataString("abuf", 1, 0, "Buhf")
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataInt("abpx", 0, 0, 0)
-	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\PassiveButtons\\PASBTNCommand.blp")
-
-
 @compiletime function create_w3a_A0A8()
 	createObjectDefinition("w3a", 'A0A8', 'Aimp')
 	..setLvlDataString("arac", 0, 0, "human")
@@ -5571,19 +5549,6 @@ import ObjEditingNatives
 	..setLvlDataString("atar", 1, 0, "air,enemies,ground")
 	..setLvlDataString("arac", 0, 0, "human")
 	..setLvlDataInt("aite", 0, 0, 0)
-
-
-@compiletime function create_w3a_A0AP()
-	createObjectDefinition("w3a", 'A0AP', 'Aimp')
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataInt("achd", 0, 0, 0)
-	..setLvlDataString("areq", 0, 0, "")
-	..setLvlDataString("anam", 0, 0, "Frenzy (orc)")
-	..setLvlDataString("atp1", 1, 0, "Frenzy")
-	..setLvlDataString("aub1", 1, 0, "Increases the attack rate of a target unit by 30%, but drains 5 hit points per second. (self buff)")
-	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\PassiveButtons\\PASBTNCommand.blp")
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataString("ansf", 0, 0, "(icon only)")
 
 
 @compiletime function create_w3a_A00P()

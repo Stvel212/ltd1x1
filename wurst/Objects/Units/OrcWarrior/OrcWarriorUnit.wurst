@@ -1,0 +1,34 @@
+package OrcWarriorUnit
+
+import ObjEditingNatives
+
+public let ORC_WARRIOR_UNIT_ID = 'h0AY'
+
+@compiletime function create_w3u_h0AY()
+	createObjectDefinition("w3u", ORC_WARRIOR_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 100)
+	..setString("uabi", "")
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Orc Warrior")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 1.0)
+	..setInt("ua1b", 9)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 0.0)
+	..setString("unsf", "fighter")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNGrunt.blp")
+	..setString("umdl", "units\\orc\\Grunt\\Grunt.mdl")
+	..setString("utyp", "giant")
+	..setString("ucs1", "WoodMediumBash")
+	..setString("usnd", "Grunt")
+	..setString("uarm", "Wood")
+	..setUnreal("ucol", 32.0)
+	..setInt("umvs", 240)
+	..setInt("ua1s", 1)
+	..setUnreal("ubs1", 0.533)
+	..setUnreal("udp1", 0.467)
+	..setString("udty", "none")
