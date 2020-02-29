@@ -1,4 +1,5 @@
 package Murloc
+
 import ObjEditingNatives
 
 public let MURLOC_ID = 'h000'
