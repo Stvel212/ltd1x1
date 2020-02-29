@@ -1,9 +1,16 @@
 package KomodoSubmerge
 
 import ObjEditingNatives
+import RegisterEvents
+import InstantDummyCaster
+import Orders
+import ObjectIdGenerator
+import AbilityObjEditing
 
 public let KOMODO_SUBMERGE_ID = 'A06X'
 public let KOMODO_SUBMERGE_ICON_ID = 'A06Y'
+public let KOMODO_SUBMERGE_SPEED_ID = 'A06Z'
+public let KOMODO_SUBMERGE_ARMOR_ID = compiletime(ABIL_ID_GEN.next())
 
 @compiletime function create_w3a_A06X()
 	createObjectDefinition("w3a", KOMODO_SUBMERGE_ID, 'Apsh')
@@ -24,7 +31,41 @@ public let KOMODO_SUBMERGE_ICON_ID = 'A06Y'
 	..setLvlDataString("aefs", 0, 0, "SubmergeSound")
 	..setLvlDataString("asat", 0, 0, "Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl")
 	..setLvlDataString("abuf", 1, 0, "B02Y")
+	..setLvlDataUnreal("adur", 1, 0, 0.1)
 	..setLvlDataString("ansf", 0, 0, "(custom)")
+
+@compiletime function create_w3a_A06Z()
+	createObjectDefinition("w3a", KOMODO_SUBMERGE_SPEED_ID, 'ACbl')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("amcs", 1, 0, 0)
+	..setLvlDataUnreal("Blo1", 1, 1, 0.25)
+	..setLvlDataUnreal("Blo2", 1, 2, 0.05)
+	..setLvlDataUnreal("Blo3", 1, 3, 0.0)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataInt("auby", 0, 0, 0)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNNagaBurrow.blp")
+	..setLvlDataString("auar", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNNagaBurrow.blp")
+	..setLvlDataString("ansf", 0, 0, "(speed buff)")
+	..setLvlDataString("ahky", 0, 0, "")
+	..setLvlDataString("auhk", 0, 0, "")
+	..setLvlDataString("anam", 0, 0, "Submerge")
+	..setLvlDataString("atp1", 1, 0, "")
+	..setLvlDataString("aub1", 1, 0, "")
+	..setLvlDataString("aut1", 1, 0, "")
+	..setLvlDataString("auu1", 1, 0, "")
+	..setLvlDataString("abuf", 1, 0, "B02X")
+	..setLvlDataUnreal("acdn", 1, 0, 999.0)
+	..setLvlDataUnreal("ahdu", 1, 0, 5.0)
+	..setLvlDataUnreal("adur", 1, 0, 5.0)
+
+@compiletime function submerge_armor()
+	new AbilityDefinitionInnerFire(KOMODO_SUBMERGE_ARMOR_ID)
+	..setDummyAbility()
+	..presetBuffs(lvl -> "")
+	..presetDamageIncrease(lvl -> 0)
+	..presetDefenseIncrease(lvl -> 3)
+	..presetDurationNormal(lvl -> 5)
+	..presetLifeRegenRate(lvl -> 0)
 
 @compiletime function create_w3a_A06Y()
 	createObjectDefinition("w3a", KOMODO_SUBMERGE_ICON_ID, 'Aimp')
@@ -33,7 +74,16 @@ public let KOMODO_SUBMERGE_ICON_ID = 'A06Y'
 	..setLvlDataString("areq", 0, 0, "")
 	..setLvlDataString("anam", 0, 0, "Submerge")
 	..setLvlDataString("atp1", 1, 0, "Submerge")
-	..setLvlDataString("aub1", 1, 0, "Submerges itself into water, temporarily avoiding damage for 1.5 seconds. After resurfacing, gains 25% attack for 5 seconds.")
+	..setLvlDataString("aub1", 1, 0, "Submerges itself into water. After resurfacing, gains 25% attack and +3 armor for 5 seconds.")
 	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNNagaBurrow.blp")
 	..setLvlDataString("ansf", 0, 0, "(icon only)")
 	..setLvlDataInt("abpy", 0, 0, 0)
+
+init
+	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+		let sid = GetSpellAbilityId()
+		if sid == KOMODO_SUBMERGE_ID
+			let t = GetTriggerUnit()
+			let owner = GetTriggerPlayer()
+			InstantDummyCaster.castTarget(owner, KOMODO_SUBMERGE_SPEED_ID, 1, OrderIds.bloodlust, t, t.getPos())
+			InstantDummyCaster.castTarget(owner, KOMODO_SUBMERGE_ARMOR_ID, 1, OrderIds.innerfire, t, t.getPos())

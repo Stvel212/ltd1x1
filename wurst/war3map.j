@@ -9314,27 +9314,6 @@ call TriggerRegisterAnyUnitEventBJ(gg_trg_Killing_Spree_Kill,EVENT_PLAYER_UNIT_D
 call TriggerAddCondition(gg_trg_Killing_Spree_Kill,Condition(function Trig_Killing_Spree_Kill_Conditions))
 call TriggerAddAction(gg_trg_Killing_Spree_Kill,function Trig_Killing_Spree_Kill_Actions)
 endfunction
-function Trig_Submerge_Speed_Conditions takes nothing returns boolean
-if(not(GetSpellAbilityId()==0x41303658))then
-return false
-endif
-return true
-endfunction
-function Trig_Submerge_Speed_Actions takes nothing returns nothing
-set udg_Temp_Point=GetUnitLoc(GetSpellAbilityUnit())
-call CreateNUnitsAtLoc(1,0x75303036,ConvertedPlayer(GetUnitUserData(GetSpellAbilityUnit())),udg_Temp_Point,bj_UNIT_FACING)
-set udg_Temp_Unit=GetLastCreatedUnit()
-call UnitAddAbilityBJ(0x4130365A,udg_Temp_Unit)
-call IssueTargetOrderBJ(udg_Temp_Unit,"bloodlust",GetSpellAbilityUnit())
-call UnitApplyTimedLifeBJ(4.00,0x42544C46,udg_Temp_Unit)
-call RemoveLocation(udg_Temp_Point)
-endfunction
-function InitTrig_Submerge_Speed takes nothing returns nothing
-set gg_trg_Submerge_Speed=CreateTrigger()
-call TriggerRegisterAnyUnitEventBJ(gg_trg_Submerge_Speed,EVENT_PLAYER_UNIT_SPELL_FINISH)
-call TriggerAddCondition(gg_trg_Submerge_Speed,Condition(function Trig_Submerge_Speed_Conditions))
-call TriggerAddAction(gg_trg_Submerge_Speed,function Trig_Submerge_Speed_Actions)
-endfunction
 function Trig_Feast_Conditions takes nothing returns boolean
 if(not(GetUnitTypeId(GetAttacker())==0x68303831))then
 return false
@@ -13161,7 +13140,7 @@ endif
 return true
 endfunction
 function Trig_Player_Kick_Func007Func001Func002C takes nothing returns boolean
-if(not(udg_Temp_Player==Player(1)))then
+    if(not(udg_Temp_Player==Player(1)))then
 return false
 endif
 return true
@@ -17123,7 +17102,6 @@ call InitTrig_Summon_Egze()
 call InitTrig_Summon_HuanAK()
 call InitTrig_Killing_Spree()
 call InitTrig_Killing_Spree_Kill()
-call InitTrig_Submerge_Speed()
 call InitTrig_Feast()
 call InitTrig_Mini_Hydra_Mitosis()
 call InitTrig_Biotoxin()
