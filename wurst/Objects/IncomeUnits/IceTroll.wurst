@@ -38,7 +38,7 @@ public let ICE_TROLL_ID = 'h051'
 	..setString("ua1w", "missile")
 	..setInt("ugol", 0)
 	..setInt("ulum", 240)
-	..setInt("ua1r", 275)
+	..setInt("ua1r", 400)
 	..setInt("upoi", 12)
 	..setString("utyp", "sapper,summoned")
 	..setInt("usrg", 14)
