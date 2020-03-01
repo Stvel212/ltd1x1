@@ -2,6 +2,7 @@ package ShowKingInfoForObs
 import RegisterEvents
 import TexttagHelpers
 import PickHelpers
+import ClosureTimers
 
 let HP_DUMMY = 'u008'
 let ATTACK_DUMMY = 'u009'
@@ -44,6 +45,8 @@ init
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
         if (GetSpellAbilityId() == HOLYLIGHT_ID)
             let k = GetSpellTargetUnit()
-            GetTriggerUnit().removeAbility(HOLYLIGHT_ID)
+            let u = GetTriggerUnit()
             let tag = k == gg_unit_h00K_0009 ? HEAL_WEST : HEAL_EAST
             tag.setText("Heal :   no", 10)
+            doAfter(0.1) -> 
+                u.removeAbility(HOLYLIGHT_ID)
