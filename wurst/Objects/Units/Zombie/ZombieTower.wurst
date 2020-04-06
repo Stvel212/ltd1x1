@@ -1,5 +1,8 @@
 package ZombieTower
+
 import ObjEditingNatives
+import ObjectIds
+import InfectiousDiseases
 
 public let ZOMBIE_TOWER_ID = 'h0CW'
 
@@ -12,7 +15,7 @@ public let ZOMBIE_TOWER_ID = 'h0CW'
     ..setInt("ubld", 5)
     ..setInt("ugol", 190)
     ..setInt("ulum", 0)
-    ..setString("uabi", "A0BI,A008")
+    ..setString("uabi", "A008," + commaList(INFECTIOUS_DISEASES_ICON_ID))
     ..setString("uubs", "")
     ..setString("umdl", "units\\creeps\\Zombie\\Zombie.mdl")
     ..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNZombie.blp")

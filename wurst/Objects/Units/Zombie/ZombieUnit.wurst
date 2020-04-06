@@ -1,5 +1,8 @@
 package ZombieUnit
+
 import ObjEditingNatives
+import ObjectIds
+import InfectiousDiseases
 
 public let ZOMBIE_UNIT_ID = 'h0CX'
 
@@ -12,7 +15,7 @@ public let ZOMBIE_UNIT_ID = 'h0CX'
     ..setString("ureq", "")
     ..setInt("ufoo", 0)
     ..setString("ua1g", "enemies")
-    ..setString("uabi", "A0BF")
+    ..setString("uabi", commaList(INFECTIOUS_DISEASES_ID))
     ..setString("unam", "Zombie")
     ..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNZombie.blp")
     ..setString("umdl", "units\\creeps\\Zombie\\Zombie.mdl")

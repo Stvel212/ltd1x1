@@ -5882,38 +5882,6 @@ import ObjEditingNatives
 	..setLvlDataString("aub1", 1, 0, "Enemy unit hit by Heartstopper Aura will lost 1% of max health per second.")
 
 
-@compiletime function create_w3a_A0BF()
-	createObjectDefinition("w3a", 'A0BF', 'ACac')
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataString("atp1", 1, 0, "Infectious diseases")
-	..setLvlDataString("anam", 0, 0, "Infectious diseases")
-	..setLvlDataString("aub1", 1, 0, "Decreases the damage of nearby enemies by 5%.")
-	..setLvlDataUnreal("aare", 1, 0, 120.0)
-	..setLvlDataString("atar", 1, 0, "enemies")
-	..setLvlDataString("abuf", 1, 0, "B048")
-	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNOrbOfCorruption.blp")
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataString("ansf", 0, 0, "(undead aura)")
-	..setLvlDataUnreal("Cac1", 1, 1, -0.05)
-	..setLvlDataString("atat", 0, 0, "Abilities\\Spells\\Undead\\PlagueCloud\\PlagueCloudCaster.mdl")
-	..setLvlDataString("asat", 0, 0, "Abilities\\Spells\\Undead\\PlagueCloud\\PlagueCloudCaster.mdl")
-	..setLvlDataString("aspt", 0, 0, "origin")
-	..setLvlDataInt("atac", 0, 0, 1)
-
-
-@compiletime function create_w3a_A0BI()
-	createObjectDefinition("w3a", 'A0BI', 'Aimp')
-	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataInt("achd", 0, 0, 0)
-	..setLvlDataString("areq", 0, 0, "")
-	..setLvlDataString("anam", 0, 0, "Infectious diseases")
-	..setLvlDataString("atp1", 1, 0, "Infectious diseases")
-	..setLvlDataString("aub1", 1, 0, "Decreases the damage of nearby enemies by 5%. (120 range, stackable)")
-	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNOrbOfCorruption.blp")
-	..setLvlDataInt("abpy", 0, 0, 0)
-	..setLvlDataString("ansf", 0, 0, "(icon only)")
-
-
 @compiletime function create_w3a_A0BJ()
 	createObjectDefinition("w3a", 'A0BJ', 'Aimp')
 	..setLvlDataString("arac", 0, 0, "human")
