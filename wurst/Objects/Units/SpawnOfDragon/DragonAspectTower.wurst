@@ -40,7 +40,7 @@ public let DRAGON_ASPECT_TOWER_ID = 'h01B'
 	..setInt("ua1z", 1200)
 	..setUnreal("uma1", 0.1)
 	..setString("ua1t", "chaos")
-	..setUnreal("ua1c", 1.6)
+	..setUnreal("ua1c", 1.5)
 	..setInt("ua1b", 229)
 	..setUnreal("ubs1", 0.5)
 	..setUnreal("udp1", 0.5)
