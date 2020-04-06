@@ -1,5 +1,8 @@
 package PudgeUnit
+
 import ObjEditingNatives
+import ObjectIds
+import Plague
 
 public let PUDGE_UNIT_ID = 'h0CZ'
 
@@ -12,7 +15,7 @@ public let PUDGE_UNIT_ID = 'h0CZ'
 	..setString("ureq", "")
 	..setInt("ufoo", 0)
 	..setString("ua1g", "enemies")
-	..setString("uabi", "A0AE,A0BK")
+	..setString("uabi", "A0AE," + commaList(PLAGUE_ID))
 	..setString("unam", "Pudge")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNAbomination.blp")
 	..setString("umdl", "units\\undead\\AbominationCIN\\AbominationCIN.mdl")

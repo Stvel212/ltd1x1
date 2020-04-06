@@ -1,5 +1,8 @@
 package PudgeTower
+
 import ObjEditingNatives
+import ObjectIds
+import Plague
 
 public let PUDGE_TOWER_ID = 'h0CY'
 
@@ -12,7 +15,7 @@ public let PUDGE_TOWER_ID = 'h0CY'
     ..setInt("ubld", 5)
     ..setInt("ugol", 220)
     ..setInt("ulum", 0)
-    ..setString("uabi", "A0BJ,A0BR,A008")
+    ..setString("uabi", "A0BR,A008," + commaList(PLAGUE_ICON_ID))
     ..setString("uubs", "")
     ..setString("umdl", "units\\undead\\AbominationCIN\\AbominationCIN.mdl")
     ..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNAbomination.blp")
