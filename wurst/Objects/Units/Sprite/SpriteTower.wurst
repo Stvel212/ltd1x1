@@ -1,0 +1,62 @@
+package SpriteTower
+
+import ObjEditingNatives
+import ObjectIds
+import FaierieLuck
+
+public let SPRITE_TOWER_ID = 'h01H'
+
+@compiletime function create_w3u_h01H()
+	createObjectDefinition("w3u", SPRITE_TOWER_ID, 'hgtw')
+	..setString("utip", "Deploy Sprite  [|cffFFcc00E|r]")
+	..setString("upgr", "R009,R00A")
+	..setString("ureq", "u004")
+	..setString("utyp", "ancient")
+	..setInt("ubld", 5)
+	..setInt("ulum", 0)
+	..setString("uabi", "A008," + commaList(FAIERIE_LUCK_ID))
+	..setString("uubs", "")
+	..setString("umdl", "units\\nightelf\\FaerieDragon\\FaerieDragon.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNFaerieDragon.blp")
+	..setString("usnd", "FaerieDragon")
+	..setInt("ulur", 0)
+	..setInt("urtm", 1)
+	..setInt("ugor", 0)
+	..setInt("uhpm", 360)
+	..setString("unam", "Sprite")
+	..setString("unsf", "Building T3")
+	..setString("uhot", "E")
+	..setString("utub", "|cffccccccDamage: |r|cffff800022-27|r" + 
+						"|cffcccccc|nSpeed: |r|cffff80000.66|r" + 
+						"|cffcccccc|nRange: |r|cffff8000300|r" + 
+						"|cffcccccc|nHit Points: |r|cffff8000360|r" + 
+						"|cffcccccc|nAttack Type: |r|cffff8000Magic|r" + 
+						"|cffcccccc|nDefense Type: |r|cffff8000Light|r" + 
+						"|cffcccccc|nAbility: |r|cff808080 Faerie Luck|r")
+	..setInt("uwu1", 0)
+	..setString("ua1g", "enemies")
+	..setString("ua1m", "Abilities\\Weapons\\Rifle\\RifleImpact.mdl")
+	..setInt("ua1r", 300)
+	..setInt("ua1z", 0)
+	..setUnreal("uma1", 0.0)
+	..setUnreal("ua1c", 0.66)
+	..setInt("ua1b", 21)
+	..setInt("ua1s", 6)
+	..setUnreal("ubs1", 0.5)
+	..setUnreal("udp1", 0.5)
+	..setString("ushb", "")
+	..setString("uani", "")
+	..setInt("ubpy", 0)
+	..setInt("udef", 3)
+	..setInt("udup", 0)
+	..setInt("umh1", 1)
+	..setString("uupt", "h01G")
+	..setInt("ufoo", 1)
+	..setString("ua1t", "magic")
+	..setString("udty", "small")
+	..setReal("ussc", 1.5)
+	..setString("uarm", "Flesh")
+	..setUnreal("uhpr", 1.0)
+	..setString("uhrt", "always")
+	..setInt("upoi", 80)
+	..setInt("ubpx", 2)

@@ -1,0 +1,17 @@
+package FaierieLuck
+
+import ObjEditingNatives
+
+public let FAIERIE_LUCK_ID = 'A00M'
+
+@compiletime function create_w3a_A00M()
+    createObjectDefinition("w3a", FAIERIE_LUCK_ID, 'ACev')
+    ..setLvlDataString("ansf", 0, 0, "(custom)")
+    ..setLvlDataString("arac", 0, 0, "human")
+    ..setLvlDataString("anam", 0, 0, "Faerie Luck")
+    ..setLvlDataString("atp1", 1, 0, "Faerie Luck")
+    ..setLvlDataUnreal("Eev1", 1, 1, 0.20)
+    ..setLvlDataString("aub1", 1, 0, "Gives a 20% chance to dodge an attack.")
+    ..setLvlDataInt("abpx", 0, 0, 0)
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNStaffOfPreservation.blp")
+    ..setLvlDataInt("abpy", 0, 0, 0)

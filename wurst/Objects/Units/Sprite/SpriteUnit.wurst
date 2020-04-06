@@ -1,0 +1,40 @@
+package SpriteUnit
+
+import ObjEditingNatives
+import ObjectIds
+import FaierieLuck
+
+public let SPRITE_UNIT_ID = 'h031'
+
+@compiletime function create_w3u_h031()
+	createObjectDefinition("w3u", SPRITE_UNIT_ID, 'hdhw')
+	..setString("umdl", "units\\nightelf\\FaerieDragon\\FaerieDragon.mdl")
+	..setString("utub", "")
+	..setString("utip", "")
+	..setString("uhot", "")
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setString("ureq", "")
+	..setString("unam", "Sprite")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNFaerieDragon.blp")
+	..setString("uabi", commaList(FAIERIE_LUCK_ID))
+	..setString("ua1g", "enemies")
+	..setInt("ulum", 0)
+	..setInt("uhpm", 360)
+	..setUnreal("uhpr", 1.37)
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 0.66)
+	..setString("unsf", "fighter")
+	..setInt("ua1s", 6)
+	..setInt("ua1b", 21)
+	..setString("utyp", "giant")
+	..setInt("umpm", 0)
+	..setInt("umpi", 0)
+	..setUnreal("umpr", 0.0)
+	..setString("ua1t", "magic")
+	..setString("ua1m", "Abilities\\Weapons\\FaerieDragonMissile\\FaerieDragonMissile.mdl")
+	..setString("usnd", "FaerieDragon")
+	..setUnreal("ucol", 15.0)
+	..setInt("umvs", 320)
+	..setUnreal("udp1", 0.3)
+	..setUnreal("ubs1", 0.3)
+	..setInt("ufoo", 0)
