@@ -25,14 +25,21 @@ public let DRAGON_ASPECT_TOWER_ID = 'h01B'
 	..setString("unam", "Dragon Aspect")
 	..setString("unsf", "Building")
 	..setString("uhot", "P")
-	..setString("utub", "|cffccccccDamage: |r|cffff8000232-247|r|cffcccccc|nSpeed: |r|cffff80001.6|r|cffcccccc|nRange: |r|cffff8000350|r|cffcccccc|nHit Points: |r|cffff80002195|r|cffcccccc|nAttack Type: |r|cffff8000Normal |r|cffcccccc|nDefense Type: |r|cffff8000Heavy |r|cffcccccc|nAbility: |r|cff808080 Whitefire|r")
+	..setString("utub", "|cffccccccDamage: |r|cffff8000232-247|r" + 
+						"|cffcccccc|nSpeed: |r|cffff80001.5|r" + 
+						"|cffcccccc|nDPS: |r|cffff8000159.6|r" + 
+						"|cffcccccc|nRange: |r|cffff8000350|r" + 
+						"|cffcccccc|nHit Points: |r|cffff80002195|r" + 
+						"|cffcccccc|nAttack Type: |r|cffff8000Normal |r" + 
+						"|cffcccccc|nDefense Type: |r|cffff8000Heavy |r" + 
+						"|cffcccccc|nAbility: |r|cff808080 Whitefire|r")
 	..setInt("uwu1", 0)
 	..setString("ua1g", "enemies")
 	..setString("ua1m", "")
 	..setInt("ua1r", 350)
 	..setInt("ua1z", 1200)
 	..setUnreal("uma1", 0.1)
-	..setString("ua1t", "normal")
+	..setString("ua1t", "chaos")
 	..setUnreal("ua1c", 1.6)
 	..setInt("ua1b", 229)
 	..setUnreal("ubs1", 0.5)
