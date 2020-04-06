@@ -25,11 +25,17 @@ public let THUNDERBIRD_TOWER_ID = 'h01G'
 	..setString("unam", "Thunderbird")
 	..setString("unsf", "Building")
 	..setString("uhot", "P")
-	..setString("utub", "|cffccccccDamage: |r|cffff8000120-132|r|cffcccccc|nSpeed: |r|cffff80001.8|r|cffcccccc|nRange: |r|cffff8000300|r|cffcccccc|nHit Points: |r|cffff8000955|r|cffcccccc|nAttack Type: |r|cffff8000Magic|r|cffcccccc|nDefense Type: |r|cffff8000Heavy |r|cffcccccc|nAbility: |r|cff808080 Aftershock|r")
+	..setString("utub", "|cffccccccDamage: |r|cffff8000120-132|r" + 
+						"|cffcccccc|nSpeed: |r|cffff80001.8|r" + 
+						"|cffcccccc|nRange: |r|cffff8000200|r" + 
+						"|cffcccccc|nHit Points: |r|cffff8000955|r" + 
+						"|cffcccccc|nAttack Type: |r|cffff8000Magic|r" + 
+						"|cffcccccc|nDefense Type: |r|cffff8000Heavy |r" + 
+						"|cffcccccc|nAbility: |r|cff808080 Aftershock|r")
 	..setInt("uwu1", 0)
 	..setString("ua1g", "enemies")
 	..setString("ua1m", "Abilities\\Weapons\\Rifle\\RifleImpact.mdl")
-	..setInt("ua1r", 300)
+	..setInt("ua1r", 200)
 	..setInt("ua1z", 0)
 	..setUnreal("uma1", 0.0)
 	..setUnreal("ua1c", 2.0)
