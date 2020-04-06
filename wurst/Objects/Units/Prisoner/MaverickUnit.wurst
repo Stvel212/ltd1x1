@@ -1,0 +1,38 @@
+package MaverickUnit
+
+import ObjEditingNatives
+
+public let MAVERICK_UNIT_ID = 'h08T'
+
+@compiletime function create_w3u_h08T()
+	createObjectDefinition("w3u", MAVERICK_UNIT_ID, 'hdhw')
+	..setString("utub", "")
+	..setString("utip", "")
+	..setString("uhot", "")
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setString("ureq", "")
+	..setString("unam", "Maverick")
+	..setString("uabi", "A07G")
+	..setString("ua1g", "enemies")
+	..setInt("ulum", 0)
+	..setInt("uhpm", 920)
+	..setString("uhrt", "none")
+	..setUnreal("uhpr", 0.0)
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 1.0)
+	..setInt("ua1s", 7)
+	..setInt("ua1b", 94)
+	..setString("utyp", "giant")
+	..setUnreal("umpr", 0.5)
+	..setInt("umpm", 30)
+	..setInt("umpi", 30)
+	..setString("ua1t", "chaos")
+	..setString("udty", "medium")
+	..setUnreal("udp1", 0.17)
+	..setString("uarm", "Metal")
+	..setUnreal("ucol", 10.0)
+	..setReal("ussc", 1.9)
+	..setInt("ufoo", 0)
+	..setString("unsf", "fighter")
+	..setString("udaa", "A07G")
+	..setString("ua2t", "chaos")
