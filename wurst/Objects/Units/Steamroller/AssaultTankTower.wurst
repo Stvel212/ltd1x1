@@ -47,6 +47,6 @@ public let ASSAULT_TANK_TOWER_ID = 'h0AQ'
 	..setReal("usca", 0.7)
 	..setReal("ussc", 1.0)
 	..setString("uarm", "Metal")
-	..setInt("upoi", 655)
+	..setInt("upoi", 650)
 	..setInt("upri", 6)
 	..setUnreal("ua1c", 1.0)
