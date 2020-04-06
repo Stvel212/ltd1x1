@@ -26,7 +26,7 @@ public let SPAWN_OF_DRAGON_UNIT_ID = 'h02V'
 	..setInt("ua1b", 139)
 	..setReal("ussc", 2.0)
 	..setUnreal("uacq", 500.0)
-	..setString("ua1t", "normal")
+	..setString("ua1t", "chaos")
 	..setString("ua1m", "")
 	..setInt("ua1z", 0)
 	..setInt("ua1r", 180)
