@@ -21,14 +21,14 @@ public let THUNDERBIRD_TOWER_ID = 'h01G'
 	..setInt("ulur", 0)
 	..setInt("urtm", 1)
 	..setInt("ugor", 0)
-	..setInt("uhpm", 955)
+	..setInt("uhpm", 1055)
 	..setString("unam", "Thunderbird")
 	..setString("unsf", "Building")
 	..setString("uhot", "P")
 	..setString("utub", "|cffccccccDamage: |r|cffff8000120-132|r" + 
 						"|cffcccccc|nSpeed: |r|cffff80001.8|r" + 
 						"|cffcccccc|nRange: |r|cffff8000200|r" + 
-						"|cffcccccc|nHit Points: |r|cffff8000955|r" + 
+						"|cffcccccc|nHit Points: |r|cffff80001055|r" + 
 						"|cffcccccc|nAttack Type: |r|cffff8000Magic|r" + 
 						"|cffcccccc|nDefense Type: |r|cffff8000Heavy |r" + 
 						"|cffcccccc|nAbility: |r|cff808080 Aftershock|r")
