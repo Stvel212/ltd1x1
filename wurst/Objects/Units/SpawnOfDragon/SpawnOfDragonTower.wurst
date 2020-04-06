@@ -24,7 +24,13 @@ public let SPAWN_OF_DRAGON_TOWER_ID = 'h01A'
 	..setInt("uhpm", 1360)
 	..setString("unam", "Spawn of Dragon")
 	..setString("unsf", "Building T6")
-	..setString("utub", "|cffccccccDamage: |r|cffff8000141-159|r|cffcccccc|nSpeed: |r|cffff80001.5|r|cffcccccc|nRange: |r|cffff8000100|r|cffcccccc|nHit Points: |r|cffff80001360|r|cffcccccc|nAttack Type: |r|cffff8000Normal |r|cffcccccc|nDefense Type: |r|cffff8000Heavy |r|cffcccccc|nAbility: |r|cff808080 Circle Slash|r")
+	..setString("utub", "|cffccccccDamage: |r|cffff8000141-159|r" + 
+						"|cffcccccc|nSpeed: |r|cffff80001.5|r" + 
+						"|cffcccccc|nRange: |r|cffff8000100|r" + 
+						"|cffcccccc|nHit Points: |r|cffff80001360|r" + 
+						"|cffcccccc|nAttack Type: |r|cffff8000Chaos |r" + 
+						"|cffcccccc|nDefense Type: |r|cffff8000Heavy |r" + 
+						"|cffcccccc|nAbility: |r|cff808080 Circle Slash|r")
 	..setInt("uwu1", 0)
 	..setString("ua1g", "enemies")
 	..setString("ua1w", "msplash")
