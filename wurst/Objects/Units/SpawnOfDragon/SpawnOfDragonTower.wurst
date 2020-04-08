@@ -40,7 +40,7 @@ public let SPAWN_OF_DRAGON_TOWER_ID = 'h01A'
 	..setInt("ua1r", 90)
 	..setInt("ua1z", 0)
 	..setUnreal("uma1", 0.0)
-	..setString("ua1t", "chaos")
+	..setString("ua1t", "normal")
 	..setUnreal("ua1c", 1.5)
 	..setInt("ua1b", 147)
 	..setInt("ua1s", 20)

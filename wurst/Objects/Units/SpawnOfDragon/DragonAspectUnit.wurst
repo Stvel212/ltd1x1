@@ -27,7 +27,7 @@ public let DRAGON_ASPECT_UNIT_ID = 'h02W'
 	..setInt("ua1b", 229)
 	..setInt("ua1r", 350)
 	..setInt("ua1d", 3)
-	..setString("ua1t", "chaos")
+	..setString("ua1t", "normal")
 	..setString("utyp", "giant")
 	..setInt("umpm", 0)
 	..setInt("umpi", 0)
