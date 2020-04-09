@@ -1,9 +1,14 @@
 package IngamePlayers
+
 import LinkedList
 
 public let INGAME_PLAYERS = new LinkedList<int>()
+public let INGAME_PLAYERS_AND_OBS = new LinkedList<int>()
 
 init
     for i = 0 to bj_MAX_PLAYER_SLOTS - 1
         if players[i].isIngame()
             INGAME_PLAYERS.add(i)
+            INGAME_PLAYERS_AND_OBS.add(i)
+        if IsPlayerObserver(players[i])
+            INGAME_PLAYERS_AND_OBS.add(i)

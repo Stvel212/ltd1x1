@@ -19,7 +19,7 @@ public class FastFinish
     static function vote(player p)
         let pid = p.getId()
         let team = R2I(pid / 4)
-        string teamName = team == 0 ? "left" : "right"
+        let teamName = team == 0 ? "left" : "right"
         if not voted[pid]
             voted[pid] = true               
             votes[team]++

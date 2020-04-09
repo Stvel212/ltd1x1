@@ -10,7 +10,7 @@ public class HCLResolver
   private static int array prophetModelIndex
 
   static function getModeFromHandicaps(LinkedList<int> handicaps) returns string
-    var res = findObserverPresets(handicaps.get(10), handicaps.get(11))
+    let res = findObserverPresets(handicaps.get(10), handicaps.get(11))
     if res.length() > 0
       newhcl = true
       setPlayersData(handicaps)

@@ -45,7 +45,7 @@ public class AutoHeal
     Display.toAll(generateNotifyMassage(teamName, healsCount), 7)
   
   private static function generateNotifyMassage(string teamName, int healsCount) returns string
-    string message = "{0} King Healed! Heals remaining: {1}".format(teamName, healsCount.toString())
+    let message = "{0} King Healed! Heals remaining: {1}".format(teamName, healsCount.toString())
     return healsCount != 0 ? message : Colorizer.colorize("WARNING!!! ", Colors.red) + message
   
   private static function getTeamNameById(int team) returns string
