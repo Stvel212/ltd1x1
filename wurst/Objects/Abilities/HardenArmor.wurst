@@ -1,0 +1,49 @@
+package HardenArmor
+
+import AbilityObjEditing
+
+public let HARDEN_ARMOR_ID = 'A07Q'
+public let HARDEN_ARMOR_ICON_ID = 'A07R'
+public let HARDEN_ARMOR_BUFF_ID = 'B030'
+
+@compiletime function create_w3a_A07Q()
+    new AbilityDefinitionHardenedSkin(HARDEN_ARMOR_ID)
+    ..setName("Harden Armor")
+    ..presetTooltipNormal(lvl -> "Harden Armor")
+    ..presetIcon("ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeTwo.blp")
+    ..setButtonPositionNormalX(0)
+    ..setButtonPositionNormalY(0)
+    ..presetTooltipNormalExtended(lvl -> "30% chance to reduce damage taken by 50 every time this unit is attacked.")
+    ..setArtTarget("Abilities\\Spells\\Human\\DevotionAura\\DevotionAura.mdl")
+    ..presetBuffs(lvl -> "B030")
+    ..presetAreaofEffect(lvl -> 1)
+    ..setTargetAttachmentPoint("origin")
+    ..presetChancetoReduceDamage(lvl -> 30)
+    ..presetMinimumDamage(lvl -> 0)
+    ..presetIgnoredDamage(lvl -> 50)
+    ..setRequirements("")
+    ..presetIncludeMeleeDamage(lvl -> true)
+    ..presetIncludeRangedDamage(lvl -> true)
+
+@compiletime function create_w3a_A07R()
+    createObjectDefinition("w3a", HARDEN_ARMOR_ICON_ID, 'Aasl')
+    ..setLvlDataString("arac", 0, 0, "human")
+    ..setLvlDataString("anam", 0, 0, "Harden Armor")
+    ..setLvlDataString("ansf", 0, 0, "(buff icon only)")
+    ..setLvlDataUnreal("aare", 1, 0, 0.0)
+    ..setLvlDataString("atar", 1, 0, "_")
+    ..setLvlDataUnreal("Slo1", 1, 1, 0.0)
+    ..setLvlDataString("abuf", 1, 0, "B030")
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeTwo.blp")
+    ..setLvlDataString("atp1", 1, 0, "Harden Armor")
+    ..setLvlDataString("aub1", 1, 0, "30% chance to reduce damage taken by 50 every time this unit is attacked.")
+    
+@compiletime function create_w3h_B030()
+    createObjectDefinition("w3h", HARDEN_ARMOR_BUFF_ID, 'Basl')
+    ..setString("frac", "human")
+    ..setString("ftip", "Harden Armor")
+    ..setString("fube", "30% chance to reduce damage taken by 50 every time this unit is attacked.")
+    ..setString("fart", "ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeTwo.blp")
+    ..setString("ftat", "Abilities\\Spells\\Human\\DevotionAura\\DevotionAura.mdl")
+    ..setString("fnsf", "(buff only)")
+    ..setString("fta0", "origin")

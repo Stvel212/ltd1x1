@@ -1012,17 +1012,6 @@ import ObjEditingNatives
 	..setString("fnsf", "(buff only)")
 
 
-@compiletime function create_w3h_B030()
-	createObjectDefinition("w3h", 'B030', 'Basl')
-	..setString("frac", "human")
-	..setString("ftip", "Harden Armor")
-	..setString("fube", "30% chance to reduce damage taken by 50 every time this unit is attacked. If the attack deals less than 50 damage, it will deal 5 damage.")
-	..setString("fart", "ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeTwo.blp")
-	..setString("ftat", "Abilities\\Spells\\Human\\DevotionAura\\DevotionAura.mdl")
-	..setString("fnsf", "(buff only)")
-	..setString("fta0", "origin")
-
-
 @compiletime function create_w3h_B031()
 	createObjectDefinition("w3h", 'B031', 'Basl')
 	..setString("frac", "human")
