@@ -1,27 +1,26 @@
 package Plague
 
-import ObjEditingNatives
+import AbilityObjEditing
 
 public let PLAGUE_ID = 'A0BK'
 public let PLAGUE_ICON_ID = 'A0BJ'
+public let PLAGUE_BUFF_ID = 'B03X'
 
-@compiletime function create_w3a_A0BK()
-    createObjectDefinition("w3a", PLAGUE_ID, 'ACac')
-    ..setLvlDataString("arac", 0, 0, "human")
-    ..setLvlDataString("atp1", 1, 0, "Plague")
-    ..setLvlDataString("anam", 0, 0, "Plague")
-    ..setLvlDataString("aub1", 1, 0, "Decreases the damage of nearby enemies by 10%.")
-    ..setLvlDataUnreal("aare", 1, 0, 250.0)
-    ..setLvlDataString("atar", 1, 0, "enemies")
-    ..setLvlDataString("abuf", 1, 0, "B03X")
-    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\PassiveButtons\\PASBTNPlagueCloud.blp")
-    ..setLvlDataInt("abpy", 0, 0, 0)
-    ..setLvlDataString("ansf", 0, 0, "(undead aura)")
-    ..setLvlDataUnreal("Cac1", 1, 1, -0.1)
-    ..setLvlDataString("atat", 0, 0, "Abilities\\Spells\\Undead\\PlagueCloud\\PlagueCloudCaster.mdl")
-    ..setLvlDataString("asat", 0, 0, "Abilities\\Spells\\Undead\\PlagueCloud\\PlagueCloudCaster.mdl")
-    ..setLvlDataString("aspt", 0, 0, "origin")
-    ..setLvlDataInt("atac", 0, 0, 1)
+@compiletime function create_plague()
+    new AbilityDefinitionAuraDevotionCreep(PLAGUE_ID)
+    ..setName("Plague")
+    ..presetTooltipNormal(lvl -> "Plague")
+    ..presetTooltipNormalExtended(lvl -> "Decreases the armour of nearby enemies by 3.")
+    ..presetAreaofEffect(lvl -> 250)
+    ..presetTargetsAllowed(lvl -> "enemies")
+    ..presetBuffs(lvl -> "B03X")
+    ..presetIcon("ReplaceableTextures\\PassiveButtons\\PASBTNPlagueCloud.blp")
+    ..setButtonPositionNormalY(0)
+    ..setArtTarget("Abilities\\Spells\\Undead\\PlagueCloud\\PlagueCloudCaster.mdl")
+    ..setArtSpecial("Abilities\\Spells\\Undead\\PlagueCloud\\PlagueCloudCaster.mdl")
+    ..setSpecialAttachmentPoint("origin")
+    ..setTargetAttachments(1)
+    ..presetArmorBonus(lvl -> -3)
     
 @compiletime function create_w3a_A0BJ()
     createObjectDefinition("w3a", PLAGUE_ICON_ID, 'Aimp')
@@ -30,7 +29,14 @@ public let PLAGUE_ICON_ID = 'A0BJ'
     ..setLvlDataString("areq", 0, 0, "")
     ..setLvlDataString("anam", 0, 0, "Plague")
     ..setLvlDataString("atp1", 1, 0, "Plague")
-    ..setLvlDataString("aub1", 1, 0, "Decreases the damage of nearby enemies by 10%. (250 range)")
+    ..setLvlDataString("aub1", 1, 0, "Decreases the armour of nearby enemies by 3 in 250 range (stackable with zombie aura)")
     ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\PassiveButtons\\PASBTNPlagueCloud.blp")
     ..setLvlDataInt("abpy", 0, 0, 0)
     ..setLvlDataString("ansf", 0, 0, "(icon only)")
+
+
+@compiletime function create_w3h_B03X()
+    createObjectDefinition("w3h", PLAGUE_BUFF_ID, 'Bapl')
+    ..setString("frac", "human")
+    ..setString("fnsf", "(pudge)")
+    ..setString("fube", "This unit is diseased it has less armor.")

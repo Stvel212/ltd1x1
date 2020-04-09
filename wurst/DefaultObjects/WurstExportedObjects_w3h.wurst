@@ -1355,13 +1355,6 @@ import ObjEditingNatives
 	..setInt("ftac", 1)
 
 
-@compiletime function create_w3h_B03X()
-	createObjectDefinition("w3h", 'B03X', 'Bapl')
-	..setString("frac", "human")
-	..setString("fnsf", "(pudge)")
-	..setString("fube", "This unit is diseased; it will do less damage.")
-
-
 @compiletime function create_w3h_B03Y()
 	createObjectDefinition("w3h", 'B03Y', 'BUfa')
 	..setString("frac", "human")
@@ -1428,13 +1421,6 @@ import ObjEditingNatives
 	..setString("ftat", "Abilities\\Spells\\Other\\HowlOfTerror\\HowlTarget.mdl")
 	..setString("ftip", "Sickness Aura")
 	..setString("fta0", "origin")
-
-
-@compiletime function create_w3h_B048()
-	createObjectDefinition("w3h", 'B048', 'Bapl')
-	..setString("frac", "human")
-	..setString("fnsf", "(zombie)")
-	..setString("fube", "This unit is diseased; it will do less damage.")
 
 
 @compiletime function create_w3h_B049()

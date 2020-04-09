@@ -47,7 +47,7 @@ public let NECROLYTE_TOWER_ID = 'h0CS'
 	..setUnreal("udp1", 0.3)
 	..setString("udty", "small")
 	..setString("utip", "Deploy Necrolyte  [|cffFFcc00P|r]")
-	..setString("utub", "|cffccccccDamage: |r|cffff800077-88|r|cffcccccc|nSpeed: |r|cffff80001.0|r|cffcccccc|nRange: |r|cffff8000500|r|cffcccccc|nHit Points: |r|cffff8000750|r|cffcccccc|nAttack Type: |r|cffff8000Pierce|r|cffcccccc|nDefense Type: |r|cffff8000Unarmored|r|cffcccccc|nAbility: |r|cff808080 Raise Dead|r")
+	..setString("utub", "|cffccccccDamage: |r|cffff800077-88|r|cffcccccc|nSpeed: |r|cffff80001.0|r|cffcccccc|nRange: |r|cffff8000500|r|cffcccccc|nHit Points: |r|cffff8000750|r|cffcccccc|nAttack Type: |r|cffff8000Pierce|r|cffcccccc|nDefense Type: |r|cffff8000Light|r|cffcccccc|nAbility: |r|cff808080 Raise Dead|r")
 	..setString("ua1t", "pierce")
 	..setString("ua1w", "missile")
 	..setInt("ua1z", 900)
