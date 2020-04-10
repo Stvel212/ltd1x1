@@ -1,5 +1,8 @@
 package BigfootTower
+
 import ObjEditingNatives
+import ObjectIds
+import Fissure
 
 public let BIGFOOT_TOWER_ID = 'h06T'
 
@@ -12,7 +15,7 @@ public let BIGFOOT_TOWER_ID = 'h06T'
 	..setInt("ubld", 5)
 	..setInt("ugol", 325)
 	..setInt("ulum", 0)
-	..setString("uabi", "A05E,A008")
+	..setString("uabi", "A008," + commaList(FISSURE_ID))
 	..setString("uubs", "")
 	..setString("umdl", "units\\creeps\\Sasquatch\\Sasquatch.mdl")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNSasquatch.blp")

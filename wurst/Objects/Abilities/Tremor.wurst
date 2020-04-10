@@ -1,0 +1,27 @@
+package Tremor
+
+import ObjEditingNatives
+
+public let TREMOR_ID = 'A05D'
+
+@compiletime function create_w3a_A05D()
+	createObjectDefinition("w3a", TREMOR_ID, 'AHtc')
+	..setLvlDataInt("alev", 0, 0, 1)
+	..setLvlDataInt("aher", 0, 0, 0)
+	..setLvlDataString("ahky", 0, 0, "")
+	..setLvlDataString("anam", 0, 0, "Tremor")
+	..setLvlDataString("atp1", 1, 0, "Tremor")
+	..setLvlDataString("aub1", 1, 0, "Slams the ground, dealing 20 damage and slowing the movement and attack speed of nearby enemy units by 10% for 4 seconds. Casting after minotaur death also.")
+	..setLvlDataUnreal("ahdu", 1, 0, 2.0)
+	..setLvlDataUnreal("acdn", 1, 0, 10.0)
+	..setLvlDataInt("amcs", 1, 0, 15)
+	..setLvlDataUnreal("Htc4", 1, 4, 0.1)
+	..setLvlDataUnreal("Htc3", 1, 3, 0.1)
+	..setLvlDataUnreal("Htc1", 1, 1, 20.0)
+	..setLvlDataUnreal("adur", 1, 0, 4.0)
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("abuf", 1, 0, "B02C")
+	..setLvlDataString("atar", 1, 0, "enemies")
+	..setLvlDataString("ansf", 0, 0, "(Demi)")
+

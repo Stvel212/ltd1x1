@@ -1,5 +1,11 @@
 package MinotaurUnit
+
 import ObjEditingNatives
+import RegisterEvents
+import ObjectIds
+import Tremor
+import InstantDummyCaster
+import Orders
 
 public let MINOTAUR_UNIT_ID = 'h074'
 
@@ -12,7 +18,7 @@ public let MINOTAUR_UNIT_ID = 'h074'
 	..setString("ureq", "")
 	..setInt("ufoo", 0)
 	..setString("ua1g", "enemies")
-	..setString("uabi", "A05D")
+	..setString("uabi", commaList(TREMOR_ID))
 	..setString("unam", "Minotaur")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNTauren.blp")
 	..setString("umdl", "units\\orc\\Tauren\\Tauren.mdl")
@@ -44,3 +50,9 @@ public let MINOTAUR_UNIT_ID = 'h074'
 	..setInt("umpi", 8)
 	..setUnreal("umpr", 1.2)
 	..setUnreal("ucpt", 0.1)
+
+init
+	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_DEATH) ->
+		let du = GetDyingUnit()
+		if du.getTypeId() == MINOTAUR_UNIT_ID
+			InstantDummyCaster.castImmediate(du.getOwner(), TREMOR_ID, du.getAbilityLevel(TREMOR_ID), OrderIds.thunderclap, du.getPos())

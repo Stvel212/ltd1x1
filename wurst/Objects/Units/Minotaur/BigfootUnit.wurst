@@ -1,5 +1,11 @@
 package BigfootUnit
+
 import ObjEditingNatives
+import ObjectIds
+import Fissure
+import RegisterEvents
+import InstantDummyCaster
+import Orders
 
 public let BIGFOOT_UNIT_ID = 'h075'
 
@@ -12,7 +18,7 @@ public let BIGFOOT_UNIT_ID = 'h075'
 	..setString("ureq", "")
 	..setInt("ufoo", 0)
 	..setString("ua1g", "enemies")
-	..setString("uabi", "A05E")
+	..setString("uabi", commaList(FISSURE_ID))
 	..setString("unam", "Bigfoot")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNSasquatch.blp")
 	..setString("umdl", "units\\creeps\\Sasquatch\\Sasquatch.mdl")
@@ -46,3 +52,10 @@ public let BIGFOOT_UNIT_ID = 'h075'
 	..setInt("umpi", 12)
 	..setInt("umpm", 20)
 	..setUnreal("umpr", 1.0)
+
+
+init
+	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_DEATH) ->
+		let du = GetDyingUnit()
+		if du.getTypeId() == BIGFOOT_UNIT_ID
+			InstantDummyCaster.castImmediate(du.getOwner(), FISSURE_ID, du.getAbilityLevel(FISSURE_ID), OrderIds.stomp, du.getPos())

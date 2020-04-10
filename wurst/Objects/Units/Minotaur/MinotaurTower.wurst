@@ -1,5 +1,8 @@
 package MinotaurTower
+
 import ObjEditingNatives
+import ObjectIds
+import Tremor
 
 public let MINOTAUR_TOWER_ID = 'h06S'
 
@@ -12,7 +15,7 @@ public let MINOTAUR_TOWER_ID = 'h06S'
 	..setInt("ubld", 5)
 	..setInt("ugol", 275)
 	..setInt("ulum", 0)
-	..setString("uabi", "A05D,A008")
+	..setString("uabi", "A008," + commaList(TREMOR_ID))
 	..setString("uubs", "")
 	..setString("umdl", "units\\orc\\Tauren\\Tauren.mdl")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNTauren.blp")
