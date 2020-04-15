@@ -11,6 +11,6 @@ import ObjEditingNatives
 	..setLvlDataString("arac", 0, 0, "human")
 	..setLvlDataString("ansf", 0, 0, "(summon)")
 	..setLvlDataString("abuf", 1, 0, "B04F,B04G")
-	..setLvlDataUnreal("aare", 1, 0, 220.0)
-	..setLvlDataUnreal("Eim1", 1, 1, 10.0)
+	..setLvlDataUnreal("aare", 1, 0, 400.0)
+	..setLvlDataUnreal("Eim1", 1, 1, 15.0)
 	
