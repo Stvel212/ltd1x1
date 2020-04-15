@@ -1,6 +1,8 @@
 package WardenUnit
 
 import ObjEditingNatives
+import CoupDeGrace
+import ObjectIds
 
 public let WARDEN_UNIT_ID = 'h094'
 
@@ -9,13 +11,13 @@ public let WARDEN_UNIT_ID = 'h094'
 	..setInt("ufoo", 0)
 	..setString("upgr", "R00B,R00C,R009,R00A")
 	..setInt("uhpm", 2670)
-	..setString("uabi", "A07L")
+	..setString("uabi", commaList(COUP_DE_GRACE_ID))
 	..setString("ua1g", "enemies")
 	..setString("utip", "")
 	..setString("unam", "Warden")
 	..setInt("udef", 3)
 	..setUnreal("ua1c", 0.5)
-	..setInt("ua1b", 69)
+	..setInt("ua1b", 74)
 	..setString("utub", "")
 	..setString("uhot", "")
 	..setUnreal("uhpr", 0.0)

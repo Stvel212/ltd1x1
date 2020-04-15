@@ -1,0 +1,20 @@
+package CoupDeGrace
+
+import ObjEditingNatives
+
+public let COUP_DE_GRACE_ID = 'A07L'
+
+@compiletime function create_w3a_A07L()
+	createObjectDefinition("w3a", COUP_DE_GRACE_ID, 'ANdb')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("aher", 0, 0, 0)
+	..setLvlDataInt("alev", 0, 0, 1)
+	..setLvlDataString("anam", 0, 0, "Coup De Grace")
+	..setLvlDataString("atp1", 1, 0, "|cffff8000Coup De Grace|r")
+	..setLvlDataString("aub1", 1, 0, "The Warden backstabs enemies with every hit, and has a 20% chance to evade an attack.")
+	..setLvlDataUnreal("Ocr4", 1, 4, 0.2)
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNCriticalStrike.blp")
+	..setLvlDataUnreal("Ocr1", 1, 1, 100.0)
+	..setLvlDataString("ansf", 0, 0, "(warden)")
