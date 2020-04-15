@@ -1,0 +1,38 @@
+package WardenUnit
+
+import ObjEditingNatives
+
+public let WARDEN_UNIT_ID = 'h094'
+
+@compiletime function create_w3u_h094()
+	createObjectDefinition("w3u", WARDEN_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 2670)
+	..setString("uabi", "A07L")
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Warden")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 0.5)
+	..setInt("ua1b", 69)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("utyp", "giant")
+	..setUnreal("ucol", 15.0)
+	..setString("umdl", "units\\nightelf\\herowarden\\herowarden.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNHeroWarden.blp")
+	..setString("usnd", "HeroWarden")
+	..setReal("ussc", 1.8)
+	..setInt("ua1s", 11)
+	..setUnreal("ubs1", 0.3)
+	..setUnreal("udp1", 0.3)
+	..setString("udaa", "")
+	..setInt("umpi", 7)
+	..setInt("umpm", 7)
+	..setUnreal("umpr", 1.0)
+	..setString("unsf", "fighter")
+	..setInt("umvs", 350)
+	..setUnreal("uacq", 300.0)

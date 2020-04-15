@@ -1,0 +1,35 @@
+package MoonGuardUnit
+
+import ObjEditingNatives
+import FanOfKnives
+import ObjectIds
+
+public let MOON_GUARD_UNIT_ID = 'h091'
+
+@compiletime function create_w3u_h091()
+	createObjectDefinition("w3u", MOON_GUARD_UNIT_ID, 'hfoo')
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 1350)
+	..setString("uabi", commaList(FAN_OF_KNIVES_ID))
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Moon Guard")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 0.6)
+	..setInt("ua1b", 78)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("utyp", "giant")
+	..setUnreal("ucol", 20.0)
+	..setString("umdl", "units\\creeps\\assassin\\assassin.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNAssassin.blp")
+	..setString("usnd", "Maiev")
+	..setReal("ussc", 1.2)
+	..setInt("ua1s", 11)
+	..setString("unsf", "fighter")
+	..setString("udaa", "")
+	..setInt("umpi", 10)
+	..setInt("umpm", 15)
+	..setUnreal("umpr", 0.8)

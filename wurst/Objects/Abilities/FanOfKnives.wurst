@@ -1,0 +1,19 @@
+package FanOfKnives
+
+import ObjEditingNatives
+
+public let FAN_OF_KNIVES_ID = 'A07H'
+
+@compiletime function create_w3a_A07H()
+	createObjectDefinition("w3a", FAN_OF_KNIVES_ID, 'AEfk')
+	..setLvlDataInt("aher", 0, 0, 0)
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataInt("alev", 0, 0, 1)
+	..setLvlDataInt("Efk3", 1, 3, 7)
+	..setLvlDataUnreal("acdn", 1, 0, 18.0)
+	..setLvlDataUnreal("aare", 1, 0, 350.0)
+	..setLvlDataInt("amcs", 1, 0, 15)
+	..setLvlDataInt("abpy", 0, 0, 0)
+	..setLvlDataString("aub1", 1, 0, "The Warden hurls a flurry of knives,  damaging nearby enemies. Each knife does 60 damage. max 5 target only")
+	..setLvlDataString("ansf", 0, 0, "(custom)")
+	..setLvlDataUnreal("Efk1", 1, 1, 60.0)
