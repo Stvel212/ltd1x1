@@ -2,6 +2,7 @@ package LightenArmor
 
 import AbilityObjEditing
 import ObjectIdGenerator
+import ObjectIds
 
 public let LIGHTEN_ARMOR_ID = compiletime(ABIL_ID_GEN.next())
 public let LIGHTEN_ARMOR_ICON_ID = compiletime(ABIL_ID_GEN.next())
@@ -16,7 +17,7 @@ public let LIGHTEN_ARMOR_BUFF_ID = compiletime(BUFF_ID_GEN.next())
     ..setButtonPositionNormalY(0)
     ..presetTooltipNormalExtended(lvl -> "10% chance to reduce damage taken by 20 every time this unit is attacked.")
     ..setArtTarget("Abilities\\Spells\\Human\\DevotionAura\\DevotionAura.mdl")
-    ..presetBuffs(lvl -> "B030")
+    ..presetBuffs(lvl -> LIGHTEN_ARMOR_BUFF_ID.toRawCode())
     ..presetAreaofEffect(lvl -> 1)
     ..setTargetAttachmentPoint("origin")
     ..presetChancetoReduceDamage(lvl -> 10)
@@ -34,7 +35,7 @@ public let LIGHTEN_ARMOR_BUFF_ID = compiletime(BUFF_ID_GEN.next())
     ..setLvlDataUnreal("aare", 1, 0, 0.0)
     ..setLvlDataString("atar", 1, 0, "_")
     ..setLvlDataUnreal("Slo1", 1, 1, 0.0)
-    ..setLvlDataString("abuf", 1, 0, "B030")
+    ..setLvlDataString("abuf", 1, 0, LIGHTEN_ARMOR_BUFF_ID.toRawCode())
     ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeOne.blp")
     ..setLvlDataString("atp1", 1, 0, "Lighten Armor")
     ..setLvlDataString("aub1", 1, 0, "10% chance to reduce damage taken by 20 every time this unit is attacked.")

@@ -37,7 +37,7 @@ public let MILITIA_SUMMON_ID = 'h04O'
 	..setInt("ua1s", 1)
 	..setInt("upoi", 1)
 	..setString("utyp", "sapper,summoned")
-	..setInt("usrg", 7)
+	..setInt("usrg", 5)
 	..setString("utip", "Summon Militia (|cffFFcc00Q|r)")
 	..setString("utub", "You get what you pay for.\r\n\r\n|cffFFcc00+1 income|r\r\n|cffCCCCCCNormal damage, Light armor.|r")
 	..setInt("ulev", 1)
