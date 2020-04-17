@@ -153,7 +153,6 @@ player udg_mostIncome=null
 integer array udg_numberOfSummons
 integer udg_MaxLevel_Integer=0
 boolean udg_onBonusLevel=false
-integer udg_bonusUnitType=0
 force udg_IngamePlayers_forMultiboard=null
 force udg_IngamePlayers_PlayerGroup=null
 multiboard udg_EndScoreboard=null
@@ -1890,73 +1889,6 @@ call TimerStart(udg_PeriodSpawnTimer,0.10,true,function CreateCreepWavePeriod)
 endif
 endfunction
 
-function CustomUnitCreator takes integer count, player p, integer unitId, location loc, real face returns nothing
-    loop
-        set count = count - 1
-        exitwhen count < 0
-        call CreateUnitAtLoc(p, unitId, loc, face)
-    endloop
-    set p = null
-    set loc = null
-endfunction
-
-function CreateCreepWave takes nothing returns nothing
-local integer n=udg_LevelWaveCount_Integer[udg_Level_Integer]
-if(udg_doSpawn1)then
-    call CustomUnitCreator(n, Player(10), udg_Level_UnitType[udg_Level_Integer], udg_Spawn1, bj_UNIT_FACING)
-endif
-if(udg_doSpawn2)then
-    call CustomUnitCreator(n, Player(10), udg_Level_UnitType[udg_Level_Integer], udg_Spawn2, bj_UNIT_FACING)
-endif
-if(udg_doSpawn3)then
-    call CustomUnitCreator(n, Player(10), udg_Level_UnitType[udg_Level_Integer], udg_Spawn3, bj_UNIT_FACING)
-endif
-if(udg_doSpawn4)then
-    call CustomUnitCreator(n, Player(10), udg_Level_UnitType[udg_Level_Integer], udg_Spawn4, bj_UNIT_FACING)
-endif
-if(udg_doSpawn5)then
-    call CustomUnitCreator(n, Player(11), udg_Level_UnitType[udg_Level_Integer], udg_Spawn5, bj_UNIT_FACING)
-endif
-if(udg_doSpawn6)then
-    call CustomUnitCreator(n, Player(11), udg_Level_UnitType[udg_Level_Integer], udg_Spawn6, bj_UNIT_FACING)
-endif
-if(udg_doSpawn7)then
-    call CustomUnitCreator(n, Player(11), udg_Level_UnitType[udg_Level_Integer], udg_Spawn7, bj_UNIT_FACING)
-endif
-if(udg_doSpawn8)then
-    call CustomUnitCreator(n, Player(11), udg_Level_UnitType[udg_Level_Integer], udg_Spawn8, bj_UNIT_FACING)
-endif
-endfunction
-function CreateCreepWaveBonus takes nothing returns nothing
-local integer n=5
-if(udg_ModeX3==true)then
-set n=15
-endif
-if(udg_doSpawn1)then
-    call CustomUnitCreator(n,Player(10), udg_bonusUnitType,udg_Spawn1, bj_UNIT_FACING)
-endif
-if(udg_doSpawn2)then
-    call CustomUnitCreator(n,Player(10), udg_bonusUnitType,udg_Spawn2, bj_UNIT_FACING)
-endif
-if(udg_doSpawn3)then
-    call CustomUnitCreator(n,Player(10), udg_bonusUnitType,udg_Spawn3, bj_UNIT_FACING)
-endif
-if(udg_doSpawn4)then
-    call CustomUnitCreator(n,Player(10), udg_bonusUnitType,udg_Spawn4, bj_UNIT_FACING)
-endif
-if(udg_doSpawn5)then
-    call CustomUnitCreator(n,Player(11), udg_bonusUnitType,udg_Spawn5, bj_UNIT_FACING)
-endif
-if(udg_doSpawn6)then
-    call CustomUnitCreator(n,Player(11), udg_bonusUnitType,udg_Spawn6, bj_UNIT_FACING)
-endif
-if(udg_doSpawn7)then
-    call CustomUnitCreator(n,Player(11), udg_bonusUnitType,udg_Spawn7, bj_UNIT_FACING)
-endif
-if(udg_doSpawn8)then
-    call CustomUnitCreator(n,Player(11), udg_bonusUnitType,udg_Spawn8, bj_UNIT_FACING)
-endif
-endfunction
 function showUnitTextPlayer takes unit u,string s,real valRed,real valGreen,real valBlue,player pl returns nothing
 local texttag t
 local force f
@@ -2355,7 +2287,6 @@ set gg_trg_Setup_Creep_Properties=CreateTrigger()
 call TriggerAddAction(gg_trg_Setup_Creep_Properties,function Trig_Setup_Creep_Properties_Actions)
 endfunction
 function Trig_Setup_Creep_Types_Actions takes nothing returns nothing
-set udg_bonusUnitType=0x6830354C
 set udg_Temp_Integer=1
 set udg_Level_UnitType[udg_Temp_Integer]=0x68303032
 set udg_Temp_Integer=(udg_Temp_Integer+1)
@@ -4969,7 +4900,6 @@ call TriggerExecute(gg_trg_Set_Round_to_In_Progress)
 call PolledWait(1.00)
 set udg_InRound=true
 call TriggerExecute(gg_trg_Create_Fighters_JASS)
-else
 call TriggerExecute(gg_trg_Autocast_Guardian_Spirit)
 endif
 call DisplayTimedTextToForce(GetPlayersAll(),15.00,udg_LevelDescript_String[(udg_MaxLevel_Integer+1)])
