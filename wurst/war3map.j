@@ -4900,13 +4900,13 @@ call TriggerExecute(gg_trg_Set_Round_to_In_Progress)
 call PolledWait(1.00)
 set udg_InRound=true
 call TriggerExecute(gg_trg_Create_Fighters_JASS)
-call TriggerExecute(gg_trg_Autocast_Guardian_Spirit)
 endif
 call DisplayTimedTextToForce(GetPlayersAll(),15.00,udg_LevelDescript_String[(udg_MaxLevel_Integer+1)])
 set udg_Level_Integer=31
 call ExecuteFunc("CreateCreepWaveTimer")
 call PolledWait(1.00)
 call TriggerExecute(gg_trg_Warp_Summons)
+call TriggerExecute(gg_trg_Autocast_Guardian_Spirit)
 set udg_InRound_Completely=true
 set udg_Level_31_Timer=((udg_Level_31_Timer*5.00)/6.00)
 call StartTimerBJ(udg_Spawn_Timer,false,(udg_Level_31_Timer+10.00))
