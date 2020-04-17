@@ -497,7 +497,7 @@ trigger gg_trg_Update_Creeps_Left_Text=null
 trigger gg_trg_Update_Creeps_Left_Text_Arena_Mode=null
 trigger gg_trg_Update_Income=null
 trigger gg_trg_Update_Fighter_Value=null
-trigger OnLumberUpdate = CreateTrigger()
+trigger gg_trg_Update_Lumber=null
 trigger gg_trg_Update_Score=null
 trigger gg_trg_Update_Race_Icon=null
 trigger gg_trg_Setup_Race_Icon=null
@@ -2076,7 +2076,7 @@ call MultiboardMinimizeBJ(false,udg_Scoreboard)
 call TriggerExecute(gg_trg_Update_Race_Icon)
 call TriggerExecute(gg_trg_Update_Fighter_Value)
 call TriggerExecute(gg_trg_Update_Income)
-call TriggerEvaluate(OnLumberUpdate)
+call TriggerExecute(gg_trg_Update_Lumber)
 call TriggerExecute(gg_trg_Creep_HP_Modifier)
 call DisableTrigger(GetTriggeringTrigger())
 if(Trig_Start_Game_Func023C())then
@@ -3502,7 +3502,7 @@ call MultiboardSetItemStyleBJ(udg_Scoreboard,5,0,true,false)
 call MultiboardSetItemStyleBJ(udg_Scoreboard,1,1,true,false)
 call MultiboardDisplayBJ(true,udg_Scoreboard)
 call MultiboardMinimizeBJ(false,udg_Scoreboard)
-call TriggerEvaluate(OnLumberUpdate)
+call TriggerExecute(gg_trg_Update_Lumber)
 call TriggerExecute(gg_trg_Update_Income)
 call TriggerExecute(gg_trg_Update_Score)
 endfunction
@@ -3755,28 +3755,48 @@ endif
 return true
 endfunction
 
+function Trig_Update_Lumber_Func001Func003C takes nothing returns boolean
+    if(not(udg_ModeMM==true))then
+    return false
+    endif
+    if(not(udg_SpecialEvent==false))then
+    return false
+    endif
+    return true
+endfunction
+
 function Trig_Update_Lumber_Func001A takes nothing returns nothing
-if(true)then
+    set udg_Temp_Integer=(GetPlayerTechCountSimple(0x52303033,GetEnumPlayer())+GetPlayerTechCountSimple(0x52303048,GetEnumPlayer()))
+    set udg_Temp_String3=(I2S(udg_numWorkers[GetConvertedPlayerId(GetEnumPlayer())])+("/"+I2S(udg_Temp_Integer)))
+    if(Trig_Update_Lumber_Func001Func003C())then
     if(Trig_Update_Lumber_Func001Func003Func002C())then
-        if IsPlayerAlly(GetLocalPlayer(),Player(8))or IsPlayerObserver(GetLocalPlayer())then
-            call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],udg_Temp_String3)
-        else
-            call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],"?")
-        endif
+    if IsPlayerAlly(GetLocalPlayer(),Player(8))or IsPlayerObserver(GetLocalPlayer())then
+    call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],udg_Temp_String3)
+    else
+    call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],"?")
+    endif
     else
     endif
     if(Trig_Update_Lumber_Func001Func003Func003C())then
-        if IsPlayerAlly(GetLocalPlayer(),Player(9))or IsPlayerObserver(GetLocalPlayer())then
-            call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],udg_Temp_String3)
-        else
-            call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],"?")
-        endif
+    if IsPlayerAlly(GetLocalPlayer(),Player(9))or IsPlayerObserver(GetLocalPlayer())then
+    call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],udg_Temp_String3)
+    else
+    call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],"?")
+    endif
     else
     endif
 else
     call MultiboardSetItemValueBJ(udg_Scoreboard,4,udg_ScoreboardRow[GetConvertedPlayerId(GetEnumPlayer())],udg_Temp_String3)
 endif
 endfunction
+
+function Trig_Update_Lumber_Actions takes nothing returns nothing
+    call ForForce(udg_IngamePlayers_PlayerGroup,function Trig_Update_Lumber_Func001A)
+    endfunction
+    function InitTrig_Update_Lumber takes nothing returns nothing
+    set gg_trg_Update_Lumber=CreateTrigger()
+    call TriggerAddAction(gg_trg_Update_Lumber,function Trig_Update_Lumber_Actions)
+    endfunction
 
 function Trig_Update_Score_Func001Func001C takes nothing returns boolean
 if(not(udg_Level_Integer>0))then
@@ -4506,7 +4526,7 @@ set udg_SpecialEvent=true
 call TriggerExecute(gg_trg_Update_Race_Icon)
 call TriggerExecute(gg_trg_Update_Fighter_Value)
 call TriggerExecute(gg_trg_Update_Income)
-call TriggerEvaluate(OnLumberUpdate)
+call TriggerExecute(gg_trg_Update_Lumber)
 call StartTimerBJ(udg_Spawn_Timer,false,30.00)
 call TimerDialogSetTitleBJ(udg_Spawn_Timer_Window,"Arena Battle in")
 call DisplayTimedTextToForce(GetPlayersAll(),7.00,("::: You have |CFFFF0000"+("30|r seconds to prepare for Arena Battle")))
@@ -4835,7 +4855,7 @@ function Trig_Level_31_Initiate_Actions takes nothing returns nothing
 set udg_ModeMM=false
 call TriggerExecute(gg_trg_Update_Fighter_Value)
 call TriggerExecute(gg_trg_Update_Income)
-call TriggerEvaluate(OnLumberUpdate)
+call TriggerExecute(gg_trg_Update_Lumber)
 set udg_onBonusLevel=true
 set udg_Level_Integer=(udg_Level_Integer+1)
 set udg_InRound=false
@@ -5097,7 +5117,7 @@ call PlayMusicBJ(gg_snd_PursuitTheme)
 call TriggerExecute(gg_trg_Update_Race_Icon)
 call TriggerExecute(gg_trg_Update_Fighter_Value)
 call TriggerExecute(gg_trg_Update_Income)
-call TriggerEvaluate(OnLumberUpdate)
+call TriggerExecute(gg_trg_Update_Lumber)
 call TriggerExecute(gg_trg_Update_Score)
 call ForForce(udg_IngamePlayers_PlayerGroup,function Trig_Spawn_Arena_Mode_Func008A)
 call TriggerExecute(gg_trg_Disable_Mercenary_spell)
@@ -5551,7 +5571,7 @@ call TriggerExecute(gg_trg_Restore_Mercenary)
 call TriggerExecute(gg_trg_Update_Race_Icon)
 call TriggerExecute(gg_trg_Update_Fighter_Value)
 call TriggerExecute(gg_trg_Update_Income)
-call TriggerEvaluate(OnLumberUpdate)
+call TriggerExecute(gg_trg_Update_Lumber)
 call TriggerExecute(gg_trg_Update_Score)
 call PolledWait(3.00)
 call TriggerExecute(gg_trg_Next_All)
@@ -14509,7 +14529,7 @@ return true
 endfunction
 function Trig_Buy_Wisp_Actions takes nothing returns nothing
 set udg_numWorkers[GetConvertedPlayerId(GetOwningPlayer(GetTrainedUnit()))]=(udg_numWorkers[GetConvertedPlayerId(GetOwningPlayer(GetTrainedUnit()))]+1)
-call TriggerEvaluate(OnLumberUpdate)
+call TriggerExecute(gg_trg_Update_Lumber)
 set udg_Temp_Integer=udg_numWorkers[GetConvertedPlayerId(GetOwningPlayer(GetTrainedUnit()))]
 set udg_Temp_Integer=0
 endfunction
@@ -14541,7 +14561,7 @@ endif
 return true
 endfunction
 function Trig_Lumberjack_Training_Actions takes nothing returns nothing
-call TriggerEvaluate(OnLumberUpdate)
+    call TriggerExecute(gg_trg_Update_Lumber)
 if(Trig_Lumberjack_Training_Func003C())then
 call SetPlayerTechMaxAllowedSwap(0x52303048,7,GetTriggerPlayer())
 else
@@ -16934,7 +16954,7 @@ call InitTrig_Update_Creeps_Left_Text()
 call InitTrig_Update_Creeps_Left_Text_Arena_Mode()
 call InitTrig_Update_Income()
 call InitTrig_Update_Fighter_Value()
-// call InitTrig_Update_Lumber()
+call InitTrig_Update_Lumber()
 call InitTrig_Update_Score()
 call InitTrig_Update_Race_Icon()
 call InitTrig_Setup_Race_Icon()
