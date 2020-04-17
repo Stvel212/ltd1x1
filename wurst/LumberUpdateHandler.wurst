@@ -4,13 +4,18 @@ import IngamePlayers
 
 
 function handleLumberUpdate()
-    for i from INGAME_PLAYERS_AND_OBS.staticItr()
+    for i from INGAME_PLAYERS.staticItr()
         let p = players[i]
         let lumberIndex = GetPlayerTechCountSimple('R003', p) + GetPlayerTechCountSimple('R00H', p)
         let wispCount= udg_numWorkers[GetConvertedPlayerId(GetEnumPlayer())]
         let message = wispCount.toString() + "/" + lumberIndex.toString()
         if udg_ModeMM or udg_SpecialEvent == false
-            udg_Scoreboard.setItemValue(udg_ScoreboardRow[i + 1] - 1, 3, message)
+            for pid from INGAME_PLAYERS_AND_OBS.staticItr()
+                if players[pid].isAllyOf(p) or IsPlayerObserver(players[pid])
+                    udg_Scoreboard.setItemValue(udg_ScoreboardRow[i + 1] - 1, 3, message)
+                else 
+                    udg_Scoreboard.setItemValue(udg_ScoreboardRow[i + 1] - 1, 3, "?")
+
         else
             udg_Scoreboard.setItemValue(udg_ScoreboardRow[i + 1] - 1, 3, message)
 
