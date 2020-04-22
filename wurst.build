@@ -46,9 +46,13 @@ buildMapData:
         # - 1
         - 2
         - 8
+      flags:
+        sharedVision: false
     - name: Eastern Force
       playerIds:
         - 4
         # - 5
         - 6
         - 9
+      flags:
+        sharedVision: false
