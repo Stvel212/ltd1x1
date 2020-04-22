@@ -4,5 +4,6 @@
 
 // init
 //     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SELECTED) ->
-//         GetTriggerUnit().setOwner(GetTriggerPlayer(), true)
+//         if GetTriggerUnit().getTypeId() == 'h037'
+//             GetTriggerUnit().setOwner(players[4], true)
         
