@@ -15020,10 +15020,22 @@ endloop
 else
 endif
 endfunction
+
+function PlayerLeavesCondition takes nothing returns boolean
+    return not IsPlayerObserver(GetTriggerPlayer())
+endfunction
+
 function InitTrig_Player_Leaves takes nothing returns nothing
 set gg_trg_Player_Leaves=CreateTrigger()
 call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(0))
+call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(1))
+call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(2))
+call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(3))
 call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(4))
+call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(5))
+call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(6))
+call TriggerRegisterPlayerEventLeave(gg_trg_Player_Leaves,Player(7))
+call TriggerAddCondition(gg_trg_Player_Leaves, Condition(function PlayerLeavesCondition))
 call TriggerAddAction(gg_trg_Player_Leaves,function Trig_Player_Leaves_Actions)
 endfunction
 function Trig_Allied_Resources_Function takes nothing returns nothing
