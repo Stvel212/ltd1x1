@@ -682,6 +682,7 @@ trigger gg_trg_Player_Kick=null
 trigger gg_trg_Disp_Game_Modes=null
 trigger gg_trg_Mode_AP=null
 trigger gg_trg_Mode_SD=null
+trigger BeforeSendIncome = CreateTrigger()
 trigger gg_trg_Mode_AR=null
 trigger gg_trg_Mode_HP=null
 trigger gg_trg_Mode_LI=null
@@ -6907,9 +6908,11 @@ endif
 set udg_SummonCounterL=GetRandomInt(1,udg_Temp_Integer3)
 set udg_SummonCounterR=GetRandomInt(1,udg_Temp_Integer4)
 set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_LSummonHoldArea,Player(11))
+call TriggerEvaluate(BeforeSendIncome)
 call ForGroupBJ(udg_Temp_UG,function Trig_Warp_Summons_Func007A)
 call DestroyGroup(udg_Temp_UG)
 set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_RSummonHoldArea,Player(10))
+call TriggerEvaluate(BeforeSendIncome)
 call ForGroupBJ(udg_Temp_UG,function Trig_Warp_Summons_Func010A)
 call DestroyGroup(udg_Temp_UG)
 endfunction
