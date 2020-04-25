@@ -11,4 +11,4 @@ function sortIncome()
 
 
 init
-    BeforeSendIncome.addCondition(Condition(function sortIncome))
+    BeforeSendIncome.addAction(function sortIncome)
