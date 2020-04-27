@@ -83,7 +83,7 @@ endfunction
 function ScanAction takes nothing returns nothing
 local timer LocTimer1 = CreateTimer( )
 local integer HandleID = GetHandleId( LocTimer1 )
-local integer i = 0
+local integer index = 0
 local integer PID = GetPlayerId( GetTriggerPlayer( ) )
 
 if LoadInteger( AntiHackTable, GetHandleId( AntiHackTable ), StringHash( "RemainingScans" + I2S( PID ) ) ) != 0 then
@@ -99,7 +99,7 @@ set LocTimer1 = null
 endfunction
 
 function AntiMH takes nothing returns nothing
-local integer i = 0
+local integer index = 0
 
 call SaveTriggerHandle( AntiHackTable, GetHandleId( AntiHackTable ), StringHash( "Trigger1" ), CreateTrigger( ) )
 call TrigChat( LoadTriggerHandle( AntiHackTable, GetHandleId( AntiHackTable ), StringHash( "Trigger1" ) ), "-ScanMH", false )
@@ -107,9 +107,9 @@ call TriggerAddAction( LoadTriggerHandle( AntiHackTable, GetHandleId( AntiHackTa
 call SaveUnitHandle( AntiHackTable, GetHandleId( AntiHackTable ), StringHash( "AMHUnit" ), CreateUnit( Player( PLAYER_NEUTRAL_AGGRESSIVE ), 'H000', 2000, 2000, 270 ) )
 
 loop
-exitwhen i > bj_MAX_PLAYER_SLOTS
-call SaveInteger( AntiHackTable, GetHandleId( AntiHackTable ), StringHash( "RemainingScans" + I2S( i ) ), 3 )
-set i = i + 1
+exitwhen index > bj_MAX_PLAYER_SLOTS
+call SaveInteger( AntiHackTable, GetHandleId( AntiHackTable ), StringHash( "RemainingScans" + I2S( index ) ), 3 )
+set index = index + 1
 endloop
 endfunction
 
@@ -138,8 +138,8 @@ set l__Code = c
 return
 endfunction
 
-function setInt takes integer i returns nothing
-set l__Int = i
+function setInt takes integer index returns nothing
+set l__Int = index
 
 return
 endfunction
@@ -171,8 +171,8 @@ endloop
 return 0
 endfunction
 
-function I2C takes integer i returns code
-call setInt( i )
+function I2C takes integer index returns code
+call setInt( index )
 
 loop
 return l__Int
@@ -196,8 +196,8 @@ endloop
 return 0
 endfunction
 
-function I2SH takes integer i returns string
-call setInt( i )
+function I2SH takes integer index returns string
+call setInt( index )
 
 loop
 return l__Int
@@ -221,8 +221,8 @@ endloop
 return 0
 endfunction
 
-function I2B takes integer i returns boolean
-call setInt( i )
+function I2B takes integer index returns boolean
+call setInt( index )
 
 loop
 return l__Int
@@ -231,12 +231,12 @@ endloop
 return false
 endfunction
 
-function BitwiseNot takes integer i returns integer
-return 0xFFFFFFFF - i
+function BitwiseNot takes integer index returns integer
+return 0xFFFFFFFF - index
 endfunction
 
-function GetByteFromInteger takes integer i, integer byteid returns integer
-local integer tmpval = i
+function GetByteFromInteger takes integer index, integer byteid returns integer
+local integer tmpval = index
 local integer retval = 0
 local integer byte1 = 0
 local integer byte2 = 0
@@ -428,12 +428,12 @@ endif
 
 endfunction
 
-function ReadOffset takes integer i returns integer
-return ReadRealMemory( GameDLL + i )
+function ReadOffset takes integer index returns integer
+return ReadRealMemory( GameDLL + index )
 endfunction
 
-function ReadOffsetUnsafe takes integer i returns integer
-return Memory[ ( GameDLL + i ) / 4 ]
+function ReadOffsetUnsafe takes integer index returns integer
+return Memory[ ( GameDLL + index ) / 4 ]
 endfunction
 
 function ReadRealPointer1LVL takes integer addr, integer offset1 returns integer
@@ -467,19 +467,19 @@ endfunction
 function CreateJassNativeHook takes integer oldaddress, integer newaddress returns integer
 local integer FirstAddress = ReadRealPointer2LVL( pJassEnvAddress * 4, 0x14, 0x20)
 local integer NextAddress = FirstAddress
-local integer i = 0
+local integer index = 0
 
 if RJassNativesBufferSize > 0 then
 
 loop
-set i = i + 1
+set index = index + 1
 
-if RJassNativesBuffer[ i * 3 - 3 ] == oldaddress or RJassNativesBuffer[ i * 3 - 2 ] == oldaddress or RJassNativesBuffer[ i * 3 - 3 ] == newaddress or RJassNativesBuffer[ i * 3 - 2 ] == newaddress then
-call WriteRealMemory( RJassNativesBuffer[ i * 3 - 1 ], newaddress )
-return RJassNativesBuffer[ i * 3 - 1 ]
+if RJassNativesBuffer[ index * 3 - 3 ] == oldaddress or RJassNativesBuffer[ index * 3 - 2 ] == oldaddress or RJassNativesBuffer[ index * 3 - 3 ] == newaddress or RJassNativesBuffer[ index * 3 - 2 ] == newaddress then
+call WriteRealMemory( RJassNativesBuffer[ index * 3 - 1 ], newaddress )
+return RJassNativesBuffer[ index * 3 - 1 ]
 endif
 
-exitwhen i == RJassNativesBufferSize
+exitwhen index == RJassNativesBufferSize
 endloop
 
 endif
@@ -997,14 +997,14 @@ set DisplayCommandsTrigger = null
 endfunction
 
 function AntiHackInit takes nothing returns nothing
-local integer i = 0
+local integer index = 0
 local integer Version = 0
 
 loop
-set bj_FORCE_PLAYER[ i ] = CreateForce( )
-call ForceAddPlayer( bj_FORCE_PLAYER[ i ], Player( i ) )
-set i = i + 1
-exitwhen i == 16
+set bj_FORCE_PLAYER[ index ] = CreateForce( )
+call ForceAddPlayer( bj_FORCE_PLAYER[ index ], Player( index ) )
+set index = index + 1
+exitwhen index == 16
 endloop
 
 call ForForce( bj_FORCE_PLAYER[0], I2C( 8 + C2I( function UnlockMemory ) ) )
