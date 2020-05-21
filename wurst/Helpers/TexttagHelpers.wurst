@@ -1,12 +1,11 @@
 package TexttagHelpers
 
-public function createTT(vec3 pos, string message, real size, colorA col) returns texttag
-    return CreateTextTag()
-        ..setPos(pos.toVec2().withZ(20.))
-        ..setColor(col)
-        ..setText(message, size)
-        ..setVisibility(true)
-        ..setPermanent(true)
+import Enums
 
-public function texttag.showToAllyAndObs(player p)
-    this..setVisibility(localPlayer.isAllyOf(p) or IsPlayerObserver(localPlayer))
+public function texttag.showForSideAndObs(Side s)
+    let lp = GetLocalPlayer()
+    let p = s == Side.WEST ? players[8] : players[9]
+    if lp.isAllyOf(p) or IsPlayerObserver(p)
+        this.setVisibility(true)
+    else
+        this.setVisibility(false)

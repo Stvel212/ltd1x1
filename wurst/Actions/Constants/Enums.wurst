@@ -1,0 +1,10 @@
+package Enums
+
+public enum KingParam
+    HP
+    ATTACK
+    REGEN
+
+public enum Side
+    WEST
+    EAST

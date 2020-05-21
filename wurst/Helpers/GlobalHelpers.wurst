@@ -1,0 +1,12 @@
+package GlobalHelpers
+
+import Enums
+
+public function getKingBySide(Side s) returns unit
+    return s == Side.WEST ? gg_unit_h00K_0009 : gg_unit_h00K_0006
+
+public function getOwnerPlayerBySide(Side s) returns player
+    return s == Side.WEST ? players[8] : players[9]
+
+public function getSideByPlayer(player p) returns Side
+    return p.isAllyOf(players[8]) ? Side.WEST : Side.EAST
