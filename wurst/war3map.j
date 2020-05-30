@@ -681,6 +681,8 @@ trigger gg_trg_Vote_lock__Expired=null
 trigger gg_trg_Player_Kick=null
 trigger gg_trg_Disp_Game_Modes=null
 trigger gg_trg_Mode_AP=null
+trigger OnLeftIncomeSend = CreateTrigger()
+trigger OnRightIncomeSend = CreateTrigger()
 trigger gg_trg_Mode_SD=null
 trigger gg_trg_Mode_AR=null
 trigger gg_trg_Mode_HP=null
@@ -6763,7 +6765,7 @@ set udg_Temp_Player=Player(10)
 set udg_Temp_Point=GetRandomLocInRect(gg_rct_RSummonHoldAreaSpawn)
 endif
 set bj_lastCreatedUnit=CreateUnitAtLoc(udg_Temp_Player,GetUnitTypeId(GetEnteringUnit()),udg_Temp_Point,bj_UNIT_FACING)
-call CreateNUnitsAtLoc(100, GetUnitTypeId(GetEnteringUnit()), udg_Temp_Player, udg_Temp_Point, bj_UNIT_FACING)
+// call CreateNUnitsAtLoc(100, GetUnitTypeId(GetEnteringUnit()), udg_Temp_Player, udg_Temp_Point, bj_UNIT_FACING)
 call SetUnitColor(bj_lastCreatedUnit,GetPlayerColor(GetOwningPlayer(GetEnteringUnit())))
 call SetUnitUserData(bj_lastCreatedUnit,id)
 set udg_TotalLumber_Spent[id]=udg_TotalLumber_Spent[id]+(GetUnitLevel(u)*20)
@@ -6907,10 +6909,14 @@ endif
 endif
 set udg_SummonCounterL=GetRandomInt(1,udg_Temp_Integer3)
 set udg_SummonCounterR=GetRandomInt(1,udg_Temp_Integer4)
-set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_LSummonHoldArea,Player(11))
+// set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_LSummonHoldArea,Player(11))
+set udg_Temp_UG=CreateGroup()
+call TriggerEvaluate(OnLeftIncomeSend)
 call ForGroupBJ(udg_Temp_UG,function Trig_Warp_Summons_Func007A)
 call DestroyGroup(udg_Temp_UG)
-set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_RSummonHoldArea,Player(10))
+// set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_RSummonHoldArea,Player(10))
+set udg_Temp_UG=CreateGroup()
+call TriggerEvaluate(OnRightIncomeSend)
 call ForGroupBJ(udg_Temp_UG,function Trig_Warp_Summons_Func010A)
 call DestroyGroup(udg_Temp_UG)
 endfunction

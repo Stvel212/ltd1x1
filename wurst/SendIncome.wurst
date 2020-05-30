@@ -1,0 +1,44 @@
+package SendIncome
+import LinkedList
+import HashMap
+import EventHelper
+
+let leftIncomeMap = new HashMap<int, LinkedList<unit>>()
+let rightIncomeMap = new HashMap<int, LinkedList<unit>>()
+
+function sendLeftIncome()
+    for i = 70 downto 0
+        if leftIncomeMap.has(i)
+            for u from leftIncomeMap.get(i).staticItr()
+                udg_Temp_UG.addUnit(u)
+    leftIncomeMap.flush()
+
+function sendRightIncome()
+    for i = 70 downto 0
+        if rightIncomeMap.has(i)
+            for u from rightIncomeMap.get(i).staticItr()
+                udg_Temp_UG.addUnit(u)
+    rightIncomeMap.flush()
+
+function addLeftIncomeUnit()
+    let u = GetEnteringUnit()
+    let pv = u.getPointValue()
+    if not leftIncomeMap.has(pv)
+        leftIncomeMap.put(pv, new LinkedList<unit>())
+    leftIncomeMap.get(pv).add(u)
+
+function addRightIncomeUnit()
+    let u = GetEnteringUnit()
+    let pv = u.getPointValue()
+    if not rightIncomeMap.has(pv)
+        rightIncomeMap.put(pv, new LinkedList<unit>())
+    rightIncomeMap.get(pv).add(u)
+    
+
+init
+    OnLeftIncomeSend.addCondition(Condition(function sendLeftIncome))
+    OnRightIncomeSend.addCondition(Condition(function sendRightIncome))
+    CreateTrigger()..registerRectEnterEventSource(gg_rct_LSummonHoldArea)
+                    ..addCondition(Condition(function addLeftIncomeUnit))
+    CreateTrigger()..registerRectEnterEventSource(gg_rct_RSummonHoldArea)
+                    ..addCondition(Condition(function addRightIncomeUnit))
