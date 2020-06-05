@@ -1,0 +1,53 @@
+package ProphetPick
+
+import ProphetTowers
+import HashList
+import LinkedList
+
+HashList<HashList<int>> array playerPicks
+
+public function player.combineNewProphetPick()
+    this.combineNewProphetPick(0)
+public function player.combineNewProphetPick(int prevCount)
+    let newPick = prevCount > 0 ? this.getNewProphetPick(prevCount) : this.getNewProphetPick()
+    this.addPick(newPick)
+    for i = 0 to 5
+        for tid = 0 to PROPHET_TOWERS[i].size()
+            let t = PROPHET_TOWERS[i].get(tid)
+            if t == newPick.get(i)
+                SetPlayerTechMaxAllowed(this, t, -1)
+            else
+                SetPlayerTechMaxAllowed(this, t, 0)
+
+public function player.addPick(HashList<int> pick)
+    if playerPicks[this.getId()] == null
+        playerPicks[this.getId()] = new HashList<HashList<int>>()
+    playerPicks[this.getId()].add(pick)
+
+public function player.getCurrentPick() returns HashList<int>
+    let picks = playerPicks[this.getId()]
+    if picks == null or picks.isEmpty()
+        return new HashList<int>()
+    return picks.get(picks.size() - 1)
+
+public function player.getNewProphetPick() returns HashList<int>
+    return this.getNewProphetPick(0)
+public function player.getNewProphetPick(int prevCount) returns HashList<int>
+    let newPick = new HashList<int>()
+    for i = 0 to 5
+        let towerList = prevCount > 0 ? this.getFilteredList(i, prevCount) : PROPHET_TOWERS[i]
+        let index = towerList.isEmpty() ? 0 : GetRandomInt(0, towerList.size() - 1)
+        newPick.add(towerList.get(index))
+    return newPick
+
+public function player.getFilteredList(int tier, int prevCount) returns LinkedList<int>
+    let filterList = new HashList<int>()
+    let picks = playerPicks[this.getId()]
+    if picks == null or picks.isEmpty() or prevCount < 1
+        return PROPHET_TOWERS[tier]
+    let lastId = picks.size() - 1
+    let toCount = lastId - prevCount < 0 ? 0 : lastId - prevCount
+    for i = lastId downto toCount
+        filterList.add(picks.get(i).get(tier))
+    return PROPHET_TOWERS[tier].filter(t -> not filterList.has(t))
+    

@@ -1,0 +1,35 @@
+package DisplayPick
+
+import HashList
+import ObjectIds
+
+vec2 array imgInitialPosition = [vec2(-4845, 4732), vec2(-4845, 1147), vec2(-2798, 4732), vec2(-2798, 1147),
+                                vec2(2195, 4732), vec2(2195, 1147), vec2(4242, 4732), vec2(4242, 1147)]
+
+image array playerImages
+
+public function player.displayPick(HashList<int> pick)
+    this.clearPreviousPickImages()
+    let y = imgInitialPosition[this.getId()].y
+    var x = imgInitialPosition[this.getId()].x
+    for i = 0 to pick.size() - 1
+        playerImages[i] = this.createPickImage("icons\\custom_{0}.blp".format(pick.get(i).toRawCode()), vec2(x, y))
+        x += 120
+        
+function player.clearPreviousPickImages()
+    let pistart = this.getId() * 6
+    for i = pistart to pistart + 5
+        let prevImg = playerImages[i]
+        if prevImg != null
+            ShowImage(prevImg, false)
+            prevImg.remove()
+
+function player.createPickImage(string imgPath, vec2 coord) returns image
+    let img = createImage(imgPath, coord, 100, 100)
+    let p = GetLocalPlayer()
+    img.show()
+    if p.isAllyOf(p) or IsPlayerObserver(p)
+        ShowImage(img, true)                    
+    else
+        ShowImage(img, false) 
+    return img   

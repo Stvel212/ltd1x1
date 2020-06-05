@@ -1,0 +1,37 @@
+package RacePick
+
+import HashList
+import RaceTowers
+
+public function getRacePickById(int id) returns HashList<int>
+    switch (id)
+        case 'u00K'
+            return arcticUnits
+        case 'u001'
+            return beastUnits
+        case 'u00H'
+            return demihumanUnits
+        case 'u00C'
+            return elementUnits
+        case 'u00L'
+            return elfUnits
+        case 'u00G'
+            return ghostUnits
+        case 'u00M'
+            return goblinUnits
+        case 'u00J'
+            return marineUnits
+        case 'u000'
+            return mechUnits
+        case 'u003'
+            return natureUnits
+        case 'u00U'
+            return orcUnits
+        case 'u00O'
+            return paladinUnits
+        case 'u002'
+            return shadowUnits
+        case 'u00Z'
+            return undeadUnits
+        default
+            return new HashList<int>()

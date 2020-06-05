@@ -1,0 +1,13 @@
+package ProphetTowers
+
+import LinkedList
+import Towers
+
+public let PROPHET_TOWERS = [
+    new LinkedList<int>()..add('h0BC', 'h06J', 'h040', COLT_TOWER_ID, 'h010', 'h05N', 'h07J', PEEWEE_TOWER_ID, 'h01C', ORC_WARRIOR_TOWER_ID, 'h09L', 'h01P', 'h0CF'),
+    new LinkedList<int>()..add('h0BE', 'h06K', 'h042', 'h08H', 'h012', 'h05S', GEOMANCER_TOWER_ID, 'h07O', 'h00O', RANGER_TOWER_ID, 'h0BV', 'h09W', 'h01T', 'h0CI'),
+    new LinkedList<int>()..add('h0BH', HARPY_TOWER_ID, 'h06M', WATCHER_TOWER_ID, SENTRY_TOWER_ID, 'h05R', 'h0AB', 'h07Q', 'h00P', SPRITE_TOWER_ID, 'h0BX', 'h09N', 'h01V', 'h0CO'),
+    new LinkedList<int>()..add('h0BJ', 'h016', 'h06O', 'h046', PRISONER_TOWER_ID, 'h05V', 'h0AH', 'h07S', TEMPEST_TOWER_ID, 'h01I', 'h0C4', 'h09R', OVERSEER_TOWER_ID, NECROMANCER_TOWER_ID),
+    new LinkedList<int>()..add('h0BM', 'h018', 'h06Q', 'h048', DRUID_TOWER_ID, APPARATION_TOWER_ID, 'h0AL', KOMODO_TOWER_ID, CYBORG_TOWER_ID, 'h01K', 'h0C5', KNIGHT_TOWER_ID, 'h01Z', ZOMBIE_TOWER_ID),
+    new LinkedList<int>()..add('h0BO', SPAWN_OF_DRAGON_TOWER_ID, MINOTAUR_TOWER_ID, 'h04A', MOON_GUARD_TOWER_ID, 'h05Z', STEAMROLLER_TOWER_ID, 'h07W', NEOTANK_TOWER_ID, 'h01M', 'h0C9', 'h0A3', LORD_OF_DEATH_TOWER_ID, 'h0D0')
+]

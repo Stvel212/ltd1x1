@@ -1,0 +1,22 @@
+package RacePick_event
+
+import RegisterEvents
+import EventHelper
+import DisplayPick
+import HashList
+import RacePick
+
+let builders = new HashList<int>()..add('u00K', 'u001', 'u00H', 'u00C', 'u00L', 'u00G', 'u00M', 'u00J', 'u000', 'u003', 'u00U', 'u00O', 'u002', 'u00Z')
+
+function racePick(unit u)
+    let uid = u.getTypeId()
+    if builders.has(uid)
+        let pick = getRacePickById(uid)
+        u.getOwner().displayPick(pick)
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
+        racePick(GetTriggerUnit())
+
+    CreateTrigger()..registerRectEnterEventSource(bj_mapInitialPlayableArea)
+                    ..addCondition(Condition(() -> racePick(GetEnteringUnit())))

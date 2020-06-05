@@ -1,0 +1,29 @@
+package ProphetPickTests
+
+import ProphetPick
+import HashList
+
+@Test
+function addPickTest()
+    players[0].addPick(new HashList<int>()..add(11, 22, 33, 44, 55, 66))
+    players[0].addPick(new HashList<int>()..add(111, 222, 333, 444, 555, 666))
+    players[0].getCurrentPick().get(5).assertEquals(666)
+    players[0].getCurrentPick().get(1).assertEquals(222)
+    
+@Test
+function getCurrentPickTest()
+    players[0].addPick(new HashList<int>()..add(111, 222, 333, 444, 555, 666))
+    players[0].getCurrentPick().get(0).assertEquals(111)
+    players[0].getCurrentPick().get(3).assertEquals(444)
+
+@Test
+function getNewProphetPickTest()
+    players[0].getNewProphetPick().size().assertEquals(6)
+    players[0].getNewProphetPick(0).size().assertEquals(6)
+    players[0].getNewProphetPick(1).size().assertEquals(6)
+    players[0].getNewProphetPick(100).size().assertEquals(6)
+    players[0].addPick(players[0].getNewProphetPick())
+    players[0].getNewProphetPick().size().assertEquals(6)
+    players[0].getNewProphetPick().size().assertEquals(6)
+    players[0].getNewProphetPick(1).size().assertEquals(6)
+    players[0].getNewProphetPick(100).size().assertEquals(6)

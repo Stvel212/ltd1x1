@@ -1,0 +1,20 @@
+package RaceTowers
+
+import HashList
+import Towers
+
+public let arcticUnits = new HashList<int>()..add('h0BC', 'h0BE', 'h0BH', 'h0BJ', 'h0BM', 'h0BO')
+public let beastUnits = new HashList<int>()..add('h010', 'h012', HARPY_TOWER_ID, 'h016', 'h018', SPAWN_OF_DRAGON_TOWER_ID)
+public let demihumanUnits = new HashList<int>()..add('h06J', 'h06K', 'h06M', 'h06O', 'h06Q', MINOTAUR_TOWER_ID)
+public let elementUnits = new HashList<int>()..add('h040', 'h042', WATCHER_TOWER_ID, 'h046', 'h048', 'h04A')
+public let elfUnits = new HashList<int>()..add(COLT_TOWER_ID, 'h08H', SENTRY_TOWER_ID, PRISONER_TOWER_ID, DRUID_TOWER_ID, MOON_GUARD_TOWER_ID)
+public let ghostUnits = new HashList<int>()..add('h05N', 'h05S', 'h05R', 'h05V', APPARATION_TOWER_ID, 'h05Z')
+public let goblinUnits = new HashList<int>()..add('h0A8', 'h0AE', 'h0AB', 'h0AH', 'h0AL', STEAMROLLER_TOWER_ID)
+public let marineUnits = new HashList<int>()..add('h07J', 'h07O', 'h07Q', 'h07S', KOMODO_TOWER_ID, 'h07W')
+public let mechUnits = new HashList<int>()..add(PEEWEE_TOWER_ID, 'h00O', 'h00P', TEMPEST_TOWER_ID, CYBORG_TOWER_ID, NEOTANK_TOWER_ID)
+public let natureUnits = new HashList<int>()..add('h01C', RANGER_TOWER_ID, SPRITE_TOWER_ID, 'h01I', 'h01K', 'h01M')
+public let orcUnits = new HashList<int>()..add(ORC_WARRIOR_TOWER_ID, 'h0BV', 'h0BX', 'h0C4', 'h0C5', 'h0C9')
+public let paladinUnits = new HashList<int>()..add('h09L', 'h09W', 'h09N', 'h09R', KNIGHT_TOWER_ID, 'h0A3')
+public let shadowUnits = new HashList<int>()..add('h01P', 'h01T', 'h01V', OVERSEER_TOWER_ID, 'h01Z', LORD_OF_DEATH_TOWER_ID)
+public let undeadUnits = new HashList<int>()..add('h0CF', 'h0CI', 'h0CO', NECROMANCER_TOWER_ID, ZOMBIE_TOWER_ID, 'h0D0')
+

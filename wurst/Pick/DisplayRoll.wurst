@@ -1,0 +1,21 @@
+package DisplayRoll
+
+public texttag array rollTextTag
+
+let positions = [vec2(-4288.0 - 90, 4024.0), vec2(-4288.0 - 90, 440.0), vec2(-2240.0 - 90, 4024.0), vec2(-2240.0 - 90, 440.0),
+				vec2(2752.0 - 90, 4024.0), vec2(2752.0 - 90, 440.0), vec2(4800.0 - 90, 4024.0), vec2(4800.0 - 90, 440.0)]
+
+public function player.updateRollTextTag()
+	let rollsCount = udg_TotalChangedBuilder[this.getId() + 1]
+	let i = this.getId()
+	let pos = positions[i].toVec3()
+	rollTextTag[i].destr()
+	let message = rollsCount == 5 ? "Next roll: |cffff0000No rolls left|r" : "Next roll: |cffffe600{0}|r/|cff1a8d33{0}|r".format((50 * rollsCount).toString())
+	rollTextTag[i] = createTTEx(pos, message, 10)
+	rollTextTag[i].setPermanent(true)
+	let lp = GetLocalPlayer()
+	if lp.isAllyOf(this) or IsPlayerObserver(lp)
+		rollTextTag[i].setVisibility(true)
+	else
+		rollTextTag[i].setVisibility(false)
+	

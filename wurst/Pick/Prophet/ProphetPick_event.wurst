@@ -1,0 +1,35 @@
+package ProphetPick_event
+
+import Prophet
+import RegisterEvents
+import EventHelper
+import ProphetPick
+import DisplayPick
+import DisplayRoll
+
+function player.rollProphet()
+    this.combineNewProphetPick(4)
+    this.displayPick(this.getCurrentPick())
+    this.updateRollTextTag()
+
+function player.rerollProphet()
+    this.rollProphet()
+    let text = this.getNameColored() + " use ReRoll"
+    if localPlayer.getTeam() == this.getTeam() or IsPlayerObserver(this)
+        printTimedToPlayer(text, 10, localPlayer)
+
+function unit.checkAndRoll()
+    if this.getTypeId() == PROPHET_ID
+        this.getOwner().rollProphet()
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
+        if GetTriggerUnit().getTypeId() == PROPHET_ID
+            GetTriggerPlayer().rollProphet()
+
+    CreateTrigger()..registerRectEnterEventSource(bj_mapInitialPlayableArea)
+                    ..addCondition(Condition(() -> GetEnteringUnit().checkAndRoll()))
+
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_RESEARCH_FINISH) ->
+        if (GetResearched() == 'R00G')
+            GetTriggerPlayer().rerollProphet()

@@ -1,0 +1,31 @@
+package BuilderPick_event
+
+import HashList
+import Prophet
+import RegisterEvents
+import EventHelper
+
+let builders = new HashList<int>()..add('u00K', 'u001', 'u00H', 'u00C', 'u00L', 'u00G', 'u00M', 'u00I',
+                                        'u00J', 'u000', 'u003', 'u00U', 'u00O', 'u002', 'u00Z', PROPHET_ID)
+
+function unit.checkBuilderPick()
+    let uid = this.getTypeId()
+    let p = this.getOwner()
+    if builders.has(uid)
+        udg_Builder_Unit[p.getId() + 1] = this
+        udg_TotalChangedBuilder[p.getId() + 1]++
+        if not autoHeal
+            if udg_BuilderHeal[p.getId() + 1]
+                this.addAbility('A084')
+            else
+                this.removeAbility('A084')
+        gg_trg_Update_Race_Icon.execute()
+        p.selectSingle(this)
+                                        
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
+        GetTriggerUnit().checkBuilderPick()
+                                        
+    CreateTrigger()..registerRectEnterEventSource(bj_mapInitialPlayableArea)
+        ..addCondition(Condition(() -> GetEnteringUnit().checkBuilderPick()))
+
