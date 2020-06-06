@@ -1,0 +1,17 @@
+package AllRandomMode
+
+import Prophet
+import HashList
+import IngamePlayers
+
+let builders = new HashList<int>()..add('u00K', 'u001', 'u00H', 'u00C', 'u00L', 'u00G', 'u00M', 'u00J', 'u000', 'u003', 'u00U', 'u00O', 'u002', 'u00Z')
+
+function checkMode()
+    let bid = allProphets ? PROPHET_ID : builders.get(GetRandomInt(0, builders.size() - 1))
+    for pid from INGAME_PLAYERS.staticItr()
+        let newUnit = createUnit(players[pid], bid, udg_Builder_Unit[pid + 1].getPos(), udg_Builder_Unit[pid + 1].getFacingAngle())
+        udg_Builder_Unit[pid + 1].remove()
+        udg_Builder_Unit[pid + 1] = newUnit
+
+init
+    gg_trg_Mode_AR.addCondition(Condition(function checkMode))

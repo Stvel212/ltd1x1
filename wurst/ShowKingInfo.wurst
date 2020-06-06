@@ -1,7 +1,6 @@
 package ShowKingInfo
 
 import RegisterEvents
-import PickHelpers
 import TexttagHelpers
 import GlobalHelpers
 import Enums
@@ -119,7 +118,7 @@ init
                 regenTTEast = getKingTextTag(side, KingParam.REGEN)
 
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
-        if (GetSpellAbilityId() == HOLYLIGHT_ID)
+        if (GetSpellAbilityId() == 'A084')
             let k = GetSpellTargetUnit()
             let u = GetTriggerUnit()
             if k == gg_unit_h00K_0009
@@ -131,4 +130,4 @@ init
                 healsTTEast.destr()
                 healsTTEast = getHealsTextTag(Side.EAST)
             doAfter(0.1) -> 
-                u.removeAbility(HOLYLIGHT_ID)
+                u.removeAbility('A084')
