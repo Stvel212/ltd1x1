@@ -1,5 +1,8 @@
 package Prophet
+
 import ObjEditingNatives
+import ObjectIds
+import ChangeBuilderAR
 
 public let PROPHET_ID = 'u00T'
 
@@ -31,5 +34,5 @@ public let PROPHET_ID = 'u00T'
     ..setUnreal("ucpt", 0.001)
     ..setInt("uscb", 0)
     ..setString("ubui", "h0BC,h06J,h040,h08F,h010,h05N,h07J,h00M,h01C,h0BF,h09L,h01P,h0CF,h0BE,h06K,h042,h08H,h012,h05S,h0AE,h07O,h00O,h01E,h0BV,h09W,h01T,h0CI,h0BH,h014,h06M,h044,h08N,h05R,h0AB,h07Q,h00P,h01H,h0BX,h09N,h01V,h0CO,h0BJ,h016,h06O,h046,h08Q,h05V,h0AH,h07S,h00N,h01I,h0C4,h09R,h01X,h0CQ,h0BM,h018,h06Q,h048,h08V,h05X,h0AL,h07U,h00Q,h01K,h0C5,h09T,h01Z,h0CW,h0BO,h01A,h06S,h04A,h090,h05Z,h0AR,h07W,h00S,h01M,h0C9,h0A3,h021,h0D0")
-    ..setString("ures", "R00I,R00G")
+    ..setString("ures", "R00I,R00G," + CHANGE_BUILDER_AR.toRawCode())
     

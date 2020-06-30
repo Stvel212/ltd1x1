@@ -692,7 +692,6 @@ trigger gg_trg_Mode_MM=null
 trigger gg_trg_Mode_HG=null
 trigger gg_trg_Mode_GG=null
 trigger gg_trg_Mode_NM=null
-trigger gg_trg_Mode_CB=null
 trigger gg_trg_Mode_X3=null
 trigger gg_trg_Select_a_Mode_Run=null
 trigger gg_trg_Select_a_Quick_x3_Mode_Run=null
@@ -710,7 +709,6 @@ trigger gg_trg_Mercenary_Requirement=null
 trigger gg_trg_Remove_Heal=null
 trigger gg_trg_Buy_Wisp=null
 trigger gg_trg_Lumberjack_Training=null
-trigger gg_trg_Change_Builder=null
 trigger gg_trg_Change_to_Mercenary=null
 trigger gg_trg_Shutdown_if_x3_is_modified=null
 trigger gg_trg_Tip_lvl_16_plus_is_harder=null
@@ -2110,8 +2108,6 @@ set udg_Builder_Unit[GetConvertedPlayerId(GetOwningPlayer(GetLastCreatedUnit()))
 call SelectUnitForPlayerSingle(GetLastCreatedUnit(),GetEnumPlayer())
 call ForceAddPlayerSimple(GetEnumPlayer(),udg_IngamePlayers_PlayerGroup)
 call SetPlayerTechMaxAllowedSwap(0x65303033,7,GetEnumPlayer())
-call SetPlayerTechMaxAllowedSwap(0x52303044,0,GetEnumPlayer())
-call SetPlayerTechMaxAllowedSwap(0x52303047,0,GetEnumPlayer())
 call SetPlayerTechMaxAllowedSwap(0x52303048,0,GetEnumPlayer())
 call SetPlayerTechMaxAllowedSwap(0x52303049,0,GetEnumPlayer())
 endfunction
@@ -13521,37 +13517,6 @@ set gg_trg_Mode_NM=CreateTrigger()
 call TriggerAddCondition(gg_trg_Mode_NM,Condition(function Trig_Mode_NM_Conditions))
 call TriggerAddAction(gg_trg_Mode_NM,function Trig_Mode_NM_Actions)
 endfunction
-function Trig_Mode_CB_Conditions takes nothing returns boolean
-if(not(udg_ModeCB==false))then
-return false
-endif
-return true
-endfunction
-function Trig_Mode_CB_Func005Func003C takes nothing returns boolean
-if(not(udg_ModeLI==false))then
-return false
-endif
-return true
-endfunction
-function Trig_Mode_CB_Func005A takes nothing returns nothing
-call SetPlayerTechMaxAllowedSwap(0x52303044,5,GetEnumPlayer())
-call SetPlayerTechMaxAllowedSwap(0x52303047,5,GetEnumPlayer())
-if(Trig_Mode_CB_Func005Func003C())then
-    call SetPlayerTechMaxAllowedSwap(0x52303049,1,GetEnumPlayer())
-else
-endif
-endfunction
-function Trig_Mode_CB_Actions takes nothing returns nothing
-call DisableTrigger(GetTriggeringTrigger())
-set udg_ModeCB=true
-call ForForce(udg_IngamePlayers_PlayerGroup,function Trig_Mode_CB_Func005A)
-call DisplayTimedTextToForce(GetPlayersAll(),10.00,"|cff3333AAChange Builder|r: Player can change builder.")
-endfunction
-function InitTrig_Mode_CB takes nothing returns nothing
-set gg_trg_Mode_CB=CreateTrigger()
-call TriggerAddCondition(gg_trg_Mode_CB,Condition(function Trig_Mode_CB_Conditions))
-call TriggerAddAction(gg_trg_Mode_CB,function Trig_Mode_CB_Actions)
-endfunction
 function Trig_Mode_X3_Conditions takes nothing returns boolean
 if(not(udg_ModeX3==false))then
 return false
@@ -13694,12 +13659,6 @@ return false
 endif
 return true
 endfunction
-function Trig_Select_a_Mode_Run_Func007Func011C takes nothing returns boolean
-if(not(udg_GameMode_String=="cb"))then
-return false
-endif
-return true
-endfunction
 function Trig_Select_a_Mode_Run_Func007Func012C takes nothing returns boolean
 if(not(udg_GameMode_String=="gm"))then
 return false
@@ -13821,11 +13780,6 @@ set udg_Temp_Bool=true
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
 else
 endif
-if(Trig_Select_a_Mode_Run_Func007Func011C())then
-set udg_Temp_Bool=true
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
-else
-endif
 if(Trig_Select_a_Mode_Run_Func007Func012C())then
 set udg_Temp_Bool=true
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
@@ -13835,7 +13789,6 @@ endif
 if(Trig_Select_a_Mode_Run_Func007Func013C())then
 set udg_Temp_Bool=true
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 else
 endif
 if(Trig_Select_a_Mode_Run_Func007Func014C())then
@@ -13846,13 +13799,11 @@ else
 endif
 if(Trig_Select_a_Mode_Run_Func007Func015C())then
 set udg_Temp_Bool=true
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_LI)
 else
 endif
 if(Trig_Select_a_Mode_Run_Func007Func016C())then
 set udg_Temp_Bool=true
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_LI)
 else
 endif
@@ -13900,7 +13851,6 @@ call ConditionalTriggerExecute(gg_trg_Mode_AP)
 call ConditionalTriggerExecute(gg_trg_Mode_MM)
 call ConditionalTriggerExecute(gg_trg_Mode_HG)
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_X3)
 return
 else
@@ -13909,7 +13859,6 @@ call ConditionalTriggerExecute(gg_trg_Mode_AR)
 call ConditionalTriggerExecute(gg_trg_Mode_MM)
 call ConditionalTriggerExecute(gg_trg_Mode_HG)
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_X3)
 return
 else
@@ -13918,7 +13867,6 @@ call ConditionalTriggerExecute(gg_trg_Mode_SD)
 call ConditionalTriggerExecute(gg_trg_Mode_MM)
 call ConditionalTriggerExecute(gg_trg_Mode_HG)
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_X3)
 return
 else
@@ -13928,7 +13876,6 @@ call ConditionalTriggerExecute(gg_trg_Mode_AR)
 call ConditionalTriggerExecute(gg_trg_Mode_MM)
 call ConditionalTriggerExecute(gg_trg_Mode_HG)
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_X3)
 return
 else
@@ -13937,7 +13884,6 @@ call ConditionalTriggerExecute(gg_trg_Mode_HP)
 call ConditionalTriggerExecute(gg_trg_Mode_MM)
 call ConditionalTriggerExecute(gg_trg_Mode_HG)
 call ConditionalTriggerExecute(gg_trg_Mode_GG)
-call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_X3)
 return
 else
@@ -14211,7 +14157,6 @@ call TriggerExecute(gg_trg_Mode_AP)
 call TriggerExecute(gg_trg_Mode_HG)
 call TriggerExecute(gg_trg_Mode_GG)
 call TriggerExecute(gg_trg_Mode_MM)
-call TriggerExecute(gg_trg_Mode_CB)
 call TriggerExecute(gg_trg_Mode_X3)
 else
 endif
@@ -14226,7 +14171,6 @@ call DisableTrigger(gg_trg_Mode_HG)
 call DisableTrigger(gg_trg_Mode_GG)
 call DisableTrigger(gg_trg_Mode_X3)
 call DisableTrigger(gg_trg_Mode_NM)
-call DisableTrigger(gg_trg_Mode_CB)
 call DisableTrigger(gg_trg_Select_a_Mode_Run)
 call DisableTrigger(gg_trg_Select_a_Mode_Event)
 call DisableTrigger(gg_trg_Start_game_at_10_sec)
@@ -14580,65 +14524,6 @@ call TriggerRegisterAnyUnitEventBJ(gg_trg_Lumberjack_Training,EVENT_PLAYER_UNIT_
 call TriggerAddCondition(gg_trg_Lumberjack_Training,Condition(function Trig_Lumberjack_Training_Conditions))
 call TriggerAddAction(gg_trg_Lumberjack_Training,function Trig_Lumberjack_Training_Actions)
 endfunction
-function Trig_Change_Builder_Conditions takes nothing returns boolean
-if(not(GetResearched()==0x52303044))then
-return false
-endif
-return true
-endfunction
-function Trig_Change_Builder_Func015Func001C takes nothing returns boolean
-if(not(udg_Temp_Integer>=6))then
-return false
-endif
-if(not(udg_Temp_Integer2>=6))then
-return false
-endif
-return true
-endfunction
-function Trig_Change_Builder_Func015C takes nothing returns boolean
-if(not(udg_Temp_Integer<12))then
-return false
-endif
-if(not(udg_Temp_Integer2<12))then
-return false
-endif
-return true
-endfunction
-function Trig_Change_Builder_Actions takes nothing returns nothing
-set udg_TotalChangedBuilder[GetConvertedPlayerId(GetTriggerPlayer())]=(udg_TotalChangedBuilder[GetConvertedPlayerId(GetTriggerPlayer())]+1)
-set bj_forLoopAIndex=0
-set bj_forLoopAIndexEnd=udg_numRaces
-loop
-exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
-call SetPlayerTechMaxAllowedSwap(udg_BuilderType[GetForLoopIndexA()],0,GetTriggerPlayer())
-set bj_forLoopAIndex=bj_forLoopAIndex+1
-endloop
-set udg_Temp_Integer=GetRandomInt(0,udg_numRaces)
-set udg_Temp_Integer2=getRandomIntExcept(0,udg_numRaces,udg_Temp_Integer)
-call SetPlayerTechMaxAllowedSwap(udg_BuilderType[udg_Temp_Integer],1,GetTriggerPlayer())
-call SetPlayerTechMaxAllowedSwap(udg_BuilderType[udg_Temp_Integer2],1,GetTriggerPlayer())
-set udg_Temp_Bool=false
-call SelectUnitForPlayerSingle(udg_Builder_Unit[GetConvertedPlayerId(GetTriggerPlayer())],GetTriggerPlayer())
-call ForceUICancelBJ(GetTriggerPlayer())
-call RemoveUnit(udg_Builder_Unit[GetConvertedPlayerId(GetTriggerPlayer())])
-if(Trig_Change_Builder_Func015C())then
-call CreateNUnitsAtLoc(1,0x65303035,GetTriggerPlayer(),GetPlayerStartLocationLoc(GetTriggerPlayer()),bj_UNIT_FACING)
-else
-if(Trig_Change_Builder_Func015Func001C())then
-call CreateNUnitsAtLoc(1,0x65303037,GetTriggerPlayer(),GetPlayerStartLocationLoc(GetTriggerPlayer()),bj_UNIT_FACING)
-else
-call CreateNUnitsAtLoc(1,0x65303036,GetTriggerPlayer(),GetPlayerStartLocationLoc(GetTriggerPlayer()),bj_UNIT_FACING)
-endif
-endif
-call SelectUnitForPlayerSingle(GetLastCreatedUnit(),GetTriggerPlayer())
-call DisplayTimedTextToForce(GetPlayersAllies(GetTriggerPlayer()),10.00,((udg_PlayerColor_String[GetConvertedPlayerId(GetTriggerPlayer())]+GetPlayerName(GetTriggerPlayer()))+"|r Changed builder."))
-endfunction
-function InitTrig_Change_Builder takes nothing returns nothing
-set gg_trg_Change_Builder=CreateTrigger()
-call TriggerRegisterAnyUnitEventBJ(gg_trg_Change_Builder,EVENT_PLAYER_UNIT_RESEARCH_FINISH)
-call TriggerAddCondition(gg_trg_Change_Builder,Condition(function Trig_Change_Builder_Conditions))
-call TriggerAddAction(gg_trg_Change_Builder,function Trig_Change_Builder_Actions)
-endfunction
 function Trig_Change_to_Mercenary_Conditions takes nothing returns boolean
 if(not(GetResearched()==0x52303049))then
 return false
@@ -14677,7 +14562,6 @@ if(Trig_Change_to_Mercenary_Func004C())then
 // call UnitAddAbilityBJ(0x41303834,udg_Builder_Unit[GetConvertedPlayerId(GetOwningPlayer(GetLastReplacedUnitBJ()))])
 else
 endif
-call SetPlayerTechResearchedSwap(0x52303044,5,GetOwningPlayer(GetTriggerUnit()))
 call SetPlayerTechResearchedSwap(0x52303049,1,GetOwningPlayer(GetTriggerUnit()))
 set udg_Temp_Unit=GetLastReplacedUnitBJ()
 set udg_Temp_Bool=false
@@ -17167,7 +17051,6 @@ call InitTrig_Mode_MM()
 call InitTrig_Mode_HG()
 call InitTrig_Mode_GG()
 call InitTrig_Mode_NM()
-call InitTrig_Mode_CB()
 call InitTrig_Mode_X3()
 call InitTrig_Select_a_Mode_Run()
 call InitTrig_Select_a_Quick_x3_Mode_Run()
@@ -17185,7 +17068,6 @@ call InitTrig_Mercenary_Requirement()
 call InitTrig_Remove_Heal()
 call InitTrig_Buy_Wisp()
 call InitTrig_Lumberjack_Training()
-call InitTrig_Change_Builder()
 call InitTrig_Change_to_Mercenary()
 call InitTrig_Shutdown_if_x3_is_modified()
 call InitTrig_Tip_lvl_16_plus_is_harder()

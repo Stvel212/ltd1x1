@@ -1,0 +1,24 @@
+package ChangeBuilderAR
+
+import UpgradeObjEditing
+
+public let CHANGE_BUILDER_AR = 'R00L'
+
+@compiletime function changeBuilderAR()
+    new W3QDefinition(CHANGE_BUILDER_AR, 5, 'Rhla')
+    ..presetTooltip(lvl -> "Change Builder {0}/5".format(lvl.toString()))
+    ..presetTooltipExtended(lvl -> "you can still use change builder {0} times.".format((5 - lvl).toString()))
+    ..presetName(lvl -> "Change Builder")
+    ..presetRequirements(lvl -> "")
+    ..presetIcon(lvl -> "ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp")
+    ..setLumberCostBase(0)
+    ..setLumberCostIncrement(50)
+    ..setGoldCostBase(0)
+    ..setGoldCostIncrement(50)
+    ..presetHotkey(lvl -> "")
+    ..setTimeIncrement(0)
+    ..setTimeBase(0)
+    ..setClass(UpgradeClass.NONE)
+    ..setEffectType(1, UpgradeEffectType.NONE)
+    ..setButtonPositionX(3)
+    ..setButtonPositionY(0)

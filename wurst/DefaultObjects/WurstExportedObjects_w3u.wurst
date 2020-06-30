@@ -108,7 +108,7 @@ import ObjEditingNatives
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
 	..setReal("usca", 1.3)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -438,7 +438,7 @@ import ObjEditingNatives
 	..setInt("ubld", 1)
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -467,7 +467,7 @@ import ObjEditingNatives
 	..setInt("ubld", 1)
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -496,7 +496,7 @@ import ObjEditingNatives
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
 	..setReal("usca", 1.3)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -5336,7 +5336,7 @@ import ObjEditingNatives
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
 	..setReal("usca", 1.2)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -7359,7 +7359,7 @@ import ObjEditingNatives
 	..setString("ureq", "u00F")
 	..setReal("usca", 1.1)
 	..setReal("ussc", 1.5)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -8989,7 +8989,7 @@ import ObjEditingNatives
 	..setInt("ubld", 1)
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -9269,7 +9269,7 @@ import ObjEditingNatives
 	..setInt("uclr", 0)
 	..setInt("uclg", 0)
 	..setInt("uclb", 0)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -10676,7 +10676,7 @@ import ObjEditingNatives
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
 	..setReal("usca", 1.2)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -10835,7 +10835,7 @@ import ObjEditingNatives
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
 	..setReal("usca", 3.0)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setInt("uver", 2)
 	..setUnreal("uhpr", -0.1)
 	..setUnreal("ucpt", 0.001)
@@ -10867,7 +10867,7 @@ import ObjEditingNatives
 	..setReal("ussc", 1.5)
 	..setReal("usca", 1.1)
 	..setString("ussi", "ReplaceableTextures\\CommandButtons\\BTNPriestessOfTheMoon.blp")
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.01)
 	..setString("unsf", "Builder")
 	..setUnreal("ucbs", 0.1)
@@ -10897,7 +10897,7 @@ import ObjEditingNatives
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
 	..setReal("usca", 1.1)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setString("ussi", "ReplaceableTextures\\CommandButtons\\BTNHeroTinker.blp")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
@@ -11746,7 +11746,7 @@ import ObjEditingNatives
 	..setInt("umpi", 100)
 	..setInt("umpm", 100)
 	..setUnreal("umpr", 1.0)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -11776,7 +11776,7 @@ import ObjEditingNatives
 	..setReal("ussc", 1.2)
 	..setReal("usca", 1.8)
 	..setString("unsf", "Builder")
-	..setString("ures", "R00D")
+	..setString("ures", "R00D,R00L")
 	..setUnreal("uhpr", -0.1)
 	..setUnreal("ucpt", 0.001)
 
@@ -15477,7 +15477,7 @@ import ObjEditingNatives
 	..setInt("ubld", 1)
 	..setString("ureq", "u00F")
 	..setReal("ussc", 1.5)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
@@ -17342,7 +17342,7 @@ import ObjEditingNatives
 	..setInt("umpi", 100)
 	..setInt("umpm", 100)
 	..setUnreal("umpr", 1.0)
-	..setString("ures", "R00I,R00D")
+	..setString("ures", "R00I,R00D,R00L")
 	..setUnreal("ucpt", 0.001)
 	..setString("unsf", "Builder")
 
