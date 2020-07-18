@@ -6,30 +6,22 @@ import IngamePlayers
 import ChangeBuilderAR
 import RegisterEvents
 import LinkedList
-
-let builders = new LinkedList<int>()..add('u00K', 'u001', 'u00H', 'u00C', 'u00L', 'u00G', 'u00M',
-                                        'u00J', 'u000', 'u003', 'u00U', 'u00O', 'u002', 'u00Z', 'u00I', PROPHET_ID)
-let usedBuilder = new HashList<int>()
+import BuilderPick_event
 
 function checkMode()
     for pid from INGAME_PLAYERS.staticItr()
         let bid = allProphets ? PROPHET_ID : builders.get(GetRandomInt(0, builders.size() - 1))
         changeBuilder(players[pid], bid)
-        if not allProphets
-            SetPlayerTechMaxAllowed(players[pid], 'R00D', 0)
-            SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_AR, 5)
 
 function changeBuilder(player p, int newUnitId)
     let pid = p.getId()
     let newUnit = createUnit(players[pid], newUnitId, udg_Builder_Unit[pid + 1].getPos(), udg_Builder_Unit[pid + 1].getFacingAngle())
     udg_Builder_Unit[pid + 1].remove()
     udg_Builder_Unit[pid + 1] = newUnit
-    usedBuilder.add(newUnitId)
-    if newUnitId == PROPHET_ID
-        SetPlayerTechMaxAllowed(p, 'R00G', 0)
+    usedBuilders.get(pid).add(newUnitId)
 
 function getNewRandomBuilder(player p)
-    let filteredList = builders.filter(t -> not usedBuilder.has(t))
+    let filteredList = builders.filter(t -> not usedBuilders.get(p.getId()).has(t))
     let newBid = filteredList.get(GetRandomInt(0, filteredList.size() - 1))
     changeBuilder(p, newBid)
 

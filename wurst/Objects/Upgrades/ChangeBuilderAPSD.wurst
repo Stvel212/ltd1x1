@@ -1,0 +1,24 @@
+package ChangeBuilderAPSD
+
+import UpgradeObjEditing
+
+public let CHANGE_BUILDER_APSD = 'R00D'
+
+@compiletime function create_w3q_R00D()
+	new W3QDefinition(CHANGE_BUILDER_APSD, 5, 'Rhla')
+	..presetTooltip(lvl -> "Change Builder {0}/5".format(lvl.toString()))
+	..presetTooltipExtended(lvl -> "you can still use change builder {0} times.".format((5 - lvl).toString()))
+	..presetName(lvl -> "Change Builder")
+	..presetRequirements(lvl -> "")
+	..presetIcon(lvl -> "ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp")
+	..setLumberCostBase(50)
+	..setLumberCostIncrement(50)
+	..setGoldCostBase(50)
+	..setGoldCostIncrement(50)
+	..presetHotkey(lvl -> "")
+	..setTimeIncrement(0)
+	..setTimeBase(0)
+	..setClass(UpgradeClass.NONE)
+	..setEffectType(1, UpgradeEffectType.NONE)
+	..setButtonPositionX(3)
+	..setButtonPositionY(0)

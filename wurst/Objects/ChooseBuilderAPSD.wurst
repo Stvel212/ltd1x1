@@ -1,0 +1,29 @@
+package ChooseBuilderAPSD
+
+import ObjectIdGenerator
+import UnitObjEditing
+import UnitIds
+import ObjectIds
+import Prophet
+
+public let CHOOSE_BUILDER_AP_SD_ID = compiletime(UNIT_ID_GEN.next())
+
+@compiletime function createChangeBuilderAPSD()
+	new BuildingDefinition(CHOOSE_BUILDER_AP_SD_ID, UnitIds.wisp)
+	..setName("Choose Builder")
+	..setUpgradesTo(commaList('u00K', 'u001', 'u00H', 'u00C', 'u00L', 'u00G', 'u00M', 'u00J', 'u000', 'u003', 'u00U', 'u00O', 'u002', 'u00Z', 'u00I', PROPHET_ID))
+	..setStructuresBuilt("")
+	..setNormalAbilities("Avul")
+	..setSpeedBase(0)
+	..setMovementType(MovementType.None)
+	..setTurnRate(0.1)
+	..setUpgradesUsed("")
+	..setFoodCost(0)
+	..setGoldCost(0)
+	..setTooltipBasic("")
+	..setTooltipExtended("")
+	..setBuildTime(1)
+	..setModelFile("Objects\\InventoryItems\\QuestionMark\\QuestionMark.mdl")
+	..setIconGameInterface("ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp")
+	..setUnitSoundSet("")
+	..setSelectionScale(2.0)

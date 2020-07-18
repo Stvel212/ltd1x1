@@ -1,0 +1,27 @@
+package APSDmode
+
+import RegisterEvents
+import ChooseBuilderAPSD
+import ChangeBuilderAPSD
+import BuilderPick_event
+
+function getNewBuilderChoose(player p)
+    let pid = p.getId()
+    let newUnit = createUnit(players[pid], CHOOSE_BUILDER_AP_SD_ID, udg_Builder_Unit[pid + 1].getPos(), udg_Builder_Unit[pid + 1].getFacingAngle())
+    udg_Builder_Unit[pid + 1].remove()
+    udg_Builder_Unit[pid + 1] = newUnit
+    for b from builders.staticItr()
+        SetPlayerTechMaxAllowed(p, b, 0)
+    let filteredList = builders.filter(b -> not usedBuilders.get(pid).has(b))
+    filteredList.shuffle()
+    for i = 0 to 1
+        let u = filteredList.pop()
+        SetPlayerTechMaxAllowed(p, u, -1)
+    p.selectSingle(newUnit)
+    
+    
+    
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_RESEARCH_FINISH) ->
+        if (GetResearched() == CHANGE_BUILDER_APSD)
+            getNewBuilderChoose(GetTriggerPlayer())

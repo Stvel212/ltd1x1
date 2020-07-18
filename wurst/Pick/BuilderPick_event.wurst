@@ -4,28 +4,50 @@ import HashList
 import Prophet
 import RegisterEvents
 import EventHelper
+import HashMap
+import LinkedList
+import ChangeBuilderAPSD
+import ChangeBuilderAR
+import ChangeBuilderProphet
+import IngamePlayers
 
-let builders = new HashList<int>()..add('u00K', 'u001', 'u00H', 'u00C', 'u00L', 'u00G', 'u00M', 'u00I',
+public let builders = new LinkedList<int>()..add('u00K', 'u001', 'u00H', 'u00C', 'u00L', 'u00G', 'u00M', 'u00I',
                                         'u00J', 'u000', 'u003', 'u00U', 'u00O', 'u002', 'u00Z', PROPHET_ID)
+public let usedBuilders = new HashMap<int, HashList<int>>()
 
 function unit.checkBuilderPick()
     let uid = this.getTypeId()
     let p = this.getOwner()
+    let pid = p.getId()
     if builders.has(uid)
-        udg_Builder_Unit[p.getId() + 1] = this
-        udg_TotalChangedBuilder[p.getId() + 1]++
+        udg_Builder_Unit[pid + 1] = this
+        udg_TotalChangedBuilder[pid + 1]++
         if not autoHeal
-            if udg_BuilderHeal[p.getId() + 1]
+            if udg_BuilderHeal[pid + 1]
                 this.addAbility('A084')
             else
                 this.removeAbility('A084')
         gg_trg_Update_Race_Icon.execute()
         p.selectSingle(this)
+        usedBuilders.get(pid).add(uid)
+    
+        SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_APSD, 0)
+        SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_AR, 0)
+        SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_PROPHET, 0)
+
+        if allProphets
+            SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_PROPHET, 5)
+        else if udg_ModeAR
+            SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_AR, 5)
+        else
+            SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_APSD, 5)
                                         
 init
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
         GetTriggerUnit().checkBuilderPick()
-                                        
+
     CreateTrigger()..registerRectEnterEventSource(bj_mapInitialPlayableArea)
         ..addCondition(Condition(() -> GetEnteringUnit().checkBuilderPick()))
 
+    for pid from INGAME_PLAYERS.staticItr()
+        usedBuilders.put(pid, new HashList<int>())
