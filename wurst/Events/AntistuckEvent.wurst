@@ -7,25 +7,27 @@ import RectsStore
 
 
 let k = [udg_LKing, udg_RKing]
+let showVisualStuck = [true, true, true, true, true, true, true, true, true, true, true, true] 
 
 init
-  registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+        let p = GetTriggerPlayer()
+        let target = vec2(GetSpellTargetX(), GetSpellTargetY())
+        if GetSpellAbilityId() == 'A050' and RectsStore.teamRects[p.getTeam()].contains(target)
+            if showVisualStuck[p.getId()]
+                addEffect("Doodads\\Cinematic\\Lightningbolt\\Lightningbolt", target)
 
-
-    let p = GetTriggerPlayer()
-    let target = vec2(GetSpellTargetX(), GetSpellTargetY())
-    if GetSpellAbilityId() == 'A050' and RectsStore.teamRects[p.getTeam()].contains(target)
-      forUnitsInRange(target, 200) u ->
-        let owner = u.getOwner()
-        if owner.isEnemyOf(p)
-          u.issueImmediateOrderById(OrderIds.stop)
-          IssuePointOrderByIdLoc(u, OrderIds.attack, k[p.getTeam()])
-        else if udg_CreepSpawnPoint[u.getUserData()].size() == 0 and not udg_Level_Integer >= 30
-          IssuePointOrderByIdLoc(u, OrderIds.attack, udg_PathingPointArray[u.getUserData()])
-          
-      let u = GetTriggerUnit()
-      u.pause()
-      u.issueImmediateOrderById(OrderIds.stop)
-      u.unpause()
-      u.setAnimation("attack")
-      u.queueAnimation("stand")
+            forUnitsInRange(target, 200) u ->
+                let owner = u.getOwner()
+                if owner.isEnemyOf(p)
+                    u.issueImmediateOrderById(OrderIds.stop)
+                    IssuePointOrderByIdLoc(u, OrderIds.attack, k[p.getTeam()])
+                else if udg_CreepSpawnPoint[u.getUserData()].size() == 0 and not udg_Level_Integer >= 30
+                    IssuePointOrderByIdLoc(u, OrderIds.attack, udg_PathingPointArray[u.getUserData()])
+                
+            let u = GetTriggerUnit()
+            u.pause()
+            u.issueImmediateOrderById(OrderIds.stop)
+            u.unpause()
+            u.setAnimation("attack")
+            u.queueAnimation("stand")
