@@ -11,7 +11,7 @@ import ObjEditingNatives
 	..setInt("ugol", 0)
 	..setInt("ufoo", 1)
 	..setString("umdl", "units\\demon\\DoomGuard\\DoomGuard.mdl")
-	..setInt("uhpm", 2159)
+	..setInt("uhpm", 2185)
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNDoomGuard.blp")
 	..setString("unsf", "L27")
 	..setString("udty", "medium")
