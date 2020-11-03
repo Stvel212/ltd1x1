@@ -7,7 +7,7 @@ import ObjEditingNatives
 	..setString("upgr", "R00F,R005,R009,R00A")
 	..setString("ureq", "")
 	..setInt("ufoo", 1)
-	..setInt("uhpm", 3700)
+	..setInt("uhpm", 3737)
 	..setString("unam", "Juggernaut")
 	..setString("unsf", "L28")
 	..setString("umdl", "units\\creeps\\InfernalCannonCannon\\InfernalCannonCannon.mdl")
