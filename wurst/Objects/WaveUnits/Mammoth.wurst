@@ -7,7 +7,7 @@ public let MAMMOTH_ID = 'h03Q'
 @compiletime function create_w3u_h03Q()
 	createObjectDefinition("w3u", MAMMOTH_ID, 'hfoo')
 	..setString("unam", "Mammoth")
-	..setInt("umvs", 275)
+	..setInt("umvs", 295)
 	..setUnreal("umvr", 0.75)
 	..setUnreal("ucol", 18.0)
 	..setInt("ugol", 0)
