@@ -2261,7 +2261,7 @@ set udg_AirList=",05,13,21,29"
 set udg_BossList=",10,20,30"
 set udg_RangeList=",04,08,12,16,20,24,28,29"
 set udg_LevelBountyList=",3,3,4,5,5,5,6,6,5,51,5,6,7,12,9,8,10,8,10,86,10,9,11,11,9,12,12,23,14,123,0,"
-set udg_LevelWaveCountList=",36,45,40,36,36,36,30,36,45,03,54,45,45,26,36,45,35,45,36,03,36,48,36,35,45,36,36,18,30,03,15"
+set udg_LevelWaveCountList=",36,45,40,36,36,36,30,36,45,03,54,45,45,26,36,45,35,45,36,03,36,48,36,35,45,36,36,18,32,03,15"
 set bj_forLoopAIndex=1
 set bj_forLoopAIndexEnd=udg_MaxLevel_Integer
 loop
