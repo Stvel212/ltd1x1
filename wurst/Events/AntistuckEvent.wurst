@@ -7,7 +7,13 @@ import RectsStore
 
 
 let k = [udg_LKing, udg_RKing]
-let showVisualStuck = [true, true, true, true, true, true, true, true, true, true, true, true] 
+let showVisualStuck = [true, true, true, true, true, true, true, true, true, true, true, true]
+
+function switchVisualStuck()
+    let p = GetTriggerPlayer()
+    let pid = p.getId()
+    showVisualStuck[pid] = not showVisualStuck[pid]
+    printTimedToPlayer("You have turned {0} visual stuck.".format(showVisualStuck[pid] ? "on" : "off"), 7, p)
 
 init
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
@@ -15,7 +21,7 @@ init
         let target = vec2(GetSpellTargetX(), GetSpellTargetY())
         if GetSpellAbilityId() == 'A050' and RectsStore.teamRects[p.getTeam()].contains(target)
             if showVisualStuck[p.getId()]
-                addEffect("Doodads\\Cinematic\\Lightningbolt\\Lightningbolt", target)
+                addEffect("Doodads\\Cinematic\\Lightningbolt\\Lightningbolt.mdl", target)
 
             forUnitsInRange(target, 200) u ->
                 let owner = u.getOwner()
@@ -31,3 +37,8 @@ init
             u.unpause()
             u.setAnimation("attack")
             u.queueAnimation("stand")
+
+    let t = CreateTrigger()
+    for i = 0 to 7
+        t..registerPlayerChatEvent(players[i], "-vs", true)         
+    t.addCondition(Condition(function switchVisualStuck))
