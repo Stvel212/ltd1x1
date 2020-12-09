@@ -1,0 +1,46 @@
+package SendCount
+import TexttagHelpers
+import Enums
+
+
+public class SendCount
+    private static texttag leftIncomeCounterTT
+    private static texttag rightIncomeCounterTT
+    private static int leftIncomeCounter = 0
+    private static int rightIncomeCounter = 0
+
+    static function initialize()
+        createLeftIncomeCounter()
+        createRightIncomeCounter()
+
+    private static function createLeftIncomeCounter()
+        leftIncomeCounterTT = createTTEx(gg_rct_LSummonHoldArea.getCenter().toVec3(), leftIncomeCounter.toString(), 14)
+        leftIncomeCounterTT.setColor(255, 0, 255, 255)
+        leftIncomeCounterTT.setPermanent(true)
+        leftIncomeCounterTT.showForSideAndObs(Side.WEST)
+
+    private static function createRightIncomeCounter()
+        rightIncomeCounterTT = createTTEx(gg_rct_RSummonHoldArea.getCenter().toVec3(), rightIncomeCounter.toString(), 14)
+        rightIncomeCounterTT.setColor(255, 0, 255, 255)
+        rightIncomeCounterTT.setPermanent(true)
+        rightIncomeCounterTT.showForSideAndObs(Side.EAST)
+
+    static function addToLeftIncomeCounter(int num)
+        leftIncomeCounter = leftIncomeCounter + num
+        leftIncomeCounterTT.destr()
+        createLeftIncomeCounter()
+
+    static function addToRightIncomeCounter(int num)
+        rightIncomeCounter = rightIncomeCounter + num
+        rightIncomeCounterTT.destr()
+        createRightIncomeCounter()
+
+    static function resetLeftIncomeCounter()
+        leftIncomeCounter = 0
+        leftIncomeCounterTT.destr()
+        createLeftIncomeCounter()
+
+    static function resetRightIncomeCounter()
+        rightIncomeCounter = 0
+        rightIncomeCounterTT.destr()
+        createRightIncomeCounter()
