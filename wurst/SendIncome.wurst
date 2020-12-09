@@ -2,9 +2,19 @@ package SendIncome
 import LinkedList
 import HashMap
 import EventHelper
+import SendCount
+import MilitiaSummon
+import IceTroll
+import Pandaren
 
 let leftIncomeMap = new HashMap<int, LinkedList<unit>>()
 let rightIncomeMap = new HashMap<int, LinkedList<unit>>()
+
+let incomePrice = new HashMap<int, int>()..put(MILITIA_SUMMON_ID, 20)..put('h04P', 40)..put('h04R', 40)..put('h04S', 60)
+                                        ..put('h04Q', 100)..put('h04T', 100)..put('h04U', 120)..put('h04V', 120)..put('h04W', 140)
+                                        ..put('h04X', 180)..put('h04Z', 200)..put('h04Y', 200)..put('h050', 240)..put(ICE_TROLL_ID, 240)
+                                        ..put('h052', 300)..put(PANDAREN_ID, 300)..put('h055', 340)..put('h056', 400)..put('h057', 400)
+                                        ..put('h05M', 440)..put('h059', 500)..put('h05B', 600)..put('h05A', 1000)..put('h0BR', 1500)
 
 function sendLeftIncome()
     for i = 70 downto 0
@@ -12,6 +22,7 @@ function sendLeftIncome()
             for u from leftIncomeMap.get(i).staticItr()
                 udg_Temp_UG.addUnit(u)
     leftIncomeMap.flush()
+    SendCount.resetLeftIncomeCounter()
 
 function sendRightIncome()
     for i = 70 downto 0
@@ -19,6 +30,7 @@ function sendRightIncome()
             for u from rightIncomeMap.get(i).staticItr()
                 udg_Temp_UG.addUnit(u)
     rightIncomeMap.flush()
+    SendCount.resetRightIncomeCounter()
 
 function addLeftIncomeUnit()
     let u = GetEnteringUnit()
@@ -26,6 +38,7 @@ function addLeftIncomeUnit()
     if not leftIncomeMap.has(pv)
         leftIncomeMap.put(pv, new LinkedList<unit>())
     leftIncomeMap.get(pv).add(u)
+    SendCount.addToLeftIncomeCounter(incomePrice.get(u.getTypeId()))
 
 function addRightIncomeUnit()
     let u = GetEnteringUnit()
@@ -33,9 +46,12 @@ function addRightIncomeUnit()
     if not rightIncomeMap.has(pv)
         rightIncomeMap.put(pv, new LinkedList<unit>())
     rightIncomeMap.get(pv).add(u)
+    SendCount.addToRightIncomeCounter(incomePrice.get(u.getTypeId()))
     
 
 init
+    SendCount.initialize()
+
     OnLeftIncomeSend.addCondition(Condition(function sendLeftIncome))
     OnRightIncomeSend.addCondition(Condition(function sendRightIncome))
     CreateTrigger()..registerRectEnterEventSource(gg_rct_LSummonHoldArea)
