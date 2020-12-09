@@ -13,7 +13,7 @@ public function player.displayPick(HashList<int> pick)
     let y = imgInitialPosition[this.getId()].y
     var x = imgInitialPosition[this.getId()].x
     for i = 0 to pick.size() - 1
-        playerImages[i] = this.createPickImage("icons\\custom_{0}.blp".format(pick.get(i).toRawCode()), vec2(x, y))
+        playerImages[i] = this.createPickImage("icons\\custom_{0}.blp".format(pick.get(i).toRawCode()), vec2(x, y), this)
         x += 120
         
 function player.clearPreviousPickImages()
@@ -24,11 +24,11 @@ function player.clearPreviousPickImages()
             ShowImage(prevImg, false)
             prevImg.remove()
 
-function player.createPickImage(string imgPath, vec2 coord) returns image
+function player.createPickImage(string imgPath, vec2 coord, player who) returns image
     let img = createImage(imgPath, coord, 100, 100)
     let p = GetLocalPlayer()
     img.show()
-    if p.isAllyOf(p) or IsPlayerObserver(p)
+    if p.isAllyOf(who) or IsPlayerObserver(p)
         ShowImage(img, true)                    
     else
         ShowImage(img, false) 
