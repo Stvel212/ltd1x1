@@ -35,7 +35,7 @@ function unit.checkBuilderPick()
         SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_AR, 0)
         SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_PROPHET, 0)
 
-        if allProphets
+        if allProphets or (udg_ModeHP and udg_TotalChangedBuilder[pid + 1] == 1 and uid == PROPHET_ID)
             SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_PROPHET, 5)
         else if udg_ModeAR
             SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_AR, 5)
