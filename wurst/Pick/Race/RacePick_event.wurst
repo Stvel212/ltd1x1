@@ -10,9 +10,12 @@ let builders = new HashList<int>()..add('u00K', 'u001', 'u00H', 'u00C', 'u00L', 
 
 function racePick(unit u)
     let uid = u.getTypeId()
+    let p = u.getOwner()
     if builders.has(uid)
         let pick = getRacePickById(uid)
-        u.getOwner().displayPick(pick)
+        p.displayPick(pick)
+        for ud from pick.staticItr()
+            SetPlayerTechMaxAllowed(p, ud, -1)
 
 init
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_UPGRADE_FINISH) ->
