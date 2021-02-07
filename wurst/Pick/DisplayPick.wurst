@@ -10,22 +10,21 @@ PlayerImages array playerImages = [new PlayerImages(), new PlayerImages(), new P
                                     new PlayerImages(), new PlayerImages(), new PlayerImages(), new PlayerImages()]
 
 class PlayerImages
-    image array[6] playerImages
+    image array[6] images
 
 public function player.displayPick(HashList<int> pick)
     this.clearPreviousPickImages()
-    let y = imgInitialPosition[this.getId()].y
     let id = this.getId()
-    var x = imgInitialPosition[this.getId()].x
+    let y = imgInitialPosition[id].y
+    var x = imgInitialPosition[id].x
     for i = 0 to pick.size() - 1
-        playerImages[id].playerImages[i] = this.createPickImage("icons\\custom_{0}.blp".format(pick.get(i).toRawCode()), vec2(x, y), this)
+        playerImages[id].images[i] = this.createPickImage("icons\\custom_{0}.blp".format(pick.get(i).toRawCode()), vec2(x, y), this)
         x += 120
         
 function player.clearPreviousPickImages()
-    let pistart = this.getId() * 6
     let id = this.getId()
-    for i = pistart to pistart + 5
-        let prevImg = playerImages[id].playerImages[i]
+    for i = 0 to 5
+        let prevImg = playerImages[id].images[i]
         if prevImg != null
             ShowImage(prevImg, false)
             prevImg.remove()
