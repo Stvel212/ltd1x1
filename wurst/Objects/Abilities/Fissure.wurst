@@ -20,6 +20,6 @@ public let FISSURE_ID = 'A05E'
 	..setLvlDataUnreal("adur", 1, 0, 1.0)
 	..setLvlDataUnreal("ahdu", 1, 0, 0.5)
 	..setLvlDataUnreal("acdn", 1, 0, 15.0)
-	..setLvlDataString("atar", 1, 0, "enemies,ground")
+	..setLvlDataString("atar", 1, 0, "enemies")
 	..setLvlDataUnreal("aare", 1, 0, 325.0)
 	..setLvlDataString("abuf", 1, 0, "B044")
