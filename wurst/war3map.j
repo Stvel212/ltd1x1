@@ -25,7 +25,6 @@ group array udg_Towers_Selected_UnitGroup
 boolean udg_GameEnded_Boolean=false
 timer udg_Spawn_Timer=null
 boolean mercenaryDisabled = false
-boolean randomAbilities = false
 boolean kingLimit = false
 boolean noCross = false
 boolean incomeFirstWave = false
@@ -13568,9 +13567,6 @@ endif
 if((udg_GameMode_String=="md"))then
 return true
 endif
-if((udg_GameMode_String=="ra"))then
-return true
-endif
 if((udg_GameMode_String=="kl"))then
 return true
 endif
@@ -13737,9 +13733,6 @@ endif
 if(udg_GameMode_String=="md")then
     set mercenaryDisabled = true
     call ForForce(udg_IngamePlayers_PlayerGroup,function Trig_Mode_LI_Func008A)
-endif
-if(udg_GameMode_String=="ra") then
-    set randomAbilities = true
 endif
 if(udg_GameMode_String=="kl") then
     set kingLimit = true
@@ -14107,9 +14100,6 @@ else
 endif
 if(mercenaryDisabled)then
 set udg_ModeString=(udg_ModeString+"md")
-endif
-if(randomAbilities) then
-set udg_ModeString=(udg_ModeString+"ra")
 endif
 if(kingLimit) then
 set udg_ModeString=(udg_ModeString+"kl")

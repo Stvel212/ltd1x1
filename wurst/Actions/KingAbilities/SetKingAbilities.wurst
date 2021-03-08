@@ -18,18 +18,10 @@ public function setAbilities()
     if udg_Level_Integer == 4
         for i = 0 to 1
             let abil = [IMMOLATE_ID, WAVE_ID, STUN_ID]
-            let aid = abil[GetRandomInt(0, randomAbilities? 2 : 1)]
+            let aid = abil[GetRandomInt(0, 2)]
             kingAbilities[i].setAbilityWithImage(aid, abilImgPath(aid))
             let msg = "Your king has received {0} ability".format(abilColor(aid))
             Display.toTeamAndObs(msg, 7, kingAbilities[i].getOwner().getTeam())
-    if not randomAbilities and udg_Level_Integer == 19
-        for i = 0 to 1
-            if kingAbilities[i].hasAbility(IMMOLATE_ID)
-                kingAbilities[i].removeAbility(IMMOLATE_ID)
-            if kingAbilities[i].hasAbility(WAVE_ID)
-                kingAbilities[i].removeAbility(WAVE_ID)
-            kingAbilities[i].setAbilityWithImage(STUN_ID, abilImgPath(STUN_ID))
-
 
 function abilColor(int aid) returns string
     let name = GetAbilityName(aid)
