@@ -4,33 +4,33 @@ dependencies:
   - https://github.com/netVoix/WurstLib
 buildMapData:
   name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.3b
-  fileName: ltd1x1_1.3b
+  fileName: ltd2x2_1.3b
   author: oz
   players:
     - id: 0
       name: Player 1
       race: HUMAN
       controller: USER
-    # - id: 1
-    #   name: Player 2
-    #   race: HUMAN
-    #   controller: USER
-    # - id: 2
-    #   name: Player 3
-    #   race: HUMAN
-    #   controller: USER
+    - id: 1
+      name: Player 2
+      race: HUMAN
+      controller: USER
+    - id: 2
+      name: Player 3
+      race: HUMAN
+      controller: USER
     - id: 4
       name: Player 5
       race: HUMAN
       controller: USER
-    # - id: 5
-    #   name: Player 6
-    #   race: HUMAN
-    #   controller: USER
-    # - id: 6
-    #   name: Player 7
-    #   race: HUMAN
-    #   controller: USER
+    - id: 5
+      name: Player 6
+      race: HUMAN
+      controller: USER
+    - id: 6
+      name: Player 7
+      race: HUMAN
+      controller: USER
     - id: 8
       name: Player 9
       race: HUMAN
@@ -43,16 +43,16 @@ buildMapData:
     - name: Western Force
       playerIds:
         - 0
-        # - 1
-        # - 2
+        - 1
+        - 2
         - 8
       flags:
         sharedVision: false
     - name: Eastern Force
       playerIds:
         - 4
-        # - 5
-        # - 6
+        - 5
+        - 6
         - 9
       flags:
         sharedVision: false

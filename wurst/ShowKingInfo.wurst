@@ -1,133 +1,51 @@
 package ShowKingInfo
-
 import RegisterEvents
 import TexttagHelpers
-import GlobalHelpers
-import Enums
 import ClosureTimers
-import IngamePlayers
 
 let HP_DUMMY = 'u008'
 let ATTACK_DUMMY = 'u009'
 let REGEN_DUMMY = 'u00A'
 
-function getParamPos(Side s, KingParam param) returns vec3
-    let k = getKingBySide(s)
-    switch param
-        case KingParam.HP
-            return k.getPos().add(200, -250).toVec3()
-        case KingParam.ATTACK
-            return k.getPos().add(200, -300).toVec3()
-        case KingParam.REGEN
-            return k.getPos().add(200, -350).toVec3()
 
-function getKingParamMessage(KingParam param, Side s) returns string
-    let owner = getOwnerPlayerBySide(s)
-    switch param
-        case KingParam.HP
-            return "Hp: " + GetPlayerTechCount(owner, 'R000', true).toString()
-        case KingParam.ATTACK
-            return "Attack: " + GetPlayerTechCount(owner, 'R001', true).toString()
-        case KingParam.REGEN
-            return "Regen: " + GetPlayerTechCount(owner, 'R002', true).toString()
+let HP_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -250).toVec3(), "Hp :   0", 10, colorA(0, 255, 0, 255))
+                    ..showToAllyAndObs(Player(8))
+let ATTACK_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -300).toVec3(), "Attack :   0", 10, colorA(255, 0, 0, 255))
+                        ..showToAllyAndObs(Player(8))
+let REGEN_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -350).toVec3(), "Regen :   0", 10, colorA(0, 0, 255, 255))
+                        ..showToAllyAndObs(Player(8))
+let HEAL_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -400).toVec3(), "Heal :  yes", 10, colorA(255, 255, 0, 255))
+                    ..showToAllyAndObs(Player(8))
 
-function getColorByParam(KingParam param) returns colorA
-    switch param
-        case KingParam.HP
-            return colorA(0, 255, 0, 255)
-        case KingParam.ATTACK
-            return colorA(255, 0, 0, 255)
-        case KingParam.REGEN
-            return colorA(255, 255, 0, 255)
-
-function getKingTextTag(Side s, KingParam param) returns texttag
-    let message = getKingParamMessage(param, s)
-    let pos = getParamPos(s, param)
-    let color = getColorByParam(param)
-    let tt = createTTEx(pos, message, 10)
-    tt.setColor(color)
-    tt.setPermanent(true)
-    tt.showForSideAndObs(s)
-    return tt
-
-    
-texttag hpTTWest
-texttag atckTTWest
-texttag regenTTWest
-texttag hpTTEast
-texttag atckTTEast
-texttag regenTTEast
-
-texttag healsTTWest
-texttag healsTTEast
-
-int westHealsCount = 0
-int eastHealsCount = 0
-    
-function getHealsTextTag(Side s) returns texttag
-    let k = getKingBySide(s)
-    let count = s == Side.WEST ? westHealsCount : eastHealsCount
-    let message = "Heals: " + count.toString()
-    let pos = k.getPos().add(200, -400).toVec3()
-    let tt = createTTEx(pos, message, 10)
-    tt.setColor(255, 0, 255, 255)
-    tt.setPermanent(true)
-    tt.showForSideAndObs(s)
-    return tt
+let HP_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -250).toVec3(), "Hp :   0", 10, colorA(0, 255, 0, 255))
+                    ..showToAllyAndObs(Player(9))
+let ATTACK_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -300).toVec3(), "Attack :   0", 10, colorA(255, 0, 0, 255))
+                        ..showToAllyAndObs(Player(9))
+let REGEN_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -350).toVec3(), "Regen :   0", 10, colorA(0, 0, 255, 255))
+                        ..showToAllyAndObs(Player(9))
+let HEAL_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -400).toVec3(), "Heal :   yes", 10, colorA(255, 255, 0, 255))
+                        ..showToAllyAndObs(Player(8))
 
 init
-    hpTTWest = getKingTextTag(Side.WEST, KingParam.HP)
-    atckTTWest = getKingTextTag(Side.WEST, KingParam.ATTACK)
-    regenTTWest = getKingTextTag(Side.WEST, KingParam.REGEN)
-    hpTTEast = getKingTextTag(Side.EAST, KingParam.HP)
-    atckTTEast = getKingTextTag(Side.EAST, KingParam.ATTACK)
-    regenTTEast = getKingTextTag(Side.EAST, KingParam.REGEN)
-
-    for p from INGAME_PLAYERS.staticItr()
-        if players[p].isAllyOf(players[8])
-            westHealsCount++
-        else if players[p].isAllyOf(players[8])
-            eastHealsCount++
-
-    healsTTWest = getHealsTextTag(Side.WEST)
-    healsTTEast = getHealsTextTag(Side.EAST)
-
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SELL) ->
+        let p = GetTriggerPlayer()
         let u = GetSoldUnit().getTypeId()
-        let side = getSideByPlayer(GetTriggerPlayer())
+        let owner = p.isAllyOf(Player(8)) ? Player(8) : Player(9)
         if (u == HP_DUMMY)
-            if side == Side.WEST
-                hpTTWest.destr()
-                hpTTWest = getKingTextTag(side, KingParam.HP)
-            else
-                hpTTEast.destr()
-                hpTTEast = getKingTextTag(side, KingParam.HP)
+            let tag = owner == Player(8) ? HP_TEXT_WEST : HP_TEXT_EAST
+            tag.setText("Hp :   {0}".format(GetPlayerTechCount(owner, 'R000', true).toString()), 10)
         if (u == ATTACK_DUMMY)
-            if side == Side.WEST
-                atckTTWest.destr()
-                atckTTWest = getKingTextTag(side, KingParam.ATTACK)
-            else
-                atckTTEast.destr()
-                atckTTEast = getKingTextTag(side, KingParam.ATTACK)
+            let tag = owner == Player(8) ? ATTACK_TEXT_WEST : ATTACK_TEXT_EAST
+            tag.setText("Attack :   {0}".format(GetPlayerTechCount(owner, 'R001', true).toString()), 10)
         if (u == REGEN_DUMMY)
-            if side == Side.WEST
-                regenTTWest.destr()
-                regenTTWest = getKingTextTag(side, KingParam.REGEN)
-            else
-                regenTTEast.destr()
-                regenTTEast = getKingTextTag(side, KingParam.REGEN)
+            let tag = owner == Player(8) ? REGEN_TEXT_WEST : REGEN_TEXT_EAST
+            tag.setText("Regen :   {0}".format(GetPlayerTechCount(owner, 'R002', true).toString()), 10)
 
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
         if (GetSpellAbilityId() == 'A084')
             let k = GetSpellTargetUnit()
             let u = GetTriggerUnit()
-            if k == gg_unit_h00K_0009
-                westHealsCount--
-                healsTTWest.destr()
-                healsTTWest = getHealsTextTag(Side.WEST)
-            else if k == gg_unit_h00K_0006
-                eastHealsCount--
-                healsTTEast.destr()
-                healsTTEast = getHealsTextTag(Side.EAST)
+            let tag = k == gg_unit_h00K_0009 ? HEAL_WEST : HEAL_EAST
+            tag.setText("Heal :   no", 10)
             doAfter(0.1) -> 
                 u.removeAbility('A084')
