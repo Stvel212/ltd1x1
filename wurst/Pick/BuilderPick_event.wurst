@@ -24,7 +24,10 @@ function unit.checkBuilderPick()
             for plid from INGAME_PLAYERS.staticItr()
                 ReplaceUnitBJ(udg_Builder_Unit[plid + 1], uid, bj_UNIT_STATE_METHOD_RELATIVE)
         udg_Builder_Unit[pid + 1] = this
-        udg_TotalChangedBuilder[pid + 1]++
+
+        if uid != PROPHET_ID
+            udg_TotalChangedBuilder[pid + 1]++
+
         if not autoHeal
             if not udg_BuilderHeal[pid + 1]
                 this.addAbility('A084')
