@@ -22,7 +22,8 @@ function unit.checkBuilderPick()
     if builders.has(uid)
         if udg_ModeHP and udg_TotalChangedBuilder[pid + 1] == 0 and pid == 0
             for plid from INGAME_PLAYERS.staticItr()
-                ReplaceUnitBJ(udg_Builder_Unit[plid + 1], uid, bj_UNIT_STATE_METHOD_RELATIVE)
+                if plid != 0
+                    ReplaceUnitBJ(udg_Builder_Unit[plid + 1], uid, bj_UNIT_STATE_METHOD_RELATIVE)
         udg_Builder_Unit[pid + 1] = this
 
         if uid != PROPHET_ID
@@ -41,7 +42,7 @@ function unit.checkBuilderPick()
         SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_AR, 0)
         SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_PROPHET, 0)
 
-        if allProphets or (udg_ModeHP and udg_TotalChangedBuilder[pid + 1] == 1 and uid == PROPHET_ID)
+        if allProphets or (udg_ModeHP and udg_TotalChangedBuilder[pid + 1] == 0 and uid == PROPHET_ID)
             SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_PROPHET, 5)
         else if udg_ModeAR
             SetPlayerTechMaxAllowed(players[pid], CHANGE_BUILDER_AR, 5)
