@@ -1,0 +1,33 @@
+package Nature
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u003()
+	createObjectDefinition("w3u", 'u003', 'uaco')
+	..setString("ubui", "h01C,h01E,h01H,h01I,h01K,h01M")
+	..setString("uabi", "A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Nature")
+	..setString("utip", "Choose Nature Builder")
+	..setString("utub", "Defensive race. Slow, but very resilient and have excellent abilities. All fighters have slight life regeneration.")
+	..setString("uhot", "")
+	..setString("umdl", "units\\nightelf\\HeroKeeperoftheGrove\\HeroKeeperoftheGrove.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNKeeperOfTheGrove.blp")
+	..setString("usnd", "HeroKeeperOfTheGrove")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("ussc", 1.5)
+	..setReal("usca", 1.3)
+	..setString("ures", "R00I,R00D,R00L")
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")

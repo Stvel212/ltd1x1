@@ -1,0 +1,35 @@
+package Arctic
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u00K()
+	createObjectDefinition("w3u", 'u00K', 'uaco')
+	..setString("ubui", "h0BC,h0BE,h0BH,h0BJ,h0BM,h0BO")
+	..setString("uabi", "A09T,A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Arctic")
+	..setString("utip", "Choose Arctic Builder")
+	..setString("utub", "The creatures of Nortrend, master of cold.")
+	..setString("uhot", "")
+	..setString("umdl", "units\\critters\\Penguin\\Penguin.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNPenguin.blp")
+	..setString("usnd", "Penguin")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("ussc", 1.5)
+	..setReal("usca", 3.0)
+	..setString("ures", "R00I,R00D,R00L")
+	..setInt("uver", 2)
+	..setUnreal("uhpr", -0.1)
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")

@@ -1,0 +1,32 @@
+package Orc
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u00U()
+	createObjectDefinition("w3u", 'u00U', 'uaco')
+	..setString("ubui", "h0BF,h0BV,h0BX,h0C4,h0C5,h0C9")
+	..setString("uabi", "A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Orc")
+	..setString("utip", "Choose Orc Builder")
+	..setString("utub", "Strong in melee. Specializes in healing aura (regeneration) and debuff.")
+	..setString("uhot", "")
+	..setString("umdl", "units\\demon\\HeroChaosBladeMaster\\HeroChaosBladeMaster.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNChaosBlademaster.blp")
+	..setString("usnd", "HeroBladeMaster")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("ussc", 1.5)
+	..setString("ures", "R00I,R00D,R00L")
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")

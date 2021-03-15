@@ -1,0 +1,33 @@
+package Mech
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u000()
+	createObjectDefinition("w3u", 'u000', 'uaco')
+	..setString("ubui", "h00M,h00O,h00P,h00N,h00Q,h00S")
+	..setString("uabi", "A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Mech")
+	..setString("utip", "Choose Mech Builder")
+	..setString("utub", "Boasts cutting edge military technology. Powerful core stats, but expensive and have few special abilities.")
+	..setString("uhot", "")
+	..setString("umdl", "units\\human\\HeroBloodElf\\HeroBloodElf.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNHeroBloodElfPrince.blp")
+	..setString("usnd", "BloodElfSorceror")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("ussc", 1.5)
+	..setReal("usca", 1.3)
+	..setString("ures", "R00I,R00D,R00L")
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")

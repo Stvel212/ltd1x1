@@ -1,0 +1,34 @@
+package Goblin
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u00M()
+	createObjectDefinition("w3u", 'u00M', 'uaco')
+	..setString("ubui", "h0A8,h0AB,h0AE,h0AH,h0AL,h0AR")
+	..setString("uabi", "A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Goblin")
+	..setString("utip", "Choose Goblin Builder")
+	..setString("utub", "Goblins are small humanoids. They constantly build and repair machines and work on new ideas. Very strong in mechanical thing and firearm.")
+	..setString("uhot", "")
+	..setString("umdl", "Units\\Creeps\\HeroTinker\\HeroTinker.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNHeroTinker.blp")
+	..setString("usnd", "HeroTinker")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("ussc", 1.5)
+	..setReal("usca", 1.1)
+	..setString("ures", "R00I,R00D,R00L")
+	..setString("ussi", "ReplaceableTextures\\CommandButtons\\BTNHeroTinker.blp")
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")

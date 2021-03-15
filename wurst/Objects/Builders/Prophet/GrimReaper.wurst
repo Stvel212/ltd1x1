@@ -1,15 +1,17 @@
 package GrimReaper
+
 import ObjEditingNatives
 import ChangeBuilderAR
 import ObjectIds
 import ChangeBuilderAPSD
+import SwapVisualStuck
 
 public let GRIM_REAPER_ID = 'u014'
 
 @compiletime function create_w3u_u014()
     createObjectDefinition("w3u", GRIM_REAPER_ID, 'uaco')
     ..setInt("wurs", 42)
-    ..setString("uabi", "A08L,A09O,A02U,Avul,A050,")
+    ..setString("uabi", "A08L,A09O,A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
     ..setUnreal("ucol", 1.0)
     ..setInt("umvs", 400)
     ..setInt("uaen", 0)

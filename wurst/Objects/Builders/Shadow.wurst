@@ -1,0 +1,33 @@
+package Shadow
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u002()
+	createObjectDefinition("w3u", 'u002', 'uaco')
+	..setString("ubui", "h01P,h01T,h01V,h01X,h01Z,h021")
+	..setString("uabi", "A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Shadow")
+	..setString("utip", "Choose Shadow Builder")
+	..setString("utub", "Specializes in dark magic. High damage fighters with a good balance of offensive and defensive abilities.")
+	..setString("uhot", "")
+	..setString("umdl", "units\\undead\\HeroDreadLord\\HeroDreadLord.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNHeroDreadLord.blp")
+	..setString("usnd", "HeroDreadLord")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setString("udaa", "")
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("ussc", 1.5)
+	..setString("ures", "R00I,R00D,R00L")
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")

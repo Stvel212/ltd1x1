@@ -1,0 +1,25 @@
+package SwapVisualStuck
+
+import ChannelAbilityPreset
+import Icons
+import RegisterEvents
+import AntistuckEvent
+
+public let SWAP_VISUAL_STUCK_ID = compiletime(ABIL_ID_GEN.next())
+
+@compiletime function createVisualStuck()
+    new ChannelAbilityPreset(SWAP_VISUAL_STUCK_ID, 1, true)
+    ..presetButtonPosNormal(1, 1)
+    ..presetTooltipNormal(lvl -> "Enable/disable visual stuck")
+    ..presetTooltipNormalExtended(lvl -> "")
+    ..presetIcon(Icons.bTNChainLightning)
+    
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+        let p = GetTriggerPlayer()
+        if GetSpellAbilityId() == SWAP_VISUAL_STUCK_ID
+            showVisualStuck[p.getId()] = not showVisualStuck[p.getId()]
+            if showVisualStuck[p.getId()]
+                printTimedToPlayer("Visual stuck enabled", 7, p)
+            else
+                printTimedToPlayer("Visual stuck disabled", 7, p)  

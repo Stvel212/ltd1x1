@@ -1,0 +1,34 @@
+package Ghost
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u00G()
+	createObjectDefinition("w3u", 'u00G', 'uaco')
+	..setString("ubui", "h05N,h05S,h05R,h05V,h05X,h05Z")
+	..setString("uabi", "A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Ghost")
+	..setString("utip", "Choose Ghost Builder")
+	..setString("utub", "Having transcended the physical world, fighters have strong offensive magic and ranged attacks. Weak on defense.")
+	..setString("uhot", "")
+	..setString("umdl", "units\\undead\\KelThuzadGhost\\KelThuzadGhost.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNGhostOfKelThuzad.blp")
+	..setString("usnd", "KelThuzadLich")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setString("udaa", "")
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("usca", 1.1)
+	..setReal("ussc", 1.5)
+	..setString("ures", "R00I,R00D,R00L")
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")

@@ -1,0 +1,33 @@
+package Marine
+
+import ObjEditingNatives
+import SwapVisualStuck
+import ObjectIds
+
+@compiletime function create_w3u_u00J()
+	createObjectDefinition("w3u", 'u00J', 'uaco')
+	..setString("ubui", "h07J,h07O,h07Q,h07S,h07U,h07W")
+	..setString("uabi", "A02U,Avul,A050," + SWAP_VISUAL_STUCK_ID.toRawCode())
+	..setUnreal("ucol", 1.0)
+	..setInt("umvs", 400)
+	..setInt("uaen", 0)
+	..setInt("upoi", 0)
+	..setString("umvt", "fly")
+	..setString("upgr", "")
+	..setInt("uhpm", 150000)
+	..setString("unam", "Marine")
+	..setString("utip", "Choose Marine Builder")
+	..setString("utub", "From the depths of the ocean rise creatures unlike any other.")
+	..setString("uhot", "")
+	..setString("umdl", "units\\naga\\LadyVashj\\LadyVashj.mdl")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNNagaSeaWitch.blp")
+	..setString("usnd", "SeaWitch")
+	..setInt("ufoo", 0)
+	..setInt("ugol", 0)
+	..setInt("ubld", 1)
+	..setString("ureq", "u00F")
+	..setReal("ussc", 1.5)
+	..setReal("usca", 1.2)
+	..setString("ures", "R00I,R00D,R00L")
+	..setUnreal("ucpt", 0.001)
+	..setString("unsf", "Builder")
