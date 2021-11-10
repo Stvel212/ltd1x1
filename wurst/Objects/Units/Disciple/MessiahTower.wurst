@@ -10,7 +10,7 @@ public let MESSIAH_TOWER_ID = 'h049'
 	..setString("ureq", "u004")
 	..setString("utyp", "ancient")
 	..setInt("ubld", 5)
-	..setInt("ugol", 260)
+	..setInt("ugol", 310)
 	..setInt("ulum", 0)
 	..setString("uabi", "A02L,A02Z,A008")
 	..setString("uubs", "")
