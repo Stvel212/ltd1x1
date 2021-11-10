@@ -25,7 +25,7 @@ public let SPAWN_OF_DRAGON_TOWER_ID = 'h01A'
 	..setString("unam", "Spawn of Dragon")
 	..setString("unsf", "Building T6")
 	..setString("utub", "|cffccccccDamage: |r|cffff8000148-167|r" + 
-						"|cffcccccc|nSpeed: |r|cffff80001.5|r" + 
+						"|cffcccccc|nSpeed: |r|cffff80001.3|r" + 
 						"|cffcccccc|nDPS: |r|cffff8000105|r" + 
 						"|cffcccccc|nRange: |r|cffff8000100|r" + 
 						"|cffcccccc|nHit Points: |r|cffff80001360|r" + 
@@ -41,7 +41,7 @@ public let SPAWN_OF_DRAGON_TOWER_ID = 'h01A'
 	..setInt("ua1z", 0)
 	..setUnreal("uma1", 0.0)
 	..setString("ua1t", "normal")
-	..setUnreal("ua1c", 1.5)
+	..setUnreal("ua1c", 1.3)
 	..setInt("ua1b", 147)
 	..setInt("ua1s", 20)
 	..setInt("ua1d", 1)
