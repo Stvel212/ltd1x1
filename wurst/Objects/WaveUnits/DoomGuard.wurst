@@ -5,7 +5,7 @@ import ObjEditingNatives
 @compiletime function create_w3u_h03V()
 	createObjectDefinition("w3u", 'h03V', 'hfoo')
 	..setString("unam", "Doom Guard")
-	..setInt("umvs", 400)
+	..setInt("umvs", 420)
 	..setUnreal("umvr", 0.75)
 	..setUnreal("ucol", 20.0)
 	..setInt("ugol", 0)
