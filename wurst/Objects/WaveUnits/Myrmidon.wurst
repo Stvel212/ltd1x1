@@ -11,7 +11,7 @@ import ObjEditingNatives
 	..setInt("ugol", 0)
 	..setInt("ufoo", 1)
 	..setString("umdl", "units\\naga\\NagaMyrmidon\\NagaMyrmidon.mdl")
-	..setInt("uhpm", 1932)
+	..setInt("uhpm", 1972)
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNNagaMyrmidon.blp")
 	..setString("unsf", "L26")
 	..setUnreal("uhpr", 0.0)
