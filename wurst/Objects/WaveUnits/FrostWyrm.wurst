@@ -30,7 +30,7 @@ import ObjEditingNatives
 	..setReal("usca", 0.6)
 	..setUnreal("ua1c", 1.2)
 	..setString("ua1t", "magic")
-	..setInt("ua1b", 208)
+	..setInt("ua1b", 229)
 	..setInt("ua1d", 2)
 	..setInt("ua1s", 11)
 	..setInt("ua1r", 300)
