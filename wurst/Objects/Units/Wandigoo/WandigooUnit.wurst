@@ -8,7 +8,7 @@ public let WANDIGOO_UNIT_ID = 'n00I'
 	..setInt("ubsi", 0)
 	..setInt("ubba", 0)
 	..setInt("ulum", 0)
-	..setInt("uhpm", 750)
+	..setInt("uhpm", 850)
 	..setInt("ugol", 180)
 	..setString("utyp", "giant")
 	..setString("urac", "human")
