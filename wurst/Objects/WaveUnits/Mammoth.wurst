@@ -27,7 +27,7 @@ public let MAMMOTH_ID = 'h03Q'
 	..setReal("ussc", 1.5)
 	..setInt("ucam", 1)
 	..setString("urac", "orc")
-	..setInt("ua1b", 98)
+	..setInt("ua1b", 110)
 	..setUnreal("ua1c", 1.4)
 	..setString("ua1g", "enemies,vulnerable")
 	..setInt("ua1s", 10)
