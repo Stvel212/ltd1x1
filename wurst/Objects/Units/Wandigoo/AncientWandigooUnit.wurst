@@ -8,7 +8,7 @@ public let ANCIENT_WANDIGOO_UNIT_ID = 'n00H'
 	..setInt("ubsi", 1)
 	..setInt("ubba", 0)
 	..setInt("ulum", 0)
-	..setInt("uhpm", 1770)
+	..setInt("uhpm", 1870)
 	..setInt("ugol", 430)
 	..setString("utyp", "giant")
 	..setString("urac", "human")
