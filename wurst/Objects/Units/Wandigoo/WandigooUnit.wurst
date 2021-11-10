@@ -22,7 +22,7 @@ public let WANDIGOO_UNIT_ID = 'n00I'
 	..setReal("usca", 0.95)
 	..setInt("ubdi", 0)
 	..setUnreal("uacq", 650.0)
-	..setUnreal("ua1c", 1.2)
+	..setUnreal("ua1c", 1.1)
 	..setString("utub", "")
 	..setString("util", "*")
 	..setString("uabi", "A08Z,A08Y")
