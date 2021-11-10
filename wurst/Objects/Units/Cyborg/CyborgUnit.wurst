@@ -26,7 +26,7 @@ public let CYBORG_UNIT_ID = 'h02I'
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNArmorGolem.blp")
 	..setString("umdl", "Units\\Creeps\\GolemStatue\\GolemStatue.mdx")
 	..setInt("umvs", 270)
-	..setInt("uhpm", 1035)
+	..setInt("uhpm", 1000)
 	..setInt("ugol", 200)
 	..setInt("upoi", 200)
 	..setInt("upri", 3)
