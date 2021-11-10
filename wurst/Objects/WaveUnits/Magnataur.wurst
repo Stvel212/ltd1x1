@@ -76,5 +76,5 @@ public let MAGNATAUR_ID = 'H05K'
 	..setString("ua1p", "enemies,vulnerable")
 	..setInt("ua1h", 200)
 	..setInt("ua1q", 0)
-	..setUnreal("uhd1", 0.1)
+	..setUnreal("uhd1", 0.08)
 	..setUnreal("uqd1", 0.0)
