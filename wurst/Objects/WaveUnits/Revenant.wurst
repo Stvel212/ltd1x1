@@ -7,7 +7,7 @@ import ObjEditingNatives
 	..setString("upgr", "R00F,R005,R009,R00A")
 	..setString("ureq", "")
 	..setInt("ufoo", 1)
-	..setInt("uhpm", 1350)
+	..setInt("uhpm", 1365)
 	..setString("unam", "Revenant")
 	..setString("unsf", "L24")
 	..setString("umdl", "units\\creeps\\Revenant\\Revenant.mdl")
