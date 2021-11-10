@@ -29,7 +29,7 @@ import ObjEditingNatives
 	..setString("ua1g", "enemies,vulnerable")
 	..setString("ua1t", "magic")
 	..setUnreal("ua1c", 1.2)
-	..setInt("ua1b", 91)
+	..setInt("ua1b", 93)
 	..setInt("ua1d", 1)
 	..setInt("ua1s", 11)
 	..setString("uarm", "Metal")
