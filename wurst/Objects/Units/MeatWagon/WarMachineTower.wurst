@@ -53,4 +53,4 @@ public let WAR_MACHINE_TOWER_ID = 'h0CP'
 	..setInt("ua1h", 100)
 	..setUnreal("uhd1", 0.05)
 	..setString("ua1w", "msplash")
-	..setString("ua1p", "enemies,ground")
+	..setString("ua1p", "enemies")

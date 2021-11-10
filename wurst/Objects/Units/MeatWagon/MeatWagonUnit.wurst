@@ -47,4 +47,4 @@ public let MEAT_WAGON_UNIT_ID = 'h0CM'
 	..setUnreal("usr1", 0.15)
 	..setInt("ua1h", 100)
 	..setUnreal("uhd1", 0.05)
-	..setString("ua1p", "enemies,ground")
+	..setString("ua1p", "enemies")

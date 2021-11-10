@@ -45,4 +45,4 @@ public let WAR_MACHINE_UNIT_ID = 'h0CN'
 	..setUnreal("uhd1", 0.05)
 	..setInt("upoi", 210)
 	..setInt("ugol", 70)
-	..setString("ua1p", "enemies,ground")
+	..setString("ua1p", "enemies")

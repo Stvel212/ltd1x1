@@ -58,4 +58,4 @@ public let MEAT_WAGON_TOWER_ID = 'h0CO'
 	..setInt("ua1q", 100)
 	..setUnreal("uhd1", 0.05)
 	..setString("ua1w", "msplash")
-	..setString("ua1p", "enemies,ground")
+	..setString("ua1p", "enemies")
