@@ -27,8 +27,6 @@ public let KROGOTH_UNIT_ID = 'h02J'
 	..setString("umdl", "Units\\Creeps\\IronGolem\\IronGolem.mdx")
 	..setInt("umvs", 270)
 	..setInt("uhpm", 2200)
-	..setInt("ugol", 250)
-	..setInt("upoi", 250)
 	..setInt("upri", 3)
 	..setInt("ufoo", 3)
 	..setUnreal("ucol", 30.0)
