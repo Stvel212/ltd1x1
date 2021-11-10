@@ -26,7 +26,7 @@ import ObjEditingNatives
 	..setReal("ussc", 1.5)
 	..setInt("ucam", 1)
 	..setString("urac", "orc")
-	..setInt("ua1b", 79)
+	..setInt("ua1b", 83)
 	..setUnreal("ua1c", 0.7)
 	..setReal("usca", 1.2)
 	..setString("ua1g", "enemies,vulnerable")
