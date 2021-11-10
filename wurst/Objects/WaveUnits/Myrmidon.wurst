@@ -5,7 +5,7 @@ import ObjEditingNatives
 @compiletime function create_w3u_h03S()
 	createObjectDefinition("w3u", 'h03S', 'hfoo')
 	..setString("unam", "Myrmidon")
-	..setInt("umvs", 375)
+	..setInt("umvs", 395)
 	..setUnreal("umvr", 0.75)
 	..setUnreal("ucol", 20.0)
 	..setInt("ugol", 0)
