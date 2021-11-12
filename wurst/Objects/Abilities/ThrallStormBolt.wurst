@@ -1,0 +1,44 @@
+package ThrallStormBolt
+import RegisterEvents
+import ObjectIdGenerator
+import AbilityObjEditing
+import InstantDummyCaster
+import Orders
+import ClosureForGroups
+
+public let THRALL_STORM_BOLT_SPELL_ID = 'A02I'
+public let THRALL_STORM_BOLT_DUMMY_ID = compiletime(ABIL_ID_GEN.next())
+
+@compiletime function create_w3a_A02I()
+	createObjectDefinition("w3a", THRALL_STORM_BOLT_SPELL_ID, 'AHtb')
+	..setLvlDataInt("alev", 0, 0, 1)
+	..setLvlDataString("ansf", 0, 0, "(orc)")
+	..setLvlDataInt("amcs", 1, 0, 15)
+	..setLvlDataInt("aher", 0, 0, 0)
+	..setLvlDataUnreal("Htb1", 1, 1, 300.0)
+	..setLvlDataUnreal("acdn", 1, 0, 10.0)
+	..setLvlDataString("atar", 1, 0, "enemy")
+	..setLvlDataUnreal("ahdu", 1, 0, 1.0)
+	..setLvlDataString("abuf", 1, 0, "B044")
+	..setLvlDataInt("amsp", 0, 0, 500)
+	..setLvlDataInt("achd", 0, 0, 0)
+	..setLvlDataString("asat", 0, 0, "Abilities\\Spells\\Human\\StormBolt\\StormBoltMissile.mdl")
+	..setLvlDataString("aspt", 0, 0, "weapon")
+	..setLvlDataUnreal("adur", 1, 0, 3.0)
+
+@compiletime function createStormBoltDummySpell()
+	new AbilityDefinitionMountainKingThunderBolt(THRALL_STORM_BOLT_DUMMY_ID)
+	..setDummyAbility()
+	..presetDurationNormal(l -> 0)
+	..presetDurationHero(l -> 0)
+	..setArtSpecial("")
+	
+init
+	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+		let sid = GetSpellAbilityId()
+		if sid == THRALL_STORM_BOLT_SPELL_ID
+			let u = GetTriggerUnit()
+			let t = GetSpellTargetUnit()
+			print(u.getName())
+			forUnitsInRange(t.getPos(), 300) (un) ->
+				InstantDummyCaster.castTarget(u.getOwner(), THRALL_STORM_BOLT_DUMMY_ID, 1, OrderIds.thunderbolt, un, u.getPos())

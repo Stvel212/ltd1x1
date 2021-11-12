@@ -8300,6 +8300,14 @@ call RemoveLocation(udg_Temp_Point)
 else
 endif
 endfunction
+
+function CastThrallStormBolt takes nothing returns nothing
+    set udg_Temp_Point=GetUnitLoc(GetEnumUnit())
+    set udg_Temp_Unit=GroupPickRandomUnit(GetUnitsInRangeOfLocMatching(500.00,udg_Temp_Point,Condition(function Trig_Period_Ability_Func074Func001Func002002001003001)))
+    call IssueTargetOrderBJ(GetEnumUnit(),"thunderbolt",udg_Temp_Unit)
+    call RemoveLocation(udg_Temp_Point)
+endfunction
+
 function Trig_Period_Ability_Func077Func001Func002002001003001 takes nothing returns boolean
 return(IsPlayerEnemy(GetOwningPlayer(GetFilterUnit()),GetOwningPlayer(GetEnumUnit()))==true)
 endfunction
@@ -8411,6 +8419,10 @@ function Trig_Period_Ability_Actions takes nothing returns nothing
     
     call GroupEnumUnitsOfType(udg_Temp_UG, UnitId2String(0x68303633), null)    
     call ForGroupBJ(udg_Temp_UG,function Trig_Period_Ability_Func074A)
+    call GroupClear(udg_Temp_UG)
+
+    call GroupEnumUnitsOfType(udg_Temp_UG, UnitId2String(0x68304342), null)    
+    call ForGroupBJ(udg_Temp_UG,function CastThrallStormBolt)
     call GroupClear(udg_Temp_UG)
     
     call GroupEnumUnitsOfType(udg_Temp_UG, UnitId2String(0x68303634), null)    

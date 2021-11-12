@@ -1,5 +1,7 @@
 package ThrallUnit
 import ObjEditingNatives
+import ThrallStormBolt
+import ObjectIds
 
 public let THRALL_UNIT_ID = 'h0CB'
 
@@ -12,7 +14,7 @@ public let THRALL_UNIT_ID = 'h0CB'
 	..setString("ureq", "")
 	..setInt("ufoo", 0)
 	..setString("ua1g", "enemies")
-	..setString("uabi", "A0AO")
+	..setString("uabi",  commaList(THRALL_STORM_BOLT_SPELL_ID))
 	..setString("unam", "Thrall")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNThrall.blp")
 	..setString("umdl", "units\\orc\\Thrall\\Thrall.mdl")
@@ -45,6 +47,6 @@ public let THRALL_UNIT_ID = 'h0CB'
 	..setReal("usca", 1.1)
 	..setInt("umpm", 15)
 	..setInt("umpi", 15)
-	..setUnreal("umpr", 1.0)
+	..setUnreal("umpr", 2.0)
 	..setString("udaa", "")
 	..setUnreal("ucpt", 0.1)
