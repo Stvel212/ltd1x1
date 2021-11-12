@@ -26,7 +26,7 @@ public let DARK_PRIEST_UNIT_ID = 'h06F'
 	..setInt("ulum", 0)
 	..setUnreal("uhpr", 0.0)
 	..setInt("uhpm", 690)
-	..setUnreal("ua1c", 0.82)
+	..setUnreal("ua1c", 0.43)
 	..setString("unsf", "fighter")
 	..setInt("ua1r", 700)
 	..setString("utyp", "giant")
