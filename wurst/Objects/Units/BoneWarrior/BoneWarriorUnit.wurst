@@ -35,7 +35,7 @@ public let BONE_WARRIOR_UNIT_ID = 'h03A'
 	..setString("ua1w", "normal")
 	..setInt("udef", 3)
 	..setUnreal("ucol", 11.0)
-	..setInt("umvs", 300)
+	..setInt("umvs", 240)
 	..setUnreal("ubs1", 0.44000003)
 	..setUnreal("udp1", 0.56)
 	..setInt("upri", 6)
