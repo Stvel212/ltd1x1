@@ -4582,6 +4582,7 @@ import ObjEditingNatives
 	..setLvlDataString("atp1", 1, 0, "Frost Nova")
 	..setLvlDataUnreal("Ufn1", 1, 1, 10.0)
 	..setLvlDataInt("amcs", 1, 0, 10)
+	..setLvlDataUnreal("acdn", 1, 0, 10.0)
 	..setLvlDataString("aub1", 1, 0, "Blasts enemy units with a wave of frost that deals 100 damage to the target, and 10 nova damage.")
 	..setLvlDataUnreal("ahdu", 1, 0, 1.0)
 	..setLvlDataUnreal("aran", 1, 0, 200.0)
