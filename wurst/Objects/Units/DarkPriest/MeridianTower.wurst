@@ -52,4 +52,4 @@ public let MERIDIAN_TOWER_ID = 'h060'
 	..setInt("umpm", 1100)
 	..setUnreal("umpr", 12.0)
 	..setString("udaa", "")
-	..setInt("upoi", 675)
+	..setInt("upoi", 650)

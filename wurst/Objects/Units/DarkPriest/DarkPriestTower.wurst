@@ -10,7 +10,7 @@ public let DARK_PRIEST_TOWER_ID = 'h05Z'
 	..setString("ureq", "u004")
 	..setString("utyp", "ancient")
 	..setInt("ubld", 5)
-	..setInt("ugol", 325)
+	..setInt("ugol", 300)
 	..setInt("ulum", 0)
 	..setString("uabi", "A04P,A04J,A008")
 	..setString("uubs", "")
@@ -55,6 +55,6 @@ public let DARK_PRIEST_TOWER_ID = 'h05Z'
 	..setInt("uclr", 100)
 	..setInt("uclg", 100)
 	..setInt("uclb", 100)
-	..setInt("upoi", 325)
+	..setInt("upoi", 300)
 	..setInt("ubpx", 1)
 
