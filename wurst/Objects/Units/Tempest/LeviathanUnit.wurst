@@ -39,5 +39,5 @@ public let LEVIATHAN_UNIT_ID = 'h02H'
 	..setUnreal("ucol", 30.0)
 	..setInt("usin", 800)
 	..setInt("usid", 1400)
-	..setInt("ua1r", 300)
+	..setInt("ua1r", 380)
 	..setInt("ufoo", 0)
