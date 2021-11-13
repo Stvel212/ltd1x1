@@ -26,7 +26,7 @@ public let THUNDERBIRD_TOWER_ID = 'h01G'
 	..setString("unsf", "Building")
 	..setString("uhot", "P")
 	..setString("utub", "|cffccccccDamage: |r|cffff8000120-132|r" + 
-						"|cffcccccc|nSpeed: |r|cffff80001.8|r" + 
+						"|cffcccccc|nSpeed: |r|cffff80001.5|r" + 
 						"|cffcccccc|nRange: |r|cffff8000300|r" + 
 						"|cffcccccc|nHit Points: |r|cffff80001055|r" + 
 						"|cffcccccc|nAttack Type: |r|cffff8000Magic|r" + 
@@ -38,7 +38,7 @@ public let THUNDERBIRD_TOWER_ID = 'h01G'
 	..setInt("ua1r", 300)
 	..setInt("ua1z", 0)
 	..setUnreal("uma1", 0.0)
-	..setUnreal("ua1c", 2.0)
+	..setUnreal("ua1c", 1.5)
 	..setInt("ua1b", 118)
 	..setInt("ua1s", 7)
 	..setUnreal("ubs1", 0.5)

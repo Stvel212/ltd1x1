@@ -21,7 +21,7 @@ public let THUNDERBIRD_UNIT_ID = 'h032'
 	..setInt("uhpm", 1055)
 	..setUnreal("uhpr", 1.95)
 	..setInt("udef", 3)
-	..setUnreal("ua1c", 1.8)
+	..setUnreal("ua1c", 1.5)
 	..setString("unsf", "fighter")
 	..setInt("ua1s", 7)
 	..setInt("ua1b", 118)
