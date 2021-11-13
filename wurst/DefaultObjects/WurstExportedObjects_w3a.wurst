@@ -3902,6 +3902,7 @@ import ObjEditingNatives
 	..setLvlDataUnreal("aare", 1, 0, 1.0)
 	..setLvlDataString("aub1", 1, 0, "While Defend is active, This unit  take only 85% of the damage from Piercing attacks and movement is reduced.")
 	..setLvlDataUnreal("Def1", 1, 1, 0.85)
+	..setLvlDataUnreal("Def3", 1, 1, 0)
 
 
 @compiletime function create_w3a_A07O()
