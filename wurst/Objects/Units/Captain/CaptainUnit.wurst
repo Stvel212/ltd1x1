@@ -1,0 +1,32 @@
+package CaptainUnit
+import ObjEditingNatives
+
+public let CAPTAIN_UNIT_ID = 'h029'
+
+@compiletime function create_w3u_h029()
+	createObjectDefinition("w3u", CAPTAIN_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 585)
+	..setString("uabi", "A009")
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setString("unam", "Captain")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 1.5)
+	..setInt("ua1b", 59)
+	..setInt("ua1s", 13)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNSpellBreaker.blp")
+	..setString("umdl", "units\\human\\BloodElfSpellThief\\BloodElfSpellThief.mdl")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("unsf", "fighter")
+	..setReal("ussc", 1.2)
+	..setString("utyp", "giant")
+	..setString("udty", "medium")
+	..setReal("usca", 0.75)
+	..setString("usnd", "SpellBreaker")
+	..setUnreal("ucol", 15.0)
+	..setInt("upri", 5)
