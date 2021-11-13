@@ -1,0 +1,32 @@
+package FootmanUnit
+import ObjEditingNatives
+
+public let FOOTMAN_UNIT_ID = 'h09V'
+
+@compiletime function create_w3u_h09V()
+	createObjectDefinition("w3u", FOOTMAN_UNIT_ID, 'hfoo')
+	..setInt("ufoo", 0)
+	..setString("upgr", "R00B,R00C,R009,R00A")
+	..setInt("uhpm", 385)
+	..setString("uabi", "")
+	..setString("ua1g", "enemies")
+	..setString("utip", "")
+	..setInt("udef", 3)
+	..setUnreal("ua1c", 1.5)
+	..setInt("ua1b", 54)
+	..setString("utub", "")
+	..setString("uhot", "")
+	..setUnreal("uhpr", 0.0)
+	..setString("uhrt", "none")
+	..setString("unsf", "fighter")
+	..setString("utyp", "giant")
+	..setInt("ua1s", 5)
+	..setReal("usca", 0.85)
+	..setString("uarm", "Stone")
+	..setString("ucs1", "RockHeavyBash")
+	..setUnreal("ucol", 20.0)
+	..setUnreal("udp1", 0.3)
+	..setUnreal("ubs1", 0.3)
+	..setString("udty", "medium")
+	..setInt("upoi", 80)
+	..setInt("ugol", 80)
