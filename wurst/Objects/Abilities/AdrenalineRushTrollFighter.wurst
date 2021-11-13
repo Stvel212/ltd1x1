@@ -1,0 +1,21 @@
+package AdrenalineRushTrollFighter
+import ObjectIdGenerator
+import ObjEditingNatives
+
+public let ADRENALIN_RUSH_TROLL_FIGHTER_ID = compiletime(ABIL_ID_GEN.next())
+
+@compiletime function create_artf()
+	createObjectDefinition("w3a", ADRENALIN_RUSH_TROLL_FIGHTER_ID, 'SCae')
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataString("ansf", 0, 0, "(Fighter)")
+	..setLvlDataUnreal("aare", 1, 0, 500.0)
+	..setLvlDataString("anam", 0, 0, "Adrenaline Rush")
+	..setLvlDataString("atp1", 1, 0, "Adrenaline Rush")
+	..setLvlDataString("aub1", 1, 0, "Boosts movement speed and attack speed of friendly units by 5%.")
+	..setLvlDataUnreal("Oae2", 1, 2, 0.05)
+	..setLvlDataUnreal("Oae1", 1, 1, 0.05)
+	..setLvlDataString("atar", 1, 0, "air,friend,ground,self,structure")
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNSpellSteal.blp")
+	..setLvlDataInt("abpx", 0, 0, 0)
+	..setLvlDataString("abuf", 1, 0, "B005")
+	..setLvlDataInt("abpy", 0, 0, 0)
