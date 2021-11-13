@@ -12,7 +12,7 @@ public let FOOTMAN_UNIT_ID = 'h09V'
 	..setString("ua1g", "enemies")
 	..setString("utip", "")
 	..setInt("udef", 3)
-	..setUnreal("ua1c", 1.5)
+	..setUnreal("ua1c", 1.2)
 	..setInt("ua1b", 54)
 	..setString("utub", "")
 	..setString("uhot", "")
