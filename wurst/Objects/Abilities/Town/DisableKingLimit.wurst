@@ -1,0 +1,16 @@
+package DisableKingLimit
+import Icons
+import AbilityObjEditing
+import ObjectIdGenerator
+
+public let DISABLE_KING_LIMIT_ID = compiletime(ABIL_ID_GEN.next())
+
+@compiletime function createVisualStuck()
+    new AbilityDefinitionNeutralSpell(DISABLE_KING_LIMIT_ID)
+    ..presetManaCost(lvl -> 0)
+    ..presetButtonPosNormal(0, 1)
+    ..presetTooltipNormal(lvl -> "Disable king limit")
+    ..presetTooltipNormalExtended(lvl -> "Set up max allowed upgrades to 20/30/20")
+    ..presetLumberCost(lvl -> 0)
+    ..presetGoldCost(lvl -> 400)
+    ..presetIcon(Icons.bTNBox)

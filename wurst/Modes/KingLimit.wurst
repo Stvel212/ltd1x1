@@ -1,14 +1,33 @@
 package KingLimit
+import IngamePlayers
+import DisableKingLimit
+import RegisterEvents
+
+let playerTown = [gg_unit_h023_0136, gg_unit_h023_0011, gg_unit_h023_0137, gg_unit_h023_0118,
+                  gg_unit_h023_0123, gg_unit_h023_0119, gg_unit_h023_0128, gg_unit_h023_0111]
 
 function setKingUpgrades(int hp, int attack, int regen)
     for i = 8 to 9
-        SetPlayerTechMaxAllowed(players[i], 'R000', hp)
-        SetPlayerTechMaxAllowed(players[i], 'R001', attack)
-        SetPlayerTechMaxAllowed(players[i], 'R002', regen)
-        
+        setKingUpgradesForPlayer(i, hp, attack, regen)
+
+function setKingUpgradesForPlayer(int pid, int hp, int attack, int regen)
+    SetPlayerTechMaxAllowed(players[pid], 'R000', hp)
+    SetPlayerTechMaxAllowed(players[pid], 'R001', attack)
+    SetPlayerTechMaxAllowed(players[pid], 'R002', regen)
+
+function addDisableButtons()
+    for pid from INGAME_PLAYERS.staticItr()
+        playerTown[pid].addAbility(DISABLE_KING_LIMIT_ID)
+
+function onDisableKingLimit(int pid)
+    let bid = players[pid].isAllyOf(Player(8)) ? 8 : 9
+    setKingUpgradesForPlayer(bid, 20, 30, 20)
+    playerTown[pid].removeAbility(DISABLE_KING_LIMIT_ID)
+    printTimedToPlayer("The king limit has been removed", 7, players[pid])
 
 function setKingLimit()
     if (kingLimit)
+        addDisableButtons()
         setKingUpgrades(15, 20, 8)
 
 function resetKingLimit()
@@ -18,3 +37,6 @@ function resetKingLimit()
 init
     afterModeResolved.addCondition(Condition(function setKingLimit))
     onWaveEnd.addCondition(Condition(function resetKingLimit))
+
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+        onDisableKingLimit(GetTriggerPlayer().getId())
