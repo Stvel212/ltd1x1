@@ -13,7 +13,7 @@ public let KROGOTH_TOWER_ID = 'h00W'
 	..setString("udaa", "")
 	..setInt("umpm", 0)
 	..setInt("umpi", 0)
-	..setString("uabi", "A00C")
+	..setString("uabi", "A00C,A008")
 	..setString("ureq", "u004")
 	..setInt("urtm", 1)
 	..setInt("ubld", 5)
