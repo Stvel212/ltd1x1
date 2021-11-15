@@ -29,8 +29,9 @@ public let THRALL_STORM_BOLT_DUMMY_ID = compiletime(ABIL_ID_GEN.next())
 @compiletime function createStormBoltDummySpell()
 	new AbilityDefinitionMountainKingThunderBolt(THRALL_STORM_BOLT_DUMMY_ID)
 	..setDummyAbility()
-	..presetDurationNormal(l -> 0)
-	..presetDurationHero(l -> 0)
+	..presetDamage(lvl -> 300)
+	..presetDurationNormal(l -> 0.001)
+	..presetDurationHero(l -> 0.001)
 	..setArtSpecial("")
 	
 init
@@ -39,6 +40,5 @@ init
 		if sid == THRALL_STORM_BOLT_SPELL_ID
 			let u = GetTriggerUnit()
 			let t = GetSpellTargetUnit()
-			print(u.getName())
 			forUnitsInRange(t.getPos(), 300) (un) ->
 				InstantDummyCaster.castTarget(u.getOwner(), THRALL_STORM_BOLT_DUMMY_ID, 1, OrderIds.thunderbolt, un, u.getPos())
