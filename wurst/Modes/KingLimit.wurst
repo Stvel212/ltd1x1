@@ -39,4 +39,5 @@ init
     onWaveEnd.addCondition(Condition(function resetKingLimit))
 
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
-        onDisableKingLimit(GetTriggerPlayer().getId())
+        if (GetSpellAbilityId() == DISABLE_KING_LIMIT_ID)
+            onDisableKingLimit(GetTriggerPlayer().getId())
