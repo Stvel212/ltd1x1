@@ -3,8 +3,8 @@ import IngamePlayers
 import DisableKingLimit
 import RegisterEvents
 
-let playerTown = [gg_unit_h023_0136, gg_unit_h023_0011, gg_unit_h023_0137, gg_unit_h023_0118,
-                  gg_unit_h023_0123, gg_unit_h023_0119, gg_unit_h023_0128, gg_unit_h023_0111]
+let playerTown = [gg_unit_h023_0136, gg_unit_h023_0011, gg_unit_h05D_0135, gg_unit_h023_0118,
+                  gg_unit_h023_0111, gg_unit_h05D_0120, gg_unit_h023_0128, gg_unit_h05D_0112]
 
 function setKingUpgrades(int hp, int attack, int regen)
     for i = 8 to 9
