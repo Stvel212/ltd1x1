@@ -20,7 +20,7 @@ public let PLAGUE_BUFF_ID = 'B03X'
     ..setArtSpecial("Abilities\\Spells\\Undead\\PlagueCloud\\PlagueCloudCaster.mdl")
     ..setSpecialAttachmentPoint("origin")
     ..setTargetAttachments(1)
-    ..presetArmorBonus(lvl -> -3)
+    ..presetArmorBonus(lvl -> -2.5)
     
 @compiletime function create_w3a_A0BJ()
     createObjectDefinition("w3a", PLAGUE_ICON_ID, 'Aimp')
@@ -29,7 +29,7 @@ public let PLAGUE_BUFF_ID = 'B03X'
     ..setLvlDataString("areq", 0, 0, "")
     ..setLvlDataString("anam", 0, 0, "Plague")
     ..setLvlDataString("atp1", 1, 0, "Plague")
-    ..setLvlDataString("aub1", 1, 0, "Decreases the armour of nearby enemies by 3 in 250 range (stackable with zombie aura)")
+    ..setLvlDataString("aub1", 1, 0, "Decreases the armour of nearby enemies by 2.5 in 250 range (stackable with zombie aura)")
     ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\PassiveButtons\\PASBTNPlagueCloud.blp")
     ..setLvlDataInt("abpy", 0, 0, 0)
     ..setLvlDataString("ansf", 0, 0, "(icon only)")
