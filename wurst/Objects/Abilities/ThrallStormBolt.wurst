@@ -40,5 +40,6 @@ init
 		if sid == THRALL_STORM_BOLT_SPELL_ID
 			let u = GetTriggerUnit()
 			let t = GetSpellTargetUnit()
+			InstantDummyCaster.setUserData(u.getUserData())
 			forUnitsInRangeCounted(t.getPos(), 300, 4) (un) ->
 				InstantDummyCaster.castTarget(u.getOwner(), THRALL_STORM_BOLT_DUMMY_ID, 1, OrderIds.thunderbolt, un, u.getPos())

@@ -58,4 +58,5 @@ init
 	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_DEATH) ->
 		let du = GetDyingUnit()
 		if du.getTypeId() == BIGFOOT_UNIT_ID
+			InstantDummyCaster.setUserData(du.getUserData())
 			InstantDummyCaster.castImmediate(du.getOwner(), FISSURE_ID, du.getAbilityLevel(FISSURE_ID), OrderIds.stomp, du.getPos())

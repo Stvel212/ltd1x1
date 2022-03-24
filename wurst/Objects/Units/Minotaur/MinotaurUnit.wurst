@@ -6,6 +6,7 @@ import ObjectIds
 import Tremor
 import InstantDummyCaster
 import Orders
+import DummyCaster
 
 public let MINOTAUR_UNIT_ID = 'h074'
 
@@ -55,4 +56,5 @@ init
 	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_DEATH) ->
 		let du = GetDyingUnit()
 		if du.getTypeId() == MINOTAUR_UNIT_ID
-			InstantDummyCaster.castImmediate(du.getOwner(), TREMOR_ID, du.getAbilityLevel(TREMOR_ID), OrderIds.thunderclap, du.getPos())
+			InstantDummyCaster.setUserData(du.getUserData())
+			InstantDummyCaster.castImmediate(players[du.getUserData() - 1], TREMOR_ID, du.getAbilityLevel(TREMOR_ID), OrderIds.thunderclap, du.getPos())
