@@ -6110,7 +6110,7 @@ import ObjEditingNatives
 	..setString("ureq", "u004")
 	..setString("utyp", "ancient")
 	..setInt("ubld", 5)
-	..setInt("ugol", 130)
+	..setInt("ugol", 135)
 	..setInt("ulum", 0)
 	..setString("uabi", "A04U,A04A,A008")
 	..setString("uubs", "")
@@ -6150,7 +6150,7 @@ import ObjEditingNatives
 	..setInt("uclb", 55)
 	..setInt("umpm", 15)
 	..setUnreal("umpr", 13.0)
-	..setInt("upoi", 255)
+	..setInt("upoi", 260)
 
 
 @compiletime function create_w3u_h05V()
