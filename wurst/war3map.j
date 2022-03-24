@@ -9733,7 +9733,7 @@ function Trig_Slave_Trade_Gold_Func001A takes nothing returns nothing
 set udg_Temp_UG=GetUnitsOfPlayerMatching(udg_KingPlayer[GetConvertedPlayerId(GetEnumPlayer())],Condition(function Trig_Slave_Trade_Gold_Func001Func001002002))
 set udg_Temp_UG2=GetUnitsOfPlayerMatching(udg_KingPlayer[GetConvertedPlayerId(GetEnumPlayer())],Condition(function Trig_Slave_Trade_Gold_Func001Func002002002))
 if(Trig_Slave_Trade_Gold_Func001Func003C())then
-set udg_Temp_Integer=((CountUnitsInGroup(udg_Temp_UG)*12)+(CountUnitsInGroup(udg_Temp_UG2)*5))
+set udg_Temp_Integer=((CountUnitsInGroup(udg_Temp_UG)*9)+(CountUnitsInGroup(udg_Temp_UG2)*5))
 set udg_Temp_Unit=udg_Builder_Unit[GetConvertedPlayerId(GetEnumPlayer())]
 set udg_Temp_Player=GetEnumPlayer()
 call showUnitTextPlayer(udg_Temp_Unit,"+"+I2S(udg_Temp_Integer),100.00,77.00,0.00,udg_Temp_Player)
