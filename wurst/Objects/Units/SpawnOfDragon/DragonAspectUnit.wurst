@@ -21,7 +21,7 @@ public let DRAGON_ASPECT_UNIT_ID = 'h02W'
 	..setString("uhrt", "none")
 	..setUnreal("uhpr", 0.0)
 	..setInt("udef", 3)
-	..setUnreal("ua1c", 1.3)
+	..setUnreal("ua1c", 1.35)
 	..setString("unsf", "fighter")
 	..setInt("ua1s", 6)
 	..setInt("ua1b", 229)
