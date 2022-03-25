@@ -9561,7 +9561,13 @@ function Trig_Guardian_Spirit_Effect_Func002002003002 takes nothing returns bool
 return(GetFilterUnit()!=GetSpellAbilityUnit())
 endfunction
 function Trig_Guardian_Spirit_Effect_Func002002003 takes nothing returns boolean
-return GetBooleanAnd((GetOwningPlayer(GetFilterUnit())==GetOwningPlayer(GetSpellAbilityUnit())),(GetFilterUnit()!=GetSpellAbilityUnit()))
+local bool isAbleToCastTo = (GetOwningPlayer(GetFilterUnit())==GetOwningPlayer(GetSpellAbilityUnit())) and (GetFilterUnit()!=GetSpellAbilityUnit())
+local bool castNotAvailable
+if (isAbleToCastTo) then
+set udg_Temp_Integer = udg_Temp_Integer + 1
+endif
+set castNotAvailable = udg_Level_Integer == 31 and udg_Temp_Integer > 5
+return isAbleToCastTo and not castNotAvailable
 endfunction
 function Trig_Guardian_Spirit_Effect_Func003Func001C takes nothing returns boolean
 if(not(GetUnitAbilityLevelSwapped(0x41303630,GetEnumUnit())==0))then
@@ -9578,6 +9584,7 @@ else
 endif
 endfunction
 function Trig_Guardian_Spirit_Effect_Actions takes nothing returns nothing
+set udg_Temp_Integer = 0
 set udg_Temp_Point=GetUnitLoc(GetSpellAbilityUnit())
 set udg_Temp_UG2=GetUnitsInRangeOfLocMatching(160.00,udg_Temp_Point,Condition(function Trig_Guardian_Spirit_Effect_Func002002003))
 call ForGroupBJ(udg_Temp_UG2,function Trig_Guardian_Spirit_Effect_Func003A)
