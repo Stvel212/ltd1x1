@@ -14577,7 +14577,7 @@ import ObjEditingNatives
 	..setInt("uhpm", 300)
 	..setString("unam", "Ghoul")
 	..setString("unsf", "Building T2")
-	..setString("utub", "|cffccccccDamage: |r|cffff800024-30|r|cffcccccc|nSpeed: |r|cffff80001|r|cffcccccc|nRange: |r|cffff8000100|r|cffcccccc|nHit Points: |r|cffff8000280|r|cffcccccc|nAttack Type: |r|cffff8000Normal |r|cffcccccc|nDefense Type: |r|cffff8000Unarmored|r|cffcccccc|nAbility: |r|cff808080 None|r")
+	..setString("utub", "|cffccccccDamage: |r|cffff800024-30|r|cffcccccc|nSpeed: |r|cffff80001|r|cffcccccc|nRange: |r|cffff8000100|r|cffcccccc|nHit Points: |r|cffff8000300|r|cffcccccc|nAttack Type: |r|cffff8000Normal |r|cffcccccc|nDefense Type: |r|cffff8000Unarmored|r|cffcccccc|nAbility: |r|cff808080 None|r")
 	..setInt("uwu1", 0)
 	..setString("ua1g", "enemies")
 	..setString("ua1w", "normal")

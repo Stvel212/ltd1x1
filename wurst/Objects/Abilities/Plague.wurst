@@ -10,7 +10,7 @@ public let PLAGUE_BUFF_ID = 'B03X'
     new AbilityDefinitionAuraDevotionCreep(PLAGUE_ID)
     ..setName("Plague")
     ..presetTooltipNormal(lvl -> "Plague")
-    ..presetTooltipNormalExtended(lvl -> "Decreases the armour of nearby enemies by 3.")
+    ..presetTooltipNormalExtended(lvl -> "Decreases the armour of nearby enemies by 2.5")
     ..presetAreaofEffect(lvl -> 250)
     ..presetTargetsAllowed(lvl -> "enemies")
     ..presetBuffs(lvl -> "B03X")

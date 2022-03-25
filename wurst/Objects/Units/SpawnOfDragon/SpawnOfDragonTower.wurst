@@ -25,7 +25,7 @@ public let SPAWN_OF_DRAGON_TOWER_ID = 'h01A'
 	..setString("unam", "Spawn of Dragon")
 	..setString("unsf", "Building T6")
 	..setString("utub", "|cffccccccDamage: |r|cffff8000148-167|r" + 
-						"|cffcccccc|nSpeed: |r|cffff80001.3|r" + 
+						"|cffcccccc|nSpeed: |r|cffff80001.35|r" + 
 						"|cffcccccc|nDPS: |r|cffff8000105|r" + 
 						"|cffcccccc|nRange: |r|cffff8000100|r" + 
 						"|cffcccccc|nHit Points: |r|cffff80001360|r" + 
