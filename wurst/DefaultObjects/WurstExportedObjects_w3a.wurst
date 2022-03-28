@@ -5176,7 +5176,7 @@ import ObjEditingNatives
 	..setLvlDataString("areq", 0, 0, "")
 	..setLvlDataString("anam", 0, 0, "Storm Bolt")
 	..setLvlDataString("atp1", 1, 0, "Storm Bolt")
-	..setLvlDataString("aub1", 1, 0, "Throws a magical hammer at a target enemy unit, dealing 300 damage and stunning the main target for 3 seconds.(1 second on boss) 4 enemies in radius 300 off the main target get 200 damage.")
+	..setLvlDataString("aub1", 1, 0, "Throws a magical hammer at a target enemy unit, dealing 300 damage and stunning the main target for 3 seconds.(1 second on boss) 4 enemies in radius 300 off the main target get 125 damage.")
 	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNStormBolt.blp")
 	..setLvlDataString("ansf", 0, 0, "(Orc icon only)")
 	..setLvlDataInt("abpy", 0, 0, 0)
