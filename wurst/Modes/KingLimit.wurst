@@ -1,4 +1,5 @@
 package KingLimit
+import ClosureForGroups
 
 function setKingUpgrades(int hp, int attack, int regen)
     for i = 8 to 9
@@ -13,6 +14,9 @@ function setKingLimit()
 
 function resetKingLimit()
     if udg_Level_Integer == 20
+        forUnitsOfType(UnitId2String('h59C')) (unit u) ->
+            if u.hasAbility('A428')
+                u.removeAbility('A428')
         setKingUpgrades(20, 30, 20)
 
 init

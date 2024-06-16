@@ -1,0 +1,158 @@
+package TowerBans
+import Store
+import ClosureTimers
+import PickInitializer
+
+group banGroup = null
+trigger banScanner = CreateTrigger()
+timer banTimer = CreateTimer()
+function banActions()
+
+    if udg_Tower_Ban == true
+        doAfter(0.5) ->
+            for i2 = 0 to 2
+                udg_RedBanArray[i2] = 0
+                udg_YellowBanArray[i2] = 0
+            udg_GameTimer.pause()
+            banScanner.enable()
+            // print(('A008').toReal().toString())
+            CreateTimerDialogBJ(banTimer,"Ban Phase")
+            banTimer.start(15, function endingBan)
+            for i2 = 0 to 7
+                if Player(i2).isIngame()
+                    Player(i2).setGold(400)
+            let g = CreateGroup()
+            g.enumUnitsOfType('h023', null)
+            ForGroup(g, function hide)
+            g.clear()
+            g.destr()
+            let g2 = CreateGroup()
+            g2.enumUnitsOfType('h024', null)
+            ForGroup(g2, function hide)
+            g2.clear()
+            g2.destr()
+            var i = 0
+            banGroup = CreateGroup()
+            doPeriodically(0)  cb ->
+                banGroup.addUnit(createUnit(Player(0), BanBuildersStore.banBuilders[i], vec2((-5696 +((i)*128)).toReal(), 3000), angle(90)))
+                banGroup.addUnit(createUnit(Player(4), BanBuildersStore.banBuilders[i], vec2((1344 +((i)*128)).toReal(), 3000), angle(90)))
+                i++
+                if i >= 15
+                    destroy cb
+
+function banScanner()
+    let u = GetTriggerUnit()
+    if banGroup.contains(u)
+        let p = GetTriggerPlayer()
+        let id = GetIssuedOrderId()
+        if id != 851976
+            if p == Player(0) and redBanCount < 3
+                udg_YellowBanArray[redBanCount] = id
+                SetPlayerTechMaxAllowed(p, id, 0)
+                redBanCount++
+            if p == Player(0) and redBanCount >= 3 
+                printTimedToPlayer("You exceed the maximum number of bans", 10, p)
+            if p == Player(4) and yellowBanCount < 3
+                udg_RedBanArray[yellowBanCount] = id
+                SetPlayerTechMaxAllowed(p, id, 0)
+                yellowBanCount++
+            if p == Player(4) and yellowBanCount >= 3 
+                printTimedToPlayer("You exceed the maximum number of bans", 10, p)
+            doAfter(0.5) -> 
+                u.issueImmediateOrderById(851976)
+
+function endingBan()
+    banScanner.disable()
+    banScanner.destr()
+    banTimer.pause()
+    banTimer.destr()
+    ForGroup(banGroup, function destrUnit)
+    banGroup.clear()
+    banGroup.destr()
+    bj_lastCreatedTimerDialog.destr()
+    for i = 0 to 7
+        if Player(i).isIngame()
+            Player(i).setGold(300)
+            Player(i).setLumber(101)
+    let g = CreateGroup()
+    g.enumUnitsOfType('h023', null)
+    ForGroup(g, function show)
+    g.clear()
+    g.destr()
+    let g2 = CreateGroup()
+    g2.enumUnitsOfType('h024', null)
+    ForGroup(g2, function show)
+    g2.clear()
+    g2.destr()
+    // printTimed(udg_YellowBanArray[0].toString(), 5)
+    // printTimed(udg_YellowBanArray[1].toString(), 5)
+    // printTimed(udg_YellowBanArray[2].toString(), 5)
+    if yellowBanCount == 2 or redBanCount == 2
+        udg_YellowBanArray[2] = 0
+        udg_RedBanArray[2] = 0
+    if yellowBanCount == 1 or redBanCount == 1
+        udg_YellowBanArray[2] = 0
+        udg_RedBanArray[2] = 0
+        udg_YellowBanArray[1] = 0
+        udg_RedBanArray[1] = 0
+    if yellowBanCount == 0 or redBanCount == 0
+        udg_YellowBanArray[0] = 0
+        udg_RedBanArray[0] = 0
+        udg_YellowBanArray[2] = 0
+        udg_RedBanArray[2] = 0
+        udg_YellowBanArray[1] = 0
+        udg_RedBanArray[1] = 0        
+    for i = 0 to 3
+        if Player(i).isIngame()
+            playerUnits[i].popBannedTowersRed()
+    for i = 4 to 7
+        if Player(i).isIngame()
+            playerUnits[i].popBannedTowersYellow()
+    for i = 0 to 2
+        if udg_RedBanArray[i] != 0
+            let u = createUnit(Player(8), udg_RedBanArray[i], vec2(0, 0), angle(180))
+            let message = "|cffa10a0a"+u.getName()+"|r"
+            u.remove()
+            let pos = vec3(-4288.0, 4124.0 +(i * 50), 0)
+            let tt = createTTEx(pos, message, 10)
+            tt.setPermanent(true)
+            ShowTextTagForceBJ(false, tt, bj_FORCE_ALL_PLAYERS)
+            ShowTextTagForceBJ(true, tt, OBS_FORCE)
+            if GetLocalPlayer() == Player(4)
+                SetTextTagVisibility(tt, true)
+        if udg_YellowBanArray[i] != 0
+            let u = createUnit(Player(8), udg_YellowBanArray[i], vec2(0, 0), angle(180))
+            let message = "|cffa10a0a"+u.getName()+"|r"
+            u.remove()
+            let pos = vec3(2752.0, 4124.0 +(i * 50), 0)
+            let tt = createTTEx(pos, message, 10)
+            tt.setPermanent(true)
+            ShowTextTagForceBJ(false, tt, bj_FORCE_ALL_PLAYERS)
+            ShowTextTagForceBJ(true, tt, OBS_FORCE)
+            if GetLocalPlayer() == Player(0)
+                SetTextTagVisibility(tt, true)
+    ConditionalTriggerExecute(gg_trg_Mode_AR)
+    doAfter(2) -> 
+        udg_GameTimer.resume()      
+
+
+
+function destrUnit()
+    let u = GetEnumUnit()
+    u.remove()
+
+function hide()
+    GetEnumUnit().hide()
+
+function show()
+    GetEnumUnit().show()
+
+init
+    for i2 = 0 to 7
+        SetPlayerTechMaxAllowed(Player(i2), 'h024', 0)
+    banScanner.registerAnyUnitEvent(EVENT_PLAYER_UNIT_ISSUED_ORDER)
+    banScanner.addAction(function banScanner)
+    banScanner.disable()
+
+    gg_trg_Select_a_Mode_HCL_Event.addAction(function banActions)
+    gg_trg_Select_a_Mode_Event.addAction(function banActions)

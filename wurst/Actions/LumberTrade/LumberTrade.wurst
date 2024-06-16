@@ -1,0 +1,36 @@
+package LumberTrade
+
+import ChannelAbilityPreset
+import RegisterEvents
+
+public let LUMBER_TRADE = 'A228'
+
+@compiletime function switchStackability()
+  new ChannelAbilityPreset(LUMBER_TRADE, 1, true)
+  ..setDummyAbility()
+  ..presetOption(Option.VISIBLE, true)
+  ..presetTargetTypes(Targettype.NONE)
+  ..setTargetsAllowed(1, "air,ground,friend,vuln,invu,structure")
+  ..setTooltipNormal(1, "Trade Lumber")
+  ..setTooltipNormalExtended(1, "Trade your 100 Lumber for 22 gold")
+  ..setManaCost(1, 0)
+  ..setCooldown(1, 0)
+  // ..setHotkeyNormal("E")
+  ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNReturnGoods.blp")
+
+init
+  registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_FINISH) ->
+    if GetSpellAbilityId() == 'A228'
+      let p = GetTriggerPlayer()
+      let TL = p.getLumber()
+      let pid = p.getId()
+      if TL >= 100
+        p.setLumber(TL - 100)
+        // udg_TotalLumberAdded[pid + 1] =  udg_TotalLumberAdded[pid + 1] + 100
+        p.setGold(p.getGold() + 22)
+        // udg_TotalGold[pid + 1] = udg_TotalGold[pid + 1] + 22
+        // print(pid)
+        // print(udg_TotalGold[pid + 1])
+        printTimedToPlayer("You sold your 100 lumber for 22 gold", 5, p)
+      else
+        printTimedToPlayer("Not enough lumber for trade", 5, p)

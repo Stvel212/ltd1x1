@@ -1,0 +1,13 @@
+//package TeamForce
+//
+//public force TEAM_FORCE = CreateForce()
+//
+//function isTeam() returns boolean
+//	let f = GetFilterPlayer()
+//	return (p.getTeam())
+//
+//function createObsForce()
+//	ForceEnumPlayers(TEAM_FORCE, Condition(function isTeam))
+//
+//init
+//	createObsForce()

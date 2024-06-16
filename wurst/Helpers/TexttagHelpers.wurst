@@ -10,3 +10,6 @@ public function createTT(vec3 pos, string message, real size, colorA col) return
 
 public function texttag.showToAllyAndObs(player p)
     this..setVisibility(localPlayer.isAllyOf(p) or IsPlayerObserver(localPlayer))
+
+public function texttag.showToAll()
+    this..setVisibility(true)

@@ -2,9 +2,11 @@ package PickInitializer
 
 import ClosureTimers
 import PickStore
+import PickStoreWithNewRace
 import ImageRenderer
 
 public PickStore array playerUnits
+public PickStoreWithNewRace array playerUnitsWithNewRace
 public ImageRenderer array playerRenderer
 
 vec2 array imgInitialPosition = [vec2(-4847, 4732), vec2(-4847, 1147), 
@@ -17,4 +19,5 @@ init
     doAfter(0.1) ->
       if Player(i).isIngame() and not IsPlayerObserver(Player(i))
         playerUnits[i] = new PickStore(players[i])
+        playerUnitsWithNewRace[i] = new PickStoreWithNewRace(players[i])
         playerRenderer[i] = new ImageRenderer(imgInitialPosition[i], players[i].getTeam(), 120)

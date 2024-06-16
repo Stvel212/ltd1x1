@@ -12,7 +12,7 @@ public let PUDGE_TOWER_ID = 'h0CY'
     ..setInt("ubld", 5)
     ..setInt("ugol", 220)
     ..setInt("ulum", 0)
-    ..setString("uabi", "A0BJ,A0BR,A008")
+    ..setString("uabi", "N12A,A0BR,A008")
     ..setString("uubs", "")
     ..setString("umdl", "units\\undead\\AbominationCIN\\AbominationCIN.mdl")
     ..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNAbomination.blp")

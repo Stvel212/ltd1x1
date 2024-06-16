@@ -1,0 +1,15 @@
+package RollEveryLevel
+import PickHelpers
+
+function globalReroll()
+    let p = GetEnumPlayer()
+    p.setProphetUnitsWithImages()
+
+
+function forceReroll()
+    if allProphets and rerollEveryLevel 
+        ForForce(udg_IngamePlayers_PlayerGroup, function globalReroll)
+init
+    let t = CreateTrigger()
+    t.registerTimerExpireEvent(udg_Spawn_Timer)
+    t.addCondition(Condition(function forceReroll))

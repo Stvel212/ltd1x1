@@ -1,0 +1,15 @@
+package Force_preset_info
+
+init
+    WestForce = CreateForce()
+    EastForce = CreateForce()
+    ForceAddPlayer(WestForce, Player(0))
+    ForceAddPlayer(WestForce, Player(1))
+    ForceAddPlayer(WestForce, Player(8))
+    ForceAddPlayer(WestForce, Player(11))
+    ForceAddPlayer(WestForce, Player(10))
+    ForceAddPlayer(EastForce, Player(4))
+    ForceAddPlayer(EastForce, Player(5))
+    ForceAddPlayer(EastForce, Player(9))
+    ForceAddPlayer(EastForce, Player(10))
+    ForceAddPlayer(EastForce, Player(11))

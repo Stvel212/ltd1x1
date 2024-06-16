@@ -151,7 +151,7 @@ Attacking stance.
 
 STRING 1277
 {
-Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2
+Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5
 }
 
 STRING 1278
@@ -19206,7 +19206,7 @@ https://forum.onligamez.ru/
 
 STRING 7456
 {
-Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2
+Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5
 }
 
 STRING 7467
@@ -21769,7 +21769,7 @@ STRING 8145
 STRING 8146
 // Войска: h0B8 (Behemoth), Ubertip (Подсказка: подробная (utub))
 {
-|cffFFcc00(Require level 15)|r
+|cffFFcc00(Require level 14)|r
 
 Extremely tough attacker. Can endure quite a lot of damage and still fight.
 
@@ -23578,7 +23578,7 @@ Powerful diviner, he can build tower from all race.
 STRING 8659
 // Войска: h0BQ (Demon), Ubertip (Подсказка: подробная (utub))
 {
-|cffFFcc00(Require level 15)|r
+|cffFFcc00(Require level 14)|r
 
 Commander of the Burning Legion, has powerful ranged attack.
 
@@ -25535,7 +25535,7 @@ A widely feared monster with no real weaknesses.
 STRING 9139
 // Войска: h0B9 (Infernal), Ubertip (Подсказка: подробная (utub))
 {
-|cffFFcc00(Require level 15)|r
+|cffFFcc00(Require level 14)|r
 
 Fighter from the Burning Legion. with immolation flame that can burn nearby enemy.
 
@@ -25608,7 +25608,7 @@ STRING 9160
 
 STRING 9161
 {
-|c00101c29. v 1.2
+|c00101c29. v 1.5
 }
 
 STRING 9162
@@ -27063,7 +27063,7 @@ Every unit affected by Heartstopper aura loses 1% of max health per second.
 
 STRING 9392
 {
-|Cff00ff00 OZGame v 1.2
+|Cff00ff00 OZGame v 1.5
 }
 
 STRING 9393

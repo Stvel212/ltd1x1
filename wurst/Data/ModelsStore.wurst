@@ -1,19 +1,33 @@
 package ModelsStore
 
 import Prophet
-import GrimReaper
-import Matron
-import Sylren
-import Terminator
-import Trollface
 
-public class ModelsStore
-  static let prophet = PROPHET_ID
-  static let model1 = GRIM_REAPER_ID
-  static let model2 = MATRON_ID
-  static let model3 = SYLREN_ID
-  static let model4 = TERMINATOR_ID
-  static let model5 = TROLLFACE_ID
-
-  static let models = [prophet, model5, model1, model3, model4, model2, prophet, prophet]
+public class ModelsStore //скин
+  static let prophet = 'u00T'
+  static let model1 = PROPHET_GRIM_REAPER_ID
+  static let model2 = PROPHET_MATRON_ID
+  static let model3 = PROPHET_SYLREN_ID
+  static let model4 = PROPHET_TERMINATOR_ID
+  static let model5 = PROPHET_TROLLFACE_ID
+  static let model6 = PROPHET_TECHPRIEST_ID
+  static let model7 = PROPHET_ZAKEN_ID
+  static let model8 = PROPHET_ILLIDAN_ID
+  static let model9 = PROPHET_NEPTULON_ID
+  static let model10 = PROPHET_BASS_ID
+  static let model11 = PROPHET_KING_ID
+  static let model12 = PROPHET_GULDAN_ID
+  static let model13 = PROPHET_TEST_ID
+  static let model14 = PROPHET_ELEMANTAL_ID
+  static let model15 = PROPHET_ANAKIM_ID
+  static let model16 = PROPHET_FUTMAN_ID
+  static let model17 = PROPHET_TARANTUL_ID
+  static let model18 = PROPHET_YETI_ID
+  static let model19 = PROPHET_VASSAL_ID
+  static let model20 = PROPHET_APOSTLE_ID
+  static let model21 = PROPHET_AGATION_ID
+  static let model22 = PROPHET_HEROTYRAEL_ID
+  static let model23 = PROPHET_ANTARAS_ID
+  static let model24 = PROPHET_ANGEL_ID
+  
+  static let models = [prophet, model1, model2, model3, model4, model5, model6, model7, model8, model9, model10, model11, model12, model13, model14, model15, model16, model17, model18, model19, model20, model21, model22, model23, model24, prophet]
   

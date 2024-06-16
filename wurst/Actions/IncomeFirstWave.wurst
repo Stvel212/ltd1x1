@@ -7,6 +7,7 @@ let barracksPosition = [vec2(-4288.0, 4024.0), vec2(-4288.0, 440.0), vec2(-2240.
 
 unit array playerBarracks = []
 
+
 function createBarrackForPlayer(player p) returns unit
     let pos = barracksPosition[p.getId()]
     return createUnit(p, 'h05C', pos, angle(0))
@@ -17,8 +18,28 @@ function createBarracksForAll()
         if p.isIngame()
             playerBarracks[i] = createBarrackForPlayer(p)
 
+function createAdvBarrack()
+    if udg_Level_Integer == 13
+        doAfter(35) ->
+            for i = 0 to bj_MAX_PLAYERS - 1
+                let p = players[i]
+                if p.isIngame()
+                    udg_AdvanceBarrack[i + 1] = ReplaceUnitBJ(udg_AdvanceBarrack[i + 1], 'h0B0', bj_UNIT_STATE_METHOD_MAXIMUM)
+
+function addLumberAbility()
+    GetEnumUnit().addAbility('A228')
+
+function removeLumberAbility()
+    GetEnumUnit().removeAbility('A228')
+
 function checkForCreate()
     if udg_Level_Integer == 1
+        if udg_Lumber_Trade
+            let g = CreateGroup()
+            g.enumUnitsOfType('h023', null)
+            ForGroup(g, function addLumberAbility)
+            g.clear()
+            g.destr()
         doAfter(5) ->
             createBarracksForAll()
     if udg_Level_Integer == 30
@@ -26,8 +47,23 @@ function checkForCreate()
             let p = players[i]
             if p.isIngame()
                 ReplaceUnitBJ(playerBarracks[i], 'h026', bj_UNIT_STATE_METHOD_MAXIMUM)
+    if udg_Level_Integer == 12
+        if udg_Lumber_Trade
+            let g = CreateGroup()
+            g.enumUnitsOfType('h023', null)
+            ForGroup(g, function removeLumberAbility)
+            g.clear()
+            g.destr()
+    // if udg_Level_Integer == 14
+    //     //print("Jija")
+    //     doAfter(5) ->
+    //         for i = 0 to bj_MAX_PLAYERS - 1
+    //             let p = players[i]
+    //             if p.isIngame()
+    //                 udg_AdvanceBarrack[i + 1] = ReplaceUnitBJ(udg_AdvanceBarrack[i + 1], 'h0B0', bj_UNIT_STATE_METHOD_MAXIMUM)
 
 init
     CreateTrigger()
         ..registerTimerExpireEvent(udg_Spawn_Timer)
         ..addCondition(Condition(function checkForCreate))
+    gg_trg_End_Round.addAction(function createAdvBarrack)

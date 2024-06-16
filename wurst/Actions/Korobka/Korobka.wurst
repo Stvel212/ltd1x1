@@ -1,0 +1,68 @@
+package Korobka
+import ChannelAbilityPreset
+import RegisterEvents
+import ClosureForGroups
+
+@compiletime function switchStackability()
+    new ChannelAbilityPreset('A328', 1, true)
+    ..setDummyAbility()
+    ..presetOption(Option.VISIBLE, true)
+    ..presetTargetTypes(Targettype.NONE)
+    ..setTargetsAllowed(1, "air,ground,friend,vuln,invu,structure")
+    ..setTooltipNormal(1, "Ban Box")
+    ..setTooltipNormalExtended(1, "Ban opportunity to unlock king limit's for both player's")
+    ..setManaCost(1, 0)
+    ..setCooldown(1, 0)
+    // ..setHotkeyNormal("E")
+    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNBox.blp")
+
+@compiletime function box()
+    new ChannelAbilityPreset('A428', 1, true)
+    ..setDummyAbility()
+    ..presetOption(Option.VISIBLE, true)
+    ..presetTargetTypes(Targettype.NONE)
+    ..setTargetsAllowed(1, "air,ground,friend,vuln,invu,structure")
+    ..setTooltipNormal(1, "BOX [|cfffbff00250|r gold cost]")
+    ..setTooltipNormalExtended(1, "Unlock's 3 each king upgrades (18-23-11)")
+    ..setManaCost(1, 0)
+    ..setCooldown(1, 0)
+    //..setButtonPositionNormalX(1)
+    //..setButtonPositionNormalY(0)
+    // ..setHotkeyNormal("E")
+    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNBox.blp")
+
+function korobkaStart()
+    for i = 0 to 7
+        SetPlayerTechMaxAllowed(Player(i), 'h024', -1)
+    forUnitsOfType(UnitId2String('h59C')) (unit u) ->
+        if u.hasAbility('A328')
+            u.removeAbility('A328')
+            u.addAbility('A428')
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_FINISH) ->
+        if GetSpellAbilityId() == 'A328'
+            forUnitsOfType(UnitId2String('h59C')) (unit u) ->
+                // print("sdfgsdfgh")
+                if u.hasAbility('A328')
+                    u.removeAbility('A328')
+            printTimed("|cffBB3333BOX is banned!!!|r", 5)
+        if GetSpellAbilityId() == 'A428'
+            let p = GetTriggerPlayer()
+            let gold = p.getGold()
+            if gold < 250
+                printTimedToPlayer("You do not have enough gold", 5, p)
+            else
+                printTimedToPlayer("You unlock 3 each king upgrades!", 5, p)
+                p.setGold(gold - 250)
+                let i = p.getId() / 4 == 0 ? 8 : 9
+                SetPlayerTechMaxAllowed(players[i], 'R000', 18)
+                SetPlayerTechMaxAllowed(players[i], 'R001', 23)
+                SetPlayerTechMaxAllowed(players[i], 'R002', 11)
+                GetTriggerUnit().removeAbility('A428')
+        
+    gg_trg_Start_game_at_10_sec.addAction(function korobkaStart)
+        
+
+
+          

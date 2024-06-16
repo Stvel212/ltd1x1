@@ -56,6 +56,19 @@ public class PickStore
         for uid in ALL_UNITS
             SetPlayerTechMaxAllowed(p, uid, 0)
 
+    function popBannedTowersRed()
+        for i = 0 to 5
+            ACTUAL_UNITS[i].forEach() (integer t) ->
+                if t == udg_RedBanArray[0] or t == udg_RedBanArray[1] or t == udg_RedBanArray[2]
+                    ACTUAL_UNITS[i].remove(t)
+
+
+    function popBannedTowersYellow()
+        for i = 0 to 5
+            ACTUAL_UNITS[i].forEach() (integer t) ->
+                if t == udg_YellowBanArray[0] or t == udg_YellowBanArray[1] or t == udg_YellowBanArray[2]
+                    ACTUAL_UNITS[i].remove(t)
+
     function setRandomUnits() returns LinkedList<string>
         let iconPaths = new LinkedList<string>()
         setAllUnitsUnavailable()

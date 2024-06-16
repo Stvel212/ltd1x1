@@ -1,0 +1,92 @@
+package AntiCross
+
+import Buildability
+
+public class AntiCross
+  private static square array full_squares
+  private static square array base_squares
+  private static square array secondary_squares
+  private static rect array full_rects
+  private static rect array base_rects
+  private static rect array secondary_rects
+  private static int full_squares_size = 0
+  private static int full_rects_size = 0
+  private static int base_squares_size = 0
+  private static int secondary_squares_size = 0
+  private static int base_rects_size = 0
+  private static int secondary_rects_size = 0
+  
+  static function addFullAreas(vararg square areas)
+    for a in areas
+      full_squares[full_squares_size] = a
+      full_squares_size++
+  static function addFullAreas(vararg rect areas)
+    for a in areas
+      full_rects[full_rects_size] = a
+      full_rects_size++
+
+  static function addBaseAreas(vararg square areas)
+    for a in areas
+      base_squares[base_squares_size] = a
+      base_squares_size++
+  static function addBaseAreas(vararg rect areas)
+    for a in areas
+      base_rects[base_rects_size] = a
+      base_rects_size++
+
+  static function addSecondaryAreas(vararg square areas)
+    for a in areas
+      secondary_squares[secondary_squares_size] = a
+      secondary_squares_size++
+  static function addSecondaryAreas(vararg rect areas)
+    for a in areas
+      secondary_rects[secondary_rects_size] = a
+      secondary_rects_size++
+
+  private static function setBaseAreasBuildability(bool buildability)
+    for s = 0 to base_squares_size
+      Buildability.setPathabilityForSquare(base_squares[s], buildability)
+    for r = 0 to base_rects_size
+      Buildability.setPathabilityForRect(base_rects[r], buildability)
+
+  private static function setFullAreasBuildability(bool buildability)
+    for s = 0 to full_squares_size
+      Buildability.setPathabilityForSquare(full_squares[s], buildability)
+    for r = 0 to full_rects_size
+      Buildability.setPathabilityForRect(full_rects[r], buildability)  
+
+  private static function setSecondaryAreasBuildability(bool buildability)
+    for s = 0 to secondary_squares_size
+      Buildability.setPathabilityForSquare(secondary_squares[s], buildability)
+    for r = 0 to secondary_rects_size
+      Buildability.setPathabilityForRect(secondary_rects[r], buildability)
+
+
+  static function enableFull()
+    setFullAreasBuildability(false)
+  static function disableFull()
+    setFullAreasBuildability(true)        
+
+  static function enableBase()
+    setBaseAreasBuildability(false) 
+  static function enableSecondary()
+    setSecondaryAreasBuildability(false)      
+
+  static function disableBase()
+    setBaseAreasBuildability(true) 
+  static function disableSecondary()
+    setSecondaryAreasBuildability(true)
+          
+  static function enableFullAll()
+    enableFull()
+    enableSecondary()
+
+  static function enableAll()
+    enableBase()
+    enableSecondary()
+
+  static function disableAll()
+    disableFull()
+    disableBase()
+    disableSecondary()
+    

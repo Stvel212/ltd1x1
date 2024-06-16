@@ -1,0 +1,15 @@
+package SwitchStackability
+
+import ChannelAbilityPreset
+
+public let SWITCH_STACKABILITY_ID = compiletime(ABIL_ID_GEN.next())
+
+@compiletime function switchStackability()
+  new ChannelAbilityPreset(SWITCH_STACKABILITY_ID, 1, true)
+  ..setDummyAbility()
+  ..presetOption(Option.VISIBLE, true)
+  ..presetTargetTypes(Targettype.UNIT)
+  ..setTargetsAllowed(1, "air,ground,friend,vuln,invu,structure")
+  ..setTooltipNormal(1, "|cffFF0000Запретить|r/|cff00ff00Разрешить|r стак (|cffffe600С|r)")
+  ..setTooltipNormalExtended(1, "|cffFF0000Запрещает|r или |cff00ff00разрешает|r выбранному игроку стакать ваши войска.")
+    

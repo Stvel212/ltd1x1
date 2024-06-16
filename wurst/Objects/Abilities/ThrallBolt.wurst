@@ -1,0 +1,47 @@
+package ThrallBolt
+import ObjEditingNatives
+import RegisterEvents
+import DummyCaster
+import Orders
+
+@compiletime function create_w3a_A02E()
+	createObjectDefinition("w3a", 'A12E', 'AEfk')
+	..setLvlDataInt("aher", 0, 0, 0)
+	..setLvlDataInt("alev", 0, 0, 1)
+	..setLvlDataInt("amcs", 1, 0, 0)
+	..setLvlDataString("arac", 0, 0, "human")
+	..setLvlDataString("atp1", 1, 0, "Thrall Bolt")
+	..setLvlDataString("aub1", 1, 0, "")
+	..setLvlDataString("ahky", 0, 0, "")
+	..setLvlDataString("anam", 0, 0, "Thrall Bolt")
+	..setLvlDataUnreal("acdn", 1, 0, 0.0)
+	..setLvlDataUnreal("Efk2", 1, 2, 0.0)
+	..setLvlDataUnreal("Efk1", 1, 1, 125.0)
+	..setLvlDataInt("amsp", 0, 0, 500)
+	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNNatureTouchGrow.blp")
+	..setLvlDataInt("amho", 0, 0, 1)
+	..setLvlDataInt("Efk3", 1, 3, 4)
+	..setLvlDataUnreal("amac", 0, 0, 0.25)
+	..setLvlDataString("ansf", 0, 0, "(AE effect)")
+	..setLvlDataString("aeat", 0, 0, "")
+	..setLvlDataString("amat", 0, 0, "Abilities\\Spells\\Human\\StormBolt\\StormBoltMissile.mdl")
+	..setLvlDataUnreal("aare", 1, 0, 600.0)
+	..setLvlDataString("atar", 1, 0, "enemies")
+
+init
+	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_ATTACKED) ->
+		let u = GetAttacker()
+		let uid = u.getTypeId()
+		if uid == 'h0CB'
+			if u.getMana() == 20
+				new DummyCaster()
+					..owner(u.getOwner())
+					..delay(1)
+					..origin(u.getPos())
+					..castTargetWithUserData('A02I', 1, OrderIds.thunderbolt , GetTriggerUnit(), u.getUserData()) 
+				new DummyCaster()
+					..owner(u.getOwner())
+					..delay(1)
+					..origin(u.getPos())
+					..castImmediateWithUserData('A12E', 1, OrderIds.fanofknives , u.getUserData())
+				u.setMana(0) 

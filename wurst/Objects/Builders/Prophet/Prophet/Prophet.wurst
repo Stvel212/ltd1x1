@@ -1,0 +1,57 @@
+package Prophet
+
+import ProphetCreator
+
+public let PROPHET_ID = 'u00T' //скины
+public let PROPHET_GRIM_REAPER_ID = 'u014'
+public let PROPHET_MATRON_ID = 'u015'
+public let PROPHET_SYLREN_ID = 'u016'
+public let PROPHET_TERMINATOR_ID = 'u017'
+public let PROPHET_TROLLFACE_ID = 'u018'
+public let PROPHET_TECHPRIEST_ID = 'u218'
+public let PROPHET_ZAKEN_ID = 'u998'
+public let PROPHET_ILLIDAN_ID = 'u898'
+public let PROPHET_NEPTULON_ID = 'u798'
+public let PROPHET_BASS_ID = 'u698'
+public let PROPHET_KING_ID = 'u598'
+public let PROPHET_GULDAN_ID = 'nP11'
+public let PROPHET_TEST_ID = 'nP12'
+public let PROPHET_ELEMANTAL_ID = 'nP13'
+public let PROPHET_ANAKIM_ID = 'nP14'
+public let PROPHET_FUTMAN_ID = 'nP15'
+public let PROPHET_TARANTUL_ID = 'nP16'
+public let PROPHET_YETI_ID = 'nP17'
+public let PROPHET_VASSAL_ID = 'nP18'
+public let PROPHET_APOSTLE_ID = 'nP19'
+public let PROPHET_AGATION_ID = 'nP20'
+public let PROPHET_HEROTYRAEL_ID = 'nP21'
+public let PROPHET_ANTARAS_ID = 'nP22'
+public let PROPHET_ANGEL_ID = 'nP23'
+
+@compiletime function createProphets() // модели взять из 4х4 версии
+	ProphetCreator.createProphet(PROPHET_ID)..setModelFile("units\\creeps\\Medivh\\Medivh.mdl")
+	ProphetCreator.createProphet(PROPHET_GRIM_REAPER_ID)..setModelFile("models\\GrimReaper.mdx")..setName("Grim Reaper")..setScalingValue(0.95)
+	ProphetCreator.createProphet(PROPHET_MATRON_ID)..setModelFile("war3mapImported\\Matron.mdl")..setName("Matron")..setScalingValue(2.2)
+	ProphetCreator.createProphet(PROPHET_SYLREN_ID)..setModelFile("models\\Sylren.mdx")..setName("Sylren")..setScalingValue(1.6)
+	ProphetCreator.createProphet(PROPHET_TERMINATOR_ID)..setModelFile("models\\Terminator.mdx")..setName("Terminator")..setScalingValue(1.7)
+	ProphetCreator.createProphet(PROPHET_TROLLFACE_ID)..setModelFile("war3mapImported\\AvatarOfTrollface.mdl")..setName("Trollface")..setScalingValue(2.2)
+	ProphetCreator.createProphet(PROPHET_TECHPRIEST_ID)..setModelFile("Tech-priest_v3-00b.mdl")..setName("Techpriest")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_ZAKEN_ID)..setModelFile("Zaken.mdl")..setName("Zaken")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_ILLIDAN_ID)..setModelFile("IllidanEvil.mdl")..setName("ILLIDAN")..setScalingValue(1.2)
+	ProphetCreator.createProphet(PROPHET_NEPTULON_ID)..setModelFile("Neptulon.mdl")..setName("NEPTULON")..setScalingValue(1.0)
+	ProphetCreator.createProphet(PROPHET_BASS_ID)..setModelFile("Bass.mdl")..setName("BASS")..setScalingValue(1.8)
+	ProphetCreator.createProphet(PROPHET_KING_ID)..setModelFile("war3mapImported\\King.mdl")..setName("KING")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_GULDAN_ID)..setModelFile("Guldan.mdl")..setName("Guldan")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_TEST_ID)..setModelFile("ANGEL.mdl")..setName("Test")..setScalingValue(1.0)
+	ProphetCreator.createProphet(PROPHET_ELEMANTAL_ID)..setModelFile("Elemental.mdl")..setName("ELEMANTAL")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_ANAKIM_ID)..setModelFile("Anakim1.mdl")..setName("Anakim")..setScalingValue(1.0)
+	ProphetCreator.createProphet(PROPHET_FUTMAN_ID)..setModelFile("Kingvarianwrynn.mdl")..setName("CAPTAIN")..setScalingValue(1.76)
+	ProphetCreator.createProphet(PROPHET_TARANTUL_ID)..setModelFile("Tarantul.mdl")..setName("TARANTUL")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_YETI_ID)..setModelFile("Yeti.mdl")..setName("Yeti")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_VASSAL_ID)..setModelFile("Vassal Mage.mdl")..setName("Vassal Mage")..setScalingValue(1.75)
+	ProphetCreator.createProphet(PROPHET_APOSTLE_ID)..setModelFile("Apostle_Warrior.mdl")..setName("APOSLTE")..setScalingValue(1.0)
+	ProphetCreator.createProphet(PROPHET_AGATION_ID)..setModelFile("Agathion_Anta.mdl")..setName("Agathion_Anta")..setScalingValue(1.0)
+	ProphetCreator.createProphet(PROPHET_HEROTYRAEL_ID)..setModelFile("HeroTyrael.mdl")..setName("HEROTYRAEL")..setScalingValue(2.0)
+	ProphetCreator.createProphet(PROPHET_ANTARAS_ID)..setModelFile("Antaras.mdl")..setName("ANTARAS")..setScalingValue(0.2)
+	ProphetCreator.createProphet(PROPHET_ANGEL_ID)..setModelFile("ANGEL.mdl")..setName("ANGEL")..setScalingValue(1.25)
+	

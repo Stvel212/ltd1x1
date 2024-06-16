@@ -10,6 +10,8 @@ function allRandom()
     udg_ModeAR = true
     if(allProphets)
         DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cffFFcc00All Prophets|r: you will be given a prophet builder in a moment.")
+    else if(allHybrid)
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cffFFcc00All Hybrid|r: you will be given a hybrid builder in a moment.")
     else
         DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10.00, "TRIGSTR_4315")
     ForForce(udg_IngamePlayers_PlayerGroup) ->
@@ -19,7 +21,7 @@ function allRandom()
     doAfter(1) ->
         for i = 0 to 12
             if Player(i).isIngame() and not IsPlayerObserver(Player(i))
-                Player(i).pickBuilder(udg_BuilderType[allProphets? 13: GetRandomInt(1,udg_numRaces)])
+                Player(i).pickBuilder(udg_BuilderType[allHybrid? 0: (allProphets? 13: GetRandomInt(1,udg_numRaces))])
         TriggerExecute(gg_trg_Update_Race_Icon)
         DisableTrigger(GetTriggeringTrigger())
 

@@ -23,13 +23,30 @@ integer array udg_PlayerKills_Integer
 integer udg_Level_Integer=0
 group array udg_Towers_Selected_UnitGroup
 boolean udg_GameEnded_Boolean=false
+boolean udg_Tower_Ban = false
+boolean udg_Lumber_Trade = false
+integer redBanCount = 0
+integer yellowBanCount = 0 
+integer array udg_YellowBanArray
+integer array udg_RedBanArray
 timer udg_Spawn_Timer=null
 boolean mercenaryDisabled = false
 boolean randomAbilities = false
 boolean kingLimit = false
 boolean noCross = false
+boolean noMid = false
+texttag array IncomeTexttag
+integer LIncomeCounter = null
+integer RIncomeCounter = null
+location LIncomeTexttagLoc = null
+location RIncomeTexttagLoc = null
 boolean incomeFirstWave = false
 boolean autoHeal = false
+boolean newRace = false
+boolean rerollEveryLevel = false
+force WestForce = null
+force EastForce = null
+force OBS_FORCE = null
 string udg_Temp_String
 location udg_Temp_Point=null
 location udg_Spawn4=null
@@ -58,6 +75,7 @@ integer udg_LeftOrRight=0
 integer udg_LeftOrRight_2=0
 real udg_SpawnYCoord=0
 boolean allProphets = false
+boolean allHybrid = false
 string array udg_LevelAttack_String
 string udg_ATKPierceList
 string udg_ATKNormalList
@@ -213,6 +231,7 @@ integer udg_RKingAbilitiesLearned=0
 boolean udg_BuildAll=false
 group udg_StompGroup=null
 group udg_Temp_UG3=null
+group udg_Temp_UG4=null
 boolean array udg_MendUsed
 boolean array udg_SeduceUsed
 boolean array udg_ThrowNetUsed
@@ -266,6 +285,7 @@ real udg_Level_31_Timer=0
 integer udg_numArrayEndGoblin=0
 unit array udg_AdvanceBarrack
 integer array udg_TotalLumber
+integer array udg_TotalLumberAdded
 integer udg_Temp_Lumber=0
 real array udg_Leaked_Bount_Perc
 boolean udg_ModeHP=false
@@ -343,6 +363,9 @@ string array udg_PlayerRaceTotal
 boolean udg_HCL_Mode=false
 timer udg_Vote_Timer_lock=null
 integer array udg_PlayerTime
+unit array gg_snd_arr
+integer array gg_snd_values
+integer gg_snd_cnt=0
 rect gg_rct_Creep_4=null
 rect gg_rct_Creep_1=null
 rect gg_rct_LKing=null
@@ -1096,6 +1119,7 @@ set udg_RKingAbilitiesLearned=0
 set udg_BuildAll=false
 set udg_StompGroup=CreateGroup()
 set udg_Temp_UG3=CreateGroup()
+set udg_Temp_UG4=CreateGroup()
 set i=0
 loop
 exitwhen(i>1)
@@ -1693,8 +1717,8 @@ set gg_rct_RMidLong = Rect(3000.0,-2700.0,4000.0,3300.0)
 set RMidLong = CreateRegion()
 call RegionAddRect(RMidLong, gg_rct_RMidLong)
 set gg_rct_LNoBounty=Rect(-3968.0,1088.0,-3104.0,2240.0)
-set gg_rct_LMMVision=Rect(-4032.0,864.0,-3104.0,1696.0)
-set gg_rct_RMMVision=Rect(3040.0,832.0,3968.0,1664.0)
+set gg_rct_LMMVision=Rect(-4032.0,864.0,-3104.0,900.0)
+set gg_rct_RMMVision=Rect(3040.0,832.0,3968.0,900.0)
 set gg_rct_DRCenter=Rect(-32.0,-544.0,32.0,-480.0)
 set gg_rct_LeftTooFar=Rect(-4032.0,-1536.0,-3008.0,3392.0)
 set gg_rct_RightTooFar=Rect(2976.0,-1536.0,4064.0,3392.0)
@@ -1900,6 +1924,34 @@ function CustomUnitCreator takes integer count, player p, integer unitId, locati
     set loc = null
 endfunction
 
+function CreateIncomeTexttag takes player p, integer count returns nothing
+local integer i = GetPlayerId(p)
+local force f
+local string text
+local texttag tag
+local location tt
+if i /4 == 1 then
+    set RIncomeCounter = RIncomeCounter + count
+    set f = EastForce
+    set text = "|cff339933 " + I2S(RIncomeCounter) + "|r"
+    set tt = RIncomeTexttagLoc
+else
+    set LIncomeCounter = LIncomeCounter + count
+    set f = WestForce
+    set text = "|cff339933 " + I2S(LIncomeCounter) + "|r"
+    set tt = LIncomeTexttagLoc
+endif
+call DestroyTextTag(IncomeTexttag[i / 4 + 1])
+set IncomeTexttag[i / 4 + 1] = CreateTextTagLocBJ(text, tt, 0, 17.5, 255, 255, 255, 0)
+call SetTextTagPermanentBJ(IncomeTexttag[i / 4 + 1],true)
+call ShowTextTagForceBJ(false,IncomeTexttag[i / 4 + 1],bj_FORCE_ALL_PLAYERS)
+call ShowTextTagForceBJ(true,IncomeTexttag[i / 4 + 1],f)
+call ShowTextTagForceBJ(true,IncomeTexttag[i / 4 + 1],OBS_FORCE)
+set f = null
+set tag = null
+set tt = null
+endfunction
+
 function CreateCreepWave takes nothing returns nothing
 local integer n=udg_LevelWaveCount_Integer[udg_Level_Integer]
 if(udg_doSpawn1)then
@@ -2013,7 +2065,8 @@ set f=GetForceOfPlayer(pl)
 set f2=GetPlayersEnemies(pl)
 call SetTextTagPermanentBJ(t,true)
 call ShowTextTagForceBJ(true,t,GetPlayersAllies(pl))
-call ShowTextTagForceBJ(false,t,f)
+call ShowTextTagForceBJ(true,t,OBS_FORCE)
+call ShowTextTagForceBJ(true,t,f)
 call ShowTextTagForceBJ(false,t,f2)
 call DestroyForce(f)
 call DestroyForce(f2)
@@ -2097,7 +2150,7 @@ call TriggerExecute(gg_trg_Setup_Map_Properties)
 call TriggerExecute(gg_trg_Quests)
 call TriggerExecute(gg_trg_Setup_Misc)
 call PolledWait(1.00)
-call DisplayTimedTextToForce(GetPlayersAll(),10.00,("Welcome to Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2 "+(" you have 15 seconds to enter gamemodes, if you don't enter any command, the default mode is -aphgggmmcbx3")))
+call DisplayTimedTextToForce(GetPlayersAll(),10.00,("Welcome to Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5 "+(" you have 15 seconds to enter gamemodes, if you don't enter any command, the default mode is -aphgggmmcbx3")))
 call TriggerExecute(gg_trg_Set_Round_to_Not_In_Progress)
 set udg_GameInit=true
 call StartTimerBJ(udg_GameTimer,false,15.00)
@@ -2322,8 +2375,8 @@ set udg_ATKNormalList=",02,03,09,14,15,23,26,27"
 set udg_ATKMagicList=",05,08,13,16,18,24,29"
 set udg_ATKSiegeList=",06,11,17,22,28"
 set udg_ATKChaosList=",10,20,30,31"
-set udg_DEFLightList=",05,07,10,13,16,19,21,25"
-set udg_DEFMediumList=",03,08,12,14,18,24,27"
+set udg_DEFLightList=",05,07,10,13,16,19,25"
+set udg_DEFMediumList=",03,08,12,14,18,21,24,27"
 set udg_DEFHeavyList=",04,09,15,20,23,26,29"
 set udg_DEFFortifiedList=",06,11,17,22,28,30"
 set udg_DEFUnarmoredList=",01,02,31"
@@ -2358,6 +2411,7 @@ function Trig_Setup_Creep_Types_Actions takes nothing returns nothing
 set udg_bonusUnitType=0x6830354C
 set udg_Temp_Integer=1
 set udg_Level_UnitType[udg_Temp_Integer]=0x68303032
+// set udg_Level_UnitType[udg_Temp_Integer]='h05A'
 set udg_Temp_Integer=(udg_Temp_Integer+1)
 set udg_Level_UnitType[udg_Temp_Integer]=0x68303030
 set udg_Temp_Integer=(udg_Temp_Integer+1)
@@ -4982,9 +5036,10 @@ call DestroyTrigger(gg_trg_Calculate_Score)
 set udg_inBonusRound=true
 if(Trig_Level_31_Spawns_Func005C())then
 call TriggerExecute(gg_trg_Set_Round_to_In_Progress)
-call PolledWait(1.00)
+call PolledWait(1.00) //22
 set udg_InRound=true
 call TriggerExecute(gg_trg_Create_Fighters_JASS)
+call TriggerExecute(gg_trg_Autocast_Guardian_Spirit)
 else
 call TriggerExecute(gg_trg_Autocast_Guardian_Spirit)
 endif
@@ -5401,6 +5456,10 @@ call IssueImmediateOrderBJ(GetEnumUnit(),"holdposition")
 call RemoveLocation(udg_Temp_Point)
 endfunction
 function Trig_Warp_Summons_Arena_Actions takes nothing returns nothing
+set LIncomeCounter = 0
+set RIncomeCounter = 0
+call CreateIncomeTexttag(Player(0), 0)
+call CreateIncomeTexttag(Player(4), 0)
 set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_LSummonHoldArea,Player(11))
 call ForGroupBJ(udg_Temp_UG,function Trig_Warp_Summons_Arena_Func002A)
 call DestroyGroup(udg_Temp_UG)
@@ -6739,8 +6798,9 @@ set bj_forLoopAIndexEnd=8
 loop
 exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 if((true))then
-call ReplaceUnitBJ(udg_AdvanceBarrack[GetForLoopIndexA()],0x68304230,bj_UNIT_STATE_METHOD_RELATIVE)
-set udg_AdvanceBarrack[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
+//call DisplayTimedTextToForce(GetPlayersAll(),30,"|cff33AA33Congratulations!|r udg_Level_15!")
+// call ReplaceUnitBJ(udg_AdvanceBarrack[GetForLoopIndexA()],0x68304230,bj_UNIT_STATE_METHOD_RELATIVE)
+// set udg_AdvanceBarrack[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
 set udg_Level_15=true
 else
 endif
@@ -6753,6 +6813,7 @@ set bj_forLoopAIndexEnd=8
 loop
 exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 if((true))then
+// call DisplayTimedTextToForce(GetPlayersAll(),30,"|cff33AA33Congratulations!|r udg_Level_10!")
 call ReplaceUnitBJ(udg_AdvanceBarrack[GetForLoopIndexA()],0x6830415A,bj_UNIT_STATE_METHOD_RELATIVE)
 set udg_AdvanceBarrack[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
 set udg_Level_10=true
@@ -6769,8 +6830,9 @@ set bj_forLoopAIndexEnd=8
 loop
 exitwhen bj_forLoopAIndex>bj_forLoopAIndexEnd
 if(Trig_Advance_barrack_Func002Func001Func001C())then
-call ReplaceUnitBJ(udg_AdvanceBarrack[GetForLoopIndexA()],0x68304230,bj_UNIT_STATE_METHOD_RELATIVE)
-set udg_AdvanceBarrack[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
+// call DisplayTimedTextToForce(GetPlayersAll(),30,"|cff33AA33Congratulations!|r udg_Level_999!")
+// call ReplaceUnitBJ(udg_AdvanceBarrack[GetForLoopIndexA()],0x68304230,bj_UNIT_STATE_METHOD_RELATIVE)
+// set udg_AdvanceBarrack[GetForLoopIndexA()]=GetLastReplacedUnitBJ()
 else
 endif
 set bj_forLoopAIndex=bj_forLoopAIndex+1
@@ -6812,10 +6874,36 @@ return false
 endif
 return true
 endfunction
+function CalculateLumberCost takes unit u returns integer
+local integer result
+local integer id = GetUnitTypeId(u)
+local integer value = GetUnitPointValue(u)
+if id == 'h04S' then
+    set result = value * 30
+elseif id == 'h04W' then
+    set result = value * 23 + 2
+elseif id == 'h04T' then
+    set result = value * 25
+elseif id == 'h04V' then
+    set result = value * 24
+elseif id == 'h052' then
+    set result = value * 21 + 6
+elseif id == 'h056' then
+    set result = value * 22 + 4
+elseif id == 'h057' then
+    set result = value * 23 + 9
+elseif id == 'h0BR' then
+    set result = value * 21 + 30
+else
+    set result = value * 20
+endif
+return result
+endfunction
 function Trig_Purchase_Summon_Actions takes nothing returns nothing
 local unit u=GetEnteringUnit()
 local player p=GetOwningPlayer(GetEnteringUnit())
 local integer id=GetPlayerId(p)+1
+call CreateIncomeTexttag(p, CalculateLumberCost(u))
 set udg_numberOfSummons[id]=(udg_numberOfSummons[id]+1)
 if(udg_onBonusLevel==false)then
 set udg_PlayerIncome[id]=(udg_PlayerIncome[id]+GetUnitPointValueByType(GetUnitTypeId(GetEnteringUnit())))
@@ -6936,8 +7024,50 @@ else
 set udg_SummonCounterR=(udg_SummonCounterR+1)
 endif
 endfunction
+function Trig_Warp_Summons_FuncEA takes nothing returns nothing
+local integer i_1=1
+loop
+exitwhen i_1>gg_snd_cnt
+call RemoveUnit(gg_snd_arr[i_1])
+set i_1=i_1+1
+endloop
+set gg_snd_cnt=0
+endfunction
+function Trig_Warp_Summons_FuncCA takes nothing returns nothing
+set gg_snd_cnt=gg_snd_cnt+1
+set gg_snd_arr[gg_snd_cnt]=GetEnumUnit()
+set gg_snd_values[gg_snd_cnt]=GetUnitPointValue(GetEnumUnit())
+endfunction
+function Trig_Warp_Summons_FuncGM takes nothing returns integer
+local integer max_snd_idx=1
+local integer i_1=1
+loop
+exitwhen i_1>gg_snd_cnt
+if gg_snd_values[i_1] >= gg_snd_values[max_snd_idx] and gg_snd_values[i_1] != 0 then
+set max_snd_idx=i_1
+endif
+set i_1=i_1+1
+endloop
+return max_snd_idx
+endfunction
+function Trig_Warp_Summons_FuncGS takes nothing returns nothing
+local integer max_snd_idx=1
+local integer i_1=1
+loop
+exitwhen i_1>gg_snd_cnt
+set max_snd_idx=Trig_Warp_Summons_FuncGM()
+call GroupAddUnitSimple(gg_snd_arr[max_snd_idx], udg_Temp_UG4)
+set gg_snd_values[max_snd_idx]=0
+set i_1=i_1+1
+endloop
+set gg_snd_cnt=0
+endfunction
 function Trig_Warp_Summons_Actions takes nothing returns nothing
-if(Trig_Warp_Summons_Func001C())then
+set LIncomeCounter = 0
+set RIncomeCounter = 0
+call CreateIncomeTexttag(Player(0), 0)
+call CreateIncomeTexttag(Player(4), 0)
+if(Trig_Warp_Summons_Func001C())then //Инк инком засыл
 set udg_Temp_Player_Arr[1]=Player(4)
 set udg_Temp_Player_Arr[2]=Player(5)
 set udg_Temp_Player_Arr[3]=Player(6)
@@ -6973,11 +7103,21 @@ endif
 set udg_SummonCounterL=GetRandomInt(1,udg_Temp_Integer3)
 set udg_SummonCounterR=GetRandomInt(1,udg_Temp_Integer4)
 set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_LSummonHoldArea,Player(11))
-call ForGroupBJ(udg_Temp_UG,function Trig_Warp_Summons_Func007A)
+call Trig_Warp_Summons_FuncEA()
+call ForGroupBJ(udg_Temp_UG, function Trig_Warp_Summons_FuncCA)
+set udg_Temp_UG4=CreateGroup()
+call Trig_Warp_Summons_FuncGS()
+call ForGroupBJ(udg_Temp_UG4,function Trig_Warp_Summons_Func007A)
 call DestroyGroup(udg_Temp_UG)
+call DestroyGroup(udg_Temp_UG4)
 set udg_Temp_UG=GetUnitsInRectOfPlayer(gg_rct_RSummonHoldArea,Player(10))
-call ForGroupBJ(udg_Temp_UG,function Trig_Warp_Summons_Func010A)
+call Trig_Warp_Summons_FuncEA()
+call ForGroupBJ(udg_Temp_UG, function Trig_Warp_Summons_FuncCA)
+set udg_Temp_UG4=CreateGroup()
+call Trig_Warp_Summons_FuncGS()
+call ForGroupBJ(udg_Temp_UG4,function Trig_Warp_Summons_Func010A)
 call DestroyGroup(udg_Temp_UG)
+call DestroyGroup(udg_Temp_UG4)
 endfunction
 function InitTrig_Warp_Summons takes nothing returns nothing
 set gg_trg_Warp_Summons=CreateTrigger()
@@ -9327,6 +9467,11 @@ set udg_Temp_Unit=GetLastCreatedUnit()
 call UnitAddAbilityBJ(0x4130365A,udg_Temp_Unit)
 call IssueTargetOrderBJ(udg_Temp_Unit,"bloodlust",GetSpellAbilityUnit())
 call UnitApplyTimedLifeBJ(4.00,0x42544C46,udg_Temp_Unit)
+call CreateNUnitsAtLoc(1,0x75303036,ConvertedPlayer(GetUnitUserData(GetSpellAbilityUnit())),udg_Temp_Point,bj_UNIT_FACING)
+set udg_Temp_Unit=GetLastCreatedUnit()
+call UnitAddAbilityBJ('A14B',udg_Temp_Unit)
+call IssueTargetOrderBJ(udg_Temp_Unit,"innerfire",GetSpellAbilityUnit())
+call UnitApplyTimedLifeBJ(2.00,0x42544C46,udg_Temp_Unit)
 call RemoveLocation(udg_Temp_Point)
 endfunction
 function InitTrig_Submerge_Speed takes nothing returns nothing
@@ -9636,7 +9781,7 @@ function Trig_Guardian_Spirit_Effect_Func002002003002 takes nothing returns bool
 return(GetFilterUnit()!=GetSpellAbilityUnit())
 endfunction
 function Trig_Guardian_Spirit_Effect_Func002002003 takes nothing returns boolean
-return GetBooleanAnd((GetOwningPlayer(GetFilterUnit())==GetOwningPlayer(GetSpellAbilityUnit())),(GetFilterUnit()!=GetSpellAbilityUnit()))
+return GetBooleanAnd((GetOwningPlayer(GetFilterUnit())==GetOwningPlayer(GetSpellAbilityUnit())),(GetFilterUnit()!=GetSpellAbilityUnit())) and GetUnitAbilityLevelSwapped(0x41303630,GetFilterUnit())==0
 endfunction
 function Trig_Guardian_Spirit_Effect_Func003Func001C takes nothing returns boolean
 if(not(GetUnitAbilityLevelSwapped(0x41303630,GetEnumUnit())==0))then
@@ -9653,11 +9798,26 @@ else
 endif
 endfunction
 function Trig_Guardian_Spirit_Effect_Actions takes nothing returns nothing
+local integer count = 0
+local integer i = 0
 set udg_Temp_Point=GetUnitLoc(GetSpellAbilityUnit())
 set udg_Temp_UG2=GetUnitsInRangeOfLocMatching(160.00,udg_Temp_Point,Condition(function Trig_Guardian_Spirit_Effect_Func002002003))
+if udg_Level_Integer > 30 then
+    set count = CountUnitsInGroup(udg_Temp_UG2)
+    set i = count - 5
+    if i > 0 then
+        loop
+        exitwhen i == 0
+        call GroupRemoveUnit(udg_Temp_UG2, FirstOfGroup(udg_Temp_UG2))
+        set i = i -1
+        endloop
+    endif
+endif
 call ForGroupBJ(udg_Temp_UG2,function Trig_Guardian_Spirit_Effect_Func003A)
 call RemoveLocation(udg_Temp_Point)
 call DestroyGroup(udg_Temp_UG)
+set i = 0
+set count = 0
 endfunction
 function InitTrig_Guardian_Spirit_Effect takes nothing returns nothing
 set gg_trg_Guardian_Spirit_Effect=CreateTrigger()
@@ -9808,7 +9968,7 @@ function Trig_Slave_Trade_Gold_Func001A takes nothing returns nothing
 set udg_Temp_UG=GetUnitsOfPlayerMatching(udg_KingPlayer[GetConvertedPlayerId(GetEnumPlayer())],Condition(function Trig_Slave_Trade_Gold_Func001Func001002002))
 set udg_Temp_UG2=GetUnitsOfPlayerMatching(udg_KingPlayer[GetConvertedPlayerId(GetEnumPlayer())],Condition(function Trig_Slave_Trade_Gold_Func001Func002002002))
 if(Trig_Slave_Trade_Gold_Func001Func003C())then
-set udg_Temp_Integer=((CountUnitsInGroup(udg_Temp_UG)*3)+(CountUnitsInGroup(udg_Temp_UG2)*2))
+set udg_Temp_Integer=((CountUnitsInGroup(udg_Temp_UG)*9)+(CountUnitsInGroup(udg_Temp_UG2)*5))
 set udg_Temp_Unit=udg_Builder_Unit[GetConvertedPlayerId(GetEnumPlayer())]
 set udg_Temp_Player=GetEnumPlayer()
 call showUnitTextPlayer(udg_Temp_Unit,"+"+I2S(udg_Temp_Integer),100.00,77.00,0.00,udg_Temp_Player)
@@ -9883,6 +10043,12 @@ set udg_Temp_Integer=GetUnitUserData(GetDyingUnit())
 call GroupAddUnitSimple(udg_Temp_Unit,udg_Fighter_Group)
 call GroupAddUnitSimple(udg_Temp_Unit,udg_Fighter_Group_Player[udg_Temp_Integer])
 call SetUnitUserData(udg_Temp_Unit,GetUnitUserData(GetDyingUnit()))
+call CreateNUnitsAtLoc(1,0x68304158,GetOwningPlayer(GetDyingUnit()),udg_Temp_Point,bj_UNIT_FACING)
+set udg_Temp_Unit=GetLastCreatedUnit()
+set udg_Temp_Integer=GetUnitUserData(GetDyingUnit())
+call GroupAddUnitSimple(udg_Temp_Unit,udg_Fighter_Group)
+call GroupAddUnitSimple(udg_Temp_Unit,udg_Fighter_Group_Player[udg_Temp_Integer])
+call SetUnitUserData(udg_Temp_Unit,GetUnitUserData(GetDyingUnit()))
 call AddSpecialEffectLocBJ(udg_Temp_Point,"Objects\\Spawnmodels\\Human\\HumanBlood\\HumanBloodKnight.mdl")
 call DestroyEffectBJ(GetLastCreatedEffectBJ())
 call RemoveLocation(udg_Temp_Point)
@@ -9901,6 +10067,12 @@ return true
 endfunction
 function Trig_Steamroller_die_Actions takes nothing returns nothing
 set udg_Temp_Point=GetUnitLoc(GetDyingUnit())
+call CreateNUnitsAtLoc(1,0x68304435,GetOwningPlayer(GetDyingUnit()),udg_Temp_Point,bj_UNIT_FACING)
+set udg_Temp_Unit=GetLastCreatedUnit()
+set udg_Temp_Integer=GetUnitUserData(GetDyingUnit())
+call GroupAddUnitSimple(udg_Temp_Unit,udg_Fighter_Group)
+call GroupAddUnitSimple(udg_Temp_Unit,udg_Fighter_Group_Player[udg_Temp_Integer])
+call SetUnitUserData(udg_Temp_Unit,GetUnitUserData(GetDyingUnit()))
 call CreateNUnitsAtLoc(1,0x68304435,GetOwningPlayer(GetDyingUnit()),udg_Temp_Point,bj_UNIT_FACING)
 set udg_Temp_Unit=GetLastCreatedUnit()
 set udg_Temp_Integer=GetUnitUserData(GetDyingUnit())
@@ -13655,6 +13827,12 @@ endif
 if((udg_GameMode_String=="ph"))then
 return true
 endif
+if((udg_GameMode_String=="tb"))then
+return true
+endif
+if((udg_GameMode_String=="lt"))then
+return true
+endif
 if((udg_GameMode_String=="ap"))then
 return true
 endif
@@ -13719,6 +13897,9 @@ if((udg_GameMode_String=="lc"))then
 return true
 endif
 return false
+endfunction
+function forPlayerForceRerollEveryLevel takes nothing returns nothing
+    call SetPlayerTechMaxAllowed(GetEnumPlayer(), 'R00G', 0)
 endfunction
 function Trig_Select_a_Mode_Run_Func003Func003C takes nothing returns boolean
 if(not Trig_Select_a_Mode_Run_Func003Func003Func001C())then
@@ -13845,12 +14026,23 @@ set udg_Temp_Bool=true
 call ConditionalTriggerExecute(gg_trg_Mode_HP)
 else
 endif
-if(udg_GameMode_String == "ar" or udg_GameMode_String == "ph") then
+if(udg_GameMode_String=="tb")then
+    set udg_Tower_Ban = true
+endif
+if(udg_GameMode_String=="lt")then
+    set udg_Lumber_Trade = true
+endif
+if(udg_GameMode_String == "ar" or udg_GameMode_String == "ph" or udg_GameMode_String == "hy") then
     if(udg_GameMode_String == "ph") then
         set allProphets = true
     endif
+    if(udg_GameMode_String == "hy") then
+        set allHybrid = true
+    endif
     set udg_Temp_Bool=true
-    call ConditionalTriggerExecute(gg_trg_Mode_AR)
+    // if udg_Tower_Ban == false then
+    // call ConditionalTriggerExecute(gg_trg_Mode_AR)
+    // endif
 endif
 if(Trig_Select_a_Mode_Run_Func007Func005C())then
 set udg_Temp_Bool=true
@@ -13870,10 +14062,21 @@ endif
 if(udg_GameMode_String=="nc") then
     set noCross = true
 endif
+if(udg_GameMode_String=="dm") then
+    set noMid = true
+endif
 if(udg_GameMode_String=="ef") then
     set incomeFirstWave = true
 endif
 if(udg_GameMode_String=="ah") then
+    set autoHeal = true
+endif
+if(udg_GameMode_String=="rr") then
+    set rerollEveryLevel = true
+    call ForForce(udg_IngamePlayers_PlayerGroup, function forPlayerForceRerollEveryLevel)
+endif
+if(udg_GameMode_String=="nr") then
+    set newRace = true
     set autoHeal = true
 endif
 if(Trig_Select_a_Mode_Run_Func007Func006C())then
@@ -13943,6 +14146,9 @@ else
 endif
 set bj_forLoopBIndex=bj_forLoopBIndex+1
 endloop
+if (allProphets == true or allHybrid == true) and udg_Tower_Ban == false then
+    call ConditionalTriggerExecute(gg_trg_Mode_AR)
+endif
 call DisableTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_Select_a_Mode_Run takes nothing returns nothing
@@ -14002,8 +14208,9 @@ call ConditionalTriggerExecute(gg_trg_Mode_CB)
 call ConditionalTriggerExecute(gg_trg_Mode_X3)
 return
 else
-if(udg_Temp_String3 == "ph")then
-set allProphets = true
+if(udg_Temp_String3 == "ph" or udg_Temp_String3 == "hy")then
+set allProphets = udg_Temp_String3 == "ph"
+set allHybrid = udg_Temp_String3 == "hy"
 call ConditionalTriggerExecute(gg_trg_Mode_AR)
 call ConditionalTriggerExecute(gg_trg_Mode_MM)
 call ConditionalTriggerExecute(gg_trg_Mode_HG)
@@ -14089,18 +14296,28 @@ endfunction
 function Trig_Select_a_Mode_HCL_Event_Actions takes nothing returns nothing
 if(udg_command=="")then
 return
+// set udg_Temp_String = "-phgmcbklmdralttb"
+// set udg_Tower_Ban = true
+// // set udg_Temp_String = "-aplt"
+// call DisableTrigger(gg_trg_Select_a_Mode_Event)
+// call TriggerExecute(gg_trg_Select_a_Mode_Run)
+// call ResumeTimer(udg_GameTimer)
+// call StartTimerBJ(udg_GameTimer,false,1.00)
+// return
 elseif(udg_command=="0"or udg_command=="-0")then
 set udg_HCL_Mode=true
 else
 set udg_HCL_Mode=true
-if (udg_command == "1") then
-    set udg_Temp_String = "-phgmcbmdra"
+if (udg_command == "1") then //моды
+    set udg_Tower_Ban = true
+    set udg_Temp_String = "-phgmcbklmdralttb"
 elseif (udg_command == "2") then
-    set udg_Temp_String = "-phgmcbmdrakl"
+    set udg_Temp_String = "-sdgmcbklmdralt"
 elseif (udg_command == "3") then
-    set udg_Temp_String = "-phgmcbmdranc"
+    set udg_Temp_String = "-hygmcbklmdralt"
 elseif (udg_command == "4") then
-    set udg_Temp_String = "-sdgmcbmd"
+    set udg_Tower_Ban = true
+    set udg_Temp_String = "-phgmcbmdralttb"
 elseif (udg_command == "5") then
     set udg_Temp_String = "-argmcbmd"
 else
@@ -14253,11 +14470,23 @@ endif
 if(noCross) then
 set udg_ModeString=(udg_ModeString+"nc")
 endif
+if(noMid) then
+set udg_ModeString=(udg_ModeString+"dm")
+endif
+if(udg_Tower_Ban)then
+set udg_ModeString=(udg_ModeString+"tb")
+endif
+if(udg_Lumber_Trade)then
+set udg_ModeString=(udg_ModeString+"lt")
+endif
 if(incomeFirstWave) then
-set udg_ModeString=(udg_ModeString+"ef")
+set udg_ModeString=(udg_ModeString+"ef") // моды
 endif
 if(autoHeal) then
 set udg_ModeString=(udg_ModeString+"ah")
+endif
+if(rerollEveryLevel) then
+set udg_ModeString=(udg_ModeString+"rr")
 endif
 if(Trig_Generate_Mode_String_Func015C())then
 set udg_ModeString=(udg_ModeString+"x3")
@@ -14598,6 +14827,7 @@ endfunction
 function Trig_Remove_Heal_Actions takes nothing returns nothing
 set udg_Temp_Player=GetTriggerPlayer()
 set udg_BuilderHeal[GetConvertedPlayerId(udg_Temp_Player)]=true
+// call UnitRemoveAbilityBJ(0x41303834,GetTriggerUnit())
 call DisplayTimedTextToForce(GetPlayersAll(),10.00,((udg_PlayerColor_String[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]+GetPlayerName(GetOwningPlayer(GetTriggerUnit())))+"|r used Holy Light on King !"))
 call TriggerSleepAction(1.00)
 call IssueImmediateOrderBJ(GetTriggerUnit(),"holdposition")
@@ -14650,7 +14880,7 @@ endfunction
 function Trig_Lumberjack_Training_Actions takes nothing returns nothing
 call TriggerExecute(gg_trg_Update_Lumber)
 if(Trig_Lumberjack_Training_Func003C())then
-call SetPlayerTechMaxAllowedSwap(0x52303048,7,GetTriggerPlayer())
+call SetPlayerTechMaxAllowedSwap(0x52303048,42,GetTriggerPlayer())
 else
 endif
 endfunction
@@ -15146,7 +15376,7 @@ call TriggerAddAction(gg_trg_Allied_Resources,function Trig_Allied_Resources_Act
 endfunction
 function Trig_Anti_Cheat_LUMBER_Conditions takes nothing returns boolean
 if(not(udg_SinglePlayer==false))then
-return false
+return true
 endif
 return true
 endfunction
@@ -15166,7 +15396,7 @@ function Trig_Anti_Cheat_LUMBER_Func003A takes nothing returns nothing
 set udg_Temp_Lumber=((1*udg_numWorkers[GetConvertedPlayerId(GetEnumPlayer())])*((GetPlayerTechCountSimple(0x52303033,GetEnumPlayer())+GetPlayerTechCountSimple(0x52303048,GetEnumPlayer()))+2))
 if(Trig_Anti_Cheat_LUMBER_Func003Func002C())then
 set udg_Cheat_count=(udg_Cheat_count+1)
-set udg_Temp_Integer=(GetPlayerState(GetEnumPlayer(),PLAYER_STATE_LUMBER_GATHERED)-(udg_TotalLumber[GetConvertedPlayerId(GetEnumPlayer())]+udg_Temp_Lumber))
+set udg_Temp_Integer=(GetPlayerState(GetEnumPlayer(),PLAYER_STATE_LUMBER_GATHERED)+udg_TotalLumberAdded[GetConvertedPlayerId(GetEnumPlayer())]-(udg_TotalLumber[GetConvertedPlayerId(GetEnumPlayer())]+udg_Temp_Lumber))
 set udg_TotalLumber[GetConvertedPlayerId(GetEnumPlayer())]=(udg_Temp_Lumber+udg_TotalLumber[GetConvertedPlayerId(GetEnumPlayer())])
 if(Trig_Anti_Cheat_LUMBER_Func003Func002Func016C())then
 call AdjustPlayerStateBJ((0-udg_Temp_Integer),GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER)
@@ -15176,7 +15406,7 @@ call AdjustPlayerStateBJ((0-GetPlayerState(GetEnumPlayer(),PLAYER_STATE_RESOURCE
 call SetPlayerStateBJ(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER,0)
 endif
 else
-set udg_TotalLumber[GetConvertedPlayerId(GetEnumPlayer())]=GetPlayerState(GetEnumPlayer(),PLAYER_STATE_LUMBER_GATHERED)
+set udg_TotalLumber[GetConvertedPlayerId(GetEnumPlayer())]=GetPlayerState(GetEnumPlayer(),PLAYER_STATE_LUMBER_GATHERED) + udg_TotalLumberAdded[GetConvertedPlayerId(GetEnumPlayer())]
 endif
 endfunction
 function Trig_Anti_Cheat_LUMBER_Actions takes nothing returns nothing
@@ -15193,7 +15423,7 @@ call TriggerAddAction(gg_trg_Anti_Cheat_LUMBER,function Trig_Anti_Cheat_LUMBER_A
 endfunction
 function Trig_Anti_Cheat_GOLD_Conditions takes nothing returns boolean
 if(not(udg_SinglePlayer==false))then
-return false
+return true
 endif
 return true
 endfunction
@@ -15276,7 +15506,7 @@ set udg_Cost_King=(udg_UpgradesBought[GetConvertedPlayerId(GetEnumPlayer())]*80)
 set udg_Temp_Integer3=((GetPlayerState(GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER)+(udg_Cost_Other+udg_Cost_Farm))+udg_Cost_Upgrade)
 if(Trig_Smart_Anti_Lumber_Cheat_Func001Func011C())then
 set udg_Cheat_count=(udg_Cheat_count+1)
-set udg_Temp_Integer=(udg_Temp_Integer3-GetPlayerState(GetEnumPlayer(),PLAYER_STATE_LUMBER_GATHERED))
+set udg_Temp_Integer=(udg_Temp_Integer3-GetPlayerState(GetEnumPlayer(),PLAYER_STATE_LUMBER_GATHERED) + udg_TotalLumberAdded[GetConvertedPlayerId(GetEnumPlayer())])
 call AdjustPlayerStateBJ((0-udg_Temp_Integer),GetEnumPlayer(),PLAYER_STATE_RESOURCE_LUMBER)
 else
 endif
@@ -17160,7 +17390,7 @@ call InitTrig_Focus_Energy()
 call InitTrig_Zeus_Power_Surge_Mana()
 call InitTrig_Exploding_Shell()
 call InitTrig_Frost_Wolf_Bleeding()
-call InitTrig_Autocast_Magnataur_Shockwave()
+// call InitTrig_Autocast_Magnataur_Shockwave()
 call InitTrig_Assign_Summon_to_player()
 call InitTrig_Raise_Dead()
 call InitTrig_Air_Unit_Heights()
@@ -17265,9 +17495,9 @@ call InitTrig_Help_msg_about_middle_enemies()
 call InitTrig_Team_Handicap()
 call InitTrig_Player_Leaves()
 call InitTrig_Allied_Resources()
-call InitTrig_Anti_Cheat_LUMBER()
-call InitTrig_Anti_Cheat_GOLD()
-call InitTrig_Smart_Anti_Lumber_Cheat()
+// call InitTrig_Anti_Cheat_LUMBER()
+// call InitTrig_Anti_Cheat_GOLD()
+// call InitTrig_Smart_Anti_Lumber_Cheat()
 call InitTrig_Burning_Legion()
 call InitTrig_Help()
 call InitTrig_Attack_Types()
@@ -17454,6 +17684,9 @@ call SetStartLocPrio(7,0,5,MAP_LOC_PRIO_LOW)
 call SetStartLocPrio(7,1,6,MAP_LOC_PRIO_HIGH)
 endfunction
 function main takes nothing returns nothing
+// call CreateUnit(Player(0), 'h199', -5696, 4352, 90)
+set LIncomeTexttagLoc = Location(-1444, -4528)
+set RIncomeTexttagLoc = Location(1360, -4528)
 call SetCameraBounds(-6784.0+GetCameraMargin(CAMERA_MARGIN_LEFT),-4608.0+GetCameraMargin(CAMERA_MARGIN_BOTTOM),6784.0-GetCameraMargin(CAMERA_MARGIN_RIGHT),8960.0-GetCameraMargin(CAMERA_MARGIN_TOP),-6784.0+GetCameraMargin(CAMERA_MARGIN_LEFT),8960.0-GetCameraMargin(CAMERA_MARGIN_TOP),6784.0-GetCameraMargin(CAMERA_MARGIN_RIGHT),-4608.0+GetCameraMargin(CAMERA_MARGIN_BOTTOM))
 call SetDayNightModels("Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdl","Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdl")
 call NewSoundEnvironment("Default")

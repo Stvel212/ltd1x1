@@ -1,0 +1,41 @@
+package AntiCrossStore
+
+import Buildability
+
+public class AntiCrossStore
+  static let lFullSquare1 = square(-6272, -4035, 2176, 3424)
+  static let lFullSquare2 = square(-3005, -650, 2176, 3424)
+
+  static let rFullSquare1 = square(800, 3005, 2176, 3424)
+  static let rFullSquare2 = square(4035, 6272, 2176, 3424)
+
+  static let lSquare1 = square(-5888, -4576, 2176, 3424)
+  static let lSquare2 = square(-6272, -6016, 2432, 3168)  
+  static let lSquare3 = square(-6016, -5888, 2304, 3296)  
+  static let lSquare4 = square(-2496, -1184, 2176, 3424)  
+  static let lSquare5 = square(-1184, -1056, 2304, 3296)  
+  static let lSquare6 = square(-1056, -800, 2432, 3168)  
+
+  static let rSquare1 = square(1152, 2464, 2176, 3424)
+  static let rSquare2 = square(768, 1024, 2432, 3168)  
+  static let rSquare3 = square(1024, 1152, 2304, 3296) 
+  static let rSquare4 = square(4544, 5856, 2176, 3424)  
+  static let rSquare5 = square(5856, 5996, 2304, 3296) 
+  static let rSquare6 = square(5996, 6272, 2432, 3168)
+  
+  static let lAdditionalSquare1 = square(-5888, -5088, 3328, 3424)
+  static let lAdditionalSquare2 = square(-1984, -1184, 3328, 3424)  
+  static let lAdditionalSquare3 = square(-5888, -5088, 2176, 2272)  
+  static let lAdditionalSquare4 = square(-1984, -1184, 2176, 2272)
+
+  static let rAdditionalSquare1 = square(1152, 1952, 3328, 3424)
+  static let rAdditionalSquare2 = square(5056, 5856, 3328, 3424)  
+  static let rAdditionalSquare3 = square(1152, 1952, 2176, 2272)  
+  static let rAdditionalSquare4 = square(5056, 5856, 2176, 2272)
+
+  static let fullSquares = [lFullSquare1, lFullSquare2, rFullSquare1, rFullSquare2]
+  static let baseSquares = [lSquare1, lSquare2, lSquare3, lSquare4, lSquare5, lSquare6, rSquare1, rSquare2, rSquare3, rSquare4, rSquare5, rSquare6]
+  static let additionalSquares = [lAdditionalSquare1, lAdditionalSquare2,lAdditionalSquare3,lAdditionalSquare4,rAdditionalSquare1,rAdditionalSquare2,rAdditionalSquare3,rAdditionalSquare4]
+
+  static let antiMidSquares_size = 8
+  static let antiCrossSquares_size = 12

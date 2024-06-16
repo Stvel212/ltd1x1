@@ -6,7 +6,11 @@ import PickHelpers
 let HP_DUMMY = 'u008'
 let ATTACK_DUMMY = 'u009'
 let REGEN_DUMMY = 'u00A'
+//texttag heal1
+//texttag heal2
 
+var heals_west = 1
+var heals_east = 1
 
 let HP_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -250).toVec3(), "Hp :   0", 10, colorA(0, 255, 0, 255))
                     ..showToAllyAndObs(Player(8))
@@ -14,8 +18,8 @@ let ATTACK_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -300).toVec3
                         ..showToAllyAndObs(Player(8))
 let REGEN_TEXT_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -350).toVec3(), "Regen :   0", 10, colorA(0, 0, 255, 255))
                         ..showToAllyAndObs(Player(8))
-let HEAL_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -400).toVec3(), "Heal :  yes", 10, colorA(255, 255, 0, 255))
-                    ..showToAllyAndObs(Player(8))
+let HEAL_WEST = createTT(gg_unit_h00K_0009.getPos().add(200, -400).toVec3(), "Heal :  1", 10, colorA(255, 255, 0, 255))
+                    ..showToAll()
 
 let HP_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -250).toVec3(), "Hp :   0", 10, colorA(0, 255, 0, 255))
                     ..showToAllyAndObs(Player(9))
@@ -23,10 +27,14 @@ let ATTACK_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -300).toVec3
                         ..showToAllyAndObs(Player(9))
 let REGEN_TEXT_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -350).toVec3(), "Regen :   0", 10, colorA(0, 0, 255, 255))
                         ..showToAllyAndObs(Player(9))
-let HEAL_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -400).toVec3(), "Heal :   yes", 10, colorA(255, 255, 0, 255))
-                        ..showToAllyAndObs(Player(8))
+let HEAL_EAST = createTT(gg_unit_h00K_0006.getPos().add(200, -400).toVec3(), "Heal :   1", 10, colorA(255, 255, 0, 255))
+                        ..showToAll()
 
 init
+    //heal1 = createTT(gg_unit_h00K_0009.getPos().add(200, -400).toVec3(), "Heal :  2", 10, colorA(255, 255, 0, 255))
+                    //..showToAllyAndObs(Player(8))
+    //heal2 = createTT(gg_unit_h00K_0006.getPos().add(200, -400).toVec3(), "Heal :   2", 10, colorA(255, 255, 0, 255))
+                    //..showToAllyAndObs(Player(9))
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SELL) ->
         let p = GetTriggerPlayer()
         let u = GetSoldUnit().getTypeId()
@@ -44,6 +52,18 @@ init
     registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
         if (GetSpellAbilityId() == HOLYLIGHT_ID)
             let k = GetSpellTargetUnit()
+            DestroyEffect(AddSpecialEffect("Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", k.getX(), k.getY()))
             GetTriggerUnit().removeAbility(HOLYLIGHT_ID)
             let tag = k == gg_unit_h00K_0009 ? HEAL_WEST : HEAL_EAST
-            tag.setText("Heal :   no", 10)
+            if (k == gg_unit_h00K_0009)
+                tag.setText("Heal :   {0}".format((heals_west - 1).toString()), 10)
+                heals_west -= 1
+            else
+                // SetUnitLifePercentBJ(gg_unit_h00K_0006, 100)
+                tag.setText("Heal :   {0}".format((heals_east - 1).toString()), 10)
+                heals_east -= 1
+            if k.getHP() + 10000 > k.getMaxHP()
+                k.setHP(k.getMaxHP())
+            else
+                k.setHP(k.getHP() + 10000)
+

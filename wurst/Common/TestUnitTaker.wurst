@@ -1,8 +1,9 @@
-// package TestUnitTaker
-// 
-// import RegisterEvents
-// 
-// init
-// 	registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SELECTED) ->
-// 		GetTriggerUnit().setOwner(GetTriggerPlayer(), true)
-// 		print(GetTriggerUnit().getUserData())
+package TestUnitTaker
+//import ClosureTimers
+import RegisterEvents
+
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_ATTACKED) ->
+        let u = GetAttacker()
+        if u.getTypeId() == 'H05K'
+            u.issuePointOrderById(852125, vec2(GetTriggerUnit().getX(), GetTriggerUnit().getY()))

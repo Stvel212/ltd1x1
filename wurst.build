@@ -1,34 +1,49 @@
 ---
 projectName: ___
 dependencies:
-  - https://github.com/netVoix/WurstLib
+- https://github.com/netVoix/WurstLib
+- https://github.com/wurstscript/wurstStdlib2
 buildMapData:
-  name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.2f
-  fileName: Legion TD MegaOZGame v 1.2f
-  author: oz
+  name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5V
+  fileName: Legion TD 1x1 V1.5 TB
+  author: "Oz"
   players:
-    - id: 0
-      name: Player 1
-      race: HUMAN
-      controller: USER
-    - id: 4
-      name: Player 5
-      race: HUMAN
-      controller: USER
-    - id: 8
-      name: Player 9
-      race: HUMAN
-      controller: COMPUTER
-    - id: 9
-      name: Player 10
-      race: HUMAN
-      controller: COMPUTER
+  - id: 0
+    name: Player 1
+    race: HUMAN
+    controller: USER
+  - id: 1
+    name: Player 2
+    race: HUMAN
+    controller: USER
+  - id: 4
+    name: Player 5
+    race: HUMAN
+    controller: USER
+  - id: 5
+    name: Player 6
+    race: HUMAN
+    controller: USER
+  - id: 8
+    name: Player 9
+    race: HUMAN
+    controller: COMPUTER
+  - id: 9
+    name: Player 10
+    race: HUMAN
+    controller: COMPUTER
   forces:
-    - name: Western Force
-      playerIds:
-        - 0
-        - 8
-    - name: Eastern Force
-      playerIds:
-        - 4
-        - 9
+  - name: Western Force
+    flags:
+      sharedVision: false
+    playerIds:
+    - 0
+    - 1
+    - 8
+  - name: Eastern Force
+    flags:
+      sharedVision: false
+    playerIds:
+    - 4
+    - 5
+    - 9

@@ -31,12 +31,12 @@ public class FastFinish
                     printTimed("Some players in {0} team wanna continue to play. Voting has closed".format(teamName), 7)
             printTimed("{0} vote for ff. ".format(Colorizer.colorizeByPlayerId(p.getName(), pid)), 7)
         if votes[0] == playersCount[0]
-            printTimed("All {0} team palyers voted for ff. Game will end in 3 seconds".format(teamName), 7)
-            doAfter(3) ->
+            printTimed("All {0} team palyers voted for ff. Game will end in 0 seconds".format(teamName), 7)
+            doAfter(0.25) ->
                 gg_unit_h00K_0009.kill()
         else if votes[1] == playersCount[1]
-            printTimed("All {0} team palyers voted for ff. Game will end in 3 seconds".format(teamName), 7)
-            doAfter(3) ->
+            printTimed("All {0} team palyers voted for ff. Game will end in 0 seconds".format(teamName), 7)
+            doAfter(0.25) ->
                 gg_unit_h00K_0006.kill()
 
     static function reset(int team)

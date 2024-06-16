@@ -1,0 +1,113 @@
+package UtilityTools
+import ObjEditingNatives
+import RegisterEvents
+
+public boolean array stkaiEff
+
+@compiletime function create_w3u_h05C()
+    createObjectDefinition("w3u", 'h59C', 'hbla')
+    ..setInt("ucam", 1)
+    ..setString("ures", "")
+    ..setString("upgr", "")
+    ..setString("uabi", "A07W,A34E,A328")
+    ..setString("unam", "Utility Tools")
+    ..setString("upap", "unwalkable")
+    ..setString("upat", "PathTextures\\4x4SimpleSolid.tga")
+    ..setString("uubs", "HSMA")
+    ..setString("ushb", "ShadowGuardTower")
+    ..setString("uhot", "")
+    ..setString("utip", "")
+    ..setString("utub", "")
+    ..setReal("usca", 1)
+    ..setInt("ubpx", 0)
+    ..setString("ureq", "")
+    ..setInt("ulum", 0)
+    ..setInt("ugol", 75)
+    ..setInt("ubld", 10)
+    ..setString("umdl", "buildings\\other\\HornOfCenarius\\HornOfCenarius.mdl")
+    ..setString("usnd", "HumanBarracks")
+    ..setString("unsf", "(summon 1-12)")
+    ..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNHumanBarracks.blp")
+    ..setString("useu", "")
+
+
+@compiletime function create_w3a_A14E()
+    createObjectDefinition("w3a", 'A34E', 'ACtc')
+    ..setLvlDataUnreal("Ncl1", 1, 1, 0.0)
+    ..setLvlDataInt("Ncl3", 1, 3, 1)
+    ..setLvlDataInt("Ncl5", 1, 5, 0)
+    ..setLvlDataString("Ncl6", 1, 6, "roar")
+    ..setLvlDataString("aani", 0, 0, "")
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNCancel.blp")
+    ..setLvlDataInt("abpx", 0, 0, 3)
+    ..setLvlDataInt("abpy", 0, 0, 1)
+    ..setLvlDataString("acat", 0, 0, "")
+    ..setLvlDataUnreal("acdn", 1, 0, 3.0)
+    ..setLvlDataString("aeat", 0, 0, "")
+    ..setLvlDataInt("aher", 0, 0, 0)
+    ..setLvlDataString("ahky", 0, 0, "F")
+    ..setLvlDataInt("alev", 0, 0, 1)
+    ..setLvlDataInt("amcs", 1, 0, 0)
+    ..setLvlDataString("anam", 0, 0, "Отключить эффект стака")
+    ..setLvlDataString("atat", 0, 0, "Abilities\\Spells\\Undead\\DeathPact\\DeathPactTarget.mdl")
+    ..setLvlDataString("atp1", 1, 0, "[|cffBB3333Отключить эффект стака|r]")
+    ..setLvlDataString("aub1", 1, 0, "Отключить эффект стака.")
+
+@compiletime function create_w3a_A14F()
+    createObjectDefinition("w3a", 'A34F', 'ACtc')
+    ..setLvlDataUnreal("Ncl1", 1, 1, 0.0)
+    ..setLvlDataInt("Ncl3", 1, 3, 1)
+    ..setLvlDataInt("Ncl5", 1, 5, 0)
+    ..setLvlDataString("Ncl6", 1, 6, "roar")
+    ..setLvlDataString("aani", 0, 0, "")
+    ..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNManaFlare.blp")
+    ..setLvlDataInt("abpx", 0, 0, 3)
+    ..setLvlDataInt("abpy", 0, 0, 1)
+    ..setLvlDataString("acat", 0, 0, "")
+    ..setLvlDataUnreal("acdn", 1, 0, 3.0)
+    ..setLvlDataString("aeat", 0, 0, "")
+    ..setLvlDataInt("aher", 0, 0, 0)
+    ..setLvlDataString("ahky", 0, 0, "F")
+    ..setLvlDataInt("alev", 0, 0, 1)
+    ..setLvlDataInt("amcs", 1, 0, 0)
+    ..setLvlDataString("anam", 0, 0, "Включить эффект стака")
+    ..setLvlDataString("atat", 0, 0, "Abilities\\Spells\\Undead\\DeathPact\\DeathPactTarget.mdl")
+    ..setLvlDataString("atp1", 1, 0, "[|cff33BB33Включить эффект стака|r]")
+    ..setLvlDataString("aub1", 1, 0, "Включить эффект стака.")   
+init
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+        if GetSpellAbilityId() == 'A34E'
+            let u = GetTriggerUnit()
+            let pid = GetTriggerPlayer().getId()+1
+            UnitRemoveAbility(u,'A34E')
+            UnitAddAbility(u, 'A34F')
+            // print("1")
+            // UnitAddAbility(u, 'A06X')
+            // CreateUnit(Player(0), 'h08B', 0, 0, 0)
+            // print("pezda")
+            if  stkaiEff[pid]
+                stkaiEff[pid] = false
+        if GetSpellAbilityId() == 'A34F'
+            let u = GetTriggerUnit()
+            let pid = GetTriggerPlayer().getId()+1
+            UnitRemoveAbility(u,'A34F')
+            UnitAddAbility(u, 'A34E')
+            // print("2") 
+            if not stkaiEff[pid]
+                stkaiEff[pid] = true
+
+    for i = 0 to 7
+        stkaiEff[i] = true
+    let p1utpos = vec2(-4288.0, 4490.0)
+    let p2utpos = vec2(-4288.0, 906.0)
+    let p3utpos = vec2(-2240.0, 4490.0)
+    let p4utpos = vec2(-2240.0, 906.0)
+    let p5utpos = vec2(2752.0, 4490.0)
+    let p6utpos = vec2(2752.0, 906.0)
+    let p7utpos = vec2(4800.0, 4490.0)
+    let p8utpos = vec2(4800.0, 906.0)
+    let utpositiobs = [p1utpos, p2utpos, p3utpos, p4utpos, p5utpos, p6utpos, p7utpos, p8utpos]
+    for i = 0 to 7
+        let p = Player(i)
+        if p.isIngame()
+            createUnit(p, 'h59C', utpositiobs[i], angle(4.217))

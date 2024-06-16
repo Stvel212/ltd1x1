@@ -1,0 +1,69 @@
+package PickStoreWithNewRace
+
+import Store
+import LinkedList
+
+public class PickStoreWithNewRace
+    private player p
+    private let tier1 = new LinkedList<int>..add(
+        UnitsStore.PROTON_ID, UnitsStore.GNOLLWARRIOR_ID, UnitsStore.PEEWEE_ID, UnitsStore.ENT_ID,
+        UnitsStore.BONEWARRIOR_ID, UnitsStore.SPECTER_ID, UnitsStore.TUSKARR_ID, UnitsStore.GOBLINSCIENTIST_ID,
+        UnitsStore.COLT_ID, UnitsStore.HATCHLING_ID, UnitsStore.ORCWARRIOR_ID, UnitsStore.PEASANT_ID, UnitsStore.ACOLYTE_ID)..shuffle()
+    private let tier2 = new LinkedList<int>..add(
+        UnitsStore.AQUASPIRIT_ID, UnitsStore.OGREBASHER_ID, UnitsStore.INFANTRY_ID, 
+        UnitsStore.RANGER_ID, UnitsStore.CARRIONSPITTER_ID, UnitsStore.WANDERER_ID, 
+        UnitsStore.FROSTWOLF_ID, UnitsStore.SERVANT_ID, UnitsStore.NOVICE_ID, 
+        UnitsStore.GEOMANCER_ID, UnitsStore.EGGSACK_ID, UnitsStore.ORCWARLOCK_ID, 
+        UnitsStore.ARCHER_ID, UnitsStore.GHOUL_ID)..shuffle()
+    private let tier3 = new LinkedList<int>..add(
+        UnitsStore.WATCHER_ID, UnitsStore.HARPY_ID, UnitsStore.CAPTAIN_ID,
+        UnitsStore.SPRITE_ID, UnitsStore.GATEGUARD_ID, UnitsStore.PHANTOM_ID,
+        UnitsStore.ICETROLL_ID, UnitsStore.TRIBESMAN_ID, UnitsStore.SENTRY_ID,
+        UnitsStore.MACHINETURRET_ID, UnitsStore.BOTTOMFEEDER_ID, UnitsStore.RAIDER_ID,
+        UnitsStore.FOOTMAN_ID, UnitsStore.MEATWAGON_ID)..shuffle()
+    private let tier4 = new LinkedList<int>..add(
+        UnitsStore.MUDMAN_ID, UnitsStore.TROLLFIGHTER_ID, UnitsStore.TEMPEST_ID,
+        UnitsStore.TREEOFTRAVEL_ID, UnitsStore.OVERSEER_ID, UnitsStore.OUTCAST_ID,
+        UnitsStore.POLARBEAR_ID, UnitsStore.MEDICINEMAN_ID, UnitsStore.PRISONER_ID,
+        UnitsStore.FLYINGMACHINE_ID, UnitsStore.MERMAID_ID, UnitsStore.YOUNGWITCHDOCTOR_ID,
+        UnitsStore.PRIEST_ID, UnitsStore.NECROMANCER_ID)..shuffle()
+    private let tier5 = new LinkedList<int>..add(
+        UnitsStore.DISCIPLE_ID, UnitsStore.GRIZZLY_ID, UnitsStore.CYBORG_ID,
+        UnitsStore.HALFBREED_ID, UnitsStore.NIGHTMARE_ID, UnitsStore.APPARATION_ID,
+        UnitsStore.WANDIGOO_ID, UnitsStore.HARLOT_ID, UnitsStore.DRUID_ID,
+        UnitsStore.GOBLINALCHEMIST_ID, UnitsStore.KOMODO_ID, UnitsStore.WYVERN_ID,
+        UnitsStore.KNIGHT_ID, UnitsStore.ZOMBIE_ID)..shuffle()
+    private let tier6 = new LinkedList<int>..add(
+        UnitsStore.SEEROFDARKNESS_ID, UnitsStore.SPAWNOFDRAGON_ID, UnitsStore.NEOTANK_ID,
+        UnitsStore.YGGDRASIL_ID, UnitsStore.LORDOFDEATH_ID, UnitsStore.DARKPRIEST_ID,
+        UnitsStore.YOUNGFROSTDRAGON_ID, UnitsStore.MINOTAUR_ID, UnitsStore.MOONGUARD_ID,
+        UnitsStore.STEAMROLLER_ID, UnitsStore.SEAGIANT_ID, UnitsStore.ORCWARCHIEF_ID,
+        UnitsStore.DRAGONHAWK_ID, UnitsStore.GUARDIANOFDEATH_ID)..shuffle()
+    private let ALL_UNITS = new LinkedList<int>..addAll(tier1)..addAll(tier2)..addAll(tier3)..addAll(tier4)..addAll(tier5)..addAll(tier6)
+    private LinkedList<int> array[6] ACTUAL_UNITS = [tier1, tier2, tier3, tier4, tier5, tier6]
+
+
+    construct(player pl)
+        p = pl
+        
+
+    function setAllUnitsAvailableNR()
+        for uid in ALL_UNITS
+            SetPlayerTechMaxAllowed(p, uid, -1)
+
+    function setAllUnitsUnavailableNR()
+        for uid in ALL_UNITS
+            SetPlayerTechMaxAllowed(p, uid, 0)
+
+    function setRandomUnitsNR() returns LinkedList<string>
+        let iconPaths = new LinkedList<string>()
+        setAllUnitsUnavailableNR()
+        for i = 0 to 5
+            let i2 = ACTUAL_UNITS[i].size() - 1
+            let i3 = GetRandomInt(0, i2)
+            let cur = rerollEveryLevel == false ? ACTUAL_UNITS[i].pop() : ACTUAL_UNITS[i].get(i3)
+            SetPlayerTechMaxAllowed(p, cur, -1)
+            iconPaths.add("icons\\{0}.blp".format(UnitId2String(cur)))
+        return iconPaths
+
+        

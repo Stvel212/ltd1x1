@@ -12,7 +12,7 @@ public let PUDGE_UNIT_ID = 'h0CZ'
 	..setString("ureq", "")
 	..setInt("ufoo", 0)
 	..setString("ua1g", "enemies")
-	..setString("uabi", "A0AE,A0BK")
+	..setString("uabi", "A0AE,N12A")
 	..setString("unam", "Pudge")
 	..setString("uico", "ReplaceableTextures\\CommandButtons\\BTNAbomination.blp")
 	..setString("umdl", "units\\undead\\AbominationCIN\\AbominationCIN.mdl")

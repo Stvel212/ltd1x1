@@ -2,6 +2,7 @@ package PickHelpers
 
 import Colorizer
 import PickStore
+import PickStoreWithNewRace
 import Store
 import PickInitializer
 import HCLResolver
@@ -18,13 +19,16 @@ public function player.pickBuilder(int uid)
     unit u = this.replaceAndSelectUnit(this.getCurrentBuilder(), uid)
     this.setCurrentBuilder(u)
     if u.isProphet()
-        let ind = HCLResolver.getPlayerProphetModelIndex(this.getId())
+        int ind = HCLResolver.getPlayerProphetModelIndex(this.getId()) //скин, скины, строители
+        if this.getName() == "WorldEdit"
+            ind = 2
         u = this.replaceAndSelectUnit(this.getCurrentBuilder(), ModelsStore.models[ind])
         this.setProphetUnitsWithImages()
-        if autoHeal == false
-            u.addAbility('A084')
     else
-        playerUnits[this.getId()].setAllUnitsAvailable()
+        if newRace
+            playerUnitsWithNewRace[this.getId()].setAllUnitsAvailableNR()
+        else
+            playerUnits[this.getId()].setAllUnitsAvailable()
     this.postPickActions(u)
     gg_trg_Update_Race_Icon.evaluate()
 
@@ -45,9 +49,9 @@ public function player.getCurrentBuilder() returns unit
 public function player.postPickActions(unit u)
     let pid = this.getId()
     if udg_BuilderHeal[pid+1]
-        udg_Builder_Unit[pid+1].removeAbility(HOLYLIGHT_ID)
+        u.removeAbility(HOLYLIGHT_ID)
     else
-        udg_Builder_Unit[pid+1].addAbility(HOLYLIGHT_ID)
+        u.addAbility(HOLYLIGHT_ID)
     DisplayTimedTextToForce(
         GetPlayersAllies(this),
         10.00,
@@ -55,7 +59,7 @@ public function player.postPickActions(unit u)
     )
 
 public function player.setProphetUnitsWithImages()
-    let imgs = playerUnits[this.getId()].setRandomUnits()
+    let imgs = newRace ? playerUnitsWithNewRace[this.getId()].setRandomUnitsNR() : playerUnits[this.getId()].setRandomUnits()
     playerRenderer[this.getId()].clear()
     for img in imgs
         playerRenderer[this.getId()].add(img)

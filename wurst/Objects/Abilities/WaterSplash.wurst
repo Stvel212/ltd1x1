@@ -1,0 +1,40 @@
+package WaterSplash
+import AbilityObjEditing
+import RegisterEvents
+
+@compiletime function createHigherMindBlast()
+    new AbilityDefinitionTaurenChieftainWarStomp('A926')
+        ..setButtonPositionNormalX(1)
+        ..setButtonPositionNormalY(0)
+        ..setLevels(1)
+        ..setArtCaster("")
+        ..setRequirements("")
+        ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNSeaGiantWarStomp.blp")
+        ..setName("Water Stomp")
+        ..setTooltipNormal(1, "Water Stomp")
+        ..setTooltipNormalExtended(1, "Deal 20 damage in 250 aoe and stun for 0.5 sec.")
+        ..setAreaofEffect(1, 250)
+        ..setDurationHero(1, 0.5)
+        ..setDurationNormal(1, 0.5)
+        ..setTargetsAllowed(1, "ground,air,organic,enemy,mechanical")
+        ..setDamage(1, 20)
+        ..setManaCost(1, 10)
+        ..setCooldown(1, 7)
+
+function mainn()
+    for i = 1 to 8
+        udg_TotalLumberAdded[i] = 0
+
+init
+    mainn()
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
+        let id = GetSpellAbilityId()
+        if id == 'A926'
+            let u = GetTriggerUnit()
+            let eff = addEffect("Objects\\Spawnmodels\\Naga\\NagaDeath\\NagaDeath.mdl", u.getPos())
+            eff.destr()
+    registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_CAST) ->
+        let id = GetSpellAbilityId()
+        if id == 'A0AO'
+            print(GetTriggerUnit().getName())
+            print(GetSpellTargetUnit().getName()) 

@@ -4,6 +4,8 @@ import RegisterEvents
 import ClosureForGroups
 import OrderIds
 import RectsStore
+import ClosureTimers
+import UtilityTools
 
 
 let k = [udg_LKing, udg_RKing]
@@ -11,21 +13,27 @@ let k = [udg_LKing, udg_RKing]
 init
   registerPlayerUnitEvent(EVENT_PLAYER_UNIT_SPELL_EFFECT) ->
 
-
+    let x = GetSpellTargetX()
+    let y = GetSpellTargetY()
     let p = GetTriggerPlayer()
-    let target = vec2(GetSpellTargetX(), GetSpellTargetY())
-    if GetSpellAbilityId() == 'A050' and RectsStore.teamRects[p.getTeam()].contains(target)
-      forUnitsInRange(target, 200) u ->
-        let owner = u.getOwner()
-        if owner.isEnemyOf(p)
-          u.issueImmediateOrderById(OrderIds.stop)
-          IssuePointOrderByIdLoc(u, OrderIds.attack, k[p.getTeam()])
-        else if udg_CreepSpawnPoint[u.getUserData()].size() == 0 and not udg_Level_Integer >= 30
-          IssuePointOrderByIdLoc(u, OrderIds.attack, udg_PathingPointArray[u.getUserData()])
-          
-      let u = GetTriggerUnit()
-      u.pause()
-      u.issueImmediateOrderById(OrderIds.stop)
-      u.unpause()
-      u.setAnimation("attack")
-      u.queueAnimation("stand")
+    let target = vec2(x, y)
+    if GetSpellAbilityId() == 'A050'
+      if RectsStore.teamRects[p.getTeam()].contains(target)
+        forUnitsInRange(target, 200) u ->
+          let owner = u.getOwner()
+          if owner.isEnemyOf(p)
+            u.issueImmediateOrderById(OrderIds.stop)
+            IssuePointOrderByIdLoc(u, OrderIds.attack, k[p.getTeam()])
+          else if udg_CreepSpawnPoint[u.getUserData()].size() == 0 and not udg_Level_Integer >= 30
+            IssuePointOrderByIdLoc(u, OrderIds.attack, udg_PathingPointArray[u.getUserData()])
+            
+        let u = GetTriggerUnit()
+        u.pause()
+        u.issueImmediateOrderById(OrderIds.stop)
+        u.unpause()
+        u.setAnimation("attack")
+        u.queueAnimation("stand")
+      if stkaiEff[p.getId() + 1]
+        let eff = AddSpecialEffect("Doodads\\Cinematic\\Lightningbolt\\Lightningbolt.mdl", x, y)
+        doAfter(0.25) ->
+          eff.destr()
