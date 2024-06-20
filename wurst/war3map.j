@@ -2123,7 +2123,7 @@ call ForGroup(udg_Fighter_Group,function Add_Events_Function)
 call TriggerAddAction(udg_Trig,function Unpause_Fighters)
 endfunction
 function Trig_Update_Info_Actions takes nothing returns nothing
-set udg_MapVersion_String="3.41f"
+set udg_MapVersion_String="1.5X"
 set udg_MapName_String=("|cffFF0000Legion TD Mega "+(udg_MapVersion_String+"|r"))
 set udg_MapName_String_short=((udg_MapVersion_String+"|r"))
 endfunction
@@ -2150,7 +2150,7 @@ call TriggerExecute(gg_trg_Setup_Map_Properties)
 call TriggerExecute(gg_trg_Quests)
 call TriggerExecute(gg_trg_Setup_Misc)
 call PolledWait(1.00)
-call DisplayTimedTextToForce(GetPlayersAll(),10.00,("Welcome to Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5 "+(" you have 15 seconds to enter gamemodes, if you don't enter any command, the default mode is -aphgggmmcbx3")))
+call DisplayTimedTextToForce(GetPlayersAll(),10.00,("Welcome to Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5x "+(" you have 15 seconds to enter gamemodes, if you don't enter any command, the default mode is -aphgggmmcbx3")))
 call TriggerExecute(gg_trg_Set_Round_to_Not_In_Progress)
 set udg_GameInit=true
 call StartTimerBJ(udg_GameTimer,false,15.00)
@@ -17704,8 +17704,8 @@ call InitCustomTriggers()
 call RunInitializationTriggers()
 endfunction
 function config takes nothing returns nothing
-call SetMapName("Legion TD |cffFF1111Mega|r 3.41")
-call SetMapDescription("Version 3.41 (2011-10-23)\n* W3MMD enable\n* New Score\n\nFor latest version, please visit :\nhttp://www.hiveworkshop.com/forums/maps-564/legion-td-mega-194224/\nhttp://legiontd.in-goo.com/")
+call SetMapName("Legion TD |cffFF1111Mega|r 1.5x")
+call SetMapDescription("Version 1.5 (2024-06-20)\n* W3MMD enable\n* New Score\n\nFor latest version, please visit :\nhttp://www.hiveworkshop.com/forums/maps-564/legion-td-mega-194224/\nhttp://legiontd.in-goo.com/")
 call SetPlayers(10)
 call SetTeams(10)
 call SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)

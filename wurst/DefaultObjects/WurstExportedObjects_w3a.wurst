@@ -1120,7 +1120,7 @@ import ObjEditingNatives
 	..setLvlDataInt("alev", 0, 0, 1)
 	..setLvlDataInt("amcs", 1, 0, 50)
 	..setLvlDataString("arac", 0, 0, "human")
-	..setLvlDataString("atar", 1, 0, "air,friend,ground,nonsapper,notself,structure,vulnerable")
+	..setLvlDataString("atar", 1, 0, "air,friend,structure,ground,notself,nonsapper,allies,vulnerable")
 	..setLvlDataString("atp1", 1, 0, "Sacred Blessing")
 	..setLvlDataString("aub1", 1, 0, "")
 	..setLvlDataString("ahky", 0, 0, "")
@@ -1658,7 +1658,7 @@ import ObjEditingNatives
 	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNTimberWolf.blp")
 	..setLvlDataString("abuf", 1, 0, "B014")
 	..setLvlDataString("anam", 0, 0, "Frost Aura")
-	..setLvlDataUnreal("aare", 1, 0, 300.0)
+	..setLvlDataUnreal("aare", 1, 0, 350.0)
 
 
 @compiletime function create_w3a_A03A()
@@ -1693,7 +1693,7 @@ import ObjEditingNatives
 	..setLvlDataString("atp1", 1, 0, "Blood Rush")
 	..setLvlDataString("abuf", 1, 0, "B019")
 	..setLvlDataString("auar", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNBloodLust.blp")
-	..setLvlDataString("atar", 1, 0, "air,friend,ground,invulnerable,self,structure,vulnerable")
+	..setLvlDataString("atar", 1, 0, "air,friend,ground,invulnerable,self,structure,vulnerable,nonsapper")
 	..setLvlDataString("aart", 0, 0, "ReplaceableTextures\\CommandButtons\\BTNBloodLust.blp")
 
 

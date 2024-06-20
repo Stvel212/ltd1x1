@@ -28,6 +28,7 @@ public class ModelsStore //скин
   static let model22 = PROPHET_HEROTYRAEL_ID
   static let model23 = PROPHET_ANTARAS_ID
   static let model24 = PROPHET_ANGEL_ID
+  static let model25 = PROPHET_LORD_ID
   
-  static let models = [prophet, model1, model2, model3, model4, model5, model6, model7, model8, model9, model10, model11, model12, model13, model14, model15, model16, model17, model18, model19, model20, model21, model22, model23, model24, prophet]
+  static let models = [prophet, model1, model2, model3, model4, model5, model6, model7, model8, model9, model10, model11, model12, model13, model14, model15, model16, model17, model18, model19, model20, model21, model22, model23, model24, model25, prophet]
   

@@ -22,6 +22,8 @@ public function player.pickBuilder(int uid)
         int ind = HCLResolver.getPlayerProphetModelIndex(this.getId()) //скин, скины, строители
         if this.getName() == "WorldEdit"
             ind = 2
+        //if this.getName() == "Longisland"
+        //    ind = 25
         u = this.replaceAndSelectUnit(this.getCurrentBuilder(), ModelsStore.models[ind])
         this.setProphetUnitsWithImages()
     else

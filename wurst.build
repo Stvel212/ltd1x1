@@ -4,8 +4,8 @@ dependencies:
 - https://github.com/netVoix/WurstLib
 - https://github.com/wurstscript/wurstStdlib2
 buildMapData:
-  name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5V
-  fileName: Legion TD 1x1 V1.5 TB
+  name: Legion TD |cffff0000Mega|r |cff0004ffOZGame|r v 1.5x
+  fileName: Legion TD 1x1 V1.5x
   author: "Oz"
   players:
   - id: 0

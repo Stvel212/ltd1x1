@@ -27,6 +27,7 @@ public let PROPHET_AGATION_ID = 'nP20'
 public let PROPHET_HEROTYRAEL_ID = 'nP21'
 public let PROPHET_ANTARAS_ID = 'nP22'
 public let PROPHET_ANGEL_ID = 'nP23'
+public let PROPHET_LORD_ID = 'nP24'
 
 @compiletime function createProphets() // модели взять из 4х4 версии
 	ProphetCreator.createProphet(PROPHET_ID)..setModelFile("units\\creeps\\Medivh\\Medivh.mdl")
@@ -54,4 +55,5 @@ public let PROPHET_ANGEL_ID = 'nP23'
 	ProphetCreator.createProphet(PROPHET_HEROTYRAEL_ID)..setModelFile("HeroTyrael.mdl")..setName("HEROTYRAEL")..setScalingValue(2.0)
 	ProphetCreator.createProphet(PROPHET_ANTARAS_ID)..setModelFile("Antaras.mdl")..setName("ANTARAS")..setScalingValue(0.2)
 	ProphetCreator.createProphet(PROPHET_ANGEL_ID)..setModelFile("ANGEL.mdl")..setName("ANGEL")..setScalingValue(1.25)
+	ProphetCreator.createProphet(PROPHET_LORD_ID)..setModelFile("war3mapImported\\Elemental_Lord.mdl")..setName("Elemental Lord")..setScalingValue(0.75)
 	
